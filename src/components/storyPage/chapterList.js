@@ -1,0 +1,57 @@
+import { Container, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import "./chapterList.css";
+import RenderPagination from "./pagination"
+export default function ChapterList({ chapters }) {
+    const [page, setPage] = useState(1);
+    const pageSize = 10;
+
+    const totalPage = Math.ceil(chapters.length / pageSize);
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+
+    const currentChapters = chapters.slice(startIndex, endIndex);
+
+    const handlePrev = () => {
+        if (page > 1) setPage(page - 1);
+    };
+
+    const handleNext = () => {
+        if (page < totalPage) setPage(page + 1);
+    };
+
+    return (
+        <Container className="mt-4">
+            <h5>Danh sách chương</h5>
+            <hr />
+
+            {currentChapters.map((c, i) => (
+                <Link
+                    key={c.id}
+                    to={`/chapter/${c.id}`}
+                    className="d-flex justify-content-between align-items-center p-2 mb-2 chapter-link"
+                >
+                    <span>
+                        {startIndex + i + 1} - {c.title}
+                    </span>
+                    <span style={{ fontSize: "0.9rem", color: "#6c757d" }}>
+                        {new Date(c.createdAt).toLocaleDateString("vi-VN")}
+                    </span>
+                </Link>
+            ))}
+
+
+            <div className="d-flex justify-content-center gap-2 mt-3">
+                <RenderPagination
+                    page={page}
+                    totalPage={totalPage}
+                    setPage={setPage}
+                    handlePrev={handlePrev}
+                    handleNext={handleNext}
+                />
+            </div>
+
+        </Container>
+    );
+}

@@ -1,0 +1,243 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "docgia_moi",
+      "email": "nguoimoi@example.com",
+      "password": "hashed_pass_123",
+      "avatar": "/avatars/default.jpg",
+      "role": "user",
+      "membershipExpiry": null,
+      "createdAt": "2025-07-01T08:30:00Z"
+    },
+    {
+      "id": 2,
+      "username": "tacgia_noitieng",
+      "email": "tacgia@example.com",
+      "password": "hashed_pass_456",
+      "avatar": "/avatars/author2.jpg",
+      "role": "user",
+      "membershipExpiry": "2026-01-01T00:00:00Z",
+      "createdAt": "2025-01-15T14:20:00Z"
+    },
+    {
+      "id": 3,
+      "username": "quantrivien",
+      "email": "admin@example.com",
+      "password": "hashed_pass_admin",
+      "avatar": "/avatars/admin_avatar.png",
+      "role": "admin",
+      "membershipExpiry": null,
+      "createdAt": "2024-11-01T09:00:00Z"
+    },
+    {
+      "id": 4,
+      "username": "docgia_chamchi",
+      "email": "docgiaso1@example.com",
+      "password": "hashed_pass_789",
+      "avatar": "/avatars/user4.jpg",
+      "role": "user",
+      "membershipExpiry": "2025-09-30T23:59:59Z",
+      "createdAt": "2025-03-10T11:15:00Z"
+    }
+  ],
+  
+  "stories": [
+    {
+      "id": 1,
+      "title": "Thiên Đạo Độc Tôn",
+      "authorId": 2,
+      "coverImage": "/covers/anh_truyen1.jpg",
+      "description": "【Toàn dân vân dưỡng】Game nhuyễn thể (mobile) giáng lâm, sở hữu nhân vật có thể liên kết với bảng định nhân năng trong giới tu tiên, từ đó thu được phản hồi nghịch thiên, trở nên cường đại.\n\nThẩm Vân bị nữ hữu hãm hại mà trùng sinh, quay về thời điểm trước khi khai mở game, là người duy nhất biết được giá trị hàm kim của trò chơi này!\n\nTrước khi kênh nạp bị đóng, hắn nạp thẳng một trăm tỷ kim tệ, rút được vị lai nữ đế có tư chất nghịch thiên!\n\nThánh thể đạo thai – chỉ cần năm trăm ngàn là có thể kích hoạt? Mua!\n\nĐế binh tài – giá một triệu? Mua hết!\n\nToàn dân gào thét: “Hảo cảm độ nhân vật của ta mới được có 5 điểm thôi!\n\nNghe nói đạt 100 điểm có thể làm mọi thứ với nàng…”\n\n“Hức hức!\n\nNhân vật của ta mới phản hồi được một món pháp bảo giai đoạn đầu!\n\nMà còn vì không thể nạp thêm do kênh đóng nên chẳng thể mua gì nữa, hu hu hu……”\n\nThẩm Vân nhìn vào trăm tỷ đơn vị game tệ trong điện thoại và vị lai nữ đế đang được hắn vân dưỡng: Hảo cảm độ đã đạt 100 điểm!\n\nPhản hồi kỳ lân thần thông, thánh binh phi kiếm, đại đế tuyệt học…… Những phần thưởng mà kiếp trước chỉ có người VIP mới kích hoạt được, nay hắn toàn bộ đã đạt được: V1 – tăng tốc tu luyện, V2 – chiến lực tăng gấp 20 lần, V3 – thể chất vô địch……\n\nCực phẩm tiên khí, phục sinh vô hạn, thời gian đạo tổ, hỗn độn dị chủng……\n\nTà tu hoành hành, yêu thú giáng lâm? Hắn một đường nghiền ép!\n\nNữ hữu kiếp trước hoảng sợ cầu xin trong đau khổ: “Ta biết là ta đã sai rồi thân ái à!\n\nTa thật sự hối hận rồi, xin ngươi đừng giết ta…”\n\n“Biết sai?” Thẩm Vân cười lạnh: “Ngươi chỉ biết mình nên chết thôi.”",
+      "tags": ["tu chân", "xuyên không", "bá đạo", "trọng sinh"],
+      "status": "published",
+      "totalViews": 25430,
+      "ratings": [
+        {"userId": 1, "score": 4},
+        {"userId": 3, "score": 5},
+        {"userId": 4, "score": 5}
+      ],
+      "createdAt": "2025-04-20T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "title": "Ma Đế Vô Song",
+      "authorId": 2,
+      "coverImage": "/covers/ma_de.jpg",
+      "description": "Thế giới ma giáo đầy rẫy hiểm nguy, một thiếu niên vươn lên từ đáy xã hội...",
+      "tags": ["ma thuật", "huyền huyễn", "phản diện"],
+      "status": "published",
+      "totalViews": 18765,
+      "ratings": [
+        {"userId": 1, "score": 3},
+        {"userId": 4, "score": 4}
+      ],
+      "createdAt": "2025-05-15T14:30:00Z"
+    },
+    {
+      "id": 3,
+      "title": "Võ Thần Quyết",
+      "authorId": 4,
+      "coverImage": "/covers/vo_than.jpg",
+      "description": "Con đường trở thành võ thần của một thiếu niên nghèo khó...",
+      "tags": ["võ hiệp", "luyện thể", "tình cảm"],
+      "status": "published",
+      "totalViews": 9321,
+      "createdAt": "2025-06-10T09:45:00Z"
+    }
+  ],
+  
+  "chapters": [
+    {
+      "id": 101,
+      "storyId": 1,
+      "title": "Chương 1: Khởi đầu",
+      "content": "Lâm Phong tỉnh dậy trong thân thể một kẻ phế vật, ký ức hỗn loạn tràn về...",
+      "createdAt": "2025-04-21T11:20:00Z",
+      "views": 8540
+      
+    },
+    {
+      "id": 102,
+      "storyId": 1,
+      "title": "Chương 2: Gặp tiên nhân",
+      "content": "Trong rừng sâu, Lâm Phong tình cờ cứu một lão giả kỳ dị...",
+      "createdAt": "2025-04-25T15:40:00Z",
+      "views": 7321
+    },
+    {
+      "id": 201,
+      "storyId": 2,
+      "title": "Chương 1: Ma nô",
+      "content": "Trong giá lạnh của đêm đông, Dạ Thần run rẩy trong chuồng ngựa...",
+      "createdAt": "2025-05-16T10:15:00Z",
+      "views": 6210 
+      
+    }
+  ],
+  
+  "comments": [
+    {
+      "id": 1001,
+      "chapterId": 101,
+      "userId": 4,
+      "content": "Chương mở đầu quá hấp dẫn! Mong tác giả ra chương mới sớm",
+      "createdAt": "2025-04-22T09:30:00Z",
+      "likes": [1, 2],
+      "replies": [
+        {
+          "id": 10011,
+          "userId": 2,
+          "content": "Cảm ơn bạn, chương mới sẽ ra vào thứ 3 hàng tuần!",
+          "createdAt": "2025-04-22T10:15:00Z",
+          "likes": [4]
+        }
+      ]
+    },
+    {
+      "id": 1002,
+      "chapterId": 201,
+      "userId": 1,
+      "content": "Nhân vật chính có vẻ quá yếu, hy vọng sẽ mạnh lên sớm",
+      "createdAt": "2025-05-17T14:20:00Z",
+      "likes": [3],
+      "replies": []
+    }
+  ],
+  
+  "bookmarks": [
+    {"userId": 1, "storyId": 1},
+    {"userId": 1, "storyId": 2},
+    {"userId": 4, "storyId": 1},
+    {"userId": 3, "storyId": 3}
+  ],
+  
+  "follows": [
+    {"userId": 1, "authorId": 2},
+    {"userId": 4, "authorId": 2},
+    {"userId": 4, "storyId": 1}
+  ],
+  
+  "paymentRequests": [
+    {
+      "userId": 1,
+      "membershipType": "1 năm",
+      "paymentProof": "/payments/user1_proof.jpg",
+      "requestDate": "2025-07-10T14:30:00Z",
+      "status": "pending"
+    },
+    {
+      "userId": 4,
+      "membershipType": "1 tháng",
+      "paymentProof": "/payments/user4_proof.png",
+      "requestDate": "2025-06-15T11:20:00Z",
+      "status": "approved"
+    }
+  ],
+  
+  "userStats": [
+    {
+      "userId": 1,
+      "storiesPosted": 0,
+      "chaptersPosted": 0,
+      "commentsPosted": 5,
+      "storiesRead": 8,
+      "chaptersRead": 42,
+      "followers": 3,
+      "following": 2
+    },
+    {
+      "userId": 2,
+      "storiesPosted": 2,
+      "chaptersPosted": 35,
+      "commentsPosted": 28,
+      "storiesRead": 15,
+      "chaptersRead": 210,
+      "followers": 245,
+      "following": 12
+    },
+    {
+      "userId": 3,
+      "storiesPosted": 0,
+      "chaptersPosted": 0,
+      "commentsPosted": 12,
+      "storiesRead": 32,
+      "chaptersRead": 487,
+      "followers": 18,
+      "following": 8
+    },
+    {
+      "userId": 4,
+      "storiesPosted": 1,
+      "chaptersPosted": 10,
+      "commentsPosted": 32,
+      "storiesRead": 25,
+      "chaptersRead": 356,
+      "followers": 45,
+      "following": 5
+    }
+  ],
+  
+  "notifications": [
+    {
+      "id": 1,
+      "userId": 4,
+      "type": "new_chapter",
+      "content": "Truyện 'Thiên Đạo Độc Tôn' vừa ra chương mới: Chương 3 - Luyện Khí",
+      "storyId": 1,
+      "chapterId": 103,
+      "createdAt": "2025-04-28T09:00:00Z",
+      "isRead": true
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "type": "new_reply",
+      "content": "Tác giả đã trả lời bình luận của bạn",
+      "storyId": 1,
+      "commentId": 1001,
+      "createdAt": "2025-04-22T10:20:00Z",
+      "isRead": false
+    }
+  ]
+}
