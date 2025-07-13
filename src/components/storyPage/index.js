@@ -52,7 +52,7 @@ export default function StoryPage() {
                                 showFullDesc={showFullDesc}
                                 onToggle={toggleDesc}
                             />
-                            <ChapterList chapters={chapters} />
+                            <ChapterList chapters={chapters} storyID={story.id} />
                         </Card>
                     )}
                 </Col>

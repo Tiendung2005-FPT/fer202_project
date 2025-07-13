@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import "./chapterList.css";
 import RenderPagination from "./pagination";
 
-export default function ChapterList({ chapters }) {
+export default function ChapterList({ chapters , storyID}) {
     const [chapterDisplay, setChapterDisplay] = useState([]);
     const [page, setPage] = useState(1);
     const [isSortDesc, setIsSortDesc] = useState(false);
-
+    
     const pageSize = 10;
     const totalPage = Math.ceil(chapterDisplay.length / pageSize);
     const startIndex = (page - 1) * pageSize;
@@ -51,7 +51,7 @@ export default function ChapterList({ chapters }) {
             {currentChapters.map((c, i) => (
                 <Link
                     key={c.id}
-                    to={`/chapter/${c.id}`}
+                    to={`/readStory/${storyID}/${c.id}`}
                     className="d-flex justify-content-between align-items-center p-2 mb-2 chapter-link"
                 >
                     <span>

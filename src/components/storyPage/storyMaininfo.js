@@ -2,17 +2,23 @@ import { Col, Row, Button } from "react-bootstrap";
 import "./storyMaininfo.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { useNavigate} from "react-router-dom";
 export default function StoryMainInfo({ story, user }) {
     const [bookmarks, setBookmarks] = useState([]);
     const [isFollowed, setIsFollowed] = useState(false);
+    const [historyReading , setHistoryReading] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (story?.id) {
-            axios.get(`http://localhost:9999/bookmarks?storyId=${story.id}`)
-                .then(res => setBookmarks(res.data))
-                .catch(() => console.log("Failed to fetch bookmarks"));
-        }
+        if (!story?.id || !user?.id) return;
+
+        axios.get(`http://localhost:9999/bookmarks?storyId=${story.id}`)
+            .then(res => setBookmarks(res.data))
+            .catch(() => console.log("Failed to fetch bookmarks"));
+
+        axios.get(`http://localhost:9999/readingHistory?storyId=${story.id}&userId=${user.id}`)
+            .then(res => setHistoryReading(res.data))
+            .catch(() => console.log("Failed to fetch historyReading"));
     }, [story, user]);
 
     useEffect(() => {
@@ -42,13 +48,14 @@ export default function StoryMainInfo({ story, user }) {
         }
     };
     const startReading = () => {
-          
-
+          navigate(`/readStory/${story.id}/1`)
     }
-
-    const cotinueReading = () => {
-
-        
+    const continueReading = () => {
+            if(historyReading.length === 0){
+                navigate(`/readStory/${story.id}/1`)
+            } else {
+                navigate(`/readStory/${story.id}/${historyReading[historyReading.length-1]}`)
+            }
     }
     return (
         <Row>
@@ -99,10 +106,14 @@ export default function StoryMainInfo({ story, user }) {
                 <div className="d-flex gap-2 flex-wrap mb-3">
                     <div className="d-flex gap-2 flex-wrap mb-3">
                         <div className="d-flex gap-2 flex-wrap mb-3">
-                            <Button className="story-button read-from-start">
+                            <Button 
+                                onClick={startReading}
+                                className="story-button read-from-start">
                                 <i className="bi bi-book"></i> Đọc từ đầu
                             </Button>
-                            <Button className="story-button continue-reading">
+                            <Button 
+                                onClick={continueReading}
+                                className="story-button continue-reading">
                                 <i className="bi bi-bookmark"></i> Đọc tiếp
                             </Button>
                             <Button
