@@ -1,0 +1,412 @@
+{
+  "users": [
+  {
+    "id": 1,
+    "username": "nguoivip",
+    "email": "vip@example.com",
+    "password": "hashed_password",
+    "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+    "role": "user",
+    "isVIP": true,
+    "vipExpiry": "2025-12-31T23:59:59Z",
+    "createdAt": "2023-01-15T08:00:00Z",
+    "lastLogin": "2025-07-10T14:30:00Z",
+    "bio": "Người đam mê truyện tiên hiệp",
+    "fullname": "Nguyễn Văn Vip",
+    "phone": "0901234567",
+    "address": "123 Đường Sách, Quận 1, TP.HCM"
+  },
+  {
+    "id": 2,
+    "username": "tacgia_no1",
+    "email": "author@example.com",
+    "password": "hashed_password",
+    "avatar": "/avatars/2.jpg",
+    "role": "author",
+    "isVIP": false,
+    "createdAt": "2022-11-20T10:15:00Z",
+    "lastLogin": "2025-07-09T09:45:00Z",
+    "bio": "Tác giả của nhiều truyện best-seller",
+    "fullname": "Trần Tác Giả",
+    "phone": "0912345678",
+    "address": "456 Đường Văn Học, Quận 3, TP.HCM"
+  },
+  {
+    "id": 3,
+    "username": "admin_system",
+    "email": "admin@example.com",
+    "password": "hashed_password",
+    "avatar": "/avatars/admin.jpg",
+    "role": "admin",
+    "isVIP": true,
+    "createdAt": "2022-01-01T00:00:00Z",
+    "lastLogin": "2025-07-11T08:00:00Z",
+    "bio": "Quản trị viên hệ thống",
+    "fullname": "Lê Quản Trị",
+    "phone": "0987654321",
+    "address": "789 Đường Quản Trị, Quận 10, TP.HCM"
+  }
+],
+  
+  "stories": [
+    {
+      "id": 1,
+      "title": "Đạo Giới Độc Tôn",
+      "authorId": 2,
+      "coverImage": "/covers/1.jpg",
+      "description": "Một thiếu niên vô tình bước vào con đường tu tiên, từng bước trở thành chí tôn đạo giới...",
+      "category": "Tiên Hiệp",
+      "tags": ["tu tiên", "xuyên không", "bá đạo"],
+      "status": "ongoing",
+      "totalViews": 125430,
+      "totalChapters": 150,
+      "rating": 4.8,
+      "createdAt": "2023-03-10T14:20:00Z",
+      "updatedAt": "2025-07-10T09:15:00Z",
+      "isPremium": false,
+      "draftChapters": 3
+    },
+    {
+      "id": 2,
+      "title": "Ma Đế Vô Song",
+      "authorId": 2,
+      "coverImage": "/covers/2.jpg",
+      "description": "Từ một tên vô danh tiểu tốt trở thành Ma Đế chấn động thiên hạ...",
+      "category": "Huyền Huyễn",
+      "tags": ["trọng sinh", "ma pháp", "nữ cường"],
+      "status": "completed",
+      "totalViews": 89456,
+      "totalChapters": 200,
+      "rating": 4.5,
+      "createdAt": "2024-01-05T11:30:00Z",
+      "updatedAt": "2025-06-28T16:45:00Z",
+      "isPremium": true,
+      "draftChapters": 0
+    }
+  ],
+  
+  "chapters": [
+    {
+      "id": 101,
+      "storyId": 1,
+      "title": "Chương 1: Khởi đầu kỳ lạ",
+      "content": "Lôi Trần mở mắt, kinh ngạc phát hiện mình không còn ở thế giới cũ...",
+      "order": 1,
+      "createdAt": "2023-03-11T09:00:00Z",
+      "updatedAt": "2023-03-12T10:30:00Z",
+      "views": 24500,
+      "isDraft": false
+    },
+    {
+      "id": 102,
+      "storyId": 1,
+      "title": "Chương 2: Gặp tiên nhân",
+      "content": "Trong rừng sâu, Lôi Trần gặp một lão giả kỳ dị tự xưng là tu tiên giả...",
+      "order": 2,
+      "createdAt": "2023-03-15T14:20:00Z",
+      "updatedAt": "2023-03-16T11:15:00Z",
+      "views": 19800,
+      "isDraft": false
+    },
+    {
+      "id": 201,
+      "storyId": 2,
+      "title": "Chương 1: Tái sinh làm ma",
+      "content": "Sau khi chết đi, Hắc Vô Thường thức tỉnh trong thân thể của một tiểu ma binh...",
+      "order": 1,
+      "createdAt": "2024-01-10T10:00:00Z",
+      "updatedAt": "2024-01-12T15:30:00Z",
+      "views": 15600,
+      "isDraft": false,
+      "isPremium": true
+    }
+  ],
+  
+  "comments": [
+    {
+      "id": 1001,
+      "chapterId": 101,
+      "userId": 1,
+      "username": "nguoivip",
+      "avatar": "/avatars/1.jpg",
+      "content": "Chương mở đầu rất hấp dẫn, mong tác giả ra chương mới sớm!",
+      "createdAt": "2023-03-12T15:30:00Z",
+      "likes": [2, 3, 4, 5],
+      "replies": [
+        {
+          "id": 10011,
+          "userId": 2,
+          "username": "tacgia_no1",
+          "avatar": "/avatars/2.jpg",
+          "content": "Cảm ơn bạn đã ủng hộ, chương mới sẽ ra vào tuần sau!",
+          "createdAt": "2023-03-12T16:00:00Z",
+          "likes": [1, 3]
+        }
+      ]
+    },
+    {
+      "id": 1002,
+      "chapterId": 201,
+      "userId": 3,
+      "username": "docgia_truyenma",
+      "avatar": "/avatars/default.jpg",
+      "content": "Chất lượng truyện VIP xứng đáng với đồng tiền bỏ ra!",
+      "createdAt": "2024-01-15T11:45:00Z",
+      "likes": [1, 2, 5],
+      "replies": []
+    }
+  ],
+  
+  "categories": [
+    {
+      "id": 1,
+      "name": "Tiên Hiệp",
+      "slug": "tien-hiep",
+      "storyCount": 245
+    },
+    {
+      "id": 2,
+      "name": "Kiếm Hiệp",
+      "slug": "kiem-hiep",
+      "storyCount": 178
+    },
+    {
+      "id": 3,
+      "name": "Huyền Huyễn",
+      "slug": "huyen-huyen",
+      "storyCount": 312
+    }
+  ],
+  
+  "tags": [
+    {
+      "id": 1,
+      "name": "xuyên không",
+      "slug": "xuyen-khong",
+      "storyCount": 189
+    },
+    {
+      "id": 2,
+      "name": "trọng sinh",
+      "slug": "trong-sinh",
+      "storyCount": 156
+    },
+    {
+      "id": 3,
+      "name": "nữ cường",
+      "slug": "nu-cuong",
+      "storyCount": 215
+    }
+  ],
+  
+  "bookmarks": [
+    {
+      "id": 1,
+      "userId": 1,
+      "storyId": 1,
+      "lastReadChapterId": 102,
+      "createdAt": "2023-04-01T14:20:00Z"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "storyId": 2,
+      "lastReadChapterId": 201,
+      "createdAt": "2024-02-15T11:30:00Z"
+    }
+  ],
+  
+  "follows": [
+    {
+      "id": 1,
+      "followerId": 1,
+      "followingId": 2,
+      "type": "author",
+      "createdAt": "2023-05-10T09:15:00Z"
+    },
+    {
+      "id": 2,
+      "followerId": 1,
+      "storyId": 1,
+      "type": "story",
+      "createdAt": "2023-04-05T16:30:00Z"
+    }
+  ],
+  
+  "ratings": [
+    {
+      "id": 1,
+      "userId": 1,
+      "storyId": 1,
+      "score": 5,
+      "createdAt": "2023-04-20T14:00:00Z"
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "storyId": 2,
+      "score": 4,
+      "createdAt": "2024-02-01T10:30:00Z"
+    }
+  ],
+  
+  "authorFeedbacks": [
+    {
+      "id": 1,
+      "userId": 1,
+      "authorId": 2,
+      "storyId": 1,
+      "content": "Truyện rất hay nhưng xin tác giả tăng tốc ra chương!",
+      "createdAt": "2023-06-15T11:20:00Z",
+      "status": "read"
+    }
+  ],
+  
+  "systemFeedbacks": [
+    {
+      "id": 1,
+      "userId": 1,
+      "type": "feature_request",
+      "content": "Nên thêm tính năng đọc offline cho app mobile",
+      "createdAt": "2025-07-05T15:40:00Z",
+      "status": "pending"
+    }
+  ],
+  
+  "reports": [
+    {
+      "id": 1,
+      "userId": 1,
+      "storyId": 2,
+      "reason": "Nội dung nhạy cảm không phù hợp",
+      "details": "Chương 5 có cảnh bạo lực quá mức",
+      "createdAt": "2024-03-10T14:25:00Z",
+      "status": "resolved",
+      "resolvedBy": 3,
+      "resolvedAt": "2024-03-12T10:15:00Z"
+    }
+  ],
+  
+  "membershipPlans": [
+    {
+      "id": 1,
+      "name": "Gói Tháng",
+      "price": 50000,
+      "durationDays": 30,
+      "features": [
+        "Truy cập truyện VIP",
+        "Sử dụng AI cơ bản",
+        "Lưu 5 chương nháp"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Gói Năm",
+      "price": 500000,
+      "durationDays": 365,
+      "features": [
+        "Truy cập truyện VIP",
+        "Sử dụng AI nâng cao",
+        "Lưu không giới hạn chương nháp",
+        "Đọc không quảng cáo"
+      ]
+    }
+  ],
+  
+  "userMemberships": [
+    {
+      "id": 1,
+      "userId": 1,
+      "planId": 2,
+      "startDate": "2025-01-01T00:00:00Z",
+      "endDate": "2025-12-31T23:59:59Z",
+      "paymentMethod": "momo",
+      "transactionId": "TX123456789"
+    }
+  ],
+  
+  "aiAssistants": [
+    {
+      "id": 1,
+      "userId": 1,
+      "type": "character_creation",
+      "prompt": "Tạo nhân vật nữ chính mạnh mẽ, lạnh lùng",
+      "result": "Lăng Thanh Tuyết - nữ chưởng môn phái Băng Tâm...",
+      "createdAt": "2025-07-08T14:30:00Z"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "type": "story_continuation",
+      "prompt": "Tiếp tục đoạn sau khi nhân vật chính bị phản bội",
+      "result": "Lôi Trần nắm chặt tay, ánh mắt lạnh băng...",
+      "createdAt": "2025-07-10T09:45:00Z"
+    }
+  ],
+  
+  "readingHistory": [
+    {
+      "id": 1,
+      "userId": 1,
+      "storyId": 1,
+      "chapterId": 102,
+      "lastRead": "2025-07-10T22:15:00Z",
+      "progress": 85
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "storyId": 2,
+      "chapterId": 201,
+      "lastRead": "2025-07-09T20:30:00Z",
+      "progress": 100
+    }
+  ],
+  
+  "notifications": [
+    {
+      "id": 1,
+      "userId": 1,
+      "type": "new_chapter",
+      "content": "Truyện 'Đạo Giới Độc Tôn' vừa ra chương mới: Chương 151 - Đại chiến chư thiên",
+      "storyId": 1,
+      "chapterId": 151,
+      "createdAt": "2025-07-10T09:00:00Z",
+      "isRead": false
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "type": "author_reply",
+      "content": "tacgia_no1 đã trả lời bình luận của bạn",
+      "commentId": 1001,
+      "createdAt": "2025-07-09T16:30:00Z",
+      "isRead": true
+    }
+  ],
+  
+  "userStats": [
+    {
+      "userId": 1,
+      "storiesPosted": 0,
+      "chaptersPosted": 0,
+      "commentsPosted": 12,
+      "storiesRead": 24,
+      "chaptersRead": 345,
+      "followers": 15,
+      "following": 8,
+      "lastUpdated": "2025-07-10T18:00:00Z"
+    },
+    {
+      "userId": 2,
+      "storiesPosted": 5,
+      "chaptersPosted": 350,
+      "commentsPosted": 45,
+      "storiesRead": 78,
+      "chaptersRead": 1200,
+      "followers": 1245,
+      "following": 23,
+      "lastUpdated": "2025-07-10T12:30:00Z"
+    }
+  ]
+}
