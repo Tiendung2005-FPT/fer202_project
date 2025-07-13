@@ -1,6 +1,55 @@
 import { Col, Row, Button } from "react-bootstrap";
 import "./storyMaininfo.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 export default function StoryMainInfo({ story, user }) {
+    const [bookmarks, setBookmarks] = useState([]);
+    const [isFollowed, setIsFollowed] = useState(false);
+
+    useEffect(() => {
+        if (story?.id) {
+            axios.get(`http://localhost:9999/bookmarks?storyId=${story.id}`)
+                .then(res => setBookmarks(res.data))
+                .catch(() => console.log("Failed to fetch bookmarks"));
+        }
+    }, [story, user]);
+
+    useEffect(() => {
+        if (user?.id) {
+            const found = bookmarks.find(b => b.userId == user.id);
+            setIsFollowed(!!found);
+        }
+    }, [bookmarks, user]);
+
+    const handleBookmark = () => {
+        const found = bookmarks.find(b => b.userId == user.id && b.storyId == story.id);
+        if (!found) {
+            const newBookmark = { userId: user.id, storyId: story.id };
+            axios.post("http://localhost:9999/bookmarks", newBookmark)
+                .then(() => {
+                    return axios.get(`http://localhost:9999/bookmarks?storyId=${story.id}`);
+                })
+                .then(res => setBookmarks(res.data))
+                .catch(err => console.log("Bookmark error", err));
+        } else {
+            axios.delete(`http://localhost:9999/bookmarks/${found.id}`)
+                .then(() => {
+                    return axios.get(`http://localhost:9999/bookmarks?storyId=${story.id}`);
+                })
+                .then(res => setBookmarks(res.data))
+                .catch(err => console.log("Unbookmark error", err));
+        }
+    };
+    const startReading = () => {
+          
+
+    }
+
+    const cotinueReading = () => {
+
+        
+    }
     return (
         <Row>
             <Col md={3} xs={12} className="text-center mb-3">
@@ -8,22 +57,35 @@ export default function StoryMainInfo({ story, user }) {
                     src={story.coverImage}
                     alt="Cover"
                     className="img-fluid rounded"
-                    style={{ maxHeight: "240px", objectFit: "cover" }}
+                    style={{ maxHeight: "400px", objectFit: "cover" }}
                 />
             </Col>
             <Col md={9} xs={12}>
                 <h2>{story.title}</h2>
-                <div className="mb-2 text-muted">
-                    <div><i className="bi bi-person"></i> Tác giả: <strong>{user?.username || "Đang tải..."}</strong></div>
-                    <div><i className="bi bi-check-circle"></i> Trạng thái: {story.status}</div>
-                    <div><i className="bi bi-heart"></i> Theo dõi: 120</div>
+                <div className="story-info mb-3">
+                    <div className="story-info-item">
+                        <i className="bi bi-person"></i>
+                        <span>Tác giả: {user?.username || "Đang tải..."}</span>
+                    </div>
+                    <div className="story-info-item">
+                        <i className="bi bi-check-circle"></i>
+                        <span>Trạng thái: {story.status}</span>
+                    </div>
+                    <div className="story-info-item">
+                        <i className="bi bi-eye"></i>
+                        <span>Lượt Đọc: {story.totalViews}</span>
+                    </div>
+                    <div className="story-info-item">
+                        <i className="bi bi-heart"></i>
+                        <span>Theo dõi: {bookmarks.length}</span>
+                    </div>
                 </div>
 
                 <div className="mb-3">
                     {story?.tags?.map((tag, idx) => (
                         <span
                             key={idx}
-                            className="badge bg-warning text-dark me-2 mb-1 px-2 py-1 tag-badge"
+                            className="badge text-dark me-2 mb-1  tag-badge"
                         >
                             {tag}
                         </span>
@@ -31,13 +93,26 @@ export default function StoryMainInfo({ story, user }) {
                 </div>
                 <div className="mb-3">
                     {[...Array(5)].map((_, index) => (
-                        <i key={index} className="bi bi-star-fill text-warning me-1" style={{ cursor: "pointer" }}></i>
+                        <i key={index} className="bi bi-star-fill text-warning me-1" style={{ cursor: "pointer", fontSize: '2rem' }}></i>
                     ))}
                 </div>
                 <div className="d-flex gap-2 flex-wrap mb-3">
-                    <Button variant="success">📖 Đọc từ đầu</Button>
-                    <Button variant="primary">📘 Đọc tiếp</Button>
-                    <Button variant="warning">⭐ Theo dõi</Button>
+                    <div className="d-flex gap-2 flex-wrap mb-3">
+                        <div className="d-flex gap-2 flex-wrap mb-3">
+                            <Button className="story-button read-from-start">
+                                <i className="bi bi-book"></i> Đọc từ đầu
+                            </Button>
+                            <Button className="story-button continue-reading">
+                                <i className="bi bi-bookmark"></i> Đọc tiếp
+                            </Button>
+                            <Button
+                                className={`story-button follow-button ${isFollowed ? 'followed' : 'not-followed'}`}
+                                onClick={handleBookmark}
+                            >
+                                <i className={`bi ${isFollowed ? 'bi-heart-fill' : 'bi-heart'}`}></i> Theo dõi
+                            </Button>
+                        </div>
+                    </div>
                 </div>
             </Col>
         </Row>

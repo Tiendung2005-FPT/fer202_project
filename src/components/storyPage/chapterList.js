@@ -2,16 +2,18 @@ import { Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./chapterList.css";
-import RenderPagination from "./pagination"
-export default function ChapterList({ chapters }) {
-    const [page, setPage] = useState(1);
-    const pageSize = 10;
+import RenderPagination from "./pagination";
 
-    const totalPage = Math.ceil(chapters.length / pageSize);
+export default function ChapterList({ chapters }) {
+    const [chapterDisplay, setChapterDisplay] = useState([]);
+    const [page, setPage] = useState(1);
+    const [isSortDesc, setIsSortDesc] = useState(false);
+
+    const pageSize = 10;
+    const totalPage = Math.ceil(chapterDisplay.length / pageSize);
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
-
-    const currentChapters = chapters.slice(startIndex, endIndex);
+    const currentChapters = chapterDisplay.slice(startIndex, endIndex);
 
     const handlePrev = () => {
         if (page > 1) setPage(page - 1);
@@ -21,9 +23,29 @@ export default function ChapterList({ chapters }) {
         if (page < totalPage) setPage(page + 1);
     };
 
+    useEffect(() => {
+        if (chapters && chapters.length > 0) {
+            const sorted = [...chapters].sort((a, b) => {
+                const dateA = new Date(a.createdAt);
+                const dateB = new Date(b.createdAt);
+                return isSortDesc ? dateB - dateA : dateA - dateB;
+            });
+            setChapterDisplay(sorted);
+            setPage(1);
+        }
+    }, [chapters, isSortDesc]);
+
     return (
         <Container className="mt-4">
-            <h5>Danh sách chương</h5>
+            <div className="d-flex justify-content-between gap-2">
+                <h5>Danh sách chương</h5>
+                <Button
+                    style={{ backgroundColor: "#add158ff", border: "none" }}
+                    onClick={() => setIsSortDesc(!isSortDesc)}
+                >
+                    <span className="bi bi-sort-down" style={{ fontSize: "1rem" }}></span>
+                </Button>
+            </div>
             <hr />
 
             {currentChapters.map((c, i) => (
@@ -41,7 +63,6 @@ export default function ChapterList({ chapters }) {
                 </Link>
             ))}
 
-
             <div className="d-flex justify-content-center gap-2 mt-3">
                 <RenderPagination
                     page={page}
@@ -51,7 +72,6 @@ export default function ChapterList({ chapters }) {
                     handleNext={handleNext}
                 />
             </div>
-
         </Container>
     );
 }

@@ -7,9 +7,8 @@ import StoryMainInfo from "./storyMaininfo";
 import StoryDescription from "./storyDescription";
 import ChapterList from "./chapterList";
 
-
 export default function StoryPage() {
-    const  {id}  = useParams();
+    const { id } = useParams();
     const [story, setStory] = useState();
     const [user, setUser] = useState();
     const [chapters, setChapters] = useState([]);
@@ -20,7 +19,7 @@ export default function StoryPage() {
             .get(`http://localhost:9999/stories?id=${id}`)
             .then((res) => setStory(res.data[0]))
             .catch((err) => console.error("Lỗi load stories:", err));
-    }, []);
+    }, [id]); 
 
     useEffect(() => {
         if (story?.authorId) {
@@ -44,18 +43,18 @@ export default function StoryPage() {
             <Row>
                 <Col md={2}></Col>
                 <Col md={8}>
-                        {story && (
-                            <Card className="p-4">
-                                <StoryBreakcumb title={story.title} id ={story.id} />
-                                <StoryMainInfo story={story} user={user} />
-                                <StoryDescription
-                                    description={story.description}
-                                    showFullDesc={showFullDesc}
-                                    onToggle={toggleDesc}
-                                />
-                                <ChapterList chapters={chapters} />
-                            </Card>
-                        )}
+                    {story && (
+                        <Card className="p-4">
+                            <StoryBreakcumb title={story.title} id={story.id} />
+                            <StoryMainInfo story={story} user={user} />
+                            <StoryDescription
+                                description={story.description}
+                                showFullDesc={showFullDesc}
+                                onToggle={toggleDesc}
+                            />
+                            <ChapterList chapters={chapters} />
+                        </Card>
+                    )}
                 </Col>
                 <Col md={2}></Col>
             </Row>
