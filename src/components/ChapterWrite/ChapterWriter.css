@@ -1,51 +1,126 @@
-/* ChapterWriter.css */
+/* === General Page and Layout Styles === */
+body {
+  background-color: #f4f6f8; /* Light gray background for the whole page */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
 
-/* ... (container and editor styling from before) ... */
+.chapter-editor-page {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.form-section,
+.editor-section {
+  margin-bottom: 24px;
+}
+
+/* === Form Element Styles === */
+.chapter-editor-page .form-label {
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #1a202c;
+}
+
+.chapter-editor-page .form-control {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #f9fafb;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.chapter-editor-page .form-control:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+/* === ReactQuill Editor Styles === */
 .chapter-writer-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-.ql-editor {
-  min-height: 300px;
-  font-size: 16px;
+  /* This container no longer needs width/margin as the parent handles it. */
+  /* We use it to group the editor components. */
+  border-radius: 6px;
+  overflow: hidden; /* Ensures child border-radius is respected */
+  border: 1px solid #d1d5db;
 }
 
-/* 
-===========================================================
-  ✅ NEW: Make the Font Dropdown Scrollable
-  This sets a max height and adds a vertical scrollbar
-  when the list of fonts is too long.
-===========================================================
-*/
+.chapter-writer-container .ql-toolbar.ql-snow {
+  background-color: #f9fafb;
+  border: none;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.chapter-writer-container .ql-container.ql-snow {
+  border: none;
+}
+
+.ql-editor {
+  min-height: 400px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #2d3748;
+  background-color: #ffffff;
+}
+
+.ql-editor.ql-blank::before {
+  color: #a0aec0;
+  font-style: italic;
+  left: 1rem; /* Aligns placeholder with padding */
+}
+
+/* === Action Button Styles === */
+.actions-section {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* Assuming use of react-bootstrap, targeting generated classes */
+.actions-section .btn {
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.actions-section .btn-primary {
+  background-color: #2563eb; /* A nice, modern blue */
+  color: white;
+}
+
+.actions-section .btn-primary:hover {
+  background-color: #1d4ed8;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+.actions-section .btn-secondary {
+  background-color: #e5e7eb;
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+.actions-section .btn-secondary:hover {
+  background-color: #d1d5db;
+  border-color: #adb5bd;
+}
+
+
+/* === ORIGINAL QUILL FONT STYLES (UNCHANGED) === */
 .ql-snow .ql-picker.ql-font .ql-picker-options {
   max-height: 250px;
   overflow-y: auto;
 }
-
-.ql-snow .ql-toolbar .ql-picker.ql-font {
-  width: 150px; 
-}
-
-/* Step 2 (The Crucial Part): Target the label itself and allow it to show overflow.
-   We also target the items in the dropdown to ensure they aren't clipped either. */
-.ql-snow .ql-picker.ql-font .ql-picker-label::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item::before {
-  /* This overrides Quill's default `overflow: hidden` which causes the text to be cut off */
-  overflow: visible;
-}
-
-/* Optional: Add a little padding so the text doesn't touch the dropdown arrow */
-.ql-snow .ql-picker.ql-font .ql-picker-label {
-  padding-right: 10px;
-}
-
-/* 
-===========================================================
-  UPDATED: CSS for the font dropdown list (with all new fonts)
-===========================================================
-*/
-/* --- System Fonts --- */
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="arial"]::before,
 .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="arial"]::before { content: 'Arial'; font-family: Arial, sans-serif; }
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="georgia"]::before,
@@ -56,7 +131,6 @@
 .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="comic-sans"]::before { content: 'Comic Sans'; font-family: 'Comic Sans MS', cursive; }
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="palatino"]::before,
 .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="palatino"]::before { content: 'Palatino'; font-family: 'Palatino Linotype', serif; }
-/* --- Google Fonts --- */
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="lora"]::before,
 .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="lora"]::before { content: 'Lora'; font-family: 'Lora', serif; }
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="merriweather"]::before,
@@ -87,19 +161,11 @@
 .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="caveat"]::before { content: 'Caveat'; font-family: 'Caveat', cursive; }
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="inconsolata"]::before,
 .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="inconsolata"]::before { content: 'Inconsolata'; font-family: 'Inconsolata', monospace; }
-
-/* 
-==================================================================
-  UPDATED: CSS for the actual editor content (with all new fonts)
-==================================================================
-*/
-/* --- System Fonts --- */
 .ql-font-arial { font-family: Arial, sans-serif; }
 .ql-font-georgia { font-family: Georgia, serif; }
 .ql-font-times-new-roman { font-family: "Times New Roman", serif; }
 .ql-font-comic-sans { font-family: 'Comic Sans MS', cursive; }
 .ql-font-palatino { font-family: 'Palatino Linotype', serif; }
-/* --- Google Fonts --- */
 .ql-font-lora { font-family: 'Lora', serif; }
 .ql-font-merriweather { font-family: 'Merriweather', serif; }
 .ql-font-playfair-display { font-family: 'Playfair Display', serif; }
@@ -115,3 +181,18 @@
 .ql-font-pacifico { font-family: 'Pacifico', cursive; }
 .ql-font-caveat { font-family: 'Caveat', cursive; }
 .ql-font-inconsolata { font-family: 'Inconsolata', monospace; }
+
+.ql-snow .ql-picker.ql-font .ql-picker-label::before {
+  display: inline-block;
+  max-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-item::before {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  max-width: none;
+}

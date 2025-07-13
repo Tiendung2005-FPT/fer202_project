@@ -1,47 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ReactQuill, { Quill } from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import axios from 'axios';
 import './ChapterWriter.css';
+import { Button, Container, Form } from 'react-bootstrap';
 
-// ✅ UPDATED: A wide variety of fonts for writers
 const Font = Quill.import('attributors/class/font');
 Font.whitelist = [
-  // --- Standard System Fonts ---
-  'arial', 'georgia', 'times-new-roman', 'comic-sans', 'palatino', 
-  
-  // --- Curated Google Fonts ---
-  // Serif (for body text)
+  'arial', 'georgia', 'times-new-roman', 'comic-sans', 'palatino',
+
   'lora', 'merriweather', 'playfair-display', 'garamond',
-  // Sans-Serif (for modern look or headings)
   'roboto', 'lato', 'open-sans', 'montserrat', 'oswald',
-  // Slab Serif (typewriter-esque)
   'roboto-slab', 'arvo',
-  // Handwriting/Script (for special emphasis)
   'dancing-script', 'pacifico', 'caveat',
-  // Monospace (for "typed" text, code, etc.)
   'inconsolata'
 ];
 Quill.register(Font, true);
 
 export default function ChapterWriter() {
-  const [value, setValue] = useState('');
-  const [isVip, setIsVip] = useState(true); // Set to true for easy testing
+  const [content, setContent] = useState('');
+  const [isVip, setIsVip] = useState(false);
+  const [name, setName] = useState('');
+  const quillRef = useRef();
 
   useEffect(() => {
-    // Your user fetching logic remains the same
     axios.get("http://localhost:9999/users?id=1")
-      .then(res => {
-        const user = Array.isArray(res.data) ? res.data[0] : res.data;
+      .then(result => {
+        const user = result.data[0]
         const now = new Date();
         const expiry = new Date(user.vipExpiry);
-        setIsVip(user.isVIP && expiry > now);
+        setIsVip(expiry > now);
         localStorage.setItem("account", JSON.stringify(user));
       })
       .catch(err => console.error(err));
   }, []);
 
-  // Toolbars remain unchanged from the previous step
   const basicModules = {
     toolbar: [
       ['bold', 'italic', 'underline', 'strike'],
@@ -52,26 +45,64 @@ export default function ChapterWriter() {
   const vipModules = {
     toolbar: [
       [{ 'font': Font.whitelist }, { 'size': ['small', false, 'large', 'huge'] }],
-      [{ 'header': [1, 2, 3, false] }],
       ['bold', 'italic', 'underline', 'strike'],
       [{ 'color': [] }, { 'background': [] }],
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      [{ 'indent': '-1'}, { 'indent': '+1' }],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      [{ 'indent': '-1' }, { 'indent': '+1' }],
       [{ 'align': [] }],
       ['blockquote', 'code-block'],
       ['clean']
     ],
   };
 
+  const handleDraft = (e) => {
+    if (name.length == 0 || content.length == 0) {
+
+    }
+  }
+  const handlePublishChapter = (e) => {
+    if (quillRef.current) {
+      const editor = quillRef.current.getEditor();
+      const rawText = editor.getText();
+
+      if (name.trim().length==0 || rawText.trim().length==0) {
+        alert("Tên và nội dung không được chống.");
+      }
+    }
+  }
+
   return (
-    <div className="chapter-writer-container">
-      <ReactQuill
-        theme="snow"
-        value={value}
-        onChange={setValue}
-        modules={isVip ? vipModules : basicModules}
-        placeholder="The story begins..."
-      />
-    </div>
+    <Container className="chapter-editor-page">
+      <div className="form-section">
+        <Form>
+          <Form.Label>Tên của chương</Form.Label>
+          <Form.Group>
+            <Form.Control placeholder="Nhập tên chương..." value={name} onChange={(e) => setName(e.target.value)} />
+          </Form.Group>
+        </Form>
+      </div>
+
+      <div className="editor-section">
+        <Form.Label>Nội dung chương</Form.Label>
+        <div className="chapter-writer-container">
+          <ReactQuill
+            ref={quillRef}
+            theme="snow"
+            value={content}
+            onChange={(content) => {
+              console.log("Editor content:", content);
+              setContent(content);
+            }}
+            modules={isVip ? vipModules : basicModules}
+            placeholder="Câu truyện của bạn bắt đầu..."
+          />
+        </div>
+      </div>
+
+      <div className="actions-section">
+        <Button variant="secondary" onClick={(e) => handleDraft(e)}>Lưu bản nháp</Button>
+        <Button variant="primary" onClick={(e) => handlePublishChapter(e)}>Đăng chương</Button>
+      </div>
+    </Container>
   );
 }
