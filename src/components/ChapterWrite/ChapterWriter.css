@@ -1,186 +1,509 @@
-/* === General Page and Layout Styles === */
+:root {
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-secondary: #e5e7eb;
+  --color-secondary-hover: #d1d5db;
+  --color-success: #10b981;
+  --color-background-page: #f8fafc;
+  --color-background-container: #ffffff;
+  --color-background-subtle: #f9fafb;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+  --color-text-placeholder: #9ca3af;
+  --color-border: #e5e7eb;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --border-radius-full: 9999px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.25);
+  --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 body {
-  background-color: #f4f6f8; /* Light gray background for the whole page */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--color-background-page);
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
 }
 
 .chapter-editor-page {
-  max-width: 960px;
-  margin: 40px auto;
-  padding: 32px;
-  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+}
+
+.page-header {
+  flex-shrink: 0;
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.story-title-header {
+  margin: 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.editor-and-ai-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  min-height: 0;
+  position: relative;
+}
+
+.main-editor-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  overflow-y: auto;
+}
+
+.editor-section {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chapter-writer-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chapter-writer-container .ql-container {
+  flex-grow: 1;
+  font-size: 1rem;
+}
+
+.form-section, .actions-section {
+  flex-shrink: 0;
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.actions-section {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #e5e7eb;
+  color: #333;
+}
+
+.toggle-ai-button-wrapper {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.toggle-ai-button {
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #555;
+}
+.toggle-ai-button:hover {
+  background-color: #e5e7eb;
+}
+
+.editor-and-ai-container .ai-chat-container {
+  width: 0;
+  opacity: 0;
+  transition: width 0.3s ease, opacity 0.3s ease;
+  border-left: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.editor-and-ai-container.show-ai .ai-chat-container {
+  width: 400px;
+  opacity: 1;
 }
 
 .form-section,
 .editor-section {
-  margin-bottom: 24px;
+  margin-bottom: var(--space-lg);
 }
 
-/* === Form Element Styles === */
-.chapter-editor-page .form-label {
+.form-label {
   display: block;
   font-weight: 600;
-  font-size: 1.1rem;
-  margin-bottom: 12px;
-  color: #1a202c;
-}
-
-.chapter-editor-page .form-control {
-  width: 100%;
-  padding: 12px 16px;
   font-size: 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  background-color: #f9fafb;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-primary);
 }
 
-.chapter-editor-page .form-control:focus {
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-background-subtle);
+  transition: var(--transition-fast);
+}
+
+.form-control:focus {
   outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+  border-color: var(--color-primary);
+  box-shadow: var(--focus-ring);
 }
 
-/* === ReactQuill Editor Styles === */
 .chapter-writer-container {
-  /* This container no longer needs width/margin as the parent handles it. */
-  /* We use it to group the editor components. */
-  border-radius: 6px;
-  overflow: hidden; /* Ensures child border-radius is respected */
-  border: 1px solid #d1d5db;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-fast);
+}
+
+.chapter-writer-container:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: var(--focus-ring);
 }
 
 .chapter-writer-container .ql-toolbar.ql-snow {
-  background-color: #f9fafb;
+  background-color: var(--color-background-subtle);
   border: none;
-  border-bottom: 1px solid #d1d5db;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .chapter-writer-container .ql-container.ql-snow {
   border: none;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .ql-editor {
-  min-height: 400px;
+  height: 450px;
+  overflow-y: auto;
   font-size: 16px;
   line-height: 1.6;
-  color: #2d3748;
-  background-color: #ffffff;
+  color: var(--color-text-primary);
+  background-color: var(--color-background-container);
+}
+
+.editor-and-ai-container.show-ai .ql-editor {
+  height: 350px;
 }
 
 .ql-editor.ql-blank::before {
-  color: #a0aec0;
+  color: var(--color-text-placeholder);
   font-style: italic;
-  left: 1rem; /* Aligns placeholder with padding */
+  left: 1rem;
 }
 
-/* === Action Button Styles === */
 .actions-section {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: auto;
+  padding-top: var(--space-lg);
 }
 
-/* Assuming use of react-bootstrap, targeting generated classes */
 .actions-section .btn {
   padding: 10px 24px;
   font-size: 1rem;
   font-weight: 500;
-  border-radius: 6px;
+  border-radius: var(--border-radius-md);
   border: 1px solid transparent;
-  transition: all 0.2s ease-in-out;
+  transition: var(--transition-fast);
+  cursor: pointer;
+}
+
+.actions-section .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .actions-section .btn-primary {
-  background-color: #2563eb; /* A nice, modern blue */
+  background-color: var(--color-primary);
   color: white;
 }
 
-.actions-section .btn-primary:hover {
-  background-color: #1d4ed8;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+.actions-section .btn-primary:hover:not(:disabled) {
+  background-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-sm);
 }
 
 .actions-section .btn-secondary {
-  background-color: #e5e7eb;
-  color: #374151;
-  border-color: #d1d5db;
+  background-color: var(--color-background-container);
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
 }
 
-.actions-section .btn-secondary:hover {
-  background-color: #d1d5db;
-  border-color: #adb5bd;
+.actions-section .btn-secondary:hover:not(:disabled) {
+  background-color: var(--color-background-subtle);
 }
 
+@media (max-width: 992px) {
+  .chapter-editor-page {
+    padding: var(--space-md);
+    margin: var(--space-md) auto;
+  }
 
-/* === ORIGINAL QUILL FONT STYLES (UNCHANGED) === */
+  .editor-and-ai-container {
+    flex-direction: column;
+  }
+
+  .main-editor-content,
+  .ai-writing-section {
+    max-width: none;
+  }
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-options {
   max-height: 250px;
   overflow-y: auto;
 }
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="arial"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="arial"]::before { content: 'Arial'; font-family: Arial, sans-serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="arial"]::before {
+  content: 'Arial';
+  font-family: Arial, sans-serif;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="georgia"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="georgia"]::before { content: 'Georgia'; font-family: Georgia, serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="georgia"]::before {
+  content: 'Georgia';
+  font-family: Georgia, serif;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="times-new-roman"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="times-new-roman"]::before { content: 'Times New Roman'; font-family: "Times New Roman", serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="times-new-roman"]::before {
+  content: 'Times New Roman';
+  font-family: "Times New Roman", serif;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="comic-sans"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="comic-sans"]::before { content: 'Comic Sans'; font-family: 'Comic Sans MS', cursive; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="comic-sans"]::before {
+  content: 'Comic Sans';
+  font-family: 'Comic Sans MS', cursive;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="palatino"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="palatino"]::before { content: 'Palatino'; font-family: 'Palatino Linotype', serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="palatino"]::before {
+  content: 'Palatino';
+  font-family: 'Palatino Linotype', serif;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="lora"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="lora"]::before { content: 'Lora'; font-family: 'Lora', serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="lora"]::before {
+  content: 'Lora';
+  font-family: 'Lora', serif;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="merriweather"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="merriweather"]::before { content: 'Merriweather'; font-family: 'Merriweather', serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="merriweather"]::before {
+  content: 'Merriweather';
+  font-family: 'Merriweather', serif;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="playfair-display"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="playfair-display"]::before { content: 'Playfair Display'; font-family: 'Playfair Display', serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="playfair-display"]::before {
+  content: 'Playfair Display';
+  font-family: 'Playfair Display', serif;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="garamond"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="garamond"]::before { content: 'Garamond'; font-family: 'Garamond', serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="garamond"]::before {
+  content: 'Garamond';
+  font-family: 'Garamond', serif;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="roboto"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="roboto"]::before { content: 'Roboto'; font-family: 'Roboto', sans-serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="roboto"]::before {
+  content: 'Roboto';
+  font-family: 'Roboto', sans-serif;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="lato"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="lato"]::before { content: 'Lato'; font-family: 'Lato', sans-serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="lato"]::before {
+  content: 'Lato';
+  font-family: 'Lato', sans-serif;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="open-sans"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="open-sans"]::before { content: 'Open Sans'; font-family: 'Open Sans', sans-serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="open-sans"]::before {
+  content: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="montserrat"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="montserrat"]::before { content: 'Montserrat'; font-family: 'Montserrat', sans-serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="montserrat"]::before {
+  content: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="oswald"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="oswald"]::before { content: 'Oswald'; font-family: 'Oswald', sans-serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="oswald"]::before {
+  content: 'Oswald';
+  font-family: 'Oswald', sans-serif;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="roboto-slab"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="roboto-slab"]::before { content: 'Roboto Slab'; font-family: 'Roboto Slab', serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="roboto-slab"]::before {
+  content: 'Roboto Slab';
+  font-family: 'Roboto Slab', serif;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="arvo"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="arvo"]::before { content: 'Arvo'; font-family: 'Arvo', serif; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="arvo"]::before {
+  content: 'Arvo';
+  font-family: 'Arvo', serif;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="dancing-script"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="dancing-script"]::before { content: 'Dancing Script'; font-family: 'Dancing Script', cursive; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="dancing-script"]::before {
+  content: 'Dancing Script';
+  font-family: 'Dancing Script', cursive;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="pacifico"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="pacifico"]::before { content: 'Pacifico'; font-family: 'Pacifico', cursive; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="pacifico"]::before {
+  content: 'Pacifico';
+  font-family: 'Pacifico', cursive;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="caveat"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="caveat"]::before { content: 'Caveat'; font-family: 'Caveat', cursive; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="caveat"]::before {
+  content: 'Caveat';
+  font-family: 'Caveat', cursive;
+}
+
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="inconsolata"]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="inconsolata"]::before { content: 'Inconsolata'; font-family: 'Inconsolata', monospace; }
-.ql-font-arial { font-family: Arial, sans-serif; }
-.ql-font-georgia { font-family: Georgia, serif; }
-.ql-font-times-new-roman { font-family: "Times New Roman", serif; }
-.ql-font-comic-sans { font-family: 'Comic Sans MS', cursive; }
-.ql-font-palatino { font-family: 'Palatino Linotype', serif; }
-.ql-font-lora { font-family: 'Lora', serif; }
-.ql-font-merriweather { font-family: 'Merriweather', serif; }
-.ql-font-playfair-display { font-family: 'Playfair Display', serif; }
-.ql-font-garamond { font-family: 'Garamond', serif; }
-.ql-font-roboto { font-family: 'Roboto', sans-serif; }
-.ql-font-lato { font-family: 'Lato', sans-serif; }
-.ql-font-open-sans { font-family: 'Open Sans', sans-serif; }
-.ql-font-montserrat { font-family: 'Montserrat', sans-serif; }
-.ql-font-oswald { font-family: 'Oswald', sans-serif; }
-.ql-font-roboto-slab { font-family: 'Roboto Slab', serif; }
-.ql-font-arvo { font-family: 'Arvo', serif; }
-.ql-font-dancing-script { font-family: 'Dancing Script', cursive; }
-.ql-font-pacifico { font-family: 'Pacifico', cursive; }
-.ql-font-caveat { font-family: 'Caveat', cursive; }
-.ql-font-inconsolata { font-family: 'Inconsolata', monospace; }
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value="inconsolata"]::before {
+  content: 'Inconsolata';
+  font-family: 'Inconsolata', monospace;
+}
+
+.ql-font-arial {
+  font-family: Arial, sans-serif;
+}
+
+.ql-font-georgia {
+  font-family: Georgia, serif;
+}
+
+.ql-font-times-new-roman {
+  font-family: "Times New Roman", serif;
+}
+
+.ql-font-comic-sans {
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.ql-font-palatino {
+  font-family: 'Palatino Linotype', serif;
+}
+
+.ql-font-lora {
+  font-family: 'Lora', serif;
+}
+
+.ql-font-merriweather {
+  font-family: 'Merriweather', serif;
+}
+
+.ql-font-playfair-display {
+  font-family: 'Playfair Display', serif;
+}
+
+.ql-font-garamond {
+  font-family: 'Garamond', serif;
+}
+
+.ql-font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.ql-font-lato {
+  font-family: 'Lato', sans-serif;
+}
+
+.ql-font-open-sans {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.ql-font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.ql-font-oswald {
+  font-family: 'Oswald', sans-serif;
+}
+
+.ql-font-roboto-slab {
+  font-family: 'Roboto Slab', serif;
+}
+
+.ql-font-arvo {
+  font-family: 'Arvo', serif;
+}
+
+.ql-font-dancing-script {
+  font-family: 'Dancing Script', cursive;
+}
+
+.ql-font-pacifico {
+  font-family: 'Pacifico', cursive;
+}
+
+.ql-font-caveat {
+  font-family: 'Caveat', cursive;
+}
+
+.ql-font-inconsolata {
+  font-family: 'Inconsolata', monospace;
+}
 
 .ql-snow .ql-picker.ql-font .ql-picker-label::before {
   display: inline-block;

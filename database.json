@@ -1,62 +1,65 @@
 {
   "users": [
-  {
-    "id": 1,
-    "username": "nguoivip",
-    "email": "vip@example.com",
-    "password": "hashed_password",
-    "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
-    "role": "user",
-    "isVIP": true,
-    "vipExpiry": "2025-12-31T23:59:59Z",
-    "createdAt": "2023-01-15T08:00:00Z",
-    "lastLogin": "2025-07-10T14:30:00Z",
-    "bio": "Người đam mê truyện tiên hiệp",
-    "fullname": "Nguyễn Văn Vip",
-    "phone": "0901234567",
-    "address": "123 Đường Sách, Quận 1, TP.HCM"
-  },
-  {
-    "id": 2,
-    "username": "tacgia_no1",
-    "email": "author@example.com",
-    "password": "hashed_password",
-    "avatar": "/avatars/2.jpg",
-    "role": "author",
-    "isVIP": false,
-    "createdAt": "2022-11-20T10:15:00Z",
-    "lastLogin": "2025-07-09T09:45:00Z",
-    "bio": "Tác giả của nhiều truyện best-seller",
-    "fullname": "Trần Tác Giả",
-    "phone": "0912345678",
-    "address": "456 Đường Văn Học, Quận 3, TP.HCM"
-  },
-  {
-    "id": 3,
-    "username": "admin_system",
-    "email": "admin@example.com",
-    "password": "hashed_password",
-    "avatar": "/avatars/admin.jpg",
-    "role": "admin",
-    "isVIP": true,
-    "createdAt": "2022-01-01T00:00:00Z",
-    "lastLogin": "2025-07-11T08:00:00Z",
-    "bio": "Quản trị viên hệ thống",
-    "fullname": "Lê Quản Trị",
-    "phone": "0987654321",
-    "address": "789 Đường Quản Trị, Quận 10, TP.HCM"
-  }
-],
-  
+    {
+      "id": "1",
+      "username": "nguoivip",
+      "email": "vip@example.com",
+      "password": "hashed_password",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+      "role": "user",
+      "isVIP": true,
+      "vipExpiry": "2025-12-31T23:59:59Z",
+      "createdAt": "2023-01-15T08:00:00Z",
+      "lastLogin": "2025-07-10T14:30:00Z",
+      "bio": "Người đam mê truyện tiên hiệp",
+      "fullname": "Nguyễn Văn Vip",
+      "phone": "0901234567",
+      "address": "123 Đường Sách, Quận 1, TP.HCM"
+    },
+    {
+      "id": "2",
+      "username": "tacgia_no1",
+      "email": "author@example.com",
+      "password": "hashed_password",
+      "avatar": "/avatars/2.jpg",
+      "role": "author",
+      "isVIP": false,
+      "createdAt": "2022-11-20T10:15:00Z",
+      "lastLogin": "2025-07-09T09:45:00Z",
+      "bio": "Tác giả của nhiều truyện best-seller",
+      "fullname": "Trần Tác Giả",
+      "phone": "0912345678",
+      "address": "456 Đường Văn Học, Quận 3, TP.HCM"
+    },
+    {
+      "id": "3",
+      "username": "admin_system",
+      "email": "admin@example.com",
+      "password": "hashed_password",
+      "avatar": "/avatars/admin.jpg",
+      "role": "admin",
+      "isVIP": true,
+      "createdAt": "2022-01-01T00:00:00Z",
+      "lastLogin": "2025-07-11T08:00:00Z",
+      "bio": "Quản trị viên hệ thống",
+      "fullname": "Lê Quản Trị",
+      "phone": "0987654321",
+      "address": "789 Đường Quản Trị, Quận 10, TP.HCM"
+    }
+  ],
   "stories": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Đạo Giới Độc Tôn",
       "authorId": 2,
       "coverImage": "/covers/1.jpg",
       "description": "Một thiếu niên vô tình bước vào con đường tu tiên, từng bước trở thành chí tôn đạo giới...",
       "category": "Tiên Hiệp",
-      "tags": ["tu tiên", "xuyên không", "bá đạo"],
+      "tags": [
+        "tu tiên",
+        "xuyên không",
+        "bá đạo"
+      ],
       "status": "ongoing",
       "totalViews": 125430,
       "totalChapters": 150,
@@ -67,13 +70,17 @@
       "draftChapters": 3
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Ma Đế Vô Song",
       "authorId": 2,
       "coverImage": "/covers/2.jpg",
       "description": "Từ một tên vô danh tiểu tốt trở thành Ma Đế chấn động thiên hạ...",
       "category": "Huyền Huyễn",
-      "tags": ["trọng sinh", "ma pháp", "nữ cường"],
+      "tags": [
+        "trọng sinh",
+        "ma pháp",
+        "nữ cường"
+      ],
       "status": "completed",
       "totalViews": 89456,
       "totalChapters": 200,
@@ -84,10 +91,9 @@
       "draftChapters": 0
     }
   ],
-  
   "chapters": [
     {
-      "id": 101,
+      "id": "101",
       "storyId": 1,
       "title": "Chương 1: Khởi đầu kỳ lạ",
       "content": "Lôi Trần mở mắt, kinh ngạc phát hiện mình không còn ở thế giới cũ...",
@@ -98,7 +104,7 @@
       "isDraft": false
     },
     {
-      "id": 102,
+      "id": "102",
       "storyId": 1,
       "title": "Chương 2: Gặp tiên nhân",
       "content": "Trong rừng sâu, Lôi Trần gặp một lão giả kỳ dị tự xưng là tu tiên giả...",
@@ -109,7 +115,7 @@
       "isDraft": false
     },
     {
-      "id": 201,
+      "id": "201",
       "storyId": 2,
       "title": "Chương 1: Tái sinh làm ma",
       "content": "Sau khi chết đi, Hắc Vô Thường thức tỉnh trong thân thể của một tiểu ma binh...",
@@ -117,21 +123,90 @@
       "createdAt": "2024-01-10T10:00:00Z",
       "updatedAt": "2024-01-12T15:30:00Z",
       "views": 15600,
-      "isDraft": false,
-      "isPremium": true
+      "isDraft": false
+    },
+    {
+      "id": "707e",
+      "storyId": "2",
+      "title": "",
+      "content": "<p><br></p>",
+      "order": null,
+      "createdAt": null,
+      "updatedAt": "2025-07-14T01:44:11.628Z",
+      "views": 0,
+      "isDraft": true
+    },
+    {
+      "id": "89be",
+      "storyId": "2",
+      "title": "",
+      "content": "<p><br></p>",
+      "order": null,
+      "createdAt": "2025-07-14T01:46:22.106Z",
+      "updatedAt": "2025-07-14T01:46:22.106Z",
+      "views": 0,
+      "isDraft": false
+    },
+    {
+      "id": "cbb3",
+      "storyId": "2",
+      "title": "a",
+      "content": "<p>a</p>",
+      "order": null,
+      "createdAt": "2025-07-14T01:49:37.724Z",
+      "updatedAt": "2025-07-14T01:49:37.724Z",
+      "views": 0,
+      "isDraft": false
+    },
+    {
+      "id": "8bad",
+      "storyId": "1",
+      "title": "Test",
+      "content": "<p><span style=\"color: rgb(230, 0, 0);\">Test</span></p>",
+      "order": null,
+      "createdAt": "2025-07-14T13:29:26.790Z",
+      "updatedAt": "2025-07-14T13:29:26.790Z",
+      "views": 0,
+      "isDraft": false
+    },
+    {
+      "id": "b75d",
+      "storyId": "1",
+      "title": "Test",
+      "content": "<p><span class=\"ql-font-comic-sans\">Test</span></p>",
+      "order": null,
+      "createdAt": "2025-07-14T13:31:24.274Z",
+      "updatedAt": "2025-07-14T13:31:24.274Z",
+      "views": 0,
+      "isDraft": false
+    },
+    {
+      "id": "801a",
+      "storyId": "1",
+      "title": "test",
+      "content": "<p><span style=\"color: rgb(255, 153, 0);\">Test</span></p>",
+      "order": null,
+      "createdAt": "2025-07-14T15:11:03.865Z",
+      "updatedAt": "2025-07-14T15:11:03.865Z",
+      "views": 0,
+      "isDraft": false
     }
   ],
-  
   "comments": [
     {
-      "id": 1001,
+      "id": "1001",
       "chapterId": 101,
       "userId": 1,
       "username": "nguoivip",
       "avatar": "/avatars/1.jpg",
       "content": "Chương mở đầu rất hấp dẫn, mong tác giả ra chương mới sớm!",
       "createdAt": "2023-03-12T15:30:00Z",
-      "likes": [2, 3, 4, 5],
+      "likes": [
+        2,
+        3,
+        4,
+        5
+      ],
       "replies": [
         {
           "id": 10011,
@@ -140,119 +215,120 @@
           "avatar": "/avatars/2.jpg",
           "content": "Cảm ơn bạn đã ủng hộ, chương mới sẽ ra vào tuần sau!",
           "createdAt": "2023-03-12T16:00:00Z",
-          "likes": [1, 3]
+          "likes": [
+            1,
+            3
+          ]
         }
       ]
     },
     {
-      "id": 1002,
+      "id": "1002",
       "chapterId": 201,
       "userId": 3,
       "username": "docgia_truyenma",
       "avatar": "/avatars/default.jpg",
       "content": "Chất lượng truyện VIP xứng đáng với đồng tiền bỏ ra!",
       "createdAt": "2024-01-15T11:45:00Z",
-      "likes": [1, 2, 5],
+      "likes": [
+        1,
+        2,
+        5
+      ],
       "replies": []
     }
   ],
-  
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Tiên Hiệp",
       "slug": "tien-hiep",
       "storyCount": 245
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Kiếm Hiệp",
       "slug": "kiem-hiep",
       "storyCount": 178
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Huyền Huyễn",
       "slug": "huyen-huyen",
       "storyCount": 312
     }
   ],
-  
   "tags": [
     {
-      "id": 1,
+      "id": "1",
       "name": "xuyên không",
       "slug": "xuyen-khong",
       "storyCount": 189
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "trọng sinh",
       "slug": "trong-sinh",
       "storyCount": 156
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "nữ cường",
       "slug": "nu-cuong",
       "storyCount": 215
     }
   ],
-  
   "bookmarks": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "storyId": 1,
       "lastReadChapterId": 102,
       "createdAt": "2023-04-01T14:20:00Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": 1,
       "storyId": 2,
       "lastReadChapterId": 201,
       "createdAt": "2024-02-15T11:30:00Z"
     }
   ],
-  
   "follows": [
     {
-      "id": 1,
+      "id": "1",
       "followerId": 1,
       "followingId": 2,
       "type": "author",
       "createdAt": "2023-05-10T09:15:00Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "followerId": 1,
       "storyId": 1,
       "type": "story",
       "createdAt": "2023-04-05T16:30:00Z"
     }
   ],
-  
   "ratings": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "storyId": 1,
       "score": 5,
       "createdAt": "2023-04-20T14:00:00Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": 3,
       "storyId": 2,
       "score": 4,
       "createdAt": "2024-02-01T10:30:00Z"
     }
   ],
-  
   "authorFeedbacks": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "authorId": 2,
       "storyId": 1,
@@ -261,10 +337,9 @@
       "status": "read"
     }
   ],
-  
   "systemFeedbacks": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "type": "feature_request",
       "content": "Nên thêm tính năng đọc offline cho app mobile",
@@ -272,10 +347,9 @@
       "status": "pending"
     }
   ],
-  
   "reports": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "storyId": 2,
       "reason": "Nội dung nhạy cảm không phù hợp",
@@ -286,10 +360,9 @@
       "resolvedAt": "2024-03-12T10:15:00Z"
     }
   ],
-  
   "membershipPlans": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Gói Tháng",
       "price": 50000,
       "durationDays": 30,
@@ -300,7 +373,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Gói Năm",
       "price": 500000,
       "durationDays": 365,
@@ -312,10 +385,9 @@
       ]
     }
   ],
-  
   "userMemberships": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "planId": 2,
       "startDate": "2025-01-01T00:00:00Z",
@@ -324,10 +396,9 @@
       "transactionId": "TX123456789"
     }
   ],
-  
   "aiAssistants": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "type": "character_creation",
       "prompt": "Tạo nhân vật nữ chính mạnh mẽ, lạnh lùng",
@@ -335,7 +406,7 @@
       "createdAt": "2025-07-08T14:30:00Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": 2,
       "type": "story_continuation",
       "prompt": "Tiếp tục đoạn sau khi nhân vật chính bị phản bội",
@@ -343,10 +414,9 @@
       "createdAt": "2025-07-10T09:45:00Z"
     }
   ],
-  
   "readingHistory": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "storyId": 1,
       "chapterId": 102,
@@ -354,7 +424,7 @@
       "progress": 85
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": 1,
       "storyId": 2,
       "chapterId": 201,
@@ -362,10 +432,9 @@
       "progress": 100
     }
   ],
-  
   "notifications": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "type": "new_chapter",
       "content": "Truyện 'Đạo Giới Độc Tôn' vừa ra chương mới: Chương 151 - Đại chiến chư thiên",
@@ -375,7 +444,7 @@
       "isRead": false
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": 1,
       "type": "author_reply",
       "content": "tacgia_no1 đã trả lời bình luận của bạn",
@@ -384,7 +453,6 @@
       "isRead": true
     }
   ],
-  
   "userStats": [
     {
       "userId": 1,
@@ -395,7 +463,8 @@
       "chaptersRead": 345,
       "followers": 15,
       "following": 8,
-      "lastUpdated": "2025-07-10T18:00:00Z"
+      "lastUpdated": "2025-07-10T18:00:00Z",
+      "id": "af1f"
     },
     {
       "userId": 2,
@@ -406,7 +475,8 @@
       "chaptersRead": 1200,
       "followers": 1245,
       "following": 23,
-      "lastUpdated": "2025-07-10T12:30:00Z"
+      "lastUpdated": "2025-07-10T12:30:00Z",
+      "id": "6f45"
     }
   ]
 }
