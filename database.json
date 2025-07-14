@@ -136,6 +136,7 @@
         {
           "id": 10011,
           "userId": 2,
+
           "username": "tacgia_no1",
           "avatar": "/avatars/2.jpg",
           "content": "Cảm ơn bạn đã ủng hộ, chương mới sẽ ra vào tuần sau!",
@@ -406,7 +407,7 @@
       "chaptersRead": 1200,
       "followers": 1245,
       "following": 23,
-      "lastUpdated": "2025-07-10T12:30:00Z"
+      "lastUpdated": "2025-07-10T12:30:00Z
     }
   ]
 }
