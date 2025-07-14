@@ -2,16 +2,16 @@ import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
-    
-    return(
+
+    return (
         <Container>
             <Row>
                 <h3 className="text-center mt-2">Đăng nhập</h3>
                 <Col>
                     <Form>
                         <Form.Group>
-                            <Form.Label>Email hoặc Username</Form.Label>
-                            <Form.Control type="email" placeholder="Nhập email hoặc username..."></Form.Control>
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="email" placeholder="Nhập email..."></Form.Control>
                         </Form.Group>
 
                         <Form.Group>
@@ -19,11 +19,23 @@ export default function Login() {
                             <Form.Control type="password" placeholder="Nhập mật khẩu..."></Form.Control>
                         </Form.Group>
 
-                        <Button className="mt-2 btn-success" type="submit">
+
+                        <Row>
+                            <Col>
+                                Bạn chưa có tài khoản? <Link to={`/register`}>Tạo tài khoản</Link>
+                            </Col>
+
+                            <Col>
+                                <Link to={`/forgot-password`}>Quên mật khẩu?</Link>
+                            </Col>
+
+                        </Row>
+
+                        <Button className="mt-2" type="submit">
                             Đăng nhập
                         </Button>
                     </Form>
-                    Chưa có tài khoản <Link to={`/register`}>Tạo tài khoản</Link>
+
                 </Col>
             </Row>
         </Container>
