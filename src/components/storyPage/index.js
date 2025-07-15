@@ -15,9 +15,6 @@ export default function StoryPage() {
     const [showFullDesc, setShowFullDesc] = useState(false);
 
     const currentUser = JSON.parse(localStorage.getItem("user"));
-;
-
- 
     useEffect(() => {
         axios
             .get(`http://localhost:9999/stories?id=${id}`)

@@ -1,7 +1,7 @@
 import { Row, Col } from 'react-bootstrap';
 import DOMPurify from 'dompurify';
 
-export default function Content({ chapter, storyTilte }) {
+export default function Content({ chapter, storyTilte , fontsize}) {
   return (
     <Row className="my-4">
       <Col md={{ span: 10, offset: 1 }} xs={12}>
