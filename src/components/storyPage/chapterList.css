@@ -1,0 +1,12 @@
+.chapter-link {
+  color: black !important;  
+  text-decoration: none;  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chapter-link:hover {
+  background-color: #ffe58f;
+  color: black !important;
+  text-decoration: none;
+}

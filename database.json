@@ -1,46 +1,53 @@
 {
   "users": [
-    {
-      "id": 1,
-      "username": "nguoivip",
-      "email": "vip@example.com",
-      "password": "hashed_password",
-      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
-      "role": "user",
-      "vipExpiry": "2025-12-31T23:59:59Z",
-      "createdAt": "2023-01-15T08:00:00Z",
-      "bio": "Người đam mê truyện tiên hiệp",
-      "fullname": "Nguyễn Văn Vip",
-      "phone": "0901234567",
-      "address": "123 Đường Sách, Quận 1, TP.HCM"
-    },
-    {
-      "id": 2,
-      "username": "tacgia_no1",
-      "email": "author@example.com",
-      "password": "hashed_password",
-      "avatar": "/avatars/2.jpg",
-      "role": "user",
-      "createdAt": "2022-11-20T10:15:00Z",
-      "bio": "Tác giả của nhiều truyện best-seller",
-      "fullname": "Trần Tác Giả",
-      "phone": "0912345678",
-      "address": "456 Đường Văn Học, Quận 3, TP.HCM"
-    },
-    {
-      "id": 3,
-      "username": "admin_system",
-      "email": "admin@example.com",
-      "password": "hashed_password",
-      "avatar": "/avatars/admin.jpg",
-      "role": "admin",
-      "createdAt": "2022-01-01T00:00:00Z",
-      "bio": "Quản trị viên hệ thống",
-      "fullname": "Lê Quản Trị",
-      "phone": "0987654321",
-      "address": "789 Đường Quản Trị, Quận 10, TP.HCM"
-    }
-  ],
+  {
+    "id": 1,
+    "username": "nguoivip",
+    "email": "vip@example.com",
+    "password": "hashed_password",
+    "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+    "role": "user",
+    "isVIP": true,
+    "vipExpiry": "2025-12-31T23:59:59Z",
+    "createdAt": "2023-01-15T08:00:00Z",
+    "lastLogin": "2025-07-10T14:30:00Z",
+    "bio": "Người đam mê truyện tiên hiệp",
+    "fullname": "Nguyễn Văn Vip",
+    "phone": "0901234567",
+    "address": "123 Đường Sách, Quận 1, TP.HCM"
+  },
+  {
+    "id": 2,
+    "username": "tacgia_no1",
+    "email": "author@example.com",
+    "password": "hashed_password",
+    "avatar": "/avatars/2.jpg",
+    "role": "author",
+    "isVIP": false,
+    "createdAt": "2022-11-20T10:15:00Z",
+    "lastLogin": "2025-07-09T09:45:00Z",
+    "bio": "Tác giả của nhiều truyện best-seller",
+    "fullname": "Trần Tác Giả",
+    "phone": "0912345678",
+    "address": "456 Đường Văn Học, Quận 3, TP.HCM"
+  },
+  {
+    "id": 3,
+    "username": "admin_system",
+    "email": "admin@example.com",
+    "password": "hashed_password",
+    "avatar": "/avatars/admin.jpg",
+    "role": "admin",
+    "isVIP": true,
+    "createdAt": "2022-01-01T00:00:00Z",
+    "lastLogin": "2025-07-11T08:00:00Z",
+    "bio": "Quản trị viên hệ thống",
+    "fullname": "Lê Quản Trị",
+    "phone": "0987654321",
+    "address": "789 Đường Quản Trị, Quận 10, TP.HCM"
+  }
+],
+  
   "stories": [
     {
       "id": 1,
@@ -49,11 +56,7 @@
       "coverImage": "/covers/1.jpg",
       "description": "Một thiếu niên vô tình bước vào con đường tu tiên, từng bước trở thành chí tôn đạo giới...",
       "category": "Tiên Hiệp",
-      "tags": [
-        "tu tiên",
-        "xuyên không",
-        "bá đạo"
-      ],
+      "tags": [1,2,3],
       "status": "ongoing",
       "totalViews": 125430,
       "totalChapters": 150,
@@ -70,11 +73,7 @@
       "coverImage": "/covers/2.jpg",
       "description": "Từ một tên vô danh tiểu tốt trở thành Ma Đế chấn động thiên hạ...",
       "category": "Huyền Huyễn",
-      "tags": [
-        "trọng sinh",
-        "ma pháp",
-        "nữ cường"
-      ],
+      "tags": [1,3],
       "status": "completed",
       "totalViews": 89456,
       "totalChapters": 200,
@@ -85,6 +84,7 @@
       "draftChapters": 0
     }
   ],
+  
   "chapters": [
     {
       "id": 101,
@@ -121,6 +121,7 @@
       "isPremium": true
     }
   ],
+  
   "comments": [
     {
       "id": 1001,
@@ -130,24 +131,17 @@
       "avatar": "/avatars/1.jpg",
       "content": "Chương mở đầu rất hấp dẫn, mong tác giả ra chương mới sớm!",
       "createdAt": "2023-03-12T15:30:00Z",
-      "likes": [
-        2,
-        3,
-        4,
-        5
-      ],
+      "likes": [2, 3, 4, 5],
       "replies": [
         {
           "id": 10011,
           "userId": 2,
+
           "username": "tacgia_no1",
           "avatar": "/avatars/2.jpg",
           "content": "Cảm ơn bạn đã ủng hộ, chương mới sẽ ra vào tuần sau!",
           "createdAt": "2023-03-12T16:00:00Z",
-          "likes": [
-            1,
-            3
-          ]
+          "likes": [1, 3]
         }
       ]
     },
@@ -159,14 +153,11 @@
       "avatar": "/avatars/default.jpg",
       "content": "Chất lượng truyện VIP xứng đáng với đồng tiền bỏ ra!",
       "createdAt": "2024-01-15T11:45:00Z",
-      "likes": [
-        1,
-        2,
-        5
-      ],
+      "likes": [1, 2, 5],
       "replies": []
     }
   ],
+  
   "categories": [
     {
       "id": 1,
@@ -187,6 +178,7 @@
       "storyCount": 312
     }
   ],
+  
   "tags": [
     {
       "id": 1,
@@ -207,6 +199,7 @@
       "storyCount": 215
     }
   ],
+  
   "bookmarks": [
     {
       "id": 1,
@@ -223,6 +216,7 @@
       "createdAt": "2024-02-15T11:30:00Z"
     }
   ],
+  
   "follows": [
     {
       "id": 1,
@@ -239,6 +233,7 @@
       "createdAt": "2023-04-05T16:30:00Z"
     }
   ],
+  
   "ratings": [
     {
       "id": 1,
@@ -255,6 +250,7 @@
       "createdAt": "2024-02-01T10:30:00Z"
     }
   ],
+  
   "authorFeedbacks": [
     {
       "id": 1,
@@ -266,6 +262,7 @@
       "status": "read"
     }
   ],
+  
   "systemFeedbacks": [
     {
       "id": 1,
@@ -276,6 +273,7 @@
       "status": "pending"
     }
   ],
+  
   "reports": [
     {
       "id": 1,
@@ -289,6 +287,7 @@
       "resolvedAt": "2024-03-12T10:15:00Z"
     }
   ],
+  
   "membershipPlans": [
     {
       "id": 1,
@@ -314,6 +313,7 @@
       ]
     }
   ],
+  
   "userMemberships": [
     {
       "id": 1,
@@ -325,6 +325,7 @@
       "transactionId": "TX123456789"
     }
   ],
+  
   "aiAssistants": [
     {
       "id": 1,
@@ -343,6 +344,7 @@
       "createdAt": "2025-07-10T09:45:00Z"
     }
   ],
+  
   "readingHistory": [
     {
       "id": 1,
@@ -361,6 +363,7 @@
       "progress": 100
     }
   ],
+  
   "notifications": [
     {
       "id": 1,
@@ -382,6 +385,7 @@
       "isRead": true
     }
   ],
+  
   "userStats": [
     {
       "userId": 1,
@@ -403,7 +407,7 @@
       "chaptersRead": 1200,
       "followers": 1245,
       "following": 23,
-      "lastUpdated": "2025-07-10T12:30:00Z"
+      "lastUpdated": "2025-07-10T12:30:00Z
     }
   ]
 }
