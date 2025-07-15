@@ -22,7 +22,7 @@ function Header() {
   useEffect(() => {
     const fetchTags = async () => {
       try {
-        const response = await axios.get(`http://localhost:9998/tags`);
+        const response = await axios.get(`http://localhost:9999/tags`);
         setTags(response.data);
       } catch (error) {
         console.error("Error fetching tags:", error);
@@ -32,12 +32,15 @@ function Header() {
   }, []);
 
   const handleProfileClick = () => {
-    const userId = localStorage.getItem("userId");
+    let userId = localStorage.getItem("userId");
     if (userId) {
+      userId = userId.replace(/"/g, "");  
       navigate(`/userDetail/${userId}`);
+      console.log( userId );
+      
     } else {
-      //   alert('User ID not found in localStorage');
-      navigate(`/userDetail/1`);
+        alert('User ID not found in localStorage');
+     
     }
   };
 
