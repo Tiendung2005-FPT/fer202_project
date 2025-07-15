@@ -23,17 +23,16 @@ export default function ChapterList({ chapters , storyID}) {
         if (page < totalPage) setPage(page + 1);
     };
 
-    useEffect(() => {
-        if (chapters && chapters.length > 0) {
-            const sorted = [...chapters].sort((a, b) => {
-                const dateA = new Date(a.createdAt);
-                const dateB = new Date(b.createdAt);
-                return isSortDesc ? dateB - dateA : dateA - dateB;
-            });
-            setChapterDisplay(sorted);
-            setPage(1);
-        }
-    }, [chapters, isSortDesc]);
+   useEffect(() => {
+    if (chapters && chapters.length > 0) {
+        const sorted = [...chapters].sort((a, b) => {
+            return isSortDesc ? b.order - a.order : a.order - b.order;
+        });
+        setChapterDisplay(sorted);
+        setPage(1);
+    }
+}, [chapters, isSortDesc]);
+
 
     return (
         <Container className="mt-4">
@@ -51,7 +50,7 @@ export default function ChapterList({ chapters , storyID}) {
             {currentChapters.map((c, i) => (
                 <Link
                     key={c.id}
-                    to={`/readStory/${storyID}/${c.id}`}
+                    to={`/readStory/${storyID}/${c.order}`}
                     className="d-flex justify-content-between align-items-center p-2 mb-2 chapter-link"
                 >
                     <span>

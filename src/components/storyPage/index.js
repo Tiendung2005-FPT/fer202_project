@@ -1,4 +1,4 @@
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -10,10 +10,14 @@ import ChapterList from "./chapterList";
 export default function StoryPage() {
     const { id } = useParams();
     const [story, setStory] = useState();
-    const [user, setUser] = useState();
+    const [author, setAuthor] = useState();
     const [chapters, setChapters] = useState([]);
     const [showFullDesc, setShowFullDesc] = useState(false);
 
+    const currentUser = JSON.parse(localStorage.getItem("user"));
+;
+
+ 
     useEffect(() => {
         axios
             .get(`http://localhost:9999/stories?id=${id}`)
@@ -25,12 +29,12 @@ export default function StoryPage() {
         if (story?.authorId) {
             axios
                 .get(`http://localhost:9999/users?id=${story.authorId}`)
-                .then((res) => setUser(res.data[0]))
-                .catch((err) => console.error("Lỗi load user:", err));
+                .then((res) => setAuthor(res.data[0]))
+                .catch((err) => console.error("Lỗi load author:", err));
         }
         if (story?.id) {
             axios
-                .get(`http://localhost:9999/chapters?storyId=${story.id}`)
+                .get(`http://localhost:9999/chapters?storyId=${story.id}&isDraft=false`)
                 .then((res) => setChapters(res.data))
                 .catch((err) => console.error("Lỗi load chapter:", err));
         }
@@ -46,7 +50,7 @@ export default function StoryPage() {
                     {story && (
                         <Card className="p-4">
                             <StoryBreakcumb title={story.title} id={story.id} />
-                            <StoryMainInfo story={story} user={user} />
+                            <StoryMainInfo story={story} author={author} currentUser={currentUser} />
                             <StoryDescription
                                 description={story.description}
                                 showFullDesc={showFullDesc}

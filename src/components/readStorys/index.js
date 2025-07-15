@@ -2,6 +2,7 @@ import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 import Content from "./content";
 import Nav from "./nav";
@@ -9,6 +10,7 @@ import "./index.css";
 
 export default function ReadStory() {
     const { storyId, chapterId } = useParams();
+    const navigate = useNavigate();
 
     const [story, setStory] = useState();
     const [chapter, setChapter] = useState();
@@ -19,41 +21,36 @@ export default function ReadStory() {
 
     useEffect(() => {
         if (!storyId || !chapterId) return;
-
-        const fetchData = async () => {
-            try {
-                setLoading(true);
-
-                const [storyRes, chapterRes] = await Promise.all([
-                    axios.get(`http://localhost:9999/stories?id=${storyId}`),
-                    axios.get(`http://localhost:9999/chapters`)
-                ]);
-
-                const storyData = storyRes.data[0];
-                const chaptersData = chapterRes.data;
-
-                setStory(storyData);
-                setChapters(chaptersData);
-
-                const foundChapter = chaptersData.find(
-                    (c) => String(c.id) === String(chapterId)
-                );
-                setChapter(foundChapter);
-
-                if (storyData?.authorId) {
-                    const authorRes = await axios.get(
-                        `http://localhost:9999/users?id=${storyData.authorId}`
-                    );
-                    setAuthor(authorRes.data[0]);
+        axios.get(`http://localhost:9999/stories?id=${storyId}`)
+            .then(
+                res => (
+                    setStory(res.data)
+                )
+            )
+            .catch(
+                () => {
+                    alert(() => ("Không thể lấy dữ liệu truyện"))
                 }
-            } catch (err) {
-                console.error("Fetch error:", err);
-            } finally {
-                setLoading(false);
-            }
-        };
+            )
 
-        fetchData();
+        axios.get(`http://localhost:9999/chapters?storyId=${storyId}`)
+            .then(res => {
+                const chapterall = res.data?.filter(c => (!c.isDraft))
+                setChapters(chapterall)
+                const chapterRead = chapterall?.find(c => (c.order == chapterId))
+                if (!chapterRead || chapterRead.length === 0) {
+                    alert("Chương không tồn tại hoặc chỉ có bản nháp.");
+                    navigate(`/storypage/${storyId}`)
+                    return;
+                }
+                setChapter(chapterRead)
+                setLoading(false);
+            })
+            .catch(() => {
+                alert(() => ("Không thể lấy dữ liệu chương truyện"))
+                setLoading(false)
+            }
+            )
     }, [storyId, chapterId]);
 
     return (
@@ -71,7 +68,6 @@ export default function ReadStory() {
                                 <Content
                                     chapter={chapter}
                                     storyTilte={story?.title}
-                                    author={author?.username}
                                 />
                             </Card>
                         )}
@@ -82,11 +78,12 @@ export default function ReadStory() {
 
             <Nav
                 storyId={storyId}
-                currentChapter={parseInt(chapterId)}
+                currentChapterId={chapter?.id}
                 chapters={chapters}
                 theme={theme}
                 setTheme={setTheme}
             />
+
         </Container>
 
     );

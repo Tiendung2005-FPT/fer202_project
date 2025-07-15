@@ -4,10 +4,9 @@
       "id": "1",
       "username": "nguoivip",
       "email": "vip@example.com",
-      "password": "hashed_password",
+      "password": "123",
       "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
       "role": "user",
-      "isVIP": true,
       "vipExpiry": "2025-12-31T23:59:59Z",
       "createdAt": "2023-01-15T08:00:00Z",
       "lastLogin": "2025-07-10T14:30:00Z",
@@ -23,7 +22,6 @@
       "password": "hashed_password",
       "avatar": "/avatars/2.jpg",
       "role": "author",
-      "isVIP": false,
       "createdAt": "2022-11-20T10:15:00Z",
       "lastLogin": "2025-07-09T09:45:00Z",
       "bio": "Tác giả của nhiều truyện best-seller",
@@ -38,182 +36,156 @@
       "password": "hashed_password",
       "avatar": "/avatars/admin.jpg",
       "role": "admin",
-      "isVIP": true,
       "createdAt": "2022-01-01T00:00:00Z",
       "lastLogin": "2025-07-11T08:00:00Z",
       "bio": "Quản trị viên hệ thống",
       "fullname": "Lê Quản Trị",
       "phone": "0987654321",
       "address": "789 Đường Quản Trị, Quận 10, TP.HCM"
+    },
+    {
+      "id": "c7af",
+      "username": null,
+      "fullname": null,
+      "email": "hoang@gmail.com",
+      "password": "123",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T03:16:35.782Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "0c56",
+      "username": null,
+      "fullname": null,
+      "email": "hoang@gmail.com",
+      "password": "123",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T03:20:57.946Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "071e",
+      "username": null,
+      "fullname": null,
+      "email": "hoang@gmail.com",
+      "password": "123",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T03:21:46.210Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "94f7",
+      "username": null,
+      "fullname": null,
+      "email": "123@gmail.com",
+      "password": "123",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T03:45:00.988Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
     }
   ],
   "stories": [
     {
       "id": "1",
-      "title": "Thiên Đạo Độc Tôn",
-      "authorId": 2,
+      "title": "Đạo Giới Độc Tôn",
+      "authorId": "2",
       "coverImage": "/covers/anh_truyen1.jpg",
-      "description": "【Toàn dân vân dưỡng】Game nhuyễn thể (mobile) giáng lâm, sở hữu nhân vật có thể liên kết với bảng định nhân năng trong giới tu tiên, từ đó thu được phản hồi nghịch thiên, trở nên cường đại.\n\nThẩm Vân bị nữ hữu hãm hại mà trùng sinh, quay về thời điểm trước khi khai mở game, là người duy nhất biết được giá trị hàm kim của trò chơi này!\n\nTrước khi kênh nạp bị đóng, hắn nạp thẳng một trăm tỷ kim tệ, rút được vị lai nữ đế có tư chất nghịch thiên!\n\nThánh thể đạo thai – chỉ cần năm trăm ngàn là có thể kích hoạt? Mua!\n\nĐế binh tài – giá một triệu? Mua hết!\n\nToàn dân gào thét: “Hảo cảm độ nhân vật của ta mới được có 5 điểm thôi!\n\nNghe nói đạt 100 điểm có thể làm mọi thứ với nàng…”\n\n“Hức hức!\n\nNhân vật của ta mới phản hồi được một món pháp bảo giai đoạn đầu!\n\nMà còn vì không thể nạp thêm do kênh đóng nên chẳng thể mua gì nữa, hu hu hu……”\n\nThẩm Vân nhìn vào trăm tỷ đơn vị game tệ trong điện thoại và vị lai nữ đế đang được hắn vân dưỡng: Hảo cảm độ đã đạt 100 điểm!\n\nPhản hồi kỳ lân thần thông, thánh binh phi kiếm, đại đế tuyệt học…… Những phần thưởng mà kiếp trước chỉ có người VIP mới kích hoạt được, nay hắn toàn bộ đã đạt được: V1 – tăng tốc tu luyện, V2 – chiến lực tăng gấp 20 lần, V3 – thể chất vô địch……\n\nCực phẩm tiên khí, phục sinh vô hạn, thời gian đạo tổ, hỗn độn dị chủng……\n\nTà tu hoành hành, yêu thú giáng lâm? Hắn một đường nghiền ép!\n\nNữ hữu kiếp trước hoảng sợ cầu xin trong đau khổ: “Ta biết là ta đã sai rồi thân ái à!\n\nTa thật sự hối hận rồi, xin ngươi đừng giết ta…”\n\n“Biết sai?” Thẩm Vân cười lạnh: “Ngươi chỉ biết mình nên chết thôi.”",
+      "description": "Một thiếu niên vô tình bước vào con đường tu tiên, từng bước trở thành chí tôn đạo giới...",
+      "category": "Tiên Hiệp",
       "tags": [
-        "Tu chân",
-        "Xuyên không",
-        "Bá đạo",
-        "Trọng sinh"
+        1,
+        2,
+        3
       ],
-      "status": "published",
-      "totalViews": 25430,
-      "ratings": [
-        {
-          "userId": 1,
-          "score": 4
-        },
-        {
-          "userId": 3,
-          "score": 5
-        },
-        {
-          "userId": 4,
-          "score": 5
-        }
-      ],
-      "createdAt": "2025-04-20T10:00:00Z"
+      "status": "ongoing",
+      "totalViews": 1324,
+      "totalChapters": 150,
+      "rating": 4.8,
+      "createdAt": "2023-03-10T14:20:00Z",
+      "updatedAt": "2025-07-10T09:15:00Z",
+      "draftChapters": 3
     },
     {
       "id": "2",
       "title": "Ma Đế Vô Song",
-      "authorId": 2,
-      "coverImage": "/covers/ma_de.jpg",
-      "description": "Thế giới ma giáo đầy rẫy hiểm nguy, một thiếu niên vươn lên từ đáy xã hội...",
+      "authorId": "2",
+      "coverImage": "/covers/2.jpg",
+      "description": "Từ một tên vô danh tiểu tốt trở thành Ma Đế chấn động thiên hạ...",
+      "category": "Huyền Huyễn",
       "tags": [
-        "Ma thuật",
-        "Huyền huyễn",
-        "Phản diện"
+        1,
+        3
       ],
-      "status": "published",
-      "totalViews": 18765,
-      "ratings": [
-        {
-          "userId": 1,
-          "score": 3
-        },
-        {
-          "userId": 4,
-          "score": 4
-        }
-      ],
-      "createdAt": "2025-05-15T14:30:00Z"
-    },
-    {
-      "id": "3",
-      "title": "Võ Thần Quyết",
-      "authorId": 4,
-      "coverImage": "/covers/vo_than.jpg",
-      "description": "Con đường trở thành võ thần của một thiếu niên nghèo khó...",
-      "tags": [
-        "võ hiệp",
-        "luyện thể",
-        "tình cảm"
-      ],
-      "status": "published",
-      "totalViews": 9321,
-      "createdAt": "2025-06-10T09:45:00Z"
+      "status": "completed",
+      "totalViews": 89456,
+      "totalChapters": 200,
+      "rating": 4.5,
+      "createdAt": "2024-01-05T11:30:00Z",
+      "updatedAt": "2025-06-28T16:45:00Z",
+      "draftChapters": 0
     }
   ],
   "chapters": [
     {
-      "id": "1",
-      "storyId": 1,
-      "title": "Chương 1: Khởi đầu kỳ lạ",
-       "content": "Làn da trắng như tuyết, mịn màng trong suốt như băng điêu ngọc trác, mang theo một tia ngây thơ và nụ cười dịu dàng, đủ khiến hoa anh đào tháng tư cũng phải phai sắc. Kết hợp với mái tóc dài tinh khiết như hoa tuyết, buông xuống mềm mại không một tạp chất, cô gái ấy giống như đóa sen nở bừng giữa cơn bão tuyết dày đặc.\n\nĐôi mắt hai màu tím vàng lấp lánh ánh sáng kỳ dị, trên đỉnh đầu mọc ra một đôi sừng rồng cong dài, sau lưng phủ đầy những vảy sáng bóng như bạch ngọc, hòa cùng cái đuôi dài uốn lượn linh hoạt khiến cô gái tăng thêm vài phần khí chất thần bí của dị tộc.\n\nVẻ đẹp ấy, nghiêng nước nghiêng thành, đủ để khiến bất kỳ kẻ mạnh nào trong bóng tối cũng sinh lòng chiếm đoạt và chinh phục, làm cho họ phát cuồng.\n\nLà một thanh niên bình thường, có thể thấy ở khắp mọi nơi, Mạc Ly dĩ nhiên cũng không ngoại lệ.\n\nVẻ đẹp thánh khiết động lòng người kia, cùng với những “đụng chạm thể xác” trong trải nghiệm vừa qua, giống như lửa thiêu rực cùng huỳnh quang, tuy niên thiếu nhưng nếu cô gái dị tộc này trưởng thành, chắc chắn sẽ là đại mỹ nhân khiến cả một vùng kinh diễm. Gọi là “họa thủy” cũng không quá.\n\nBị bản năng nguyên thủy của sinh vật chi phối, hắn muốn bày tỏ tình cảm với đối phương, nhưng sợ bị từ chối, cũng không dám liều lĩnh như sói dữ nhảy vào lửa.\n\nVấn đề là, Mạc Ly biết rõ điều đó là không thể. Trên thế giới này, cô gái ấy là duy nhất, đến cả tư cách bị nàng từ chối cũng không có — vì nàng là mỹ nhân tuyệt sắc khuynh thành, còn hắn chỉ là... hắn thôi.\n\nHắn há miệng muốn hỏi, chất vấn người mặc hắc bào trước mặt rốt cuộc đã làm gì cơ thể mình. Nhưng môi chỉ phát ra vài tiếng ú ớ mơ hồ.\n\n“Nhìn rõ chưa?” Người mặc hắc bào mở miệng, âm thanh nhẹ như chim hoàng oanh hót trong cốc, êm tai khiến người khác không thể dừng lại, chỉ nghe thôi đã thấy tò mò muốn nhìn rõ dung nhan nàng.\n\nĐây là mơ sao?... Không, không phải mơ.\n\nLuồng khí lạnh áp thẳng vào mặt, từng đợt cảnh báo khiến hắn bừng tỉnh.\n\nMạc Ly chú ý thấy trên đầu người mặc hắc bào kia cũng có một đôi sừng rồng cong, kiểu dáng giống như cặp sừng trên đầu hắn lúc này. Chỉ là sừng của cô gái dài và thanh thoát hơn, còn của hắn thì nhỏ và ngắn.\n\nChỉ thấy nàng kéo ra một cái gương bạc, đặt trước mặt Mạc Ly: “Lần sau gặp lại, trước tiên phải hiểu rõ mình đã xảy ra chuyện gì. Nếu không, ta sẽ nói một tràng như bắn pháo liên hoàn, đến mức chính ta cũng khó chịu.”\n\n“Ú ú ú!......” Cô gái tóc trắng giãy giụa trong ánh trăng u ám, bốn chi vung loạn như con dê đực đang chờ bị làm thịt đặt trên bàn đá.\n\nNgười đeo mặt nạ màu trắng trong veo, biểu cảm vô cùng biến hóa, đôi mắt như mã não trào lệ không ngừng, hàng lệ dài rơi xuống mặt, tóc trắng tung bay tán loạn.",
+      "id": "5319",
+      "storyId": "1",
+      "title": "Chương thứ nhất:: Thiết huyết thiếu niên",
+      "content": "<p>Thiên Phong Quốc, Nam Linh Quốc Giao Giới, Nam Linh Quốc Cửu Tuyền ngoài thành.</p><p><br></p><p>Mấy chục vạn người mặc áo giáp màu đen quân sĩ tại Cửu Tuyền ngoài thành vận sức chờ phát động, đằng đằng sát khí.</p><p><br></p><p>Cửu Tuyền chỗ cửa thành, ước chừng hai mươi vạn người khoác ngân giáp quân sĩ cưỡi chiến mã, tay cầm tuyết trắng trường đao trận địa sẵn sàng đón quân địch.</p><p><br></p><p>Vì quân tướng lĩnh là một dáng người khôi ngô, khuôn mặt cương nghị nam tử trung niên, tay hắn nắm dài hơn một trượng màu đen chiến thương, vượt dưới cưỡi một thớt toàn thân Thanh Lân ngoại hình giống như ngựa yêu thú, Thanh Lân Độc Giác Mã, mắt sáng như đuốc, nhìn qua đối diện mấy chục vạn đại quân.</p><p><br></p><p>Hắn gọi Mục Thiên, là cái này Cửu Tuyền thành thủ trên thành tướng, cũng là một Nguyên Đan Cảnh võ đạo cường giả.</p><p><br></p><p>Thiên Vũ Đại Lục, cổ võ vi tôn, vạn nước san sát bách tộc tranh phong, địa vực rộng lớn mà không bờ bến.</p><p><br></p><p>Người lấy công pháp thu nạp thiên địa linh khí, tu luyện tự thân nguyên khí, nguyên lực, căn cứ thể nội năng lượng mạnh yếu, Thái Cổ đến hiện tại võ đạo đám tiền bối cho cổ võ từ yếu đến mạnh lại phân chia cảnh giới.</p><p><br></p><p>Thông Mạch Cảnh, Tử Phủ Cảnh, Ngưng Cương Cảnh, Nguyên Đan Cảnh về phần cảnh giới càng cao hơn, cái này Cửu Tuyền trong thành liền không có, mỗi cảnh lại phân Cửu Trọng Thiên.</p><p><br></p><p>Tại Mục Thiên một bên, lại còn có một bộ dáng non nớt thiếu niên, hắn mày kiếm mắt sáng, mắt trái giữa lông mày có một đầu mặt sẹo, hai gò má góc cạnh rõ ràng ngày thường tuấn lãng, niên kỷ mặc dù tuổi trẻ, nhìn qua bất quá mười lăm mười sáu tuổi, bất quá trên thân lại là có một cỗ quân nhân thiết huyết chi khí.</p><p><br></p><p>Kia áo giáp màu bạc mặc lên người, càng lộ ra oai hùng bất phàm.</p><p><br></p><p>Mục Phong, Mục Thiên chi tử, Nam Linh Quốc nổi danh thiên tài, Mục gia thiên kiêu, thuở nhỏ đi theo phụ thân trong quân đội chinh chiến, mặc dù mới mười lăm tuổi, bất quá đã là một khai phách Tử Phủ, có được nguyên khí thiên tài, cảnh giới càng là đạt đến Tử Phủ Tam trọng tiểu thiên vị tu vi.</p><p><br></p><p>Mục Phong nắm chặt trong tay quân thức chiến đao, nương theo tại phụ thân tả hữu, ánh mắt để lộ ra đồng niên người không có kiên định, đối mặt mấy chục vạn đại quân tâm không sợ hãi.</p><p><br></p><p>Cửu Tuyền trên thành, một người mặc màu đen giao Long Vương bào nam tử trung niên lạnh lùng nhìn qua phía dưới, nhìn về phía Mục Thiên bóng lưng lúc, nhiều một tia âm lãnh ý cười.</p><p><br></p><p>\"Mục Thiên, ai bảo ngươi đứng sai trận doanh, hôm nay, trách không được bản vương tâm ngoan \"</p><p><br></p><p>Nam tử trung niên tự lẩm bẩm.</p><p><br></p><p>\"Ô ~ \"</p><p><br></p><p>Đối diện bảy tám chục vạn trong đại quân vang lên công kích kèn lệnh.</p><p><br></p><p>\"Giết!\"</p><p><br></p><p>Quân địch tướng lĩnh gầm lên giận dữ, lập tức mấy chục vạn đại quân lao nhanh mà đến, khí thế hùng hổ, một tiếng này chữ Sát vang vọng thiên vũ.</p><p><br></p><p>\"Phong nhi, sợ sao?\"</p><p><br></p><p>Mục Thiên nhìn qua mấy chục vạn tới lao nhanh đại quân, hỏi hướng về phía con trai mình Mục Phong.</p><p><br></p><p>\"Cha, ta không sợ, ta Mục gia nam nhi, bảo vệ quốc gia, thà rằng tiến lên trước một bước ch.ết, tuyệt không lui lại nửa bước sinh \"</p><p><br></p><p>Mục Phong ngữ khí âm vang hữu lực nói.</p><p><br></p><p>\"Ha ha, không hổ là ta Mục Thiên giống, các huynh đệ, các ngươi đâu, sợ sao?\"</p><p><br></p><p>Mục Thiên lại đối phía sau mình hai mươi vạn quân nhân quát hỏi.</p><p><br></p><p>\"Mục gia quân, không người sợ ch.ết \"</p><p><br></p><p>Hai mươi vạn tướng sĩ cầm súng gầm thét, thẳng thắn cương nghị.</p><p><br></p><p>\"Tốt! Phạm nhà ta nước người, tội đáng tru, giết!\"</p><p><br></p><p>Mục Thiên ra lệnh một tiếng, nâng thương gầm thét.</p><p><br></p><p>\"Giết ~ \"</p><p><br></p><p>Mục Phong kêu giết, hai mươi vạn Mục gia quân kêu giết, lập tức hai mươi vạn cưỡi chiến mã thẳng hướng đối diện mấy chục vạn người, cứ việc nhân số bên trên kém cách quá lớn, coi như bởi vì một nguyên nhân, cũng đủ để cho bọn hắn quên mất e ngại, nhiệt huyết chém giết.</p><p><br></p><p>Sinh vì quân nhân, bảo vệ quốc gia!</p><p><br></p><p>Ầm ầm ~!</p><p><br></p><p>Lập tức hai chi dòng lũ sắt thép đụng vào nhau, đao kiếm giao tiếp tiếng vang triệt Vân Tiêu, tiếng la giết chấn thiên vang lên.</p><p><br></p><p>Mục Thiên cầm trong tay chiến thương, thể nội kim sắc Vũ Nguyên lực như là lao nhanh giang hà, rót vào trường thương, đâm ra một thương, lập tức mấy chục đạo kim sắc thương mang bắn giết hướng về phía đối diện nhân mã.</p><p><br></p><p>Phốc phốc! Phốc phốc! Phốc phốc!</p><p><br></p><p>Lập tức liền có vài chục tên quân địch bị thương mang đâm vào thấu thể mà ch.ết, ch.ết tại một chiêu này phía dưới.</p><p><br></p><p>Lực lượng một người nhưng đồ diệt ngàn người, một chiêu chi uy có thể trảm trăm quân, đây chính là Nguyên Đan Cảnh võ đạo cường giả.</p><p><br></p><p>\"Giết!\"</p><p><br></p><p>Mục Phong cầm trong tay chiến đao lưng chiến thương, chân đạp chiến mã, nhảy qua xa hơn mười thước khoảng cách, một đao đánh xuống, lập tức một đạo dài ba mét màu đỏ đao khí chém về phía một Thiên Phong Quốc quân địch.</p><p><br></p><p>\"A!\"</p><p><br></p><p>Tên này quân địch một tiếng rú thảm bị một đao chém thành hai nửa.</p><p><br></p><p>Mục Phong rơi xuống, chân đạp quân địch chiến mã, lại một đao đánh xuống một tên khác quân địch tướng sĩ đầu lâu.</p><p><br></p><p>Bước chân đạp mạnh quân địch lưng ngựa, đến nhảy về chiến mã của mình trên lưng, cái này trong quân giết người chiến kỹ, Mục Phong đã vận dụng đến phi thường thành thạo.</p><p><br></p><p>Mục Phong cũng thông minh, không rời đi cha mình hai mươi trượng bên ngoài, tại trong đại quân lớn chặt đại sát.</p><p><br></p><p>\"Vương gia, muốn thả tiễn hiệp trợ Mục tướng quân sao?\"</p><p><br></p><p>Cao mấy chục mét Cửu Tuyền trên tường thành, một thủ trong thành đem hỏi hướng về phía nam tử trung niên, Nam Linh Quốc Thân Vương Nam Hào.</p><p><br></p><p>\"Không cần, loạn tiễn không có mắt, cũng đừng ngộ thương đến chúng ta Mục tướng quân \"</p><p><br></p><p>Nam Hào cười lạnh nói, cái này trung tướng nhướng mày, cũng không nhiều lời cái gì.</p><p><br></p><p>Mục gia quân cùng quân địch nhân số chênh lệch gấp ba bốn lần nhiều, cứ việc Mục gia quân dũng mãnh thiện chiến, bất quá cũng đánh không lại người ta về số lượng ưu thế.</p><p><br></p><p>Đại Nhật dần dần ngã về tây, đại chiến hồi lâu sau, Mục gia quân tổn hại binh hơn phân nửa, diệt địch có hai mươi vạn nhiều, máu tươi nhuộm đỏ cát vàng.</p><p><br></p><p>Mà Cửu Tuyền trong thành, vậy mà không có phái quân trợ giúp Mục gia quân.</p><p><br></p><p>\"Vương gia, tiếp tục như vậy cũng không phải là cách pháp, Mục tướng quân Mục gia quân mặc dù anh dũng, nhưng nhân số bên trên quá bị thua thiệt, thuộc hạ cầu vương gia để cho ta mang trợ giúp Mục gia quân \"</p><p><br></p><p>Một trung tướng tại Cửu Tuyền trên tường thành xuyên thấu màu đen giao Long Vương bào nam tử trung niên Nam Hào cung kính nói.</p><p><br></p><p>\"Không thể phái quân trợ giúp, người đều phái đi ra, ai đến thủ thành?\"</p><p><br></p><p>Nam Hào vậy mà trực tiếp cự tuyệt.</p><p><br></p><p>Cái này trung tướng sắc mặt khó coi, cắn răng, nhìn phía phía dưới dục huyết phấn chiến Mục gia quân, trong lòng rất cảm giác khó chịu.</p><p><br></p><p>Quân địch hậu phương, một cưỡi đầu mọc sừng rồng Long Mã tướng quân nhìn qua phía trước chiến đấu, không khỏi thở dài: \"Cái này Mục Thiên, quả nhiên là một viên hổ tướng, đáng tiếc sinh ở Nam Linh Quốc, truyền lệnh xuống, toàn lực tiến công, trảm địch một người, thưởng bách kim!\"</p><p><br></p><p>\"Là tướng quân!\"</p><p><br></p><p>Một bên lính liên lạc quá khứ hạ lệnh.</p><p><br></p><p>\"Tướng quân, dạng này giết tiếp không phải biện pháp, quân địch nhân số quá nhiều, chúng ta vẫn là trước tiên lui tại thành, mượn có lợi địa thế ngăn cản quân địch , chờ viện quân đến tại cùng đối phương nhất quyết sinh tử không muộn \"</p><p><br></p><p>Một áo giáp nhuốm máu nam tử khôi ngô, Mục Thiên phụ tá đắc lực mục thu tới nói.</p><p><br></p><p>Mục Thiên nhìn một cái tổn thất hơn phân nửa Mục gia quân, cùng mình một mặt mỏi mệt nhi tử, nhẹ gật đầu, quát to: \"Lui giữ trong thành \"</p><p><br></p><p>Sau đó Mục gia quân bắt đầu vừa đánh vừa triệt thoái phía sau, một mực rút lui đến Cửu Tuyền dưới thành.</p><p><br></p><p>\"Đại quân lui về thủ thành, nhanh mở cửa thành \"</p><p><br></p><p>Một Mục gia trong quân tướng lĩnh quát.</p><p><br></p><p>\"Tướng quân, chúng ta lập tức mở cửa thành \"</p><p><br></p><p>Đầu tường trung tướng hét lớn đáp lại, liền muốn đi mở cửa thành, nhưng lúc này một thanh lợi kiếm trực tiếp chặt xuống hắn đầu lâu.</p><p><br></p><p>Nam Hào một kiếm chém giết cái này trung tướng, đối dưới thành Mục gia quân cười lạnh nói: \"Không thể rút lui!\"</p><p><br></p><p>\"Vương gia, ngài có ý tứ gì?\"</p><p><br></p><p>Mục Thiên gặp một màn này con ngươi nhíu lại, lửa giận nổi lên.</p><p><br></p><p>\"Mục tướng quân, các ngươi vừa rút lui, quân địch tất nhiên thừa cơ công thành, Mục tướng quân, mời kiên trì một hồi, quân ta trợ giúp cũng nhanh đến \"</p><p><br></p><p>Nam Hào nhìn qua dưới thành cười lạnh nói.</p><p><br></p><p>\"Ta nhổ vào, mẹ nó, Nam Hào, ngươi cái hèn hạ tiểu tử, ta nhìn ngươi chính là muốn hại ch.ết chúng ta Mục gia quân, nhanh mở cửa thành \"</p>",
       "order": 1,
-      "createdAt": "2023-03-11T09:00:00Z",
-      "updatedAt": "2023-03-12T10:30:00Z",
-      "views": 24500,
+      "createdAt": "2025-07-15T14:27:16.258Z",
+      "updatedAt": "2025-07-15T14:27:16.258Z",
+      "views": 0,
       "isDraft": false
     },
     {
-      "id": "2",
-      "storyId": 1,
-      "title": "Chương 2: Gặp tiên nhân",
-      "content": "Trong rừng sâu, Lôi Trần gặp một lão giả kỳ dị tự xưng là tu tiên giả...",
+      "id": "eb9a",
+      "storyId": "1",
+      "title": "Chương 2 : Gian trá tiểu nhân",
+      "content": "<p>Có Mục gia quân tướng sĩ phẫn nộ quát, bọn hắn cũng không nhận cái gì vương gia, bọn hắn phục chỉ có một người, Mục Thiên.</p><p><br></p><p>Nam Hào không để ý tới Mục gia quân phẫn mắng, đối Mục Thiên cười lạnh nói: \"Mục tướng quân, hiện tại cũng không thể mở cửa thành, hiện tại như mở, quân địch tất nhiên theo đuôi giết vào trong thành, đến lúc đó Cửu Tuyền thành hơn trăm vạn con dân tất nhiên bị tàn sát, mời tướng quân nhiều kiên trì một hồi, viện quân không lâu liền đến \"</p><p><br></p><p>Phía dưới Mục gia quân nghe vậy lửa giận nổi lên, thậm chí có người đỡ cung nhắm ngay Nam Hào, thế nhưng lại bị Mục Thiên một thanh ngăn cản.</p><p><br></p><p>\"Tướng quân ~ Nam Hào tên tiểu nhân này chính là muốn hại chết chúng ta Mục gia quân muốn hại chết tướng quân a \"</p><p><br></p><p>\"Đúng vậy a tướng quân, xông vào thành a \"</p><p><br></p><p>Mục Thiên nhìn qua Nam Hào, đối một bên Mục Phong lạnh giọng nói ra: \"Phong nhi, nhớ kỹ người này \"</p><p><br></p><p>Mục Phong trong mắt cũng nhiều một sợi hàn mang, nhẹ gật đầu.</p><p><br></p><p>Sau đó Mục Thiên rút lui ngựa trở lại, phẫn nộ quát: \"Mục gia quân, công kích!\"</p><p><br></p><p>Mục Thiên nói xong nâng thương một ngựa đi đầu giết ra ngoài, hơn mười vạn Mục gia quân hai mặt nhìn nhau, sau đó cũng cắn răng gầm lên giận dữ càng lấy Mục Thiên giết tới, mà Mục Phong, nương theo Mục Thiên tả hữu tại trong loạn quân trắng trợn giết chóc.</p><p><br></p><p>Máu tươi, nhuộm đỏ thiếu niên áo giáp, nhuộm đỏ thiếu niên kia non nớt bên trong lộ ra một tia thiết huyết khí tức khuôn mặt.</p><p><br></p><p>Hắn trước bộ ngực kia một khối huyết hồng sắc hình trái tim ngọc bội, cũng tắm rửa tại thiếu niên lồng ngực máu tươi bên trong phát ra sâu kín huyết quang.</p><p><br></p><p>Mười vạn người, ngạnh kháng đối phương mấy chục vạn người, kết quả không cần nói cũng biết, Mục gia quân bị vây quanh tại trong loạn quân, người càng giết càng ít.</p><p><br></p><p>Thời gian dần trôi qua, Mục gia quân chết được sau cùng hơn một ngàn danh tướng sĩ.</p><p><br></p><p>Mục Thiên một cánh tay cầm súng, mà hắn một cánh tay khác đã bị chém đứt, máu me đầm đìa, hắn vượt dưới Thanh Lân Độc Giác Mã trong chiến đấu đã sớm chết đi.</p><p><br></p><p>Mục Phong áo giáp vỡ vụn, trên lồng ngực nhiều một đầu sâu có thể đụng xương vết thương khổng lồ, vết thương nhỏ vô số, cho dù bản thân bị trọng thương, bất quá hai cha con ánh mắt y nguyên sắc bén, giống nhau như đúc sắc bén, không mang theo chút nào e ngại.</p><p><br></p><p>Kia hơn một ngàn tên còn sót lại Mục gia quân đồng dạng đều là vết thương chồng chất, mình đầy thương tích, thế nhưng là, không có người nào lộ ra sợ hãi cái chết mềm yếu chi sắc.Quân địch đối diện, một người mặc hắc khải rạn máu đỏ chiến bào nam tử khôi ngô cưỡi tại một đầu mãnh hổ yêu thú trên lưng, nhìn qua chiến đấu đến giờ khắc này Mục gia quân, cũng nhiều một tia kính nể.</p><p><br></p><p>\"Mục Thiên, đầu hàng đi, đã nam linh vứt bỏ ngươi, sao không đến ta thiên phong, ta cam đoan, ngươi dạng này cường giả người trung nghĩa, đến ta thiên phong sẽ cho ngươi tốt hơn đãi ngộ \"</p><p><br></p><p>Nam tử trung niên mở miệng chiêu hàng, cùng là quân nhân, hắn kính nể Mục Thiên dạng này thiết huyết quân nhân.</p><p><br></p><p>\"Đầu hàng?\"</p><p><br></p><p>Mục Thiên nghe vậy cười, nhuốm máu trên khuôn mặt lộ ra một vòng mỉa mai ý cười.</p><p><br></p><p>\"Ta Mục gia thế hệ vì quân, liền không có đầu hàng hạng người, chúng ta quân nhân, bảo vệ quốc gia, chúng ta võ tu, sống lưng bất khuất, thà rằng tiến lên trước một bước chết, quyết không lui lại nửa bước sinh, các huynh đệ, các ngươi khuyên hàng sao?\"</p><p><br></p><p>Mục Thiên đối sau lưng hơn một ngàn tàn quân rống to.</p><p><br></p><p>\"Thà rằng tiến lên trước một bước chết, quyết không lui lại nửa bước sinh, chúng ta thề chết cũng đi theo tướng quân \"</p><p><br></p><p>Chúng Mục gia quân giận dữ hét lên, đã giết đỏ cả mắt.</p><p><br></p><p>Mục Thiên nghe vậy mắt hổ bên trong không khỏi nhiều một tia nước mắt, hắn nhìn phía Mục Phong, đầu lâu va chạm Mục Phong đầu lâu, thấp giọng, tràn ngập tự trách đạo</p><p><br></p><p>\"Phong nhi, thật xin lỗi, ngươi thuở nhỏ theo cha thân tòng quân nhiều năm, vi phụ đối ngươi chỉ có nghiêm khắc, nhưng không có cho ngươi một tia nhà khác phụ thân yêu thương, hôm nay càng đem ngươi đưa vào tử cục này, phụ thân, phụ thân không phải người cha tốt \"</p><p><br></p><p>Đổ máu không đổ lệ Mục Thiên nói tới chỗ này cũng không khỏi đến nước mắt chảy ròng, ai nói thiết huyết nam tử vô lệ, chỉ là chưa tới tình thâm lúc.</p><p><br></p><p>Mục Phong cười, tái nhợt trong tươi cười không có một tia hối hận cùng oán hận, nói: \"Phụ thân, tại Phong nhi trong lòng ngài chính là trên đời này vĩ đại nhất phụ thân, từ nhỏ Phong nhi liền lấy phụ thân làm vinh, muốn làm phụ thân đồng dạng thiết huyết nam nhân, võ giả, ngài đối Phong nhi nghiêm khắc, không cũng là vì ta được không?\"</p><p><br></p><p>\"Ha ha, có này nhi tử, ta Mục Thiên còn cầu mong gì \"</p><p><br></p><p>Mục Thiên nghe vậy cười to, tiếng cười không nói ra được bi thương, sau đó hắn lại nhìn phía hơn ngàn danh tướng sĩ, vung lên chiến bào, đối đầu ngàn tướng sĩ quỳ một gối xuống xuống dưới.</p><p><br></p><p>Rầm rầm!</p><p><br></p><p>Hơn ngàn tướng sĩ thấy thế cũng quỳ xuống.</p><p><br></p><p>\"Các vị huynh đệ, ta Mục Thiên có lỗi với các ngươi, để các ngươi theo giúp ta bị gian nhân làm hại, là ta Mục Thiên vô năng, đem các vị huynh đệ đưa vào tử cục \"</p><p><br></p><p>\"Tướng quân ~ \"</p><p><br></p><p>\"Chúng ta trở thành Mục gia quân hôm đó, liền thề bồi tướng sĩ bảo vệ quốc gia, thề chết cũng đi theo tướng quân, cho dù da ngựa bọc thây, chúng ta dứt khoát \"</p><p><br></p><p>\"Cho dù da ngựa bọc thây, chúng ta dứt khoát \"</p><p><br></p><p>Hơn ngàn tướng sĩ lệ nóng doanh tròng, cùng kêu lên rống to.</p><p><br></p><p>\"Ha ha, tốt, tốt huynh đệ, các ngươi đều là tốt nhất quân nhân cùng võ giả, ta Mục Thiên đời này có thể cùng các ngươi làm bạn làm vinh, nếu có đời sau, chúng ta còn làm huynh đệ! Sinh tử dứt khoát \"</p><p><br></p><p>Mục Thiên nói xong đứng lên đến, sau đó hắn nhấc lên thương, ngược lại hét lớn: \"Mục gia quân!\"</p><p><br></p><p>\"Tại!\"</p><p><br></p><p>\"Công kích!\"</p><p><br></p><p>Mục Thiên nói xong nâng thương thẳng hướng đối diện mấy chục vạn đại quân, hơn ngàn tướng sĩ gầm thét xách đao thương thẳng hướng mấy chục vạn đại quân.</p><p><br></p><p>Này một ngàn nhiều người, như là thiêu thân lao đầu vào lửa, dứt khoát, cũng bất khuất.</p><p><br></p><p>Nơi xa trên tường thành, Cửu Tuyền thành thủ thành tướng sĩ nhìn qua một màn này cũng đều chảy xuống nhiệt lệ, từng cái nắm chặt trong tay chiến thương.</p><p><br></p><p>Mà Nam Hào, thì cười lạnh nhìn qua đây hết thảy.</p><p><br></p><p>\"Mục Thiên a Mục Thiên, hôm nay chi cục chỉ đổ thừa chính ngươi, ngươi chết, nhưng chớ trách bản vương a...\"</p><p><br></p><p>Cuối cùng, Mục gia quân toàn quân bị diệt tại Cửu Tuyền ngoài thành, Mục Thiên bị kia chiêu hàng địch tướng tự mình một kiếm đâm vào lồng ngực.</p><p><br></p><p>\"Mục Thiên, ta kính nể người không nhiều, ngươi là trong đó một cái \"</p><p><br></p><p>Cái này địch tướng tự lẩm bẩm, sau đó rút kiếm ra, Mục Thiên ngã xuống trong ngực của hắn.</p><p><br></p><p>Mà lúc này, Cửu Tuyền thành hậu phương một cái sơn cốc bên trong, một mực chờ đợi đã lâu đại quân mới nhận được mệnh lệnh tiến về phía trước trợ giúp.</p><p><br></p><p>Viện quân kỳ thật sớm lấy đến, chỉ là nghe Nam Hào mệnh lệnh, vẫn giấu kín tại hậu phương, thẳng đến Mục gia quân toàn quân bị diệt mới xuất hiện.</p><p><br></p><p>Chi này viện quân cùng thủ thành quân xông vào chiến trường về sau, quân địch mới thối lui, liền ngay cả Mục Thiên thi thể cũng bị kia địch tướng mang đi.</p><p><br></p><p>Tại một đống trong thi thể, thiếu niên thân thể nằm ở một bên, trái tim của hắn bộ vị, bị một con mũi tên xuyên thấu đâm nát, thân thể đã bắt đầu không có nhiệt độ.</p><p><br></p><p>Mà lúc này, hắn trước bộ ngực kia một khối huyết hồng sắc hình trái tim ngọc bội, vậy mà biến thành một đạo huyết hồng sắc quang mang tràn vào hắn vị trí trái tim, kia vỡ vụn trái tim vậy mà bắt đầu khép lại.</p><p><br></p><p>Khép lại trái tim tản ra huyết hồng sắc u quang, sau đó bắt đầu chậm rãi nhảy lên, một cỗ bá đạo năng lượng xông vào thiếu niên toàn thân chín đầu nguyên mạch bên trong trắng trợn phá hư, cái này một cỗ năng lượng bá đạo đến cực điểm, đỏ đến giống máu... .</p><p><br></p><p>\"Mau nhìn, nơi này còn có người còn sống \"</p><p><br></p><p>\"Cái này, đây không phải Mục tướng quân nhi tử Mục Phong sao?\"</p><p><br></p><p>\"Là Mục Phong, nhanh, mau đưa Mục Phong giấu đi, để vương gia biết tất nhiên sẽ không bỏ qua Mục Phong, Mục tướng quân một thế trung nghĩa, là ta bội phục nhất người, cũng không thể để Mục tướng quân bị hại chết mà không sau \"</p><p><br></p><p>Mấy tên có lương tâm tướng sĩ len lén đem Mục Phong khiêng đi, sau đó đưa vào Nam Linh Quốc, Nam Linh Quốc đều mục phủ bên trong...</p>",
       "order": 2,
-      "createdAt": "2023-03-15T14:20:00Z",
-      "updatedAt": "2023-03-16T11:15:00Z",
-      "views": 19800,
-      "isDraft": false
-    },
-    {
-      "id": "3",
-      "storyId": 2,
-      "title": "Chương 1: Tái sinh làm ma",
-      "content": "Sau khi chết đi, Hắc Vô Thường thức tỉnh trong thân thể của một tiểu ma binh...",
-      "order": 1,
-      "createdAt": "2024-01-10T10:00:00Z",
-      "updatedAt": "2024-01-12T15:30:00Z",
-      "views": 15600,
-      "isDraft": false
-    },
-    {
-      "id": "4",
-      "storyId": "2",
-      "title": "",
-      "content": "<p><br></p>",
-      "order": null,
-      "createdAt": null,
-      "updatedAt": "2025-07-14T01:44:11.628Z",
-      "views": 0,
-      "isDraft": true
-    },
-    {
-      "id": "55",
-      "storyId": "2",
-      "title": "",
-      "content": "<p><br></p>",
-      "order": null,
-      "createdAt": "2025-07-14T01:46:22.106Z",
-      "updatedAt": "2025-07-14T01:46:22.106Z",
+      "createdAt": "2025-07-15T14:24:06.935Z",
+      "updatedAt": "2025-07-15T14:24:06.935Z",
       "views": 0,
       "isDraft": false
     },
     {
-      "id": "66",
-      "storyId": "2",
-      "title": "a",
-      "content": "<p>a</p>",
-      "order": null,
-      "createdAt": "2025-07-14T01:49:37.724Z",
-      "updatedAt": "2025-07-14T01:49:37.724Z",
-      "views": 0,
-      "isDraft": false
-    },
-    {
-      "id": 77",
+      "id": "c40a",
       "storyId": "1",
-      "title": "Test",
-      "content": "<p><span style=\"color: rgb(230, 0, 0);\">Test</span></p>",
-      "order": null,
-      "createdAt": "2025-07-14T13:29:26.790Z",
-      "updatedAt": "2025-07-14T13:29:26.790Z",
-      "views": 0,
-      "isDraft": false
-    }
-    {
-      "id": "801a",
-      "storyId": "1",
-      "title": "test",
-      "content": "<p><span style=\"color: rgb(255, 153, 0);\">Test</span></p>",
-      "order": null,
-      "createdAt": "2025-07-14T15:11:03.865Z",
-      "updatedAt": "2025-07-14T15:11:03.865Z",
+      "title": "Chương 3:: Mục Phong nguy cơ",
+      "content": "<p>Bắc Võ đại lục, vạn nước san sát, bách tộc tranh phong, địa vực rộng rộng vô biên.</p><p><br></p><p>Nam Linh Quốc, quốc đô, một tòa nhân khẩu quá ngàn vạn cự thành, tam giáo cửu lưu, ngư long hỗn tạp.</p><p><br></p><p>Mà Mục gia, thế hệ vì quân, võ đạo gia tộc, tại Nam Linh Quốc trong quân không nhỏ địa vị, tại quốc đô bên trong cũng coi là thượng lưu cấp độ gia tộc, bất quá cũng không đỉnh tiêm.</p><p><br></p><p>Trong thiên hạ hẳn là vương thần, đất ở xung quanh đều là vương thổ, cái này quốc đô bên trong, lớn nhất cự đầu thực lực tự nhiên là kia cao cao tại thượng hoàng quyền.</p><p><br></p><p>Mục Phủ bên trong, nào đó tinh xảo viện lạc trong phòng khách, ánh nắng xuyên thấu qua cửa sổ, hóa thành một đạo pha tạp xuyên suốt tại thiếu niên cương nghị tuấn lang trên khuôn mặt.</p><p><br></p><p>Hắn ngủ say như hài nhi, hô hấp đều đều, trần trụi nửa người trên lồng ngực còn băng bó lấy màu trắng thuốc vải.</p><p><br></p><p>Dây kia đầu rõ ràng cơ bắp rút đao sẹo, vết kiếm giăng khắp nơi, cái này mười lăm mười sáu tuổi thiếu niên, đến cùng trải qua nhiều ít đại chiến, một đầu huyết sắc Kỳ Lân hình xăm qua vai mà văn.</p><p><br></p><p>Một vị tóc hoa râm đại phu bắt mạch về sau, đứng dậy, đối một bên một vị nam tử trung niên nói: \"Mục gia, Tam công tử thương thế đã không có trở ngại, điều trị chút tuế nguyệt thuận tiện, chỉ là. . .\"</p><p><br></p><p>Trung niên nam tử này sư miệng hổ mũi, người mặc màu đen cẩm bào, trên thân cũng có cỗ thiết huyết chi khí, khí tức hùng hậu, không giận mà uy.</p><p><br></p><p>Mục Thần, Mục gia đương đại gia chủ, cũng là Mục Phong Đại bá.</p><p><br></p><p>\"Chỉ là cái gì? Lưu Dược Sư, ngài cứ nói đừng ngại \"</p><p><br></p><p>Mục Thần gặp Lưu Dược Sư ấp a ấp úng, không khỏi nhíu mày hỏi.</p><p><br></p><p>\"Chỉ là Phong thiếu gia nguyên mạch toàn bộ vỡ vụn, không cách nào khép lại, chỉ sợ, kiếp này võ đồ là vô vọng!\"</p><p><br></p><p>\"Cái gì, sao lại thế!\"</p><p><br></p><p>\"Phong nhi. . .\"</p><p><br></p><p>Trong phòng khách người nhà họ Mục nghe vậy đều là quá sợ hãi.</p><p><br></p><p>\"Phong. . .\"</p><p><br></p><p>Một vị người mặc màu trắng váy áo, lông mày thanh tú, hai con ngươi sáng tỏ có thần tựa như thu thuỷ, da như mỡ đông xinh đẹp thiếu nữ trong đôi mắt đẹp nước mắt càng là nhỏ xuống xuống dưới, một đôi ngọc thủ vuốt ve thiếu niên kiên nghị hình dáng, tất cả đều là đau lòng.Vân Thanh Uyển, Mục Phong thanh mai trúc mã vị hôn thê, cùng là võ đạo quan lại gia tộc Vân gia đại tiểu thư.</p><p><br></p><p>\"Lưu Dược Sư, ngươi nói bậy, ta Phong ca, ta Phong ca làm sao lại nguyên mạch vỡ vụn, cái gì võ đồ vô vọng, ta nhìn ngươi chính là nói bậy, hắn, hắn nhưng là gia tộc đệ nhất thiên tài a \"</p><p><br></p><p>Một niên kỷ cùng Mục Phong không chênh lệch nhiều, tính cách nóng nảy, một đầu cương châm tóc ngắn áo bào đen khôi ngô thiếu niên Mục Cuồng một phát bắt được Lưu Dược Sư ống tay áo, đầy ngập lửa giận.</p><p><br></p><p>Không thể tu luyện, tại võ đạo trong gia tộc, cũng liền ý vị người không có bất luận cái gì tiền đồ, cùng phế vật không khác.</p><p><br></p><p>\"Mục Cuồng, lui ra, không được vô lễ!\"</p><p><br></p><p>Mục Thần nhất thanh thanh hát, Mục Cuồng nghe vậy nắm chặt nắm đấm lui ra, nhìn qua nằm thiếu niên, cắn chặt môi.</p><p><br></p><p>\"Phong ca. . .\"</p><p><br></p><p>\"Kia Lưu Dược Sư, ngài nhìn có hay không biện pháp có thể chữa trị? Ta Mục gia nguyện ý không tiếc bất cứ giá nào \"</p><p><br></p><p>Mục Thần thanh âm, cũng có một chút phát run.</p><p><br></p><p>\"Có, trừ phi có lục giai linh đan, hoặc là dược sư cường giả hao phí đại lượng công lực trường kỳ an dưỡng, nguyên mạch còn có tự lành khả năng, thế nhưng là ngài biết đến, lục giai linh đan toàn bộ Nam Linh Quốc chỉ sợ cũng khó khăn tìm \"</p><p><br></p><p>Lưu Dược Sư thở dài nói.</p><p><br></p><p>Những người khác nghe vậy đều lộ ra vẻ tuyệt vọng, lục giai linh đan, toàn bộ Nam Linh Quốc chỉ sợ đều tìm không ra hai viên đi.</p><p><br></p><p>\"Tốt, ta đã biết, ngài lui ra đi \"</p><p><br></p><p>Mục Thần phảng phất già mấy tuổi, phất phất tay, người dược sư này lui xuống, hắn sau đó lại đuổi những người khác rời đi, chỉ có hắn cùng Vân Thanh Uyển còn lưu tại trong phòng.</p><p><br></p><p>\"Thanh Uyển, mệt mỏi liền trở về nghỉ ngơi đi \"</p><p><br></p><p>\"Không, mục thúc, ta phải bồi Phong, ngài đi nghỉ ngơi \"</p><p><br></p><p>Vân Thanh Uyển lắc đầu, Mục Thần nghe vậy cũng thở dài rời đi.</p><p><br></p><p>Thiếu nữ dùng khăn mặt lau sạch nhè nhẹ lấy thiếu niên gương mặt, thân thể, khóe miệng ngậm lên sáng rỡ ý cười.</p><p><br></p><p>\"Phong, ta biết, ngươi nhất định sẽ tỉnh lại, ngươi đã nói, tương lai ngươi cần phải vì ta chinh phục một cái thiên hạ đâu, không có khó khăn có thể đánh đến ngươi, Phong, vô luận phát sinh cái gì, Uyển nhi bồi tiếp ngươi. . .\"</p><p><br></p><p>Nàng nhẹ nhàng tựa ở thiếu niên trên lồng ngực, mà thiếu niên đóng chặt trong con ngươi, lại là nhỏ xuống một giọt óng ánh. . .</p><p><br></p><p>Rất nhanh, Mục Phong nguyên mạch vỡ vụn tin tức truyền khắp mục phủ, đưa tới không ít oanh động.</p><p><br></p><p>\"Cái gì, Phong thiếu gia nguyên mạch vỡ vụn, trở thành phế nhân, đây, đây là thật sao?\"</p><p><br></p><p>\"Thật, ta thế nhưng là nghe Phong thiếu gia người hầu nói, thiên chân vạn xác.\"</p><p><br></p><p>\"Ai, đáng tiếc a, một thiên tài, cứ như vậy vẫn lạc, ta Mục gia hai mươi vạn Mục gia quân chiến tử, nhị gia cũng chết tại chiến trường, bây giờ Phong thiếu gia còn sống trở về, lại là rơi vào kết cục như thế, lão thiên bất công a \"</p><p><br></p><p>\"Đúng vậy a, Phong thiếu gia phế mạch, nhị gia chiến tử, ta mục phủ suy sụp kỳ tới a. . .\"</p><p><br></p><p>Một đám hạ nhân chuyện phiếm nghị luận.</p><p><br></p><p>Mục Phong, Mục gia đệ nhất thiên tài, năm tuổi tu luyện, mười hai tuổi liền đả thông chín đầu nguyên mạch, mười bốn tuổi khai phách ra Tử Phủ trở thành chân chính tiên thiên võ giả, Mục gia đương thời đệ nhất thiên tài, toàn bộ quốc đô cũng là nổi danh thiên tài, còn bị quốc đô thứ nhất Hoàng gia võ học viện đích thân chọn muốn tuyển nhận học sinh.</p><p><br></p><p>Bây giờ nguyên mạch vỡ vụn, trở thành một giới phế nhân, không biết nhiều ít tiếng thở dài vang lên.</p><p><br></p><p>Rất nhanh, tin tức này cũng truyền đến quốc đô bên trong các đại gia tộc tai mắt bên trong, cũng đưa tới chấn động không nhỏ.</p><p><br></p><p>----------------------------</p><p><br></p><p>Đầy sao hội tụ, trăng khuyết như câu, ban đêm Nam Linh Quốc đều đèn đuốc rã rời hoa đăng sáng chói.</p><p><br></p><p>Phủ đệ như rừng, viện nhiều đất rộng, quốc đô bên trong nổi danh nhất lưu gia tộc, Thượng Quan gia tộc, lúc này là một mảnh đèn đuốc sáng trưng.</p><p><br></p><p>Thượng Quan gia, Nam Linh Quốc quan lại gia tộc, trong triều cũng là có nhất định phân lượng đại gia tộc, so Mục gia địa vị hơi cao.</p><p><br></p><p>Gian nào đó trong phòng khách, một vị tuổi tác tại mười bảy mười tám tuổi thiếu niên đang cùng thị nữ của mình đi kia chuyện trăng hoa, hai cỗ nhục thể triền miên, xuân quang vô hạn.</p><p><br></p><p>Thùng thùng. . . !</p><p><br></p><p>Mà lúc này bên ngoài gian phòng, truyền đến một tràng tiếng gõ cửa.</p><p><br></p><p>\"Mẹ nó ai vậy!\"</p><p><br></p><p>Trong phòng truyền đến thiếu niên nổi giận thanh âm.</p><p><br></p><p>\"Thiếu gia, là ta, tiểu nhân có việc gấp đến báo!\"</p><p><br></p><p>\"Cái gì việc gấp, đều mẹ nó chờ đó cho ta!\"</p><p><br></p><p>Chuyện tốt bị quấy rầy, thiếu niên là một bồn lửa giận, hắn đứng dậy, mặc xong áo bào, dùng chăn mền che khuất thị nữ kia xuân quang ngoại tiết thân thể.</p><p><br></p><p>Thiếu niên này khuôn mặt tuấn lang, mày kiếm mũi cao, trong mắt đều là lỗ mãng cùng tà khí.</p><p><br></p><p>Thượng Quan Thiên Chí, Thượng Quan gia tộc bên trong, gia chủ chi tử, bát phẩm Nguyên Cốt, cũng là võ đạo thiên phú bất phàm hạng người.</p><p><br></p><p>Mà võ đạo tu luyện, Nguyên Cốt, chính là một người căn cốt, Nguyên Cốt càng cao, đối thiên địa linh khí cảm ứng càng mạnh, từ thấp nhất nhất phẩm, đến tối cao cửu phẩm, về phần còn không có siêu việt Nguyên Cốt thiên phú tạm thời không đề cập tới.</p><p><br></p><p>Thượng Quan Thiên Chí mở cửa phòng ra, ngoài cửa là một cái áo xám nam bộc.</p><p><br></p><p>\"Ngươi tốt nhất cho ta cái lý do thích hợp, không phải, bản thiếu gia không phải chặt ngươi kia cái chân thứ ba \"</p><p><br></p><p>Thượng Quan Thiên Chí sắc mặt khó coi nói, hiển nhiên trong lòng của hắn còn có đoàn lửa.</p><p><br></p><p>Người hầu kia rùng mình một cái, vội vàng nói: \"Thiếu gia, đại hỉ sự, theo tin tức đáng tin, Mục gia Mục Phong, nguyên mạch vỡ vụn, trở thành một giới phế nhân, từ đây vô vọng võ đồ \"</p><p><br></p><p>Thượng Quan Thiên Chí trên mặt hiển hiện một vòng vui mừng, kích động bắt lấy người làm này cổ áo, nói: \"Ngươi nói cái gì, Mục Phong tiểu tử kia nguyên mạch nát?\"</p><p><br></p><p>\"Không sai, hiện tại Mục gia đều truyền ra, chỉ sợ không lâu, toàn bộ quốc đô chỉ sợ đều sẽ biết \"</p><p><br></p><p>\"Ha ha, tốt, quá tốt rồi, Mục Phong, lúc này ta nhìn ngươi còn có cái gì tư cách giành với ta Thanh Uyển, ta lập tức tìm ta cha đi Vân gia cầu hôn, ha ha ha, trời trợ giúp ta Thượng Quan Thiên Chí a \"</p><p><br></p><p>Thượng Quan Thiên Chí khoái ý tiếng cười to quanh quẩn tại trong phòng khách, cả kinh ngoài viện không ít người hầu trông lại.</p>",
+      "order": 3,
+      "createdAt": "2025-07-15T14:33:28.062Z",
+      "updatedAt": "2025-07-15T14:33:28.062Z",
       "views": 0,
       "isDraft": false
     }
   ],
   "comments": [
     {
-      "id": "1001",
-      "chapterId": 101,
-      "userId": 1,
+      "id": "1",
+      "storyId": "1",
+      "chapterId": "1",
+      "userId": "1",
       "username": "nguoivip",
       "avatar": "/avatars/1.jpg",
       "content": "Chương mở đầu rất hấp dẫn, mong tác giả ra chương mới sớm!",
@@ -226,8 +198,8 @@
       ],
       "replies": [
         {
-          "id": 10011,
-          "userId": 2,
+          "id": "1",
+          "userId": "2",
           "username": "tacgia_no1",
           "avatar": "/avatars/2.jpg",
           "content": "Cảm ơn bạn đã ủng hộ, chương mới sẽ ra vào tuần sau!",
@@ -240,9 +212,10 @@
       ]
     },
     {
-      "id": "1002",
-      "chapterId": 201,
-      "userId": 3,
+      "id": "2",
+      "storyId": "1",
+      "chapterId": "2",
+      "userId": "3",
       "username": "docgia_truyenma",
       "avatar": "/avatars/default.jpg",
       "content": "Chất lượng truyện VIP xứng đáng với đồng tiền bỏ ra!",
@@ -277,19 +250,19 @@
   ],
   "tags": [
     {
-      "id": "1",
+      "id": 1,
       "name": "xuyên không",
       "slug": "xuyen-khong",
       "storyCount": 189
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "trọng sinh",
       "slug": "trong-sinh",
       "storyCount": 156
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "nữ cường",
       "slug": "nu-cuong",
       "storyCount": 215
@@ -298,37 +271,46 @@
   "bookmarks": [
     {
       "id": "1",
-      "userId": 1,
-      "storyId": 1,
-      "lastReadChapterId": 102,
+      "userId": "1",
+      "storyId": "1",
+      "lastReadChapterId": "102",
       "createdAt": "2023-04-01T14:20:00Z"
     },
     {
       "id": "2",
-      "userId": 1,
-      "storyId": 2,
-      "lastReadChapterId": 201,
+      "userId": "1",
+      "storyId": "2",
+      "lastReadChapterId": "201",
       "createdAt": "2024-02-15T11:30:00Z"
-
     },
     {
-      "id": "18ea",
-      "userId": 2,
-      "storyId": 2
+      "id": "658f",
+      "userId": "2",
+      "storyId": "2"
+    },
+    {
+      "id": "d8a0",
+      "userId": "2",
+      "storyId": "1"
+    },
+    {
+      "id": "e9e1",
+      "userId": "9355",
+      "storyId": "1"
     }
   ],
   "follows": [
     {
       "id": "1",
-      "followerId": 1,
-      "followingId": 2,
+      "followerId": "1",
+      "followingId": "2",
       "type": "author",
       "createdAt": "2023-05-10T09:15:00Z"
     },
     {
       "id": "2",
-      "followerId": 1,
-      "storyId": 1,
+      "followerId": "1",
+      "storyId": "1",
       "type": "story",
       "createdAt": "2023-04-05T16:30:00Z"
     }
@@ -336,15 +318,15 @@
   "ratings": [
     {
       "id": "1",
-      "userId": 1,
-      "storyId": 1,
+      "userId": "1",
+      "storyId": "1",
       "score": 5,
       "createdAt": "2023-04-20T14:00:00Z"
     },
     {
       "id": "2",
-      "userId": 3,
-      "storyId": 2,
+      "userId": "3",
+      "storyId": "2",
       "score": 4,
       "createdAt": "2024-02-01T10:30:00Z"
     }
@@ -352,9 +334,9 @@
   "authorFeedbacks": [
     {
       "id": "1",
-      "userId": 1,
-      "authorId": 2,
-      "storyId": 1,
+      "userId": "1",
+      "authorId": "2",
+      "storyId": "1",
       "content": "Truyện rất hay nhưng xin tác giả tăng tốc ra chương!",
       "createdAt": "2023-06-15T11:20:00Z",
       "status": "read"
@@ -363,7 +345,7 @@
   "systemFeedbacks": [
     {
       "id": "1",
-      "userId": 1,
+      "userId": "1",
       "type": "feature_request",
       "content": "Nên thêm tính năng đọc offline cho app mobile",
       "createdAt": "2025-07-05T15:40:00Z",
@@ -373,8 +355,8 @@
   "reports": [
     {
       "id": "1",
-      "userId": 1,
-      "storyId": 2,
+      "userId": "1",
+      "storyId": "2",
       "reason": "Nội dung nhạy cảm không phù hợp",
       "details": "Chương 5 có cảnh bạo lực quá mức",
       "createdAt": "2024-03-10T14:25:00Z",
@@ -411,8 +393,8 @@
   "userMemberships": [
     {
       "id": "1",
-      "userId": 1,
-      "planId": 2,
+      "userId": "1",
+      "planId": "2",
       "startDate": "2025-01-01T00:00:00Z",
       "endDate": "2025-12-31T23:59:59Z",
       "paymentMethod": "momo",
@@ -422,7 +404,7 @@
   "aiAssistants": [
     {
       "id": "1",
-      "userId": 1,
+      "userId": "1",
       "type": "character_creation",
       "prompt": "Tạo nhân vật nữ chính mạnh mẽ, lạnh lùng",
       "result": "Lăng Thanh Tuyết - nữ chưởng môn phái Băng Tâm...",
@@ -430,7 +412,7 @@
     },
     {
       "id": "2",
-      "userId": 2,
+      "userId": "2",
       "type": "story_continuation",
       "prompt": "Tiếp tục đoạn sau khi nhân vật chính bị phản bội",
       "result": "Lôi Trần nắm chặt tay, ánh mắt lạnh băng...",
@@ -440,45 +422,45 @@
   "readingHistory": [
     {
       "id": "1",
-      "userId": 1,
-      "storyId": 1,
-      "chapterId": 102,
+      "userId": "1",
+      "storyId": "1",
+      "chapterId": 4,
       "lastRead": "2025-07-10T22:15:00Z",
-      "progress": 85
+      "progress": 1
     },
     {
       "id": "2",
-      "userId": 1,
-      "storyId": 2,
-      "chapterId": 201,
+      "userId": "1",
+      "storyId": "2",
+      "chapterId": "1",
       "lastRead": "2025-07-09T20:30:00Z",
-      "progress": 100
+      "progress": 2
     }
   ],
   "notifications": [
     {
       "id": "1",
-      "userId": 1,
+      "userId": "1",
       "type": "new_chapter",
       "content": "Truyện 'Đạo Giới Độc Tôn' vừa ra chương mới: Chương 151 - Đại chiến chư thiên",
-      "storyId": 1,
-      "chapterId": 151,
+      "storyId": "1",
+      "chapterId": "151",
       "createdAt": "2025-07-10T09:00:00Z",
       "isRead": false
     },
     {
       "id": "2",
-      "userId": 1,
+      "userId": "1",
       "type": "author_reply",
       "content": "tacgia_no1 đã trả lời bình luận của bạn",
-      "commentId": 1001,
+      "commentId": "1001",
       "createdAt": "2025-07-09T16:30:00Z",
       "isRead": true
     }
   ],
   "userStats": [
     {
-      "userId": 1,
+      "userId": "1",
       "storiesPosted": 0,
       "chaptersPosted": 0,
       "commentsPosted": 12,
@@ -487,10 +469,10 @@
       "followers": 15,
       "following": 8,
       "lastUpdated": "2025-07-10T18:00:00Z",
-      "id": "af1f"
+      "id": "0c4e"
     },
     {
-      "userId": 2,
+      "userId": "2",
       "storiesPosted": 5,
       "chaptersPosted": 350,
       "commentsPosted": 45,
@@ -499,8 +481,7 @@
       "followers": 1245,
       "following": 23,
       "lastUpdated": "2025-07-10T12:30:00Z",
-
-      "id": "6f45"
+      "id": "8a8c"
     }
   ]
 }
