@@ -41,8 +41,12 @@ export default function Register() {
         axios.post('http://localhost:9999/users', newUser)
             .then(result => {
                 if (result.data != null) {
+                    const user = result.data
+                    localStorage.setItem("userAccount", JSON.stringify(user))
+                    localStorage.setItem("userId", JSON.stringify(user.id))
+                    console.log(user.id)
                     alert('Register success')
-                    navigate('/homepage')
+                    navigate('/')
                 } else {
                     alert('Register false')
                 }
