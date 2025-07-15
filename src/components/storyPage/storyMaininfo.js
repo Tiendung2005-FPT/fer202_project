@@ -2,11 +2,12 @@ import { Col, Row, Button } from "react-bootstrap";
 import "./storyMaininfo.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export default function StoryMainInfo({ story, user }) {
     const [bookmarks, setBookmarks] = useState([]);
     const [isFollowed, setIsFollowed] = useState(false);
-    const [historyReading , setHistoryReading] = useState([]);
+    const [historyReading, setHistoryReading] = useState([]);
+    const [draft, setDraft] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,6 +20,12 @@ export default function StoryMainInfo({ story, user }) {
         axios.get(`http://localhost:9999/readingHistory?storyId=${story.id}&userId=${user.id}`)
             .then(res => setHistoryReading(res.data))
             .catch(() => console.log("Failed to fetch historyReading"));
+        axios.get(`http://localhost:9999/chapters/?storyId=${story.id}&isDraft=true`)
+            .then(result => {
+                if (result.data) {
+                    setDraft(result.data[0])
+                }
+            })
     }, [story, user]);
 
     useEffect(() => {
@@ -48,14 +55,14 @@ export default function StoryMainInfo({ story, user }) {
         }
     };
     const startReading = () => {
-          navigate(`/readStory/${story.id}/1`)
+        navigate(`/readStory/${story.id}/1`)
     }
     const continueReading = () => {
-            if(historyReading.length === 0){
-                navigate(`/readStory/${story.id}/1`)
-            } else {
-                navigate(`/readStory/${story.id}/${historyReading[historyReading.length-1]}`)
-            }
+        if (historyReading.length === 0) {
+            navigate(`/readStory/${story.id}/1`)
+        } else {
+            navigate(`/readStory/${story.id}/${historyReading[historyReading.length - 1]}`)
+        }
     }
     return (
         <Row>
@@ -106,12 +113,12 @@ export default function StoryMainInfo({ story, user }) {
                 <div className="d-flex gap-2 flex-wrap mb-3">
                     <div className="d-flex gap-2 flex-wrap mb-3">
                         <div className="d-flex gap-2 flex-wrap mb-3">
-                            <Button 
+                            <Button
                                 onClick={startReading}
                                 className="story-button read-from-start">
                                 <i className="bi bi-book"></i> Đọc từ đầu
                             </Button>
-                            <Button 
+                            <Button
                                 onClick={continueReading}
                                 className="story-button continue-reading">
                                 <i className="bi bi-bookmark"></i> Đọc tiếp
@@ -122,6 +129,24 @@ export default function StoryMainInfo({ story, user }) {
                             >
                                 <i className={`bi ${isFollowed ? 'bi-heart-fill' : 'bi-heart'}`}></i> Theo dõi
                             </Button>
+                            {!draft && (
+                                <Button
+                                    className="story-button"
+                                    onClick={() => navigate(`/write-chapter/${story.id}`)}
+                                >
+                                    Viết chương mới
+                                </Button>
+                            )}
+
+                            {draft && draft.id && (
+                                <Button
+                                    className="story-button"
+                                    onClick={() => navigate(`/edit-chapter/${story.id}/${draft.id}`)}
+                                >
+                                    Viết tiếp chương {draft.order || "?"}
+                                </Button>
+                            )}
+
                         </div>
                     </div>
                 </div>
