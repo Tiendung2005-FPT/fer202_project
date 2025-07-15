@@ -1,9 +1,9 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./Components/Auth/Login";
-import Register from "./Components/Auth/Register";
-import Homepage from "./Components/Homepage";
-import ForgotPassword from "./Components/Auth/ForgotPassword";
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
+import Homepage from "./components/Homepage";
+import ForgotPassword from "./components/Auth/ForgotPassword";
 
 export default function App() {
   return (
