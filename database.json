@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "username": "nguoivip",
       "email": "vip@example.com",
       "password": "hashed_password",
@@ -17,7 +17,7 @@
       "address": "123 Đường Sách, Quận 1, TP.HCM"
     },
     {
-      "id": "2",
+      "id": 2,
       "username": "tacgia_no1",
       "email": "author@example.com",
       "password": "hashed_password",
@@ -32,7 +32,7 @@
       "address": "456 Đường Văn Học, Quận 3, TP.HCM"
     },
     {
-      "id": "3",
+      "id": 3,
       "username": "admin_system",
       "email": "admin@example.com",
       "password": "hashed_password",
@@ -47,60 +47,15 @@
       "address": "789 Đường Quản Trị, Quận 10, TP.HCM"
     },
     {
-      "id": "c7af",
+      "id": 4,
       "username": null,
       "fullname": null,
-      "email": "hoang@gmail.com",
+      "email": "hong@gmail.com",
       "password": "123",
       "avatar": null,
       "role": "user",
       "vipExpiry": null,
-      "createdAt": "2025-07-15T03:16:35.782Z",
-      "lastLogin": null,
-      "bio": null,
-      "phone": null,
-      "address": null
-    },
-    {
-      "id": "0c56",
-      "username": null,
-      "fullname": null,
-      "email": "hoang@gmail.com",
-      "password": "123",
-      "avatar": null,
-      "role": "user",
-      "vipExpiry": null,
-      "createdAt": "2025-07-15T03:20:57.946Z",
-      "lastLogin": null,
-      "bio": null,
-      "phone": null,
-      "address": null
-    },
-    {
-      "id": "071e",
-      "username": null,
-      "fullname": null,
-      "email": "hoang@gmail.com",
-      "password": "123",
-      "avatar": null,
-      "role": "user",
-      "vipExpiry": null,
-      "createdAt": "2025-07-15T03:21:46.210Z",
-      "lastLogin": null,
-      "bio": null,
-      "phone": null,
-      "address": null
-    },
-    {
-      "id": "94f7",
-      "username": null,
-      "fullname": null,
-      "email": "123@gmail.com",
-      "password": "123",
-      "avatar": null,
-      "role": "user",
-      "vipExpiry": null,
-      "createdAt": "2025-07-15T03:45:00.988Z",
+      "createdAt": "2025-07-15T06:55:32.943Z",
       "lastLogin": null,
       "bio": null,
       "phone": null,
