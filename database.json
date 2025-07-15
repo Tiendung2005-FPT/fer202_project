@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "username": "nguoivip",
       "email": "vip@example.com",
       "password": "hashed_password",
@@ -17,7 +17,7 @@
       "address": "123 Đường Sách, Quận 1, TP.HCM"
     },
     {
-      "id": "2",
+      "id": 2,
       "username": "tacgia_no1",
       "email": "author@example.com",
       "password": "hashed_password",
@@ -32,7 +32,7 @@
       "address": "456 Đường Văn Học, Quận 3, TP.HCM"
     },
     {
-      "id": "3",
+      "id": 3,
       "username": "admin_system",
       "email": "admin@example.com",
       "password": "hashed_password",
@@ -45,6 +45,21 @@
       "fullname": "Lê Quản Trị",
       "phone": "0987654321",
       "address": "789 Đường Quản Trị, Quận 10, TP.HCM"
+    },
+    {
+      "id": 4,
+      "username": null,
+      "fullname": null,
+      "email": "hong@gmail.com",
+      "password": "123",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T06:55:32.943Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
     }
   ],
   "stories": [
@@ -56,9 +71,9 @@
       "description": "Một thiếu niên vô tình bước vào con đường tu tiên, từng bước trở thành chí tôn đạo giới...",
       "category": "Tiên Hiệp",
       "tags": [
-        "tu tiên",
-        "xuyên không",
-        "bá đạo"
+        1,
+        2,
+        3
       ],
       "status": "ongoing",
       "totalViews": 125430,
@@ -77,9 +92,8 @@
       "description": "Từ một tên vô danh tiểu tốt trở thành Ma Đế chấn động thiên hạ...",
       "category": "Huyền Huyễn",
       "tags": [
-        "trọng sinh",
-        "ma pháp",
-        "nữ cường"
+        1,
+        3
       ],
       "status": "completed",
       "totalViews": 89456,
@@ -123,7 +137,8 @@
       "createdAt": "2024-01-10T10:00:00Z",
       "updatedAt": "2024-01-12T15:30:00Z",
       "views": 15600,
-      "isDraft": false
+      "isDraft": false,
+      "isPremium": true
     }
   ],
   "comments": [
@@ -398,7 +413,7 @@
       "followers": 15,
       "following": 8,
       "lastUpdated": "2025-07-10T18:00:00Z",
-      "id": "af1f"
+      "id": "0c4e"
     },
     {
       "userId": 2,
@@ -410,7 +425,7 @@
       "followers": 1245,
       "following": 23,
       "lastUpdated": "2025-07-10T12:30:00Z",
-      "id": "6f45"
+      "id": "8a8c"
     }
   ]
 }
