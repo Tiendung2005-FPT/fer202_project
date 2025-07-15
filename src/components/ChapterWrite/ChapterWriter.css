@@ -196,7 +196,6 @@ body {
 
 .chapter-writer-container {
   border-radius: var(--border-radius-md);
-  overflow: hidden;
   border: 1px solid var(--color-border);
   flex-grow: 1;
   display: flex;
@@ -204,15 +203,18 @@ body {
   transition: var(--transition-fast);
 }
 
-.chapter-writer-container:focus-within {
-  border-color: var(--color-primary);
-  box-shadow: var(--focus-ring);
-}
-
 .chapter-writer-container .ql-toolbar.ql-snow {
   background-color: var(--color-background-subtle);
   border: none;
-  border-bottom: 1px solid var(--color-border);
+}
+
+.chapter-writer-container .ql-toolbar.ql-snow {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+   border-top-left-radius: var(--border-radius-md);
+  border-top-right-radius: var(--border-radius-md);
 }
 
 .chapter-writer-container .ql-container.ql-snow {
@@ -222,17 +224,15 @@ body {
   flex-direction: column;
 }
 
+
 .ql-editor {
-  height: 450px;
+  flex-grow: 1; 
   overflow-y: auto;
   font-size: 16px;
   line-height: 1.6;
   color: var(--color-text-primary);
   background-color: var(--color-background-container);
-}
-
-.editor-and-ai-container.show-ai .ql-editor {
-  height: 350px;
+  min-height: 460px;
 }
 
 .ql-editor.ql-blank::before {

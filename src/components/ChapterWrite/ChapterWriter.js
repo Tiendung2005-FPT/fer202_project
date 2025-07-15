@@ -22,7 +22,7 @@ Quill.register(Font, true);
 export default function ChapterWriter() {
   const [content, setContent] = useState('');
   const [isVip, setIsVip] = useState(false);
-  const [name, setName] = useState('');
+  const [title, setTitle] = useState('');
   const [story, setStory] = useState(null);
   const [showAI, setShowAI] = useState(false);
   const quillRef = useRef();
@@ -30,7 +30,7 @@ export default function ChapterWriter() {
 
   useEffect(() => {
     const handleBeforeUnload = (event) => {
-      const hasTitle = name.trim().length > 0;
+      const hasTitle = title.trim().length > 0;
       const hasContent = quillRef.current?.getEditor().getText().trim().length > 0;
 
       if (hasTitle || hasContent) {
@@ -44,7 +44,7 @@ export default function ChapterWriter() {
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
-  }, [name, content]);
+  }, [title, content]);
 
   useEffect(() => {
     axios.get("http://localhost:9999/users?id=1")
@@ -84,7 +84,7 @@ export default function ChapterWriter() {
 
   const handleDraft = (e) => {
     e.preventDefault();
-    const chapter = { storyId: sId, title: name, content: content, order: null, createdAt: null, updatedAt: null, views: 0, isDraft: true };
+    const chapter = { storyId: sId, title: title, content: content, order: null, createdAt: null, updatedAt: null, views: 0, isDraft: true };
     chapter.updatedAt = new Date();
 
     axios.post("http://localhost:9999/chapters", chapter)
@@ -101,10 +101,10 @@ export default function ChapterWriter() {
     if (quillRef.current) {
       const text = quillRef.current.getEditor().getText();
 
-      if (!name.trim() || !text.trim()) {
+      if (!title.trim() || !text.trim()) {
         alert("Tên và nội dung không được trống.");
       } else {
-        const chapter = { storyId: sId, title: name, content: content, order: null, createdAt: new Date(), updatedAt: new Date(), views: 0, isDraft: false };
+        const chapter = { storyId: sId, title: title, content: content, order: null, createdAt: new Date(), updatedAt: new Date(), views: 0, isDraft: false };
 
         axios.post("http://localhost:9999/chapters", chapter)
           .then(result => {
@@ -142,26 +142,26 @@ export default function ChapterWriter() {
               id="chapter-title"
               className="form-control"
               placeholder="Nhập tên chương..."
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
 
           <div className="editor-section">
             <label className="form-label">Nội dung chương</label>
-           <div className="chapter-writer-container">
-  <ReactQuill
-    ref={quillRef}
-    theme="snow"
-    value={content}
-    onChange={(value) => {
-      console.log("Content updated:", value);
-      setContent(value);
-    }}
-    modules={isVip ? vipModules : basicModules}
-    placeholder="Câu truyện của bạn bắt đầu..."
-  />
-</div>
+            <div className="chapter-writer-container">
+              <ReactQuill
+                ref={quillRef}
+                theme="snow"
+                value={content}
+                onChange={(value) => {
+                  console.log("Content updated:", value);
+                  setContent(value);
+                }}
+                modules={isVip ? vipModules : basicModules}
+                placeholder="Câu truyện của bạn bắt đầu..."
+              />
+            </div>
           </div>
 
           <div className="actions-section">
@@ -180,7 +180,7 @@ export default function ChapterWriter() {
           </div>
         </div>
 
-        {showAI && <AIChat content={quillRef.current.getEditor().getText()} isVip={isVip}/>}
+        {showAI && <AIChat content={quillRef.current.getEditor().getText()} isVip={isVip} title={title} />}
       </div>
     </div>
   );
