@@ -128,7 +128,7 @@ const FilterStories = () => {
                           : 'Không có'}</div>
                         <div className="mb-1">
                           <span className="me-3"><b>Rating:</b> {story.rating ?? 'N/A'}</span>
-                          <span><b>Tác giả:</b> {authors.find(a => a.id === story.authorId).username}</span>
+                          <span><b>Tác giả:</b> {authors.find(a => a.id === story.authorId)?.username}</span>
                         </div>
                       </div>
                     </Card.Body>
