@@ -259,7 +259,7 @@
       "id": "1",
       "title": "Đạo Giới Độc Tôn",
       "authorId": "2",
-      "coverImage": "/covers/1.jpg",
+      "coverImage": "/covers/anh_truyen1.jpg",
       "description": "Một thiếu niên vô tình bước vào con đường tu tiên, từng bước trở thành chí tôn đạo giới...",
       "category": "Tiên Hiệp",
       "tags": [
@@ -327,7 +327,7 @@
       "createdAt": "2025-07-15T14:33:28.062Z",
       "updatedAt": "2025-07-15T14:33:28.062Z",
       "views": 0,
-      "isDraft": true
+      "isDraft": false
     }
   ],
   "comments": [
@@ -444,7 +444,7 @@
       "storyId": "1"
     },
     {
-      "id": "e9e1",
+      "id": "aceb",
       "userId": "9355",
       "storyId": "1"
     }
@@ -574,17 +574,22 @@
       "id": "1",
       "userId": "1",
       "storyId": "1",
-      "chapterId": 4,
-      "lastRead": "2025-07-10T22:15:00Z",
-      "progress": 1
+      "chapterOrder": [
+        1,
+        2
+      ],
+      "lastRead": "2025-07-15T18:20:50.704Z",
+      "progress": 6
     },
     {
       "id": "2",
       "userId": "1",
       "storyId": "2",
-      "chapterId": "1",
+      "chapterOrder": [
+        1
+      ],
       "lastRead": "2025-07-09T20:30:00Z",
-      "progress": 2
+      "progress": 1
     }
   ],
   "notifications": [

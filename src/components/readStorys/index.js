@@ -14,7 +14,6 @@ export default function ReadStory() {
 
     const [story, setStory] = useState();
     const [chapter, setChapter] = useState();
-    const [author, setAuthor] = useState();
     const [chapters, setChapters] = useState([]);
     const [loading, setLoading] = useState(true);
     const [theme, setTheme] = useState("light");
@@ -52,6 +51,55 @@ export default function ReadStory() {
             }
             )
     }, [storyId, chapterId]);
+
+
+    useEffect(() => {
+        if (!storyId || !chapter?.id) return;
+
+        const timeoutId = setTimeout(() => {
+            const userId = JSON.parse(localStorage.getItem("userId"));
+
+            axios.get(`http://localhost:9999/readingHistory?userId=${userId}&storyId=${storyId}`)
+                .then(res => {
+                    const data = res.data?.[0];
+
+                    if (data) {
+                        const isRead = data.chapterOrder.includes(chapter.order);
+
+                        if (!isRead) {
+                            axios.patch(`http://localhost:9999/readingHistory/${data.id}`, {
+                                chapterOrder: [...data.chapterOrder, chapter.order],
+                                lastRead: new Date().toISOString(),
+                                progress: data.progress + 1
+                            })
+                                .catch(err => {
+                                    console.error("cập nhật ls lỗi:", err);
+                                });
+                        }
+                    } else {
+                        axios.post(`http://localhost:9999/readingHistory`, {
+                            userId,
+                            storyId,
+                            chapterOrder: [chapter.order],
+                            lastRead: new Date().toISOString(),
+                            progress: 1
+                        })
+                            .catch(err => {
+                                console.error("Tạo mới ls  lỗi:", err);
+                            });
+                    }
+                })
+                .catch(err => {
+                    console.error(" lấy dữ liệu lịch sử fail", err);
+                });
+        }, 3000);
+
+        return () => clearTimeout(timeoutId);
+    }, [storyId, chapter?.id]);
+
+
+
+
 
     return (
         <Container fluid className={`read-container theme-${theme}`}>
