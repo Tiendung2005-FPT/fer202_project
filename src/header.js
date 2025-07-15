@@ -17,7 +17,7 @@ function Header() {
   const [tags, setTags] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
-  const acc = JSON.parse(localStorage.getItem("userAccount"))
+  const acc = JSON.parse(localStorage.getItem("userAccount"));
 
   useEffect(() => {
     const fetchTags = async () => {
@@ -34,13 +34,11 @@ function Header() {
   const handleProfileClick = () => {
     let userId = localStorage.getItem("userId");
     if (userId) {
-      userId = userId.replace(/"/g, "");  
+      userId = userId.replace(/"/g, "");
       navigate(`/userDetail/${userId}`);
-      console.log( userId );
-      
+      console.log(userId);
     } else {
-        alert('User ID not found in localStorage');
-     
+      alert("User ID not found in localStorage");
     }
   };
 
@@ -63,10 +61,10 @@ function Header() {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    localStorage.removeItem("userAccount")
-    alert('Đăng xuất thành công!')
-    navigate('/')
-  }
+    localStorage.removeItem("userAccount");
+    alert("Đăng xuất thành công!");
+    navigate("/");
+  };
 
   return (
     <>
@@ -82,14 +80,14 @@ function Header() {
       >
         <Container
           fluid
-          className="align-items-start"
-          style={{ flexWrap: "nowrap" }}
+          className="d-flex align-items-center"
+          style={{ flexWrap: "nowrap", height: "50px" }}
         >
           {/* Logo */}
           <Navbar.Brand
             onClick={() => navigate("/")}
             style={{ cursor: "pointer" }}
-            className="me-3 d-flex align-items-center"
+            className="me-3 d-flex align-items-center flex-shrink-0"
           >
             <span
               style={{ fontWeight: "bold", fontSize: "2rem", color: "#fff" }}
@@ -97,26 +95,61 @@ function Header() {
               StoryForge
             </span>
           </Navbar.Brand>
+
           {/* Search */}
-          <Form className="d-flex flex-grow-1 mx-2" style={{ maxWidth: 500 }} onSubmit={handleSearchSubmit}>
-            <Form.Control
-              type="search"
-              placeholder="Tìm truyện..."
-              className="me-2"
-              aria-label="Search"
-              value={searchValue}
-              onChange={handleSearchChange}
-            />
-            <Button variant="light" type="submit">
-              <i className="bi bi-search"></i>
-            </Button>
-          </Form>
+          <div
+            className="d-flex flex-grow-1 justify-content-center"
+            style={{ maxWidth: "600px" }}
+          >
+            <Form
+              className="d-flex w-100"
+              style={{ maxWidth: "500px" }}
+              onSubmit={handleSearchSubmit}
+            >
+              <div className="input-group" style={{ height: "44px" }}>
+                <Form.Control
+                  type="search"
+                  placeholder="Tìm truyện..."
+                  aria-label="Search"
+                  value={searchValue}
+                  onChange={handleSearchChange}
+                  style={{
+                    height: "100%",
+                    fontSize: "14px",
+                  }}
+                />
+                <Button
+                  variant="outline-light"
+                  type="submit"
+                  style={{
+                    backgroundColor: "#fff",
+                    borderColor: "#ced4da",
+                    color: "#495057",
+                    height: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    minWidth: "45px",
+                  }}
+                >
+                  <i className="bi bi-search"></i>
+                </Button>
+              </div>
+            </Form>
+          </div>
+
           {/* Icons and Account */}
-          <Nav className="flex-row align-items-center ms-2">
+          <Nav className="d-flex flex-row align-items-center ms-2 flex-shrink-0">
             <Nav.Item className="mx-2">
-              <i onClick={handleIconClick}
+              <i
+                onClick={handleIconClick}
                 className="bi bi-lightbulb"
-                style={{ color: "orange", fontSize: "1.5rem" }}
+                style={{
+                  color: "orange",
+                  fontSize: "1.5rem",
+                  cursor: "pointer",
+                  transition: "color 0.2s",
+                }}
               ></i>
             </Nav.Item>
             <Dropdown align="end" className="mx-2">
@@ -127,18 +160,18 @@ function Header() {
                   color: "#cfd8dc",
                   textDecoration: "none",
                   boxShadow: "none",
+                  fontSize: "14px",
                 }}
               >
-                <i className="bi bi-person"></i> Tài khoản
+                <i className="bi bi-person"></i> {acc?.fullname || "Guest"}
               </Dropdown.Toggle>
               <Dropdown.Menu>
-
                 {acc ? (
                   <>
-                    < Dropdown.Item onClick={handleProfileClick}>
-                      Cá Nhân{acc.fullname}
+                    <Dropdown.Item onClick={handleProfileClick}>
+                      Cá Nhân
                     </Dropdown.Item>
-                    < Dropdown.Item onClick={handleLogout}>
+                    <Dropdown.Item onClick={handleLogout}>
                       Đăng xuất
                     </Dropdown.Item>
                   </>
@@ -148,21 +181,19 @@ function Header() {
                     <Dropdown.Item href="register">Đăng ký</Dropdown.Item>
                   </>
                 )}
-
               </Dropdown.Menu>
             </Dropdown>
           </Nav>
         </Container>
-      </Navbar >
+      </Navbar>
       {/* Navigation Tabs Bar using react-bootstrap Nav */}
-      < div
+      <div
         style={{
           background: "#f8f9fa",
           borderTop: "1px solid #1976f6",
           borderBottom: "2px solid #1976f6",
           width: "100%",
-        }
-        }
+        }}
       >
         <Nav
           variant="tabs"
@@ -184,10 +215,10 @@ function Header() {
             <Nav.Link>LỊCH SỬ</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link title="THỂ LOẠI" onClick={handleToFilterPage} >THỂ LOẠI</Nav.Link>
+            <Nav.Link title="THỂ LOẠI" onClick={handleToFilterPage}>
+              THỂ LOẠI
+            </Nav.Link>
           </Nav.Item>
-
-
         </Nav>
       </div>
     </>
