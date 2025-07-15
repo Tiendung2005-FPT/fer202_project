@@ -9,6 +9,10 @@ import ReadStory from "./components/readStorys/index"
 import { BrowserRouter, Link, Route, Routes ,Navigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
+import Homepage from "./components/Homepage";
+import ForgotPassword from "./components/Auth/ForgotPassword";
 function Home() {
   return <div>Home Page</div>;
 }
@@ -24,8 +28,14 @@ function App() {
         <Route path="/storypage/:id" element={<StoryPage />} />
         <Route path="/readStory/:storyId/:chapterId" element={<ReadStory />} />
         <Route path="*" element={<Navigate to="/storypage/2" replace />} />
+          <Route path="/login" element={<Login></Login>}></Route>
+              <Route path="/register" element={<Register></Register>}></Route>
+              <Route path="/forgot-password" element={<ForgotPassword></ForgotPassword>}></Route>
+
+              <Route path="/homepage" element={<Homepage></Homepage>}></Route>
       </Routes>
     </Router>
   );
 }
 export default App;
+
