@@ -1,6 +1,6 @@
 
 import Header from './header';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import UserDetail from './users/userDetail';
 import FilterStories from './stories/filterStories';
 import StoryPage from "./components/storyPage/index"
@@ -15,8 +15,9 @@ import {Navigate} from "react"
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Header />
+      
       <Routes>
         <Route path="/" element={<Homepage></Homepage>} />
         <Route path="/userDetail/:id" element={<UserDetail />} />
@@ -28,7 +29,7 @@ function App() {
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/forgot-password" element={<ForgotPassword></ForgotPassword>}></Route>
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 export default App;

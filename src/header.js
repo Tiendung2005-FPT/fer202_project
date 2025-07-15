@@ -91,7 +91,7 @@ function Header() {
             <span
               style={{ fontWeight: "bold", fontSize: "2rem", color: "#fff" }}
             >
-              Ten DU AN
+              StoryForge
             </span>
           </Navbar.Brand>
           {/* Search */}
