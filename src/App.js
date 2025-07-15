@@ -12,9 +12,7 @@ import ForgotPassword from "./components/Auth/ForgotPassword";
 import ChapterWriter from "./components/ChapterWrite/ChapterWriter.js";
 import ChapterEdit from "./components/ChapterWrite/ChapterEdit.js";
 import Canvas from "./components/ChapterWrite/Canvas.js";
-import ForgotPassword from "./components/Auth/ForgotPassword";
-import Login from './components/Auth/Login';
-import Register from './components/Auth/Register';
+
 
 function App() {
   return (
