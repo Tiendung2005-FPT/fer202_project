@@ -102,6 +102,36 @@
       "bio": null,
       "phone": null,
       "address": null
+    },
+    {
+      "id": "1234",
+      "username": null,
+      "fullname": null,
+      "email": "dungbloxx.2005@gmail.com",
+      "password": "0983830901",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T13:52:09.644Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "51a2",
+      "username": null,
+      "fullname": null,
+      "email": "abc123@gmail.com",
+      "password": "123",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T14:05:35.759Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
     }
   ],
   "stories": [

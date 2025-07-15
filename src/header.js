@@ -144,8 +144,8 @@ function Header() {
                   </>
                 ) : (
                   <>
-                    <Dropdown.Item href="login">Đăng nhập</Dropdown.Item>
-                    <Dropdown.Item href="register">Đăng ký</Dropdown.Item>
+                    <Dropdown.Item onClick={()=>navigate("/login")}>Đăng nhập</Dropdown.Item>
+                    <Dropdown.Item onClick={()=>navigate("/register")}>Đăng ký</Dropdown.Item>
                   </>
                 )}
 

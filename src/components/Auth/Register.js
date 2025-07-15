@@ -26,7 +26,6 @@ export default function Register() {
                 const maxId = user.length > 0 ? Math.max(...user.map(u => u.id)) : 0
 
                 const newUser = {
-                    id: maxId + 1,
                     username: null,
                     fullname: null,
                     email: email,

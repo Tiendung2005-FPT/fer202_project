@@ -67,16 +67,16 @@ export default function ChapterWriter() {
   }, [title, content]);
 
   useEffect(() => {
-    axios.get("http://localhost:9999/users?id=2")
+    const user = JSON.parse(localStorage.getItem("userAccount"));
+    axios.get(`http://localhost:9999/stories/?authorId=${user.id}`)
       .then(result => {
-        const user = result.data[0];
-        const now = new Date();
-        setIsVip(new Date(user.vipExpiry) > now);
-        localStorage.setItem("account", JSON.stringify(user));
+        const storyIds = result.data.map(story => story.id);
+        if (!storyIds.includes(String(sId))) {
+          navigate("/");
+        }
       })
-      .catch(err => console.error(err));
 
-      axios.get(`http://localhost:9999/chapters?storyId=${sId}&isDraft=true`)
+    axios.get(`http://localhost:9999/chapters?storyId=${sId}&isDraft=true`)
       .then(result => {
         if (result.data) {
           navigate(`/edit-chapter/${sId}/${result.data[0].id}`)
