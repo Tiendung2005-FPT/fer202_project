@@ -19,16 +19,15 @@ Font.whitelist = [
 ];
 Quill.register(Font, true);
 
-export default function ChapterWriter() {
+export default function ChapterEdit() {
   const [content, setContent] = useState('');
   const [isVip, setIsVip] = useState(false);
   const [title, setTitle] = useState('');
   const [story, setStory] = useState(null);
-  const [chapterCount, setChapterCount] = useState(0);
   const [showAI, setShowAI] = useState(false);
+  const [chapter, setChapter] = useState(null);
   const quillRef = useRef();
-  const { sId } = useParams();
-  const nextNumber = chapterCount + 1;
+  const { sId, cId } = useParams();
   const navigate = useNavigate();
 
   const basicModules = {
@@ -76,20 +75,20 @@ export default function ChapterWriter() {
       })
       .catch(err => console.error(err));
 
-      axios.get(`http://localhost:9999/chapters?storyId=${sId}&isDraft=true`)
+    axios.get(`http://localhost:9999/stories/${sId}`)
+      .then(result => setStory(result.data))
+      .catch(err => console.error(err));
+
+    axios.get(`http://localhost:9999/chapters/${cId}`)
       .then(result => {
-        if (result.data) {
-          navigate(`/edit-chapter/${sId}/${result.data[0].id}`)
+        const data = result.data;
+        setChapter(data);
+        setTitle(data.title);
+        setContent(data.content);
+        if (!result.data.isDraft) {
+          navigate(`/storypage/${sId}`);
         }
       })
-      .catch(err => console.error(err));
-
-    axios.get(`http://localhost:9999/stories?id=${sId}`)
-      .then(result => setStory(result.data[0]))
-      .catch(err => console.error(err));
-
-    axios.get(`http://localhost:9999/chapters?storyId=${sId}&isDraft=false`)
-      .then(result => setChapterCount(result.data.length))
       .catch(err => console.error(err));
 
   }, [sId]);
@@ -97,19 +96,15 @@ export default function ChapterWriter() {
   const handleDraft = (e) => {
     e.preventDefault();
     const chapter = {
-      storyId: sId, title, content, order: nextNumber, createdAt: null, updatedAt: new Date(), views: 0, isDraft: true
+      title, content, updatedAt: new Date()
     };
 
-    axios.post("http://localhost:9999/chapters", chapter)
+    axios.patch(`http://localhost:9999/chapters/${cId}`, chapter)
       .then(result => {
-        if (result.data) {
-          alert("Đã lưu bản nháp thành công!")
-          navigate(`/edit-chapter/${sId}/${result.data.id}`)
-        }
+        if (result.data) alert("Đã lưu bản nháp thành công!");
         else alert("Đã xảy ra lỗi trong quá trình lưu.");
       })
       .catch(err => console.error(err));
-
   };
 
   const handlePublishChapter = (e) => {
@@ -121,14 +116,14 @@ export default function ChapterWriter() {
     if (!window.confirm("Bạn có chắc chắn muốn đăng chương này không?")) return;
 
     const chapter = {
-      storyId: sId, title, content, order: nextNumber, createdAt: new Date(), updatedAt: new Date(), views: 0, isDraft: false
+      title, content, createdAt: new Date(), updatedAt: new Date(), isDraft: false
     };
 
-    axios.post("http://localhost:9999/chapters", chapter)
+    axios.patch(`http://localhost:9999/chapters/${cId}`, chapter)
       .then(result => {
         if (result.data) {
-          alert(`Đã đăng chapter ${nextNumber} thành công!`);
-          navigate(`/storypage/${sId}`)
+          alert(`Đã đăng chapter ${cId} thành công!`);
+          navigate(`/storypage/${sId}`);
         } else {
           alert("Đã xảy ra lỗi trong quá trình đăng.");
         }
@@ -136,13 +131,12 @@ export default function ChapterWriter() {
       .catch(err => console.error(err));
   };
 
-
   return (
     <div className="chapter-editor-page">
       <header className="page-header">
         <Button onClick={() => navigate(`/storypage/${sId}`)}>Quay lại</Button>
 
-        {story && <h2 className="story-title-header">{story.title} - Chương {nextNumber}</h2>}
+        {story && <h2 className="story-title-header">{story.title} - Chương {chapter.order} (Bản nháp)</h2>}
       </header>
 
       <div className={`editor-and-ai-container ${showAI ? 'show-ai' : ''}`}>

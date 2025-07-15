@@ -17,10 +17,12 @@ function Header() {
   const [tags, setTags] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
+  const acc = JSON.parse(localStorage.getItem("userAccount"))
+
   useEffect(() => {
     const fetchTags = async () => {
       try {
-        const response = await axios.get(`http://localhost:9998/tags`);
+        const response = await axios.get(`http://localhost:9999/tags`);
         setTags(response.data);
       } catch (error) {
         console.error("Error fetching tags:", error);
@@ -30,12 +32,15 @@ function Header() {
   }, []);
 
   const handleProfileClick = () => {
-    const userId = localStorage.getItem("userId");
+    let userId = localStorage.getItem("userId");
     if (userId) {
+      userId = userId.replace(/"/g, "");  
       navigate(`/userDetail/${userId}`);
+      console.log( userId );
+      
     } else {
-      //   alert('User ID not found in localStorage');
-      navigate(`/userDetail/1`);
+        alert('User ID not found in localStorage');
+     
     }
   };
 
@@ -55,6 +60,13 @@ function Header() {
     e.preventDefault();
     navigate(`/filterStories?search=${encodeURIComponent(searchValue)}`);
   };
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("userAccount")
+    alert('Đăng xuất thành công!')
+    navigate('/')
+  }
 
   return (
     <>
@@ -120,24 +132,37 @@ function Header() {
                 <i className="bi bi-person"></i> Tài khoản
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item onClick={handleProfileClick}>
-                  Cá Nhân{" "}
-                </Dropdown.Item>
-                <Dropdown.Item href="#">Đăng nhập</Dropdown.Item>
-                <Dropdown.Item href="#">Đăng ký</Dropdown.Item>
+
+                {acc ? (
+                  <>
+                    < Dropdown.Item onClick={handleProfileClick}>
+                      Cá Nhân{acc.fullname}
+                    </Dropdown.Item>
+                    < Dropdown.Item onClick={handleLogout}>
+                      Đăng xuất
+                    </Dropdown.Item>
+                  </>
+                ) : (
+                  <>
+                    <Dropdown.Item href="login">Đăng nhập</Dropdown.Item>
+                    <Dropdown.Item href="register">Đăng ký</Dropdown.Item>
+                  </>
+                )}
+
               </Dropdown.Menu>
             </Dropdown>
           </Nav>
         </Container>
-      </Navbar>
+      </Navbar >
       {/* Navigation Tabs Bar using react-bootstrap Nav */}
-      <div
+      < div
         style={{
           background: "#f8f9fa",
           borderTop: "1px solid #1976f6",
           borderBottom: "2px solid #1976f6",
           width: "100%",
-        }}
+        }
+        }
       >
         <Nav
           variant="tabs"
@@ -145,7 +170,7 @@ function Header() {
           defaultActiveKey="#home"
         >
           <Nav.Item>
-            <Nav.Link  eventKey="#home">
+            <Nav.Link eventKey="#home">
               <i className="bi bi-house-door"></i>
             </Nav.Link>
           </Nav.Item>
@@ -161,8 +186,8 @@ function Header() {
           <Nav.Item>
             <Nav.Link title="THỂ LOẠI" onClick={handleToFilterPage} >THỂ LOẠI</Nav.Link>
           </Nav.Item>
-    
-        
+
+
         </Nav>
       </div>
     </>

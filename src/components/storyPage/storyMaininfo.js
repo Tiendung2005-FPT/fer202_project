@@ -9,6 +9,7 @@ export default function StoryMainInfo({ story, author, currentUser }) {
     const [isFollowed, setIsFollowed] = useState(false);
     const [historyReading, setHistoryReading] = useState([]);
     const [alltags, setAllTags] = useState([]);
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -20,6 +21,7 @@ export default function StoryMainInfo({ story, author, currentUser }) {
 
         axios.get(`http://localhost:9999/readingHistory?storyId=${story.id}&userId=${currentUser.id}`)
             .then(res => setHistoryReading(res.data))
+
             .catch(() => alert("Failed to fetch reading history"));
 
         axios.get("http://localhost:9999/tags")
@@ -28,6 +30,7 @@ export default function StoryMainInfo({ story, author, currentUser }) {
 
 
     }, [story, currentUser]);
+
 
     useEffect(() => {
         if (currentUser?.id) {
