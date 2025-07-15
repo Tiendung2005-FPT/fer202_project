@@ -1,7 +1,6 @@
 import "./nav.css";
 import { Button, Dropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { useState } from "react"
 import {
   HouseFill,
   GearFill,
@@ -10,47 +9,59 @@ import {
   ArrowLeft,
   ArrowRight
 } from 'react-bootstrap-icons';
+import { useState } from "react";
 
-export default function Nav({ storyId, currentChapter, totalChapters, theme, setTheme }) {
+export default function Nav({ storyId, currentChapterId, chapters, theme, setTheme }) {
   const navigate = useNavigate();
   const [isShowPopUp, setIsShowPopUp] = useState(false);
   const [font, setFont] = useState("Lora");
   const [fontSize, setFontSize] = useState(20);
-  const [themeColor, setThemeColor] = useState("white");
-  const colors = [
-    { name: "white", code: "#f8f9fa" },
-    { name: "green", code: "#d1e7dd" },
-    { name: "pink", code: "#fde2e2" },
-    { name: "beige", code: "#fef6e4" },
-    { name: "purple", code: "#f3e8ff" },
-    { name: "black", code: "#000000" },
-  ];
 
-  const goTo = (chapterNum) => {
-    navigate(`/readStory/${storyId}/${chapterNum}`);
+  const validChapters = chapters
+    .filter(ch => !ch.isDraft && ch.order != null)
+    .sort((a, b) => a.order - b.order);
+
+  const currentChapter = validChapters.find(ch => String(ch.id) === String(currentChapterId));
+  const currentOrder = currentChapter?.order || 1;
+
+  const minOrder = validChapters[0]?.order;
+  const maxOrder = validChapters[validChapters.length - 1]?.order;
+
+  const goToOrder = (order) => {
+    const target = validChapters.find(ch => ch.order === order);
+    if (target) {
+      navigate(`/readStory/${storyId}/${target.id}`);
+    }
   };
 
   return (
     <div className="custom-nav-bar">
       <Button variant="link" onClick={() => navigate('/')} className="button-custom-home">
-        <HouseFill />
-        Trang Chủ
+        <HouseFill /> Trang Chủ
       </Button>
+
       <Button variant="link" onClick={() => setIsShowPopUp(true)} className="button-custom-setting">
         <GearFill /> Tùy chỉnh
       </Button>
+
       {isShowPopUp && (
         <div className="popup-setting">
           <button className="close-btn" onClick={() => setIsShowPopUp(false)}>✕</button>
+
           <div className="color-options">
-            {colors.map((color, idx) => (
+            {[
+              { name: "white", code: "#f8f9fa" },
+              { name: "green", code: "#d1e7dd" },
+              { name: "pink", code: "#fde2e2" },
+              { name: "beige", code: "#fef6e4" },
+              { name: "purple", code: "#f3e8ff" },
+              { name: "black", code: "#000000" }
+            ].map((color, idx) => (
               <div
                 key={idx}
-                className={`color-dot ${themeColor === color.name ? "selected" : ""} ${color.name}`}
+                className={`color-dot ${theme === color.name ? "selected" : ""} ${color.name}`}
                 style={{ backgroundColor: color.code }}
-                onClick={() => {
-                  setTheme(color.name);
-                }}
+                onClick={() => setTheme(color.name)}
               ></div>
             ))}
           </div>
@@ -74,41 +85,50 @@ export default function Nav({ storyId, currentChapter, totalChapters, theme, set
           </div>
         </div>
       )}
+
       <div className="nav-custom">
-        <Button variant="light" size="sm" onClick={() => goTo(currentChapter - 1)} disabled={currentChapter <= 1}>
+        <Button
+          variant="light"
+          size="sm"
+          onClick={() => goToOrder(currentOrder - 1)}
+          disabled={currentOrder <= minOrder}
+        >
           <ArrowLeft />
         </Button>
 
         <Dropdown>
           <Dropdown.Toggle size="sm" variant="outline-secondary">
-            Chapter {currentChapter}
+            Chương {currentOrder}
           </Dropdown.Toggle>
           <Dropdown.Menu className="tongle-dropdown-custom">
-            {[...Array(totalChapters)].map((_, idx) => (
+            {validChapters.map(ch => (
               <Dropdown.Item
-                key={idx + 1}
-                active={idx + 1 === currentChapter}
-                onClick={() => goTo(idx + 1)}
+                key={ch.id}
+                active={ch.id === currentChapterId}
+                onClick={() => navigate(`/readStory/${storyId}/${ch.id}`)}
               >
-                Chapter {idx + 1}
+                {ch.title || `Chương ${ch.order}`}
               </Dropdown.Item>
             ))}
           </Dropdown.Menu>
         </Dropdown>
 
-        <Button variant="dark" size="sm" onClick={() => goTo(currentChapter + 1)} disabled={currentChapter >= totalChapters}>
+        <Button
+          variant="dark"
+          size="sm"
+          onClick={() => goToOrder(currentOrder + 1)}
+          disabled={currentOrder >= maxOrder}
+        >
           <ArrowRight />
         </Button>
       </div>
 
       <Button variant="link" className="btn-custom-sendError">
-        <ExclamationDiamondFill />
-        Báo Lỗi
+        <ExclamationDiamondFill /> Báo Lỗi
       </Button>
 
       <Button variant="link" className="btn-custom-bookmarks">
-        <BookmarkFill />
-        Theo Dõi
+        <BookmarkFill /> Theo Dõi
       </Button>
     </div>
   );
