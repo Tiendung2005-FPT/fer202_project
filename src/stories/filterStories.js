@@ -20,7 +20,7 @@ const FilterStories = () => {
   useEffect(() => {
     const fetchTags = async () => {
       try {
-        const response = await axios.get('http://localhost:9998/tags');
+        const response = await axios.get('http://localhost:9999/tags');
         setTags(response.data);
       } catch (error) {
         console.error('Error fetching tags:', error);
@@ -28,7 +28,7 @@ const FilterStories = () => {
     };
     const fetchStories = async () => {
       try {
-        const response = await axios.get('http://localhost:9998/stories');
+        const response = await axios.get('http://localhost:9999/stories');
         setStories(response.data);
       } catch (error) {
         console.error('Error fetching stories:', error);
@@ -36,7 +36,7 @@ const FilterStories = () => {
     };
     const fetchAuthors = async () => {
       try {
-        const response = await axios.get('http://localhost:9998/users');
+        const response = await axios.get('http://localhost:9999/users');
         setAuthors(response.data);
       } catch (error) {
         console.error('Error fetching authors:', error);

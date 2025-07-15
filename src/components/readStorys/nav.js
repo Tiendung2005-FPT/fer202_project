@@ -16,13 +16,18 @@ export default function Nav({ storyId, currentChapter, totalChapters, theme, set
   const [isShowPopUp, setIsShowPopUp] = useState(false);
   const [font, setFont] = useState("Lora");
   const [fontSize, setFontSize] = useState(20);
-  const [themeColor, setThemeColor] = useState("#ffffff");
+  const [themeColor, setThemeColor] = useState("white");
+  const colors = [
+    { name: "white", code: "#f8f9fa" },
+    { name: "green", code: "#d1e7dd" },
+    { name: "pink", code: "#fde2e2" },
+    { name: "beige", code: "#fef6e4" },
+    { name: "purple", code: "#f3e8ff" },
+    { name: "black", code: "#000000" },
+  ];
+
   const goTo = (chapterNum) => {
     navigate(`/readStory/${storyId}/${chapterNum}`);
-  };
-
-  const handleThemeChange = (e) => {
-    setTheme(e.target.value);
   };
 
   return (
@@ -38,12 +43,14 @@ export default function Nav({ storyId, currentChapter, totalChapters, theme, set
         <div className="popup-setting">
           <button className="close-btn" onClick={() => setIsShowPopUp(false)}>✕</button>
           <div className="color-options">
-            {["#f8f9fa", "#d1e7dd", "#fde2e2", "#fef6e4", "#f3e8ff", "#000000"].map((color, idx) => (
+            {colors.map((color, idx) => (
               <div
                 key={idx}
-                className={`color-dot ${themeColor === color ? "selected" : ""}`}
-                style={{ backgroundColor: color }}
-                onClick={() => setThemeColor(color)}
+                className={`color-dot ${themeColor === color.name ? "selected" : ""} ${color.name}`}
+                style={{ backgroundColor: color.code }}
+                onClick={() => {
+                  setTheme(color.name);
+                }}
               ></div>
             ))}
           </div>

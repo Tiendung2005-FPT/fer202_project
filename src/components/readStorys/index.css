@@ -1,30 +1,59 @@
-.theme-light {
-  background-color: #fff;
+
+.theme-white {
+  background-color: #f8f9fa;
   color: #000;
 }
 
-.theme-dark {
-  background-color: #1e1e1e;
-  color: #f0f0f0;
+.theme-green {
+  background-color: #d1e7dd;
+  color: #0f5132;
 }
 
-.theme-sepia {
+.theme-pink {
+  background-color: #fde2e2;
+  color: #842029;
+}
+
+
+.theme-beige {
   background-color: #fef6e4;
   color: #5b4636;
 }
 
-.theme-light .read-container,
-.theme-dark .read-container,
-.theme-sepia .read-container,
-.theme-light .read-card,
-.theme-dark .read-card,
-.theme-sepia .read-card,
-.theme-light .chapter-content,
-.theme-dark .chapter-content,
-.theme-sepia .chapter-content {
+
+.theme-purple {
+  background-color: #f3e8ff;
+  color: #4b0082;
+}
+
+
+.theme-black {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+.theme-white .read-container,
+.theme-green .read-container,
+.theme-pink .read-container,
+.theme-beige .read-container,
+.theme-purple .read-container,
+.theme-black .read-container,
+.theme-white .read-card,
+.theme-green .read-card,
+.theme-pink .read-card,
+.theme-beige .read-card,
+.theme-purple .read-card,
+.theme-black .read-card,
+.theme-white .chapter-content,
+.theme-green .chapter-content,
+.theme-pink .chapter-content,
+.theme-beige .chapter-content,
+.theme-purple .chapter-content,
+.theme-black .chapter-content {
   background-color: inherit;
   color: inherit;
 }
+
 
 .read-container {
   display: flex;
