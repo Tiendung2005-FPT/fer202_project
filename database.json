@@ -4,10 +4,9 @@
       "id": "1",
       "username": "nguoivip",
       "email": "vip@example.com",
-      "password": "hashed_password",
+      "password": "123",
       "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
       "role": "user",
-      "isVIP": true,
       "vipExpiry": "2025-12-31T23:59:59Z",
       "createdAt": "2023-01-15T08:00:00Z",
       "lastLogin": "2025-07-10T14:30:00Z",
@@ -23,7 +22,6 @@
       "password": "hashed_password",
       "avatar": "/avatars/2.jpg",
       "role": "author",
-      "isVIP": false,
       "createdAt": "2022-11-20T10:15:00Z",
       "lastLogin": "2025-07-09T09:45:00Z",
       "bio": "Tác giả của nhiều truyện best-seller",
@@ -38,7 +36,6 @@
       "password": "hashed_password",
       "avatar": "/avatars/admin.jpg",
       "role": "admin",
-      "isVIP": true,
       "createdAt": "2022-01-01T00:00:00Z",
       "lastLogin": "2025-07-11T08:00:00Z",
       "bio": "Quản trị viên hệ thống",
@@ -111,7 +108,7 @@
     {
       "id": "1",
       "title": "Đạo Giới Độc Tôn",
-      "authorId": 2,
+      "authorId": "2",
       "coverImage": "/covers/1.jpg",
       "description": "Một thiếu niên vô tình bước vào con đường tu tiên, từng bước trở thành chí tôn đạo giới...",
       "category": "Tiên Hiệp",
@@ -126,13 +123,12 @@
       "rating": 4.8,
       "createdAt": "2023-03-10T14:20:00Z",
       "updatedAt": "2025-07-10T09:15:00Z",
-      "isPremium": false,
       "draftChapters": 3
     },
     {
       "id": "2",
       "title": "Ma Đế Vô Song",
-      "authorId": 2,
+      "authorId": "2",
       "coverImage": "/covers/2.jpg",
       "description": "Từ một tên vô danh tiểu tốt trở thành Ma Đế chấn động thiên hạ...",
       "category": "Huyền Huyễn",
@@ -146,14 +142,13 @@
       "rating": 4.5,
       "createdAt": "2024-01-05T11:30:00Z",
       "updatedAt": "2025-06-28T16:45:00Z",
-      "isPremium": true,
       "draftChapters": 0
     }
   ],
   "chapters": [
     {
       "id": "101",
-      "storyId": 1,
+      "storyId": "1",
       "title": "Chương 1: Khởi đầu kỳ lạ",
       "content": "Lôi Trần mở mắt, kinh ngạc phát hiện mình không còn ở thế giới cũ...",
       "order": 1,
@@ -164,7 +159,7 @@
     },
     {
       "id": "102",
-      "storyId": 1,
+      "storyId": "1",
       "title": "Chương 2: Gặp tiên nhân",
       "content": "Trong rừng sâu, Lôi Trần gặp một lão giả kỳ dị tự xưng là tu tiên giả...",
       "order": 2,
@@ -175,22 +170,54 @@
     },
     {
       "id": "201",
-      "storyId": 2,
+      "storyId": "2",
       "title": "Chương 1: Tái sinh làm ma",
       "content": "Sau khi chết đi, Hắc Vô Thường thức tỉnh trong thân thể của một tiểu ma binh...",
       "order": 1,
       "createdAt": "2024-01-10T10:00:00Z",
       "updatedAt": "2024-01-12T15:30:00Z",
       "views": 15600,
-      "isDraft": false,
-      "isPremium": true
+      "isDraft": false
+    },
+    {
+      "id": "c5a6",
+      "storyId": "1",
+      "title": "a",
+      "content": "<p>a</p>",
+      "order": 3,
+      "createdAt": "2025-07-15T11:05:26.102Z",
+      "updatedAt": "2025-07-15T11:05:26.102Z",
+      "views": 0,
+      "isDraft": false
+    },
+    {
+      "id": "450d",
+      "storyId": "1",
+      "title": "Chuong 4 - 123",
+      "content": "<p><span class=\"ql-size-large\" style=\"color: rgb(230, 0, 0); background-color: rgb(255, 194, 102);\">Test</span></p><p><br></p><ol><li data-list=\"ordered\" class=\"ql-align-center\"><span class=\"ql-ui\" contenteditable=\"false\"></span><strong class=\"ql-size-huge\" style=\"background-color: rgb(0, 0, 0); color: rgb(102, 102, 0);\"><em><s><u>Test 2</u></s></em></strong></li></ol>",
+      "order": 4,
+      "createdAt": "2025-07-15T11:44:53.641Z",
+      "updatedAt": "2025-07-15T11:44:53.641Z",
+      "views": 0,
+      "isDraft": false
+    },
+    {
+      "id": "f8ae",
+      "storyId": "1",
+      "title": "Test 5",
+      "content": "<p>Test 5</p>",
+      "order": 5,
+      "createdAt": null,
+      "updatedAt": "2025-07-15T11:43:10.482Z",
+      "views": 0,
+      "isDraft": true
     }
   ],
   "comments": [
     {
       "id": "1001",
-      "chapterId": 101,
-      "userId": 1,
+      "chapterId": "101",
+      "userId": "1",
       "username": "nguoivip",
       "avatar": "/avatars/1.jpg",
       "content": "Chương mở đầu rất hấp dẫn, mong tác giả ra chương mới sớm!",
@@ -203,8 +230,8 @@
       ],
       "replies": [
         {
-          "id": 10011,
-          "userId": 2,
+          "id": "10011",
+          "userId": "2",
           "username": "tacgia_no1",
           "avatar": "/avatars/2.jpg",
           "content": "Cảm ơn bạn đã ủng hộ, chương mới sẽ ra vào tuần sau!",
@@ -218,8 +245,8 @@
     },
     {
       "id": "1002",
-      "chapterId": 201,
-      "userId": 3,
+      "chapterId": "201",
+      "userId": "3",
       "username": "docgia_truyenma",
       "avatar": "/avatars/default.jpg",
       "content": "Chất lượng truyện VIP xứng đáng với đồng tiền bỏ ra!",
@@ -275,31 +302,31 @@
   "bookmarks": [
     {
       "id": "1",
-      "userId": 1,
-      "storyId": 1,
-      "lastReadChapterId": 102,
+      "userId": "1",
+      "storyId": "1",
+      "lastReadChapterId": "102",
       "createdAt": "2023-04-01T14:20:00Z"
     },
     {
       "id": "2",
-      "userId": 1,
-      "storyId": 2,
-      "lastReadChapterId": 201,
+      "userId": "1",
+      "storyId": "2",
+      "lastReadChapterId": "201",
       "createdAt": "2024-02-15T11:30:00Z"
     }
   ],
   "follows": [
     {
       "id": "1",
-      "followerId": 1,
-      "followingId": 2,
+      "followerId": "1",
+      "followingId": "2",
       "type": "author",
       "createdAt": "2023-05-10T09:15:00Z"
     },
     {
       "id": "2",
-      "followerId": 1,
-      "storyId": 1,
+      "followerId": "1",
+      "storyId": "1",
       "type": "story",
       "createdAt": "2023-04-05T16:30:00Z"
     }
@@ -307,15 +334,15 @@
   "ratings": [
     {
       "id": "1",
-      "userId": 1,
-      "storyId": 1,
+      "userId": "1",
+      "storyId": "1",
       "score": 5,
       "createdAt": "2023-04-20T14:00:00Z"
     },
     {
       "id": "2",
-      "userId": 3,
-      "storyId": 2,
+      "userId": "3",
+      "storyId": "2",
       "score": 4,
       "createdAt": "2024-02-01T10:30:00Z"
     }
@@ -323,9 +350,9 @@
   "authorFeedbacks": [
     {
       "id": "1",
-      "userId": 1,
-      "authorId": 2,
-      "storyId": 1,
+      "userId": "1",
+      "authorId": "2",
+      "storyId": "1",
       "content": "Truyện rất hay nhưng xin tác giả tăng tốc ra chương!",
       "createdAt": "2023-06-15T11:20:00Z",
       "status": "read"
@@ -334,7 +361,7 @@
   "systemFeedbacks": [
     {
       "id": "1",
-      "userId": 1,
+      "userId": "1",
       "type": "feature_request",
       "content": "Nên thêm tính năng đọc offline cho app mobile",
       "createdAt": "2025-07-05T15:40:00Z",
@@ -344,8 +371,8 @@
   "reports": [
     {
       "id": "1",
-      "userId": 1,
-      "storyId": 2,
+      "userId": "1",
+      "storyId": "2",
       "reason": "Nội dung nhạy cảm không phù hợp",
       "details": "Chương 5 có cảnh bạo lực quá mức",
       "createdAt": "2024-03-10T14:25:00Z",
@@ -382,8 +409,8 @@
   "userMemberships": [
     {
       "id": "1",
-      "userId": 1,
-      "planId": 2,
+      "userId": "1",
+      "planId": "2",
       "startDate": "2025-01-01T00:00:00Z",
       "endDate": "2025-12-31T23:59:59Z",
       "paymentMethod": "momo",
@@ -393,7 +420,7 @@
   "aiAssistants": [
     {
       "id": "1",
-      "userId": 1,
+      "userId": "1",
       "type": "character_creation",
       "prompt": "Tạo nhân vật nữ chính mạnh mẽ, lạnh lùng",
       "result": "Lăng Thanh Tuyết - nữ chưởng môn phái Băng Tâm...",
@@ -401,7 +428,7 @@
     },
     {
       "id": "2",
-      "userId": 2,
+      "userId": "2",
       "type": "story_continuation",
       "prompt": "Tiếp tục đoạn sau khi nhân vật chính bị phản bội",
       "result": "Lôi Trần nắm chặt tay, ánh mắt lạnh băng...",
@@ -411,17 +438,17 @@
   "readingHistory": [
     {
       "id": "1",
-      "userId": 1,
-      "storyId": 1,
-      "chapterId": 102,
+      "userId": "1",
+      "storyId": "1",
+      "chapterId": "102",
       "lastRead": "2025-07-10T22:15:00Z",
       "progress": 85
     },
     {
       "id": "2",
-      "userId": 1,
-      "storyId": 2,
-      "chapterId": 201,
+      "userId": "1",
+      "storyId": "2",
+      "chapterId": "201",
       "lastRead": "2025-07-09T20:30:00Z",
       "progress": 100
     }
@@ -429,27 +456,27 @@
   "notifications": [
     {
       "id": "1",
-      "userId": 1,
+      "userId": "1",
       "type": "new_chapter",
       "content": "Truyện 'Đạo Giới Độc Tôn' vừa ra chương mới: Chương 151 - Đại chiến chư thiên",
-      "storyId": 1,
-      "chapterId": 151,
+      "storyId": "1",
+      "chapterId": "151",
       "createdAt": "2025-07-10T09:00:00Z",
       "isRead": false
     },
     {
       "id": "2",
-      "userId": 1,
+      "userId": "1",
       "type": "author_reply",
       "content": "tacgia_no1 đã trả lời bình luận của bạn",
-      "commentId": 1001,
+      "commentId": "1001",
       "createdAt": "2025-07-09T16:30:00Z",
       "isRead": true
     }
   ],
   "userStats": [
     {
-      "userId": 1,
+      "userId": "1",
       "storiesPosted": 0,
       "chaptersPosted": 0,
       "commentsPosted": 12,
@@ -461,7 +488,7 @@
       "id": "0c4e"
     },
     {
-      "userId": 2,
+      "userId": "2",
       "storiesPosted": 5,
       "chaptersPosted": 350,
       "commentsPosted": 45,
