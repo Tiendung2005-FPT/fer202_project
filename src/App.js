@@ -15,8 +15,6 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        {/* Optional Home route */}
-        {/* <Route path="/" element={<Home />} /> */}
         <Route path="/" element={<Canvas />} />
         <Route path="/write-chapter/:sId" element={<ChapterWriter />} />
         <Route path="/edit-chapter/:sId/:cId" element={<ChapterEdit />} />

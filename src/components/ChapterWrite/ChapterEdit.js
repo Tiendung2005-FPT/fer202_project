@@ -3,10 +3,10 @@ import ReactQuill, { Quill } from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import axios from 'axios';
 import './ChapterWriter.css';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FiCpu } from 'react-icons/fi';
 import AIChat from './AIChat';
-
+import { Button } from 'react-bootstrap';
 
 const Font = Quill.import('attributors/class/font');
 Font.whitelist = [
@@ -25,43 +25,10 @@ export default function ChapterEdit() {
   const [title, setTitle] = useState('');
   const [story, setStory] = useState(null);
   const [showAI, setShowAI] = useState(false);
+  const [chapter, setChapter] = useState(null);
   const quillRef = useRef();
   const { sId, cId } = useParams();
-
-  useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      const hasTitle = title.trim().length > 0;
-      const hasContent = quillRef.current?.getEditor().getText().trim().length > 0;
-
-      if (hasTitle || hasContent) {
-        event.preventDefault();
-        event.returnValue = '';
-      }
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, [title, content]);
-
-  useEffect(() => {
-    axios.get("http://localhost:9999/users?id=1")
-      .then(result => {
-        const user = result.data[0]
-        const now = new Date();
-        const expiry = new Date(user.vipExpiry);
-        setIsVip(expiry > now);
-        localStorage.setItem("account", JSON.stringify(user));
-      })
-      .catch(err => console.error(err))
-    axios.get(`http://localhost:9999/stories?id=${sId}`)
-      .then(result => setStory(result.data[0]))
-      .catch(err => console.error(err)
-      )
-    axios.get(`http://localhost:9999/chapters/${cId}`)
-  }, [sId]);
+  const navigate = useNavigate();
 
   const basicModules = {
     toolbar: [
@@ -83,50 +50,93 @@ export default function ChapterEdit() {
     ],
   };
 
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      const hasTitle = title.trim().length > 0;
+      const hasContent = quillRef.current?.getEditor().getText().trim().length > 0;
+
+      if (hasTitle || hasContent) {
+        event.preventDefault();
+        event.returnValue = '';
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [title, content]);
+
+  useEffect(() => {
+    axios.get("http://localhost:9999/users?id=2")
+      .then(result => {
+        const user = result.data[0];
+        const now = new Date();
+        setIsVip(new Date(user.vipExpiry) > now);
+        localStorage.setItem("account", JSON.stringify(user));
+      })
+      .catch(err => console.error(err));
+
+    axios.get(`http://localhost:9999/stories/${sId}`)
+      .then(result => setStory(result.data))
+      .catch(err => console.error(err));
+
+    axios.get(`http://localhost:9999/chapters/${cId}`)
+      .then(result => {
+        const data = result.data;
+        setChapter(data);
+        setTitle(data.title);
+        setContent(data.content);
+        if (!result.data.isDraft) {
+          navigate(`/storypage/${sId}`);
+        }
+      })
+      .catch(err => console.error(err));
+
+  }, [sId]);
+
   const handleDraft = (e) => {
     e.preventDefault();
-    const chapter = { storyId: sId, title: title, content: content, order: null, createdAt: null, updatedAt: null, views: 0, isDraft: true };
-    chapter.updatedAt = new Date();
+    const chapter = {
+      title, content, updatedAt: new Date()
+    };
 
-    axios.post("http://localhost:9999/chapters", chapter)
+    axios.patch(`http://localhost:9999/chapters/${cId}`, chapter)
       .then(result => {
-        if (result.data != null) {
-          alert("Đã lưu bản nháp thành công!");
-        }
-        else alert("Đã xảy ra lỗi trong quá trình lưu.")
+        if (result.data) alert("Đã lưu bản nháp thành công!");
+        else alert("Đã xảy ra lỗi trong quá trình lưu.");
       })
-  }
+      .catch(err => console.error(err));
+  };
 
   const handlePublishChapter = (e) => {
     e.preventDefault();
-    if (quillRef.current) {
-      const text = quillRef.current.getEditor().getText();
-
-      if (!title.trim() || !text.trim()) {
-        alert("Tên và nội dung không được trống.");
-      } else {
-        const confirmPublish = window.confirm("Bạn có chắc chắn muốn đăng chương này không?");
-        if (!confirmPublish) return;
-
-        const chapter = { storyId: sId, title: title, content: content, order: null, createdAt: new Date(), updatedAt: new Date(), views: 0, isDraft: false };
-
-        axios.post("http://localhost:9999/chapters", chapter)
-          .then(result => {
-            if (result.data != null) {
-              alert("Đã đăng chapter thành công!");
-            } else {
-              alert("Đã xảy ra lỗi trong quá trình đăng.");
-            }
-          });
-      }
+    if (!title.trim() || !quillRef.current.getEditor().getText().trim()) {
+      alert("Tên và nội dung không được trống.");
+      return;
     }
-  };
+    if (!window.confirm("Bạn có chắc chắn muốn đăng chương này không?")) return;
 
+    const chapter = {
+      title, content, createdAt: new Date(), updatedAt: new Date(), isDraft: false
+    };
+
+    axios.patch(`http://localhost:9999/chapters/${cId}`, chapter)
+      .then(result => {
+        if (result.data) {
+          alert(`Đã đăng chapter ${cId} thành công!`);
+          navigate(`/storypage/${sId}`);
+        } else {
+          alert("Đã xảy ra lỗi trong quá trình đăng.");
+        }
+      })
+      .catch(err => console.error(err));
+  };
 
   return (
     <div className="chapter-editor-page">
       <header className="page-header">
-        {story && <h2 className="story-title-header">{story.title}</h2>}
+        <Button onClick={() => navigate(`/storypage/${sId}`)}>Quay lại</Button>
+
+        {story && <h2 className="story-title-header">{story.title} - Chương {chapter.order} (Bản nháp)</h2>}
       </header>
 
       <div className={`editor-and-ai-container ${showAI ? 'show-ai' : ''}`}>
@@ -142,6 +152,7 @@ export default function ChapterEdit() {
         </div>
 
         <div className="main-editor-content">
+
           <div className="form-section">
             <label htmlFor="chapter-title" className="form-label">Tên của chương</label>
             <input
@@ -160,10 +171,7 @@ export default function ChapterEdit() {
                 ref={quillRef}
                 theme="snow"
                 value={content}
-                onChange={(value) => {
-                  console.log("Content updated:", value);
-                  setContent(value);
-                }}
+                onChange={(value) => setContent(value)}
                 modules={isVip ? vipModules : basicModules}
                 placeholder="Câu truyện của bạn bắt đầu..."
               />
@@ -171,22 +179,16 @@ export default function ChapterEdit() {
           </div>
 
           <div className="actions-section">
-            <button
-              className="btn btn-secondary"
-              onClick={(e) => handleDraft(e)}
-            >
+            <button className="btn btn-secondary" onClick={handleDraft}>
               Lưu bản nháp
             </button>
-            <button
-              className="btn btn-primary"
-              onClick={(e) => handlePublishChapter(e)}
-            >
+            <button className="btn btn-primary" onClick={handlePublishChapter}>
               Đăng chương
             </button>
           </div>
         </div>
 
-        {showAI && <AIChat content={quillRef.current.getEditor().getText()} isVip={isVip} title={title} />}
+        {showAI && <AIChat content={quillRef.current?.getEditor().getText() || ''} isVip={isVip} title={title} />}
       </div>
     </div>
   );

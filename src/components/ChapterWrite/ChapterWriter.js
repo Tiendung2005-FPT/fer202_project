@@ -3,9 +3,10 @@ import ReactQuill, { Quill } from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import axios from 'axios';
 import './ChapterWriter.css';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FiCpu } from 'react-icons/fi';
 import AIChat from './AIChat';
+import { Button } from 'react-bootstrap';
 
 const Font = Quill.import('attributors/class/font');
 Font.whitelist = [
@@ -27,40 +28,8 @@ export default function ChapterWriter() {
   const [showAI, setShowAI] = useState(false);
   const quillRef = useRef();
   const { sId } = useParams();
-
-  useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      const hasTitle = title.trim().length > 0;
-      const hasContent = quillRef.current?.getEditor().getText().trim().length > 0;
-
-      if (hasTitle || hasContent) {
-        event.preventDefault();
-        event.returnValue = '';
-      }
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
-  }, [title, content]);
-
-  useEffect(() => {
-    axios.get("http://localhost:9999/users?id=1")
-      .then(res => {
-        const user = res.data[0];
-        const now = new Date();
-        setIsVip(new Date(user.vipExpiry) > now);
-        localStorage.setItem("account", JSON.stringify(user));
-      })
-      .catch(err => console.error(err));
-
-    axios.get(`http://localhost:9999/stories?id=${sId}`)
-      .then(res => setStory(res.data[0]))
-      .catch(err => console.error(err));
-
-    axios.get(`http://localhost:9999/chapters?storyId=${sId}&isDraft=false`)
-      .then(res => setChapterCount(res.data.length))
-      .catch(err => console.error(err));
-  }, [sId]);
+  const nextNumber = chapterCount + 1;
+  const navigate = useNavigate();
 
   const basicModules = {
     toolbar: [
@@ -82,25 +51,56 @@ export default function ChapterWriter() {
     ],
   };
 
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      const hasTitle = title.trim().length > 0;
+      const hasContent = quillRef.current?.getEditor().getText().trim().length > 0;
+
+      if (hasTitle || hasContent) {
+        event.preventDefault();
+        event.returnValue = '';
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [title, content]);
+
+  useEffect(() => {
+    axios.get("http://localhost:9999/users?id=2")
+      .then(result => {
+        const user = result.data[0];
+        const now = new Date();
+        setIsVip(new Date(user.vipExpiry) > now);
+        localStorage.setItem("account", JSON.stringify(user));
+      })
+      .catch(err => console.error(err));
+
+    axios.get(`http://localhost:9999/stories?id=${sId}`)
+      .then(result => setStory(result.data[0]))
+      .catch(err => console.error(err));
+
+    axios.get(`http://localhost:9999/chapters?storyId=${sId}&isDraft=false`)
+      .then(result => setChapterCount(result.data.length))
+      .catch(err => console.error(err));
+  }, [sId]);
+
   const handleDraft = (e) => {
     e.preventDefault();
     const chapter = {
-      storyId: sId,
-      title,
-      content,
-      order: null,
-      createdAt: null,
-      updatedAt: new Date(),
-      views: 0,
-      isDraft: true
+      storyId: sId, title, content, order: nextNumber, createdAt: null, updatedAt: new Date(), views: 0, isDraft: true
     };
 
     axios.post("http://localhost:9999/chapters", chapter)
       .then(result => {
-        if (result.data) alert("Đã lưu bản nháp thành công!");
+        if (result.data) {
+          alert("Đã lưu bản nháp thành công!")
+          navigate(`/edit-chapter/${sId}/${result.data.id}`)
+        }
         else alert("Đã xảy ra lỗi trong quá trình lưu.");
       })
       .catch(err => console.error(err));
+
   };
 
   const handlePublishChapter = (e) => {
@@ -111,22 +111,15 @@ export default function ChapterWriter() {
     }
     if (!window.confirm("Bạn có chắc chắn muốn đăng chương này không?")) return;
 
-    const nextOrder = chapterCount + 1;
     const chapter = {
-      storyId: sId,
-      title,
-      content,
-      order: nextOrder,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      views: 0,
-      isDraft: false
+      storyId: sId, title, content, order: nextNumber, createdAt: new Date(), updatedAt: new Date(), views: 0, isDraft: false
     };
 
     axios.post("http://localhost:9999/chapters", chapter)
       .then(result => {
         if (result.data) {
-          alert(`Đã đăng chapter ${nextOrder} thành công!`);
+          alert(`Đã đăng chapter ${nextNumber} thành công!`);
+          navigate(`/storypage/${sId}`)
         } else {
           alert("Đã xảy ra lỗi trong quá trình đăng.");
         }
@@ -134,11 +127,12 @@ export default function ChapterWriter() {
       .catch(err => console.error(err));
   };
 
-  const nextNumber = chapterCount + 1;
 
   return (
     <div className="chapter-editor-page">
       <header className="page-header">
+        <Button onClick={() => navigate(`/storypage/${sId}`)}>Quay lại</Button>
+
         {story && <h2 className="story-title-header">{story.title} - Chương {nextNumber}</h2>}
       </header>
 
