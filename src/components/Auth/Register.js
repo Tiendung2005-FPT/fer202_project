@@ -7,7 +7,6 @@ export default function Register() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [Cpassword, setCpassword] = useState('')
-
     const navigate = useNavigate();
 
     const handleRegister = (e) => {
@@ -21,7 +20,6 @@ export default function Register() {
             alert('Mật khẩu không khớp')
             return
         }
-
         axios.get('http://localhost:9999/users')
             .then(result => {
                 const user = result.data
