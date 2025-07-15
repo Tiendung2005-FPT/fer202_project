@@ -76,6 +76,14 @@ export default function ChapterWriter() {
       })
       .catch(err => console.error(err));
 
+      axios.get(`http://localhost:9999/chapters?storyId=${sId}&isDraft=true`)
+      .then(result => {
+        if (result.data) {
+          navigate(`/edit-chapter/${sId}/${result.data[0].id}`)
+        }
+      })
+      .catch(err => console.error(err));
+
     axios.get(`http://localhost:9999/stories?id=${sId}`)
       .then(result => setStory(result.data[0]))
       .catch(err => console.error(err));
@@ -83,6 +91,7 @@ export default function ChapterWriter() {
     axios.get(`http://localhost:9999/chapters?storyId=${sId}&isDraft=false`)
       .then(result => setChapterCount(result.data.length))
       .catch(err => console.error(err));
+
   }, [sId]);
 
   const handleDraft = (e) => {
