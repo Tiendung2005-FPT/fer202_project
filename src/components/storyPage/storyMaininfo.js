@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function StoryMainInfo({ story, author, currentUser }) {
+export default function StoryMainInfo({ story, author, userId, chapters }) {
     const [bookmarks, setBookmarks] = useState([]);
     const [isFollowed, setIsFollowed] = useState(false);
     const [historyReading, setHistoryReading] = useState([]);
@@ -13,36 +13,54 @@ export default function StoryMainInfo({ story, author, currentUser }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!story?.id || !currentUser?.id) return;
+        if (!story?.id || !userId) return;
 
         axios.get(`http://localhost:9999/bookmarks?storyId=${story.id}`)
             .then(res => setBookmarks(res.data))
             .catch(() => alert("Failed to fetch bookmarks"));
 
-        axios.get(`http://localhost:9999/readingHistory?storyId=${story.id}&userId=${currentUser.id}`)
-            .then(res => setHistoryReading(res.data))
+        axios.get(`http://localhost:9999/readingHistory?storyId=${story.id}&userId=${userId}`)
+            .then(res => {
+                const result = res.data;
+                if (Array.isArray(result) && result.length > 0) {
+                    const readingData = result[0];
+                    if (Array.isArray(readingData.chapterOrder)) {
+                        setHistoryReading(readingData.chapterOrder);
+                    } else {
+                        setHistoryReading([]);
+                    }
+                } else {
+                    setHistoryReading([]);
+                }
+            })
+            .catch(() => {
+                console.error("ailed to fetch reading history");
+                setHistoryReading([]);
+            });
 
-            .catch(() => alert("Failed to fetch reading history"));
 
         axios.get("http://localhost:9999/tags")
             .then(res => setAllTags(res.data))
             .catch(() => alert("Failed to fetch tags"));
-
-
-    }, [story, currentUser]);
-
+    }, [story?.id, userId]);
 
     useEffect(() => {
-        if (currentUser?.id) {
-            const found = bookmarks.find(b => b.userId == currentUser.id);
+        if (userId && bookmarks.length > 0) {
+            const found = bookmarks.find(b =>
+                String(b.userId) === String(userId)
+            );
             setIsFollowed(!!found);
         }
-    }, [bookmarks, currentUser]);
+    }, [bookmarks, userId]);
 
     const handleBookmark = () => {
-        const found = bookmarks.find(b => b.userId == currentUser.id && b.storyId == story.id);
+        const found = bookmarks.find(b =>
+            String(b.userId) === String(userId) &&
+            String(b.storyId) === String(story.id)
+        );
+
         if (!found) {
-            const newBookmark = { userId: currentUser.id, storyId: story.id };
+            const newBookmark = { userId: String(userId), storyId: String(story.id) };
             axios.post("http://localhost:9999/bookmarks", newBookmark)
                 .then(() => axios.get(`http://localhost:9999/bookmarks?storyId=${story.id}`))
                 .then(res => setBookmarks(res.data))
@@ -60,11 +78,18 @@ export default function StoryMainInfo({ story, author, currentUser }) {
     };
 
     const continueReading = () => {
-        if (historyReading.length === 0) {
+        if (!historyReading || historyReading.length === 0) {
             navigate(`/readStory/${story.id}/1`);
+            return;
+        }
+
+        const lastOrder = historyReading[historyReading.length - 1];
+        const chapterFound = chapters.find(c => Number(c.order) === Number(lastOrder));
+
+        if (chapterFound) {
+            navigate(`/readStory/${story.id}/${chapterFound.order}`);
         } else {
-            const lastChapterId = historyReading[historyReading.length - 1]?.chapterId || "1";
-            navigate(`/readStory/${story.id}/${lastChapterId}`);
+            navigate(`/readStory/${story.id}/1`);
         }
     };
 
@@ -103,7 +128,7 @@ export default function StoryMainInfo({ story, author, currentUser }) {
 
                 <div className="mb-3">
                     {story?.tags?.map((tagId, idx) => {
-                        const foundTag = alltags?.find(a => a.id === tagId);
+                        const foundTag = alltags.find(tag => tag.id === tagId);
                         return foundTag ? (
                             <span key={idx} className="badge text-dark me-2 mb-1 tag-badge">
                                 {foundTag.name.toUpperCase()}
@@ -111,7 +136,6 @@ export default function StoryMainInfo({ story, author, currentUser }) {
                         ) : null;
                     })}
                 </div>
-
 
                 <div className="mb-3">
                     {[...Array(5)].map((_, index) => (

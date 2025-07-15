@@ -14,7 +14,7 @@ export default function StoryPage() {
     const [chapters, setChapters] = useState([]);
     const [showFullDesc, setShowFullDesc] = useState(false);
 
-    const currentUser = JSON.parse(localStorage.getItem("user"));
+    const userId = JSON.parse(localStorage.getItem("userId"));
     useEffect(() => {
         axios
             .get(`http://localhost:9999/stories?id=${id}`)
@@ -47,7 +47,7 @@ export default function StoryPage() {
                     {story && (
                         <Card className="p-4">
                             <StoryBreakcumb title={story.title} id={story.id} />
-                            <StoryMainInfo story={story} author={author} currentUser={currentUser} />
+                            <StoryMainInfo story={story} author={author} userId={userId} chapters={chapters} />
                             <StoryDescription
                                 description={story.description}
                                 showFullDesc={showFullDesc}

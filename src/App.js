@@ -9,12 +9,14 @@ import ReadStory from "./components/readStorys/index";
 import ChapterWriter from "./components/ChapterWrite/ChapterWriter.js";
 import ChapterEdit from "./components/ChapterWrite/ChapterEdit.js";
 import Canvas from "./components/ChapterWrite/Canvas.js";
+import ForgotPassword from "./components/Auth/ForgotPassword";
+import Login from './components/Auth/Login';
+import Register from './components/Auth/Register';
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      
       <Routes>
         <Route path="/" element={<Canvas />} />
         <Route path="/write-chapter/:sId" element={<ChapterWriter />} />
@@ -23,6 +25,9 @@ function App() {
         <Route path="/filterStories" element={<FilterStories />} /> 
         <Route path="/storypage/:id" element={<StoryPage />} />
         <Route path="/readStory/:storyId/:chapterId" element={<ReadStory />} />
+        <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="/forgot-password" element={<ForgotPassword></ForgotPassword>}></Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

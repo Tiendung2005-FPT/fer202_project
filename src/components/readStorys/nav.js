@@ -28,11 +28,13 @@ export default function Nav({ storyId, currentChapterId, chapters, theme, setThe
   const maxOrder = validChapters[validChapters.length - 1]?.order;
 
   const goToOrder = (order) => {
-    const target = validChapters.find(ch => ch.order === order);
+    const target = validChapters.find(ch => ch.order == order);
     if (target) {
-      navigate(`/readStory/${storyId}/${target.id}`);
+      navigate(`/readStory/${storyId}/${target.order}`);
     }
   };
+
+
 
   return (
     <div className="custom-nav-bar">
@@ -80,7 +82,7 @@ export default function Nav({ storyId, currentChapterId, chapters, theme, setThe
             <div className="size-controls">
               <button onClick={() => setFontSize((prev) => Math.max(10, prev - 1))}>−</button>
               <span>{fontSize}</span>
-              <button onClick={() => setFontSize((prev) => Math.min(40, prev + 1))}>＋</button>
+              <button onClick={() => setFontSize((prev) => Math.min(35, prev + 1))}>＋</button>
             </div>
           </div>
         </div>
@@ -92,8 +94,9 @@ export default function Nav({ storyId, currentChapterId, chapters, theme, setThe
           size="sm"
           onClick={() => goToOrder(currentOrder - 1)}
           disabled={currentOrder <= minOrder}
+          className={currentOrder <= minOrder ? 'd-none' : ''}
         >
-          <ArrowLeft />
+          <ArrowLeft /> Chương trước
         </Button>
 
         <Dropdown>
@@ -105,22 +108,23 @@ export default function Nav({ storyId, currentChapterId, chapters, theme, setThe
               <Dropdown.Item
                 key={ch.id}
                 active={ch.id === currentChapterId}
-                onClick={() => navigate(`/readStory/${storyId}/${ch.id}`)}
+                onClick={() => navigate(`/readStory/${storyId}/${ch.order}`)}
               >
                 {ch.title || `Chương ${ch.order}`}
               </Dropdown.Item>
             ))}
           </Dropdown.Menu>
         </Dropdown>
-
-        <Button
-          variant="dark"
-          size="sm"
-          onClick={() => goToOrder(currentOrder + 1)}
-          disabled={currentOrder >= maxOrder}
-        >
-          <ArrowRight />
-        </Button>
+        
+          <Button
+            variant="light"
+            size="sm"
+            onClick={() => goToOrder(currentOrder + 1)}
+            disabled={currentOrder >= maxOrder}
+          >
+            Chương sau <ArrowRight />
+          </Button>
+        
       </div>
 
       <Button variant="link" className="btn-custom-sendError">
