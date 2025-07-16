@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ReactQuill, { Quill } from 'react-quill-new';
-import 'react-quill-new/dist/quill.snow.css';
 import axios from 'axios';
 import './ChapterWriter.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FiCpu } from 'react-icons/fi';
 import AIChat from './AIChat';
-import { Button } from 'react-bootstrap';
 
 const Font = Quill.import('attributors/class/font');
 Font.whitelist = [
@@ -45,7 +43,6 @@ export default function ChapterEdit() {
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
       [{ 'indent': '-1' }, { 'indent': '+1' }],
       [{ 'align': [] }],
-      ['blockquote', 'code-block'],
       ['clean']
     ],
   };
@@ -128,7 +125,7 @@ export default function ChapterEdit() {
       .catch(err => console.error(err));
   };
 
-  const handleEditChapter = (e) => {
+  const handlePublishChapter = (e) => {
     e.preventDefault();
     if (!title.trim() || !quillRef.current.getEditor().getText().trim()) {
       alert("Tên và nội dung không được trống.");
@@ -143,7 +140,31 @@ export default function ChapterEdit() {
     axios.patch(`http://localhost:9999/chapters/${cId}`, chapter)
       .then(result => {
         if (result.data) {
-          alert(`Đã đăng chapter ${cId} thành công!`);
+          alert(`Đã đăng chương ${chapter.order} thành công!`);
+          navigate(`/storypage/${sId}`);
+        } else {
+          alert("Đã xảy ra lỗi trong quá trình đăng.");
+        }
+      })
+      .catch(err => console.error(err));
+  };
+
+  const handleEditChapter = (e) => {
+    e.preventDefault();
+    if (!title.trim() || !quillRef.current.getEditor().getText().trim()) {
+      alert("Tên và nội dung không được trống.");
+      return;
+    }
+    if (!window.confirm("Bạn có chắc chắn muốn cập nhật chương này không?")) return;
+
+    const editChapter = {
+      title, content, updatedAt: new Date()
+    };
+
+    axios.patch(`http://localhost:9999/chapters/${cId}`, editChapter)
+      .then(result => {
+        if (result.data) {
+          alert(`Đã cập nhật chương ${chapter.order} thành công!`);
           navigate(`/storypage/${sId}`);
         } else {
           alert("Đã xảy ra lỗi trong quá trình đăng.");
@@ -156,16 +177,30 @@ export default function ChapterEdit() {
     <div className="chapter-editor-page">
       <header className="page-header">
         <div className="actions-section">
-          <button className="btn btn-primary" onClick={() => navigate(`/storypage/${sId}`)}>
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              const hasTitle = title.trim().length > 0;
+              const hasContent = quillRef.current?.getEditor().getText().trim().length > 0;
+
+              if (hasTitle || hasContent) {
+                const confirmLeave = window.confirm("Bạn có chắc chắn muốn quay lại? Những thay đổi chưa được lưu sẽ bị mất.");
+                if (!confirmLeave) return;
+              }
+
+              navigate(`/storypage/${sId}`);
+            }}
+          >
             Quay lại
           </button>
+
 
           {chapter?.isDraft ? (
             <>
               <button className="btn btn-secondary" onClick={handleDraft}>
                 Lưu bản nháp
               </button>
-              <button className="btn btn-primary" onClick={handleEditChapter}>
+              <button className="btn btn-primary" onClick={handlePublishChapter}>
                 Đăng chương
               </button>
             </>

@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ReactQuill, { Quill } from 'react-quill-new';
-import 'react-quill-new/dist/quill.snow.css';
 import axios from 'axios';
 import './ChapterWriter.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FiCpu } from 'react-icons/fi';
 import AIChat from './AIChat';
-import { Button } from 'react-bootstrap';
 
 const Font = Quill.import('attributors/class/font');
 Font.whitelist = [
@@ -46,7 +44,6 @@ export default function ChapterWriter() {
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
       [{ 'indent': '-1' }, { 'indent': '+1' }],
       [{ 'align': [] }],
-      ['blockquote', 'code-block'],
       ['clean']
     ],
   };
@@ -80,7 +77,7 @@ export default function ChapterWriter() {
     } else {
       setIsVip(false);
     }
-    
+
     axios.get(`http://localhost:9999/stories/?authorId=${user.id}`)
       .then(result => {
         const storyIds = result.data.map(story => story.id);
@@ -141,7 +138,7 @@ export default function ChapterWriter() {
     axios.post("http://localhost:9999/chapters", chapter)
       .then(result => {
         if (result.data) {
-          alert(`Đã đăng chapter ${nextNumber} thành công!`);
+          alert(`Đã đăng chương ${nextNumber} thành công!`);
           navigate(`/storypage/${sId}`)
         } else {
           alert("Đã xảy ra lỗi trong quá trình đăng.");
@@ -155,7 +152,23 @@ export default function ChapterWriter() {
     <div className="chapter-editor-page">
       <header className="page-header">
         <div className="actions-section">
-          <button className="btn btn-primary" onClick={() => navigate(`/storypage/${sId}`)}>Quay lại</button>
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              const hasTitle = title.trim().length > 0;
+              const hasContent = quillRef.current?.getEditor().getText().trim().length > 0;
+
+              if (hasTitle || hasContent) {
+                const confirmLeave = window.confirm("Bạn có chắc chắn muốn quay lại? Những thay đổi chưa được lưu sẽ bị mất.");
+                if (!confirmLeave) return;
+              }
+
+              navigate(`/storypage/${sId}`);
+            }}
+          >
+            Quay lại
+          </button>
+
           <button className="btn btn-secondary" onClick={handleDraft}>
             Lưu bản nháp
           </button>

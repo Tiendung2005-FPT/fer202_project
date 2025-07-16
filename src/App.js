@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'react-quill-new/dist/quill.snow.css';
 
 import Header from './header';
 import UserDetail from './users/userDetail';
