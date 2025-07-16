@@ -47,7 +47,6 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
             .get("http://localhost:9999/tags")
             .then((res) => setAllTags(res.data))
             .catch(() => alert("Failed to fetch tags"));
-            
         axios.get(`http://localhost:9999/chapters/?storyId=${story.id}&isDraft=true`)
             .then(result => {
                 if (result.data && result.data.length > 0) {
@@ -201,22 +200,26 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                         ></i>{" "}
                         Theo dõi
                     </Button>
-                    {!draft && (
-                        <Button
-                            className="story-button"
-                            onClick={() => navigate(`/write-chapter/${story.id}`)}
-                        >
-                            Viết chương mới
-                        </Button>
-                    )}
+                    {author?.id === userId && (
+                        <>
+                            {!draft && (
+                                <Button
+                                    className="story-button"
+                                    onClick={() => navigate(`/write-chapter/${story.id}`)}
+                                >
+                                    Viết chương mới
+                                </Button>
+                            )}
 
-                    {draft && draft.id && (
-                        <Button
-                            className="story-button"
-                            onClick={() => navigate(`/edit-chapter/${story.id}/${draft.id}`)}
-                        >
-                            Viết tiếp chương {draft.order || "?"}
-                        </Button>
+                            {draft && draft.id && (
+                                <Button
+                                    className="story-button"
+                                    onClick={() => navigate(`/edit-chapter/${story.id}/${draft.id}`)}
+                                >
+                                    Viết tiếp chương {draft.order || "?"}
+                                </Button>
+                            )}
+                        </>
                     )}
                 </div>
             </Col>

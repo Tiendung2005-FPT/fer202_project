@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ReactQuill, { Quill } from 'react-quill-new';
-import 'react-quill-new/dist/quill.snow.css';
 import axios from 'axios';
 import './ChapterWriter.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FiCpu } from 'react-icons/fi';
 import AIChat from './AIChat';
-import { Button } from 'react-bootstrap';
 
 const Font = Quill.import('attributors/class/font');
 Font.whitelist = [
@@ -46,7 +44,6 @@ export default function ChapterWriter() {
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
       [{ 'indent': '-1' }, { 'indent': '+1' }],
       [{ 'align': [] }],
-      ['blockquote', 'code-block'],
       ['clean']
     ],
   };
@@ -68,17 +65,31 @@ export default function ChapterWriter() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userAccount"));
+    if (!user) {
+      navigate(`/storypage/${sId}`);
+      return;
+    }
+
+    if (user.vipExpiry) {
+      const expiryDate = new Date(user.vipExpiry).getTime();
+      const now = new Date();
+      setIsVip(now <= expiryDate);
+    } else {
+      setIsVip(false);
+    }
+
     axios.get(`http://localhost:9999/stories/?authorId=${user.id}`)
       .then(result => {
         const storyIds = result.data.map(story => story.id);
         if (!storyIds.includes(String(sId))) {
-          navigate("/");
+          navigate(`/storypage/${sId}`);
+
         }
       })
 
     axios.get(`http://localhost:9999/chapters?storyId=${sId}&isDraft=true`)
       .then(result => {
-        if (result.data) {
+        if (result.data && result.data.length > 0) {
           navigate(`/edit-chapter/${sId}/${result.data[0].id}`)
         }
       })
@@ -127,7 +138,7 @@ export default function ChapterWriter() {
     axios.post("http://localhost:9999/chapters", chapter)
       .then(result => {
         if (result.data) {
-          alert(`Đã đăng chapter ${nextNumber} thành công!`);
+          alert(`Đã đăng chương ${nextNumber} thành công!`);
           navigate(`/storypage/${sId}`)
         } else {
           alert("Đã xảy ra lỗi trong quá trình đăng.");
@@ -140,7 +151,31 @@ export default function ChapterWriter() {
   return (
     <div className="chapter-editor-page">
       <header className="page-header">
-        <Button onClick={() => navigate(`/storypage/${sId}`)}>Quay lại</Button>
+        <div className="actions-section">
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              const hasTitle = title.trim().length > 0;
+              const hasContent = quillRef.current?.getEditor().getText().trim().length > 0;
+
+              if (hasTitle || hasContent) {
+                const confirmLeave = window.confirm("Bạn có chắc chắn muốn quay lại? Những thay đổi chưa được lưu sẽ bị mất.");
+                if (!confirmLeave) return;
+              }
+
+              navigate(`/storypage/${sId}`);
+            }}
+          >
+            Quay lại
+          </button>
+
+          <button className="btn btn-secondary" onClick={handleDraft}>
+            Lưu bản nháp
+          </button>
+          <button className="btn btn-primary" onClick={handlePublishChapter}>
+            Đăng chương
+          </button>
+        </div>
 
         {story && <h2 className="story-title-header">{story.title} - Chương {nextNumber}</h2>}
       </header>
@@ -182,15 +217,6 @@ export default function ChapterWriter() {
                 placeholder="Câu truyện của bạn bắt đầu..."
               />
             </div>
-          </div>
-
-          <div className="actions-section">
-            <button className="btn btn-secondary" onClick={handleDraft}>
-              Lưu bản nháp
-            </button>
-            <button className="btn btn-primary" onClick={handlePublishChapter}>
-              Đăng chương
-            </button>
           </div>
         </div>
 

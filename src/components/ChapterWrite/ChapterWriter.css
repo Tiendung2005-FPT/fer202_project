@@ -243,11 +243,15 @@ body {
 
 .actions-section {
   display: flex;
-  justify-content: flex-end;
   gap: 12px;
   margin-top: auto;
   padding-top: var(--space-lg);
 }
+
+.actions-section > .btn:first-child {
+  margin-right: auto;
+}
+
 
 .actions-section .btn {
   padding: 10px 24px;

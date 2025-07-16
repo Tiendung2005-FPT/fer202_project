@@ -20,7 +20,7 @@ export default function StoryPage() {
             .get(`http://localhost:9999/stories?id=${id}`)
             .then((res) => setStory(res.data[0]))
             .catch((err) => console.error("Lỗi load stories:", err));
-    }, [id]); 
+    }, [id]);
 
     useEffect(() => {
         if (story?.authorId) {
@@ -31,7 +31,7 @@ export default function StoryPage() {
         }
         if (story?.id) {
             axios
-                .get(`http://localhost:9999/chapters?storyId=${story.id}&isDraft=false`)
+                .get(`http://localhost:9999/chapters?storyId=${story.id}`)
                 .then((res) => setChapters(res.data))
                 .catch((err) => console.error("Lỗi load chapter:", err));
         }
@@ -53,7 +53,7 @@ export default function StoryPage() {
                                 showFullDesc={showFullDesc}
                                 onToggle={toggleDesc}
                             />
-                            <ChapterList chapters={chapters} storyID={story.id} />
+                            <ChapterList chapters={chapters} storyID={story.id} author={author} userId={userId} />
                         </Card>
                     )}
                 </Col>

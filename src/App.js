@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'react-quill-new/dist/quill.snow.css';
 
 import Header from './header';
 import UserDetail from './components/users/userDetail.js';
@@ -13,6 +14,7 @@ import ForgotPassword from "./components/Auth/ForgotPassword";
 import ChapterWriter from "./components/ChapterWrite/ChapterWriter.js";
 import ChapterEdit from "./components/ChapterWrite/ChapterEdit.js";
 import Canvas from "./components/ChapterWrite/Canvas.js";
+import MembershipPurchase from './components/Membership/MembershipPurchase.js';
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/membership-purchase" element={<MembershipPurchase />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
