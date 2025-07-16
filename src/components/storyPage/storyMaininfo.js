@@ -9,6 +9,7 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
     const [isFollowed, setIsFollowed] = useState(false);
     const [historyReading, setHistoryReading] = useState([]);
     const [alltags, setAllTags] = useState([]);
+    const [draft, setDraft] = useState(null); // ✅ new
 
     const navigate = useNavigate();
 
@@ -34,14 +35,28 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                 }
             })
             .catch(() => {
-                console.error("ailed to fetch reading history");
+                console.error("Failed to fetch reading history");
                 setHistoryReading([]);
             });
-
 
         axios.get("http://localhost:9999/tags")
             .then(res => setAllTags(res.data))
             .catch(() => alert("Failed to fetch tags"));
+
+        // ✅ Fetch draft chapter
+        axios.get(`http://localhost:9999/chapters/?storyId=${story.id}&isDraft=true`)
+            .then(result => {
+                if (result.data && result.data.length > 0) {
+                    setDraft(result.data[0]);
+                } else {
+                    setDraft(null);
+                }
+            })
+            .catch(() => {
+                console.error("Failed to fetch draft chapter");
+                setDraft(null);
+            });
+
     }, [story?.id, userId]);
 
     useEffect(() => {
@@ -103,7 +118,7 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                     style={{ maxHeight: "400px", objectFit: "cover" }}
                     onError={(e) => {
                         e.target.src = "/book-icon.png";
-                        e.target.onerror = null; // Prevent infinite loop
+                        e.target.onerror = null;
                     }}
                 />
             </Col>
@@ -164,6 +179,25 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                     >
                         <i className={`bi ${isFollowed ? 'bi-heart-fill' : 'bi-heart'}`}></i> Theo dõi
                     </Button>
+
+                    {/* ✅ New buttons for draft handling */}
+                    {!draft && (
+                        <Button
+                            className="story-button"
+                            onClick={() => navigate(`/write-chapter/${story.id}`)}
+                        >
+                            Viết chương mới
+                        </Button>
+                    )}
+
+                    {draft && draft.id && (
+                        <Button
+                            className="story-button"
+                            onClick={() => navigate(`/edit-chapter/${story.id}/${draft.id}`)}
+                        >
+                            Viết tiếp chương {draft.order || "?"}
+                        </Button>
+                    )}
                 </div>
             </Col>
         </Row>
