@@ -73,6 +73,14 @@ export default function ChapterWriter() {
       return;
     }
 
+    if (user.vipExpiry) {
+      const expiryDate = new Date(user.vipExpiry).getTime();
+      const now = new Date();
+      setIsVip(now <= expiryDate);
+    } else {
+      setIsVip(false);
+    }
+    
     axios.get(`http://localhost:9999/stories/?authorId=${user.id}`)
       .then(result => {
         const storyIds = result.data.map(story => story.id);
@@ -84,7 +92,7 @@ export default function ChapterWriter() {
 
     axios.get(`http://localhost:9999/chapters?storyId=${sId}&isDraft=true`)
       .then(result => {
-        if (result.data) {
+        if (result.data && result.data.length > 0) {
           navigate(`/edit-chapter/${sId}/${result.data[0].id}`)
         }
       })

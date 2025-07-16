@@ -22,6 +22,7 @@
       "password": "hashed_password",
       "avatar": "/avatars/2.jpg",
       "role": "author",
+      "vipExpiry": "2025-12-31T23:59:59Z",
       "createdAt": "2022-11-20T10:15:00Z",
       "lastLogin": "2025-07-09T09:45:00Z",
       "bio": "Tác giả của nhiều truyện best-seller",
@@ -36,6 +37,7 @@
       "password": "hashed_password",
       "avatar": "/avatars/admin.jpg",
       "role": "admin",
+      "vipExpiry": "2025-12-31T23:59:59Z",
       "createdAt": "2022-01-01T00:00:00Z",
       "lastLogin": "2025-07-11T08:00:00Z",
       "bio": "Quản trị viên hệ thống",
@@ -555,26 +557,21 @@
   "membershipPlans": [
     {
       "id": "1",
-      "name": "Gói Tháng",
-      "price": 50000,
-      "durationDays": 30,
-      "features": [
-        "Truy cập truyện VIP",
-        "Sử dụng AI cơ bản",
-        "Lưu 5 chương nháp"
-      ]
+      "name": "1 Tháng",
+      "price": 20000,
+      "durationDays": 30
     },
     {
       "id": "2",
-      "name": "Gói Năm",
-      "price": 500000,
-      "durationDays": 365,
-      "features": [
-        "Truy cập truyện VIP",
-        "Sử dụng AI nâng cao",
-        "Lưu không giới hạn chương nháp",
-        "Đọc không quảng cáo"
-      ]
+      "name": "3 Tháng",
+      "price": 50000,
+      "durationDays": 90
+    },
+    {
+      "id": "3",
+      "name": "1 Năm",
+      "price": 180000,
+      "durationDays": 365
     }
   ],
   "userMemberships": [

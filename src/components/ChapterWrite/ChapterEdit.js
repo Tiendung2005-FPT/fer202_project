@@ -78,6 +78,15 @@ export default function ChapterEdit() {
       navigate(`/storypage/${sId}`);
       return;
     }
+
+    if (user.vipExpiry) {
+      const expiryDate = new Date(user.vipExpiry).getTime();
+      const now = new Date();
+      setIsVip(now <= expiryDate);
+    } else {
+      setIsVip(false);
+    }
+
     axios.get(`http://localhost:9999/stories/?authorId=${user.id}`)
       .then(result => {
         const storyIds = result.data.map(story => story.id);
