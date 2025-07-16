@@ -178,10 +178,7 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
     const [isFollowed, setIsFollowed] = useState(false);
     const [historyReading, setHistoryReading] = useState([]);
     const [alltags, setAllTags] = useState([]);
-    const [showReportForm, setShowReportForm] = useState(false);
-    const [reportReason, setReportReason] = useState("");
-    const [reportDetails, setReportDetails] = useState("");
-
+    const [draft, setDraft] = useState(null); 
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -210,7 +207,7 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                 }
             })
             .catch(() => {
-                console.error("ailed to fetch reading history");
+                console.error("Failed to fetch reading history");
                 setHistoryReading([]);
             });
 
@@ -218,6 +215,20 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
             .get("http://localhost:9999/tags")
             .then((res) => setAllTags(res.data))
             .catch(() => alert("Failed to fetch tags"));
+            
+        axios.get(`http://localhost:9999/chapters/?storyId=${story.id}&isDraft=true`)
+            .then(result => {
+                if (result.data && result.data.length > 0) {
+                    setDraft(result.data[0]);
+                } else {
+                    setDraft(null);
+                }
+            })
+            .catch(() => {
+                console.error("Failed to fetch draft chapter");
+                setDraft(null);
+            });
+
     }, [story?.id, userId]);
 
     useEffect(() => {
@@ -275,24 +286,6 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
         }
     };
 
-    const handleReport = () => {
-        // Lấy userId từ localStorage
-        const storedUserId = localStorage.getItem("userId"); // Thay 'userId' bằng key bạn dùng để lưu userId
-
-        if (!storedUserId) {
-            alert("Bạn cần đăng nhập để báo cáo truyện.");
-            return; // Dừng hàm nếu userId trống
-        }
-
-        setShowReportForm(true);
-        alert("Chức năng báo cáo đang được phát triển!"); // Thông báo placeholder
-    };
-
-    const handleReportSubmit = () => {
-        console.log("Lý do báo cáo:", reportReason);
-        console.log("Chi tiết báo cáo:", reportDetails);
-    };
-
 
 
     return (
@@ -305,7 +298,7 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                     style={{ maxHeight: "400px", objectFit: "cover" }}
                     onError={(e) => {
                         e.target.src = "/book-icon.png";
-                        e.target.onerror = null; // Prevent infinite loop
+                        e.target.onerror = null; 
                     }}
                 />
             </Col>
@@ -376,47 +369,23 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                         ></i>{" "}
                         Theo dõi
                     </Button>
+                    {!draft && (
+                        <Button
+                            className="story-button"
+                            onClick={() => navigate(`/write-chapter/${story.id}`)}
+                        >
+                            Viết chương mới
+                        </Button>
+                    )}
 
-                    <Button
-                        onClick={handleReport}
-                        className="story-button bg-danger text-white report-button"
-                    >
-                        <i className="bi bi-flag"></i> Báo cáo
-                    </Button>
-
-                    {showReportForm && 
-                     (
-                            <div className={"popup-show-report"}>
-                                <Form>
-                                    <Form.Group>
-                                        <Form.Label>Lý do báo cáo</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            placeholder="Nhập lý do báo cáo"
-                                            value={reportReason}
-                                            onChange={(e) => setReportReason(e.target.value)}
-                                        />
-                                    </Form.Group>
-
-                                    <Form.Group>
-                                        <Form.Label>Chi tiết báo cáo</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            placeholder="Nhập chi tiết báo cáo"
-                                            value={reportDetails}
-                                            onChange={(e) => setReportDetails(e.target.value)}
-                                        />
-                                    </Form.Group>
-
-                                    <Button type="submit" className="mt-3" onClick={handleReportSubmit}>Gửi báo cáo</Button>
-
-                                </Form>
-                            </div>
-                        )    
-                } 
-                       
-        
-
+                    {draft && draft.id && (
+                        <Button
+                            className="story-button"
+                            onClick={() => navigate(`/edit-chapter/${story.id}/${draft.id}`)}
+                        >
+                            Viết tiếp chương {draft.order || "?"}
+                        </Button>
+                    )}
                 </div>
             </Col>
         </Row>

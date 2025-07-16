@@ -112,13 +112,16 @@ const FilterStories = () => {
                   <Card key={story.id} className="mb-3">
                     <Card.Body className="d-flex align-items-center">
                       <Image
-                        src="../book-icon.png"
-                        
+                        src={story.coverImage || "/book-icon.png"} 
+                        onError={(e) => {
+                          e.target.src = "/book-icon.png";
+                          e.target.onerror = null; // Prevent infinite loop
+                        }}
                         rounded
                         style={{ width: 80, height: 100, objectFit: 'cover', marginRight: 16 }}
                       />
                       <div>
-                        <h5 className="text-primary" style={{cursor: 'pointer', textDecoration: 'underline'}} onClick={() => navigate(`/storyDetail/${story.id}`)}>{story.title}</h5>
+                        <h5 className="text-primary" style={{cursor: 'pointer', textDecoration: 'underline'}} onClick={() => navigate(`/storypage/${story.id}`)}>{story.title}</h5>
                         <div className="text-muted mb-2">{story.description}</div>
                         <div><b>Thể loại:</b> {story.tags && story.tags.length > 0
                           ? story.tags.map(tagId => {
