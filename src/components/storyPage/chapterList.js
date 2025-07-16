@@ -39,7 +39,7 @@ export default function ChapterList({ chapters , storyID}) {
             <div className="d-flex justify-content-between gap-2">
                 <h5>Danh sách chương</h5>
                 <Button
-                    style={{ backgroundColor: "#add158ff", border: "none" }}
+                    style={{ backgroundColor: "#add158ff", border: "none" ,}}
                     onClick={() => setIsSortDesc(!isSortDesc)}
                 >
                     <span className="bi bi-sort-down" style={{ fontSize: "1rem" }}></span>

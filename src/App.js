@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from './header';
-import UserDetail from './users/userDetail';
-import FilterStories from './stories/filterStories';
+import UserDetail from './components/users/userDetail.js';
+import FilterStories from './components/stories/filterStories.js';
 import StoryPage from "./components/storyPage/index";
 import ReadStory from "./components/readStorys/index";
 import Login from "./components/Auth/Login";
@@ -12,9 +12,7 @@ import ForgotPassword from "./components/Auth/ForgotPassword";
 import ChapterWriter from "./components/ChapterWrite/ChapterWriter.js";
 import ChapterEdit from "./components/ChapterWrite/ChapterEdit.js";
 import Canvas from "./components/ChapterWrite/Canvas.js";
-import ForgotPassword from "./components/Auth/ForgotPassword";
-import Login from './components/Auth/Login';
-import Register from './components/Auth/Register';
+
 
 function App() {
   return (
