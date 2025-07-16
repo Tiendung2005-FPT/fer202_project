@@ -97,10 +97,14 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
         <Row>
             <Col md={3} xs={12} className="text-center mb-3">
                 <img
-                    src={story.coverImage}
+                    src={story.coverImage || "/book-icon.png"}
                     alt="Cover"
                     className="img-fluid rounded"
                     style={{ maxHeight: "400px", objectFit: "cover" }}
+                    onError={(e) => {
+                        e.target.src = "/book-icon.png";
+                        e.target.onerror = null; // Prevent infinite loop
+                    }}
                 />
             </Col>
 
