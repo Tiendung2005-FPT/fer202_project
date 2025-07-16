@@ -330,54 +330,7 @@
       "isDraft": false
     }
   ],
-  "comments": [
-    {
-      "id": "1",
-      "storyId": "1",
-      "chapterId": "1",
-      "userId": "1",
-      "username": "nguoivip",
-      "avatar": "/avatars/1.jpg",
-      "content": "Chương mở đầu rất hấp dẫn, mong tác giả ra chương mới sớm!",
-      "createdAt": "2023-03-12T15:30:00Z",
-      "likes": [
-        2,
-        3,
-        4,
-        5
-      ],
-      "replies": [
-        {
-          "id": "1",
-          "userId": "2",
-          "username": "tacgia_no1",
-          "avatar": "/avatars/2.jpg",
-          "content": "Cảm ơn bạn đã ủng hộ, chương mới sẽ ra vào tuần sau!",
-          "createdAt": "2023-03-12T16:00:00Z",
-          "likes": [
-            1,
-            3
-          ]
-        }
-      ]
-    },
-    {
-      "id": "2",
-      "storyId": "1",
-      "chapterId": "2",
-      "userId": "3",
-      "username": "docgia_truyenma",
-      "avatar": "/avatars/default.jpg",
-      "content": "Chất lượng truyện VIP xứng đáng với đồng tiền bỏ ra!",
-      "createdAt": "2024-01-15T11:45:00Z",
-      "likes": [
-        1,
-        2,
-        5
-      ],
-      "replies": []
-    }
-  ],
+  "comments": [],
   "categories": [
     {
       "id": "1",
@@ -420,13 +373,6 @@
   ],
   "bookmarks": [
     {
-      "id": "1",
-      "userId": "1",
-      "storyId": "1",
-      "lastReadChapterId": "102",
-      "createdAt": "2023-04-01T14:20:00Z"
-    },
-    {
       "id": "2",
       "userId": "1",
       "storyId": "2",
@@ -444,9 +390,9 @@
       "storyId": "1"
     },
     {
-      "id": "aceb",
-      "userId": "9355",
-      "storyId": "1"
+      "userId": "1",
+      "storyId": "1",
+      "id": "gOCkYIB"
     }
   ],
   "follows": [
@@ -513,6 +459,15 @@
       "status": "resolved",
       "resolvedBy": 3,
       "resolvedAt": "2024-03-12T10:15:00Z"
+    },
+    {
+      "userId": "1",
+      "storyId": "1",
+      "reason": "123",
+      "details": "213",
+      "timestamp": "2025-07-16T02:06:11.559Z",
+      "status": "in process",
+      "id": "RdR1s-H"
     }
   ],
   "membershipPlans": [
@@ -592,27 +547,7 @@
       "progress": 1
     }
   ],
-  "notifications": [
-    {
-      "id": "1",
-      "userId": "1",
-      "type": "new_chapter",
-      "content": "Truyện 'Đạo Giới Độc Tôn' vừa ra chương mới: Chương 151 - Đại chiến chư thiên",
-      "storyId": "1",
-      "chapterId": "151",
-      "createdAt": "2025-07-10T09:00:00Z",
-      "isRead": false
-    },
-    {
-      "id": "2",
-      "userId": "1",
-      "type": "author_reply",
-      "content": "tacgia_no1 đã trả lời bình luận của bạn",
-      "commentId": "1001",
-      "createdAt": "2025-07-09T16:30:00Z",
-      "isRead": true
-    }
-  ],
+  "notifications": [],
   "userStats": [
     {
       "userId": "1",

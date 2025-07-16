@@ -140,18 +140,7 @@ function Header() {
 
           {/* Icons and Account */}
           <Nav className="d-flex flex-row align-items-center ms-2 flex-shrink-0">
-            <Nav.Item className="mx-2">
-              <i
-                onClick={handleIconClick}
-                className="bi bi-lightbulb"
-                style={{
-                  color: "orange",
-                  fontSize: "1.5rem",
-                  cursor: "pointer",
-                  transition: "color 0.2s",
-                }}
-              ></i>
-            </Nav.Item>
+            
             <Dropdown align="end" className="mx-2">
               <Dropdown.Toggle
                 variant="link"
