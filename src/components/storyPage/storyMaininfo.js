@@ -9,7 +9,7 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
     const [isFollowed, setIsFollowed] = useState(false);
     const [historyReading, setHistoryReading] = useState([]);
     const [alltags, setAllTags] = useState([]);
-    const [draft, setDraft] = useState(null); // ✅ new
+    const [draft, setDraft] = useState(null);
 
     const navigate = useNavigate();
 
@@ -43,7 +43,6 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
             .then(res => setAllTags(res.data))
             .catch(() => alert("Failed to fetch tags"));
 
-        // ✅ Fetch draft chapter
         axios.get(`http://localhost:9999/chapters/?storyId=${story.id}&isDraft=true`)
             .then(result => {
                 if (result.data && result.data.length > 0) {
@@ -180,23 +179,26 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                         <i className={`bi ${isFollowed ? 'bi-heart-fill' : 'bi-heart'}`}></i> Theo dõi
                     </Button>
 
-                    {/* ✅ New buttons for draft handling */}
-                    {!draft && (
-                        <Button
-                            className="story-button"
-                            onClick={() => navigate(`/write-chapter/${story.id}`)}
-                        >
-                            Viết chương mới
-                        </Button>
-                    )}
+                    {author?.id === userId && (
+                        <>
+                            {!draft && (
+                                <Button
+                                    className="story-button"
+                                    onClick={() => navigate(`/write-chapter/${story.id}`)}
+                                >
+                                    Viết chương mới
+                                </Button>
+                            )}
 
-                    {draft && draft.id && (
-                        <Button
-                            className="story-button"
-                            onClick={() => navigate(`/edit-chapter/${story.id}/${draft.id}`)}
-                        >
-                            Viết tiếp chương {draft.order || "?"}
-                        </Button>
+                            {draft && draft.id && (
+                                <Button
+                                    className="story-button"
+                                    onClick={() => navigate(`/edit-chapter/${story.id}/${draft.id}`)}
+                                >
+                                    Viết tiếp chương {draft.order || "?"}
+                                </Button>
+                            )}
+                        </>
                     )}
                 </div>
             </Col>

@@ -68,11 +68,17 @@ export default function ChapterWriter() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userAccount"));
+    if (!user) {
+      navigate(`/storypage/${sId}`);
+      return;
+    }
+
     axios.get(`http://localhost:9999/stories/?authorId=${user.id}`)
       .then(result => {
         const storyIds = result.data.map(story => story.id);
         if (!storyIds.includes(String(sId))) {
-          navigate("/");
+          navigate(`/storypage/${sId}`);
+
         }
       })
 
@@ -140,7 +146,15 @@ export default function ChapterWriter() {
   return (
     <div className="chapter-editor-page">
       <header className="page-header">
-        <Button onClick={() => navigate(`/storypage/${sId}`)}>Quay lại</Button>
+        <div className="actions-section">
+          <button className="btn btn-primary" onClick={() => navigate(`/storypage/${sId}`)}>Quay lại</button>
+          <button className="btn btn-secondary" onClick={handleDraft}>
+            Lưu bản nháp
+          </button>
+          <button className="btn btn-primary" onClick={handlePublishChapter}>
+            Đăng chương
+          </button>
+        </div>
 
         {story && <h2 className="story-title-header">{story.title} - Chương {nextNumber}</h2>}
       </header>
@@ -182,15 +196,6 @@ export default function ChapterWriter() {
                 placeholder="Câu truyện của bạn bắt đầu..."
               />
             </div>
-          </div>
-
-          <div className="actions-section">
-            <button className="btn btn-secondary" onClick={handleDraft}>
-              Lưu bản nháp
-            </button>
-            <button className="btn btn-primary" onClick={handlePublishChapter}>
-              Đăng chương
-            </button>
           </div>
         </div>
 
