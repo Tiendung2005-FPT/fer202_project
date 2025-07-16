@@ -12,7 +12,7 @@ export default function Content({ chapter, storyTilte , fontsize}) {
         </h5>
 
         <div
-          className= {`chapter-content-${fontsize}`}
+          className= {`chapter-content-${fontsize} ql-editor`}
           style={{
             whiteSpace: 'pre-wrap',
             fontSize: '1.15rem',

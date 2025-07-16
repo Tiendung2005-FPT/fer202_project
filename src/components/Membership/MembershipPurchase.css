@@ -1,0 +1,81 @@
+.membership-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.membership-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #1f2937;
+}
+
+.membership-plans {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.plan-card {
+  background-color: #f9fafb;
+  padding: 1.5rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  text-align: center;
+  flex: 1 1 150px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.plan-card.selected {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+.plan-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.benefits-list {
+  list-style: none;
+  padding-left: 1rem;
+  color: #374151;
+}
+
+.payment-section {
+  margin-top: 1.5rem;
+  line-height: 1.6;
+  color: #374151;
+}
+
+.qr-image {
+  width: 500px;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+  display: block;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.vip-info-card {
+  background-color: #f0f9ff;
+  border: 1px solid #a5d8ff;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}

@@ -73,16 +73,7 @@ const UserDetail = () => {
               <Card.Subtitle className="mb-2 text-muted">
                 {user?.bio}
               </Card.Subtitle>
-              <Card.Text>
-                {user?.isVIP ? (
-                  <span className="text-success fw-bold">VIP: Có</span>
-                ) : (
-                  <span className="text-danger fw-bold">VIP: Không</span>
-                )}
-              </Card.Text>
-              <div className="d-flex justify-content-center gap-2">
-                <Button variant="primary">Follow</Button>
-              </div>
+           
             </Card.Body>
           </Card>
         </Col>

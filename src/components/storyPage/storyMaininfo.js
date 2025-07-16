@@ -9,6 +9,7 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
     const [isFollowed, setIsFollowed] = useState(false);
     const [historyReading, setHistoryReading] = useState([]);
     const [alltags, setAllTags] = useState([]);
+    const [draft, setDraft] = useState(null);
 
     const navigate = useNavigate();
 
@@ -34,14 +35,27 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                 }
             })
             .catch(() => {
-                console.error("ailed to fetch reading history");
+                console.error("Failed to fetch reading history");
                 setHistoryReading([]);
             });
-
 
         axios.get("http://localhost:9999/tags")
             .then(res => setAllTags(res.data))
             .catch(() => alert("Failed to fetch tags"));
+
+        axios.get(`http://localhost:9999/chapters/?storyId=${story.id}&isDraft=true`)
+            .then(result => {
+                if (result.data && result.data.length > 0) {
+                    setDraft(result.data[0]);
+                } else {
+                    setDraft(null);
+                }
+            })
+            .catch(() => {
+                console.error("Failed to fetch draft chapter");
+                setDraft(null);
+            });
+
     }, [story?.id, userId]);
 
     useEffect(() => {
@@ -97,10 +111,14 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
         <Row>
             <Col md={3} xs={12} className="text-center mb-3">
                 <img
-                    src={story.coverImage}
+                    src={story.coverImage || "/book-icon.png"}
                     alt="Cover"
                     className="img-fluid rounded"
                     style={{ maxHeight: "400px", objectFit: "cover" }}
+                    onError={(e) => {
+                        e.target.src = "/book-icon.png";
+                        e.target.onerror = null;
+                    }}
                 />
             </Col>
 
@@ -160,6 +178,28 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                     >
                         <i className={`bi ${isFollowed ? 'bi-heart-fill' : 'bi-heart'}`}></i> Theo dõi
                     </Button>
+
+                    {author?.id === userId && (
+                        <>
+                            {!draft && (
+                                <Button
+                                    className="story-button"
+                                    onClick={() => navigate(`/write-chapter/${story.id}`)}
+                                >
+                                    Viết chương mới
+                                </Button>
+                            )}
+
+                            {draft && draft.id && (
+                                <Button
+                                    className="story-button"
+                                    onClick={() => navigate(`/edit-chapter/${story.id}/${draft.id}`)}
+                                >
+                                    Viết tiếp chương {draft.order || "?"}
+                                </Button>
+                            )}
+                        </>
+                    )}
                 </div>
             </Col>
         </Row>

@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ReactQuill, { Quill } from 'react-quill-new';
-import 'react-quill-new/dist/quill.snow.css';
 import axios from 'axios';
 import './ChapterWriter.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FiCpu } from 'react-icons/fi';
 import AIChat from './AIChat';
-import { Button } from 'react-bootstrap';
 
 const Font = Quill.import('attributors/class/font');
 Font.whitelist = [
@@ -45,9 +43,15 @@ export default function ChapterEdit() {
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
       [{ 'indent': '-1' }, { 'indent': '+1' }],
       [{ 'align': [] }],
-      ['blockquote', 'code-block'],
       ['clean']
     ],
+  };
+
+  const isWithin24Hours = (createdAt) => {
+    const now = new Date();
+    const createdDate = new Date(createdAt);
+    const diffInHours = (now - createdDate) / (1000 * 60 * 60);
+    return diffInHours <= 24;
   };
 
   useEffect(() => {
@@ -66,14 +70,28 @@ export default function ChapterEdit() {
   }, [title, content]);
 
   useEffect(() => {
-    axios.get("http://localhost:9999/users?id=2")
+    const user = JSON.parse(localStorage.getItem("userAccount"));
+    if (!user) {
+      navigate(`/storypage/${sId}`);
+      return;
+    }
+
+    if (user.vipExpiry) {
+      const expiryDate = new Date(user.vipExpiry).getTime();
+      const now = new Date();
+      setIsVip(now <= expiryDate);
+    } else {
+      setIsVip(false);
+    }
+
+    axios.get(`http://localhost:9999/stories/?authorId=${user.id}`)
       .then(result => {
-        const user = result.data[0];
-        const now = new Date();
-        setIsVip(new Date(user.vipExpiry) > now);
-        localStorage.setItem("account", JSON.stringify(user));
+        const storyIds = result.data.map(story => story.id);
+        if (!storyIds.includes(String(sId))) {
+          navigate(`/storypage/${sId}`);
+          return;
+        }
       })
-      .catch(err => console.error(err));
 
     axios.get(`http://localhost:9999/stories/${sId}`)
       .then(result => setStory(result.data))
@@ -82,12 +100,12 @@ export default function ChapterEdit() {
     axios.get(`http://localhost:9999/chapters/${cId}`)
       .then(result => {
         const data = result.data;
+        if (!data.isDraft && !isWithin24Hours(data.createdAt)) {
+          navigate(`/storypage/${sId}`);
+        }
         setChapter(data);
         setTitle(data.title);
         setContent(data.content);
-        if (!result.data.isDraft) {
-          navigate(`/storypage/${sId}`);
-        }
       })
       .catch(err => console.error(err));
 
@@ -122,7 +140,31 @@ export default function ChapterEdit() {
     axios.patch(`http://localhost:9999/chapters/${cId}`, chapter)
       .then(result => {
         if (result.data) {
-          alert(`Đã đăng chapter ${cId} thành công!`);
+          alert(`Đã đăng chương ${chapter.order} thành công!`);
+          navigate(`/storypage/${sId}`);
+        } else {
+          alert("Đã xảy ra lỗi trong quá trình đăng.");
+        }
+      })
+      .catch(err => console.error(err));
+  };
+
+  const handleEditChapter = (e) => {
+    e.preventDefault();
+    if (!title.trim() || !quillRef.current.getEditor().getText().trim()) {
+      alert("Tên và nội dung không được trống.");
+      return;
+    }
+    if (!window.confirm("Bạn có chắc chắn muốn cập nhật chương này không?")) return;
+
+    const editChapter = {
+      title, content, updatedAt: new Date()
+    };
+
+    axios.patch(`http://localhost:9999/chapters/${cId}`, editChapter)
+      .then(result => {
+        if (result.data) {
+          alert(`Đã cập nhật chương ${chapter.order} thành công!`);
           navigate(`/storypage/${sId}`);
         } else {
           alert("Đã xảy ra lỗi trong quá trình đăng.");
@@ -134,10 +176,50 @@ export default function ChapterEdit() {
   return (
     <div className="chapter-editor-page">
       <header className="page-header">
-        <Button onClick={() => navigate(`/storypage/${sId}`)}>Quay lại</Button>
+        <div className="actions-section">
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              const hasTitle = title.trim().length > 0;
+              const hasContent = quillRef.current?.getEditor().getText().trim().length > 0;
 
-        {story && <h2 className="story-title-header">{story.title} - Chương {chapter.order} (Bản nháp)</h2>}
+              if (hasTitle || hasContent) {
+                const confirmLeave = window.confirm("Bạn có chắc chắn muốn quay lại? Những thay đổi chưa được lưu sẽ bị mất.");
+                if (!confirmLeave) return;
+              }
+
+              navigate(`/storypage/${sId}`);
+            }}
+          >
+            Quay lại
+          </button>
+
+
+          {chapter?.isDraft ? (
+            <>
+              <button className="btn btn-secondary" onClick={handleDraft}>
+                Lưu bản nháp
+              </button>
+              <button className="btn btn-primary" onClick={handlePublishChapter}>
+                Đăng chương
+              </button>
+            </>
+          ) : (
+            isWithin24Hours(chapter?.createdAt) && (
+              <button className="btn btn-primary" onClick={handleEditChapter}>
+                Cập nhật chương
+              </button>
+            )
+          )}
+        </div>
+
+        {story && (
+          <h2 className="story-title-header">
+            {story.title} - Chương {chapter?.order} {chapter?.isDraft && "(Bản nháp)"}
+          </h2>
+        )}
       </header>
+
 
       <div className={`editor-and-ai-container ${showAI ? 'show-ai' : ''}`}>
 
@@ -178,14 +260,8 @@ export default function ChapterEdit() {
             </div>
           </div>
 
-          <div className="actions-section">
-            <button className="btn btn-secondary" onClick={handleDraft}>
-              Lưu bản nháp
-            </button>
-            <button className="btn btn-primary" onClick={handlePublishChapter}>
-              Đăng chương
-            </button>
-          </div>
+
+
         </div>
 
         {showAI && <AIChat content={quillRef.current?.getEditor().getText() || ''} isVip={isVip} title={title} />}

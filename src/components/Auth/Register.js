@@ -20,19 +20,42 @@ export default function Register() {
             alert('Mật khẩu không khớp')
             return
         }
+
+        if (password.length < 6) {
+            alert("Mật khẩu phải có ít nhất 6 kí tự")
+            return
+        }
+
+        const checkPass = /^(?=.*[a-zA-Z])(?=.*\d).+$/;
+        if (!checkPass.test(password)) {
+            alert("Mật khẩu phải có chữ và số")
+            return
+        }
+        // axios.get('http://localhost:9999/users')
+        //     .then(result => {
+        //         const user = result.data
+        //         const maxId = user.length > 0 ? Math.max(...user.map(u => u.id)) : 0
+
+
+        //         }
+
         axios.get('http://localhost:9999/users')
             .then(result => {
-                const user = result.data
-                const maxId = user.length > 0 ? Math.max(...user.map(u => u.id)) : 0
+                const userList = result.data
+                const checkEmail = userList.find(e => e.email === email)
+
+                if (checkEmail) {
+                    alert("Email đã tồn tại trong hệ thống")
+                    return
+                }
 
                 const newUser = {
-                    id: maxId + 1,
                     username: null,
                     fullname: null,
                     email: email,
                     password: password,
 
-                    avatar: null,
+                    avatar: "https://cdn-icons-png.flaticon.com/512/362/362003.png",
                     role: 'user',
                     vipExpiry: null,
                     createdAt: new Date(),
@@ -41,6 +64,7 @@ export default function Register() {
                     phone: null,
                     address: null,
                 }
+
                 axios.post('http://localhost:9999/users', newUser)
                     .then(result => {
                         if (result.data != null) {
@@ -54,7 +78,10 @@ export default function Register() {
                             alert('Register false')
                         }
                     })
+                    .catch(err => console.error(err))
+
             })
+            .catch(err => console.error(err))
     }
 
     return (
