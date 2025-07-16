@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": "2",
       "username": "nguoivip",
       "email": "vip@example.com",
       "password": "123",
@@ -16,7 +16,7 @@
       "address": "123 Đường Sách, Quận 1, TP.HCM"
     },
     {
-      "id": "2",
+      "id": "1",
       "username": "tacgia_no1",
       "email": "author@example.com",
       "password": "hashed_password",
@@ -431,13 +431,6 @@
   ],
   "bookmarks": [
     {
-      "id": "1",
-      "userId": "1",
-      "storyId": "1",
-      "lastReadChapterId": "102",
-      "createdAt": "2023-04-01T14:20:00Z"
-    },
-    {
       "id": "2",
       "userId": "1",
       "storyId": "2",
@@ -450,13 +443,18 @@
       "storyId": "2"
     },
     {
-      "id": "d8a0",
-      "userId": "2",
+      "id": "aceb",
+      "userId": "9355",
       "storyId": "1"
     },
     {
-      "id": "aceb",
-      "userId": "9355",
+      "id": "1015",
+      "userId": "1",
+      "storyId": "1"
+    },
+    {
+      "id": "aef3",
+      "userId": "2",
       "storyId": "1"
     }
   ],
@@ -603,6 +601,17 @@
       ],
       "lastRead": "2025-07-09T20:30:00Z",
       "progress": 1
+    },
+    {
+      "id": "0fd4",
+      "userId": "2",
+      "storyId": "1",
+      "chapterOrder": [
+        1,
+        4
+      ],
+      "lastRead": "2025-07-16T02:35:01.954Z",
+      "progress": 2
     }
   ],
   "notifications": [
