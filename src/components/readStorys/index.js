@@ -12,7 +12,7 @@ export default function ReadStory() {
     const { storyId, chapterId } = useParams();
     const navigate = useNavigate();
 
-    const [story, setStory] = useState();
+    const [story, setStory] = useState([]);
     const [chapter, setChapter] = useState();
     const [chapters, setChapters] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -22,13 +22,14 @@ export default function ReadStory() {
         if (!storyId || !chapterId) return;
         axios.get(`http://localhost:9999/stories?id=${storyId}`)
             .then(
-                res => (
-                    setStory(res.data)
-                )
+                res => {
+                    setStory(res.data[0])
+
+                }
             )
             .catch(
                 () => {
-                    alert(() => ("Không thể lấy dữ liệu truyện"))
+                    alert("Không thể lấy dữ liệu truyện")
                 }
             )
 
@@ -51,6 +52,7 @@ export default function ReadStory() {
             }
             )
     }, [storyId, chapterId]);
+
 
 
     useEffect(() => {
@@ -98,7 +100,9 @@ export default function ReadStory() {
     }, [storyId, chapter?.id]);
 
 
-
+    useEffect(() => {
+        console.log(story);      
+}, [story]);
 
 
     return (
@@ -115,7 +119,7 @@ export default function ReadStory() {
                             <Card className="p-4 read-card">
                                 <Content
                                     chapter={chapter}
-                                    storyTilte={story?.title}
+                                    story={story}
                                 />
                             </Card>
                         )}

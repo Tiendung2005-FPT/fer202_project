@@ -94,3 +94,10 @@
 .content-wrapper {
   flex-grow: 1;
 }
+
+.story_name{
+  text-decoration: none !important;
+  background-color: inherit;
+  color: inherit;
+
+}

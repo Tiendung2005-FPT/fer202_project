@@ -62,6 +62,8 @@ function Header() {
   const handleLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem("userAccount");
+    localStorage.removeItem("userId");
+    
     alert("Đăng xuất thành công!");
     navigate("/");
   };

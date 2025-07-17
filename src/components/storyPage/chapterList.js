@@ -33,7 +33,7 @@ export default function ChapterList({ chapters, storyID, author, userId }) {
     };
 
     useEffect(() => {
-        if (author?.id !== userId) {
+        if (author?.id === userId) {
             setIsAuthor(true);
             chapters = chapters.filter(c => !c.isDraft)
         }
