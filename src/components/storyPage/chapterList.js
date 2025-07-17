@@ -33,18 +33,24 @@ export default function ChapterList({ chapters, storyID, author, userId }) {
     };
 
     useEffect(() => {
-        if (author?.id !== userId) {
-            setIsAuthor(true);
-            chapters = chapters.filter(c => !c.isDraft)
+        const isUserAuthor = author?.id === userId;
+
+        let filteredChapters = chapters;
+        if (!isUserAuthor) {
+            filteredChapters = chapters.filter(c => !c.isDraft);
         }
-        if (chapters && chapters.length > 0) {
-            const sorted = [...chapters].sort((a, b) => {
-                return isSortDesc ? b.order - a.order : a.order - b.order;
-            });
+
+        if (filteredChapters && filteredChapters.length > 0) {
+            const sorted = [...filteredChapters].sort((a, b) =>
+                isSortDesc ? b.order - a.order : a.order - b.order
+            );
             setChapterDisplay(sorted);
             setPage(1);
         }
-    }, [chapters, isSortDesc]);
+
+        setIsAuthor(isUserAuthor);
+    }, [chapters, isSortDesc, author, userId]);
+
 
 
     return (
@@ -70,7 +76,6 @@ export default function ChapterList({ chapters, storyID, author, userId }) {
                         {startIndex + i + 1} - {c.title} {c.isDraft ? "(Bản nháp)" : ""}
                     </span>
                     <span style={{ fontSize: "0.9rem", color: "#6c757d" }}>
-                        {new Date(c.createdAt).toLocaleDateString("vi-VN")}
                         {isAuthor && isWithin24Hours(c.createdAt) && (
                             <span style={{ marginLeft: "10px" }}>
                                 <button
@@ -82,6 +87,19 @@ export default function ChapterList({ chapters, storyID, author, userId }) {
                                 >Chỉnh sửa</button>
                             </span>
                         )}
+                        {c.isDraft && (
+                            <span style={{ marginLeft: "10px" }}>
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        e.preventDefault();
+                                        navigate(`/edit-chapter/${storyID}/${c.id}`);
+                                    }}
+                                >Chỉnh sửa</button>
+                            </span>
+                        )}
+                        {c.createdAt && new Date(c.createdAt).toLocaleDateString("vi-VN")}
+                        {!c.createdAt && new Date(c.updatedAt).toLocaleDateString("vi-VN")}
                     </span>
                 </Link>
             ))}
