@@ -77,7 +77,7 @@ export default function ChapterList({ chapters, storyID, author, userId }) {
                     </span>
                     <span style={{ fontSize: "0.9rem", color: "#6c757d" }}>
                         {isAuthor && isWithin24Hours(c.createdAt) && (
-                            <span style={{ marginLeft: "10px" }}>
+                            <span style={{ marginRight: "10px" }}>
                                 <button
                                     onClick={(e) => {
                                         e.stopPropagation();
@@ -88,7 +88,7 @@ export default function ChapterList({ chapters, storyID, author, userId }) {
                             </span>
                         )}
                         {c.isDraft && (
-                            <span style={{ marginLeft: "10px" }}>
+                            <span style={{ marginRight: "10px" }}>
                                 <button
                                     onClick={(e) => {
                                         e.stopPropagation();
