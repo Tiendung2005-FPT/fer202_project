@@ -2,6 +2,7 @@ import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import bcrypt from 'bcryptjs'
 
 export default function Register() {
     const [email, setEmail] = useState('')
@@ -35,9 +36,10 @@ export default function Register() {
         //     .then(result => {
         //         const user = result.data
         //         const maxId = user.length > 0 ? Math.max(...user.map(u => u.id)) : 0
-
-
         //         }
+
+        const randomHashPass = bcrypt.genSaltSync(10)
+        const hashPass = bcrypt.hashSync(password, randomHashPass)
 
         axios.get('http://localhost:9999/users')
             .then(result => {
@@ -53,7 +55,7 @@ export default function Register() {
                     username: null,
                     fullname: null,
                     email: email,
-                    password: password,
+                    password: hashPass,
 
                     avatar: "https://cdn-icons-png.flaticon.com/512/362/362003.png",
                     role: 'user',
