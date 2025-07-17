@@ -63,7 +63,10 @@ function Header() {
     e.preventDefault();
     localStorage.removeItem("userAccount");
     localStorage.removeItem("userId");
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
     alert("Đăng xuất thành công!");
     navigate("/");
   };

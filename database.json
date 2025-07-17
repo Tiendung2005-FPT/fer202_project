@@ -4,7 +4,7 @@
       "id": "2",
       "username": "nguoivip",
       "email": "vip@example.com",
-      "password": "123",
+      "password": "$2b$10$g/l516oaGaI5uxeVaF2gd.dMF97aJZwnRMGaLPoKkukTEIbCZNGM.",
       "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
       "role": "user",
       "vipExpiry": "2025-12-31T23:59:59Z",
