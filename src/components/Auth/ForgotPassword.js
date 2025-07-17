@@ -50,6 +50,18 @@ export default function ForgotPassword() {
 
     }
 
+    const handleResend = (e) => {
+        e.preventDefault()
+
+        if (otp === genOtp) {
+            setShowNewPass(true)
+            alert('Xác minh OTP thành công, bạn cần nhập mật khẩu mới')
+        } else {
+            alert('Mã OTP không chính xác')
+        }
+
+    }
+
     const handleReset = (e) => {
         e.preventDefault();
 
@@ -82,7 +94,6 @@ export default function ForgotPassword() {
                         alert('Cập nhật mật khẩu thành công')
                     )
                     .catch(err => console.error(err))
-
             })
             .catch(err => console.error(err))
     }
@@ -130,6 +141,11 @@ export default function ForgotPassword() {
                                 <Button className="auth-button w-100 mt-2" type="submit">
                                     <i className="bi bi-person-plus me-2"></i>Xác nhận OTP
                                 </Button>
+
+                                <Col className="text-center mt-2 login-link">
+                                    <a href='' onClick={() => handleResend} style={{ textDecoration: 'none' }}>Gửi lại mã OTP</a>
+                                </Col>
+
                             </Form>
                         )}
 

@@ -19,7 +19,6 @@ export default function Login() {
 
                 if (acc) {
                     localStorage.setItem("userAccount", JSON.stringify(acc))
-                    localStorage.setItem("userId", JSON.stringify(acc.id))
                     navigate('/')
                 } else {
                     alert('Tài khoản Email hoặc Mật khẩu không tồn tại')
