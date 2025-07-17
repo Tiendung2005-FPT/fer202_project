@@ -17,6 +17,9 @@ import Canvas from "./components/ChapterWrite/Canvas.js";
 import MembershipPurchase from './components/Membership/MembershipPurchase.js';
 import ReportUser from './components/Report/ReportUser.js';
 import ReportsList from './components/Admin/ReportsList.js';
+import AdminLayout from './components/Admin/AdminLayout.js';
+import Dashboard from './components/Admin/Dashboard.js';
+import UserManager from './components/Admin/UserManager.js';
 
 function App() {
   return (
@@ -36,6 +39,13 @@ function App() {
         <Route path="/membership-purchase" element={<MembershipPurchase />} />
         <Route path="/report-user/:uId" element={<ReportUser />} />
         <Route path="/reports-list" element={<ReportsList />} />
+
+        <Route path="/admin" element={<AdminLayout></AdminLayout>}>
+
+          <Route path="dashboard" element={<Dashboard></Dashboard>} />
+          <Route path="users" element={<UserManager></UserManager>} />
+
+        </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

@@ -42,6 +42,10 @@ function Header() {
     }
   };
 
+  const handleAdminClick = () => {
+    navigate("/admin/dashboard");
+  };
+
   const handleToFilterPage = () => {
     navigate("/filterStories");
   };
@@ -169,12 +173,28 @@ function Header() {
               <Dropdown.Menu>
                 {acc ? (
                   <>
-                    <Dropdown.Item onClick={handleProfileClick}>
-                      Cá Nhân
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={handleLogout}>
-                      Đăng xuất
-                    </Dropdown.Item>
+                    {acc.role === 'admin' ? (
+                      <>
+                        <Dropdown.Item onClick={handleAdminClick}>
+                          Quản lí Admin
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={handleProfileClick}>
+                          Cá Nhân
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={handleLogout}>
+                          Đăng xuất
+                        </Dropdown.Item>
+                      </>
+                    ) : (
+                      <>
+                        <Dropdown.Item onClick={handleProfileClick}>
+                          Cá Nhân
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={handleLogout}>
+                          Đăng xuất
+                        </Dropdown.Item>
+                      </>
+                    )}
                   </>
                 ) : (
                   <>
