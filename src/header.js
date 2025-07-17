@@ -63,7 +63,6 @@ function Header() {
     e.preventDefault();
 
     localStorage.removeItem("userAccount");
-    
     alert("Đăng xuất thành công!");
     navigate("/");
   };

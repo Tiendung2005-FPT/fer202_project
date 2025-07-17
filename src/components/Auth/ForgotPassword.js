@@ -32,7 +32,6 @@ export default function ForgotPassword() {
                 const otpRandom = Math.floor(100000 + Math.random() * 900000).toString();
                 setGenOtp(otpRandom)
                 alert(`Mã OTP của bạn là: ${otpRandom}`)
-
             })
             .catch(err => console.error(err))
 
@@ -141,11 +140,9 @@ export default function ForgotPassword() {
                                 <Button className="auth-button w-100 mt-2" type="submit">
                                     <i className="bi bi-person-plus me-2"></i>Xác nhận OTP
                                 </Button>
-
                                 <Col className="text-center mt-2 login-link">
                                     <a href='' onClick={() => handleResend} style={{ textDecoration: 'none' }}>Gửi lại mã OTP</a>
                                 </Col>
-
                             </Form>
                         )}
 
