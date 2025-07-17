@@ -8,34 +8,68 @@ import StoryDescription from "./storyDescription";
 import ChapterList from "./chapterList";
 
 export default function StoryPage() {
-    const { id } = useParams();
-    const [story, setStory] = useState();
-    const [author, setAuthor] = useState();
-    const [chapters, setChapters] = useState([]);
-    const [showFullDesc, setShowFullDesc] = useState(false);
+  const { id } = useParams(); 
+  const [story, setStory] = useState([]);
+  const [author, setAuthor] = useState([]);
+  const [chapters, setChapters] = useState([]);
+  const [showFullDesc, setShowFullDesc] = useState(false);
 
-    const userId = JSON.parse(localStorage.getItem("userId"));
-    useEffect(() => {
-        axios
-            .get(`http://localhost:9999/stories?id=${id}`)
-            .then((res) => setStory(res.data[0]))
-            .catch((err) => console.error("Lỗi load stories:", err));
-    }, [id]);
+  const userId = JSON.parse(localStorage.getItem("userId") || null);
 
-    useEffect(() => {
-        if (story?.authorId) {
-            axios
-                .get(`http://localhost:9999/users?id=${story.authorId}`)
-                .then((res) => setAuthor(res.data[0]))
-                .catch((err) => console.error("Lỗi load author:", err));
+  useEffect(() => {
+    if (!id) return;
+    axios
+      .get(`http://localhost:9999/stories?id=${id}`)
+      .then((res) => {
+        if (res.data.length > 0) {
+          setStory(res.data[0]);
+        } else {
+          alert("Không tìm thấy story với id:", id);
         }
-        if (story?.id) {
-            axios
-                .get(`http://localhost:9999/chapters?storyId=${story.id}`)
-                .then((res) => setChapters(res.data))
-                .catch((err) => console.error("Lỗi load chapter:", err));
+      })
+      .catch((err) => alert("Lỗi load story:", err));
+  }, [id]);
+
+  useEffect(() => {
+    if (!story?.authorId) return;
+    axios
+      .get(`http://localhost:9999/users?id=${String(story.authorId)}`)
+      .then((res) => {
+        if (res.data.length > 0) {
+          setAuthor(res.data[0]);
+          console.log(res.data[0]);
+          
+        } else {
+          console.warn("Không tìm thấy author với id:", story.authorId);
         }
-    }, [story]);
+      })
+      .catch((err) => console.error("Lỗi load author:", err));
+  }, [story?.authorId]);
+
+  useEffect(() => {
+    if (!story?.id || !author?.id) return;
+    axios
+      .get(`http://localhost:9999/chapters?storyId=${story.id}`)
+      .then((res) => {
+        const data = res.data;
+
+        const storyAuthorId = String(author.id);
+        const currentUserId = String(userId);
+
+
+         console.log( storyAuthorId  + "và "  +  currentUserId);
+         
+        if (storyAuthorId === currentUserId) {
+          setChapters(data);
+        } else {
+          const filtered = data.filter((chap) => chap.isDraft === false);
+          setChapters(filtered);
+        }
+      })
+      .catch((err) => console.error("Lỗi load chapter:", err));
+  }, [story?.id, author?.id, userId]);
+
+
 
     const toggleDesc = () => setShowFullDesc(!showFullDesc);
 
