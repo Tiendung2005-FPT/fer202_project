@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import bcrypt from "bcryptjs";
 import './Auth.css'
 
 export default function Login() {
@@ -15,14 +16,21 @@ export default function Login() {
         axios.get('http://localhost:9999/users')
             .then(result => {
                 const user = result.data
-                const acc = user.find(a => a.email === email && a.password === password)
+                const acc = user.find(a => a.email === email)
 
-                if (acc) {
-                    localStorage.setItem("userAccount", JSON.stringify(acc))
-                    navigate('/')
-                } else {
-                    alert('Tài khoản Email hoặc Mật khẩu không tồn tại')
+                if (!acc) {
+                    alert('Tài khoản Email không tồn tại')
+                    return
                 }
+
+                const checkPass = bcrypt.compareSync(password, acc.password)
+
+                if (!checkPass) {
+                    alert('Mật khẩu sai')
+                    return
+                }
+                localStorage.setItem("userAccount", JSON.stringify(acc))
+                navigate('/')
             })
             .catch(err => console.error(err))
     }

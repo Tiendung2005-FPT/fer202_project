@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './Auth.css'
 import bcrypt from "bcryptjs";
 
@@ -14,6 +14,7 @@ export default function ForgotPassword() {
     const [otp, setOtp] = useState('')
     const [showOtp, setShowOtp] = useState(false)
     const [showNewPass, setShowNewPass] = useState(false)
+    const navigate = useNavigate()
 
     const handleSendOTP = (e) => {
         e.preventDefault()
@@ -32,10 +33,18 @@ export default function ForgotPassword() {
                 const otpRandom = Math.floor(100000 + Math.random() * 900000).toString();
                 setGenOtp(otpRandom)
                 alert(`Mã OTP của bạn là: ${otpRandom}`)
-
             })
             .catch(err => console.error(err))
 
+    }
+
+    const handleResend = (e) => {
+        e.preventDefault()
+
+        const otpRandom = Math.floor(100000 + Math.random() * 900000).toString();
+        setGenOtp(otpRandom)
+        setShowOtp(true)
+        alert(`Mã OTP mới của bạn là: ${otpRandom}`)
     }
 
     const handleOTP = (e) => {
@@ -50,28 +59,27 @@ export default function ForgotPassword() {
 
     }
 
-    const handleResend = (e) => {
-        e.preventDefault()
-
-        if (otp === genOtp) {
-            setShowNewPass(true)
-            alert('Xác minh OTP thành công, bạn cần nhập mật khẩu mới')
-        } else {
-            alert('Mã OTP không chính xác')
-        }
-
-    }
-
     const handleReset = (e) => {
         e.preventDefault();
 
-        if (cpassword.trim() || password.trim()) {
+        if (!cpassword.trim() || !password.trim()) {
             alert('Mật khẩu không được để trống')
             return
         }
 
         if (cpassword !== password) {
             alert('Mật khẩu không khớp')
+            return
+        }
+
+        if (password.length < 6) {
+            alert("Mật khẩu phải có ít nhất 6 kí tự")
+            return
+        }
+
+        const checkPass = /^(?=.*[a-zA-Z])(?=.*\d).+$/;
+        if (!checkPass.test(password)) {
+            alert("Mật khẩu phải có chữ và số")
             return
         }
 
@@ -90,9 +98,10 @@ export default function ForgotPassword() {
                 }
 
                 axios.patch(`http://localhost:9999/users/${userId}`, newPass)
-                    .then(result =>
+                    .then(result => {
                         alert('Cập nhật mật khẩu thành công')
-                    )
+                        navigate('/login')
+                    })
                     .catch(err => console.error(err))
             })
             .catch(err => console.error(err))
@@ -141,11 +150,9 @@ export default function ForgotPassword() {
                                 <Button className="auth-button w-100 mt-2" type="submit">
                                     <i className="bi bi-person-plus me-2"></i>Xác nhận OTP
                                 </Button>
-
                                 <Col className="text-center mt-2 login-link">
-                                    <a href='' onClick={() => handleResend} style={{ textDecoration: 'none' }}>Gửi lại mã OTP</a>
+                                    <a href='' onClick={handleResend} style={{ textDecoration: 'none' }}>Gửi lại mã OTP</a>
                                 </Col>
-
                             </Form>
                         )}
 
