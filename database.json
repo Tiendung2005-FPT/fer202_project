@@ -317,14 +317,55 @@
   "reports": [
     {
       "id": "1",
-      "userId": "1",
-      "storyId": "2",
+      "reportType": "story",
+      "reportedUserId": null,
+      "reportedStoryId": "2",
+      "reporterUserId": "1",
       "reason": "Nội dung nhạy cảm không phù hợp",
       "details": "Chương 5 có cảnh bạo lực quá mức",
-      "createdAt": "2024-03-10T14:25:00Z",
       "status": "resolved",
+      "createdAt": "2024-03-10T14:25:00Z",
       "resolvedBy": 3,
       "resolvedAt": "2024-03-12T10:15:00Z"
+    },
+    {
+      "id": "2",
+      "reportType": "user",
+      "reportedUserId": "2",
+      "reportedStoryId": null,
+      "reporterUserId": "1",
+      "reason": "Ngôn từ xúc phạm trong bình luận",
+      "details": "Người dùng này đã chửi tục trong phần bình luận truyện ABC",
+      "status": "review",
+      "createdAt": "2024-03-15T11:42:00Z",
+      "resolvedBy": null,
+      "resolvedAt": null
+    },
+    {
+      "id": "ea10",
+      "reportType": "user",
+      "reportedUserId": "1",
+      "reportedStoryId": null,
+      "reporterUserId": "2",
+      "reason": "1",
+      "details": "test",
+      "status": "review",
+      "createdAt": "2025-07-17T14:03:47.926Z",
+      "resolvedBy": null,
+      "resolvedAt": null
+    },
+    {
+      "id": "2cfa",
+      "reportType": "user",
+      "reportedUserId": "1",
+      "reportedStoryId": null,
+      "reporterUserId": "2",
+      "reason": "Ngôn từ xúc phạm",
+      "details": "test",
+      "status": "review",
+      "createdAt": "2025-07-17T14:42:01.059Z",
+      "resolvedBy": null,
+      "resolvedAt": null
     }
   ],
   "membershipPlans": [

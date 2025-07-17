@@ -15,6 +15,8 @@ import ChapterWriter from "./components/ChapterWrite/ChapterWriter.js";
 import ChapterEdit from "./components/ChapterWrite/ChapterEdit.js";
 import Canvas from "./components/ChapterWrite/Canvas.js";
 import MembershipPurchase from './components/Membership/MembershipPurchase.js';
+import ReportUser from './components/Report/ReportUser.js';
+import ReportsList from './components/Admin/ReportsList.js';
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/membership-purchase" element={<MembershipPurchase />} />
+        <Route path="/report-user/:uId" element={<ReportUser />} />
+        <Route path="/reports-list" element={<ReportsList />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
