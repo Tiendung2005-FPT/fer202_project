@@ -62,11 +62,6 @@ function Header() {
   const handleLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem("userAccount");
-    localStorage.removeItem("userId");
-<<<<<<< Updated upstream
-    
-=======
->>>>>>> Stashed changes
     alert("Đăng xuất thành công!");
     navigate("/");
   };
@@ -182,8 +177,8 @@ function Header() {
                   </>
                 ) : (
                   <>
-                    <Dropdown.Item onClick={()=>navigate("/login")}>Đăng nhập</Dropdown.Item>
-                    <Dropdown.Item onClick={()=>navigate("/register")}>Đăng ký</Dropdown.Item>
+                    <Dropdown.Item onClick={() => navigate("/login")}>Đăng nhập</Dropdown.Item>
+                    <Dropdown.Item onClick={() => navigate("/register")}>Đăng ký</Dropdown.Item>
                   </>
                 )}
               </Dropdown.Menu>
