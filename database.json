@@ -1,10 +1,10 @@
 {
   "users": [
     {
-      "id": "2",
+      "id": "1",
       "username": "nguoivip",
       "email": "vip@example.com",
-      "password": "$2b$10$g/l516oaGaI5uxeVaF2gd.dMF97aJZwnRMGaLPoKkukTEIbCZNGM.",
+      "password": "123",
       "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
       "role": "user",
       "vipExpiry": "2025-12-31T23:59:59Z",
@@ -16,11 +16,11 @@
       "address": "123 Đường Sách, Quận 1, TP.HCM"
     },
     {
-      "id": "1",
+      "id": "2",
       "username": "tacgia_no1",
       "email": "author@example.com",
       "password": "hashed_password",
-      "avatar": "/avatars/2.jpg",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
       "role": "author",
       "vipExpiry": "2025-12-31T23:59:59Z",
       "createdAt": "2022-11-20T10:15:00Z",
@@ -44,6 +44,231 @@
       "fullname": "Lê Quản Trị",
       "phone": "0987654321",
       "address": "789 Đường Quản Trị, Quận 10, TP.HCM"
+    },
+    {
+      "id": "c7af",
+      "username": null,
+      "fullname": null,
+      "email": "hoang@gmail.com",
+      "password": "123",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T03:16:35.782Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "0c56",
+      "username": null,
+      "fullname": null,
+      "email": "hoang@gmail.com",
+      "password": "123",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T03:20:57.946Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "071e",
+      "username": null,
+      "fullname": null,
+      "email": "hoang@gmail.com",
+      "password": "123",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T03:21:46.210Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "94f7",
+      "username": null,
+      "fullname": null,
+      "email": "123@gmail.com",
+      "password": "123",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T03:45:00.988Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "c7af",
+      "username": null,
+      "fullname": null,
+      "email": "hoang@gmail.com",
+      "password": "123",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T03:16:35.782Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "0c56",
+      "username": null,
+      "fullname": null,
+      "email": "hoang@gmail.com",
+      "password": "123",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T03:20:57.946Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "071e",
+      "username": null,
+      "fullname": null,
+      "email": "hoang@gmail.com",
+      "password": "123",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T03:21:46.210Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "94f7",
+      "username": null,
+      "fullname": null,
+      "email": "123@gmail.com",
+      "password": "123",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T03:45:00.988Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "f30d",
+      "username": null,
+      "fullname": null,
+      "email": "huyhoang@gmail.com",
+      "password": "123",
+      "avatar": null,
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T17:12:54.241Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "7ef4",
+      "username": null,
+      "fullname": null,
+      "email": "vip@example.com",
+      "password": "123",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T17:21:03.926Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "34b2",
+      "username": null,
+      "fullname": null,
+      "email": "vip@example.com",
+      "password": "123",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T17:21:27.788Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "9420",
+      "username": null,
+      "fullname": null,
+      "email": "vip@example.comm",
+      "password": "123",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T17:25:51.174Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "178e",
+      "username": null,
+      "fullname": null,
+      "email": "hoang@123",
+      "password": "123",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T17:27:10.073Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "2ecc",
+      "username": null,
+      "fullname": null,
+      "email": "hoang@ga",
+      "password": "123123q",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+      "role": "user",
+      "vipExpiry": null,
+      "createdAt": "2025-07-15T17:34:23.440Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
+    },
+    {
+      "id": "b67b",
+      "username": null,
+      "fullname": null,
+      "email": "dungbloxx.2005@gmail.com",
+      "password": "Tiendung2005",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+      "role": "admin",
+      "vipExpiry": null,
+      "createdAt": "2025-07-16T09:55:33.220Z",
+      "lastLogin": null,
+      "bio": null,
+      "phone": null,
+      "address": null
     }
   ],
   "stories": [
@@ -234,6 +459,13 @@
   ],
   "bookmarks": [
     {
+      "id": "1",
+      "userId": "1",
+      "storyId": "1",
+      "lastReadChapterId": "102",
+      "createdAt": "2023-04-01T14:20:00Z"
+    },
+    {
       "id": "2",
       "userId": "1",
       "storyId": "2",
@@ -246,18 +478,13 @@
       "storyId": "2"
     },
     {
-      "id": "aceb",
-      "userId": "9355",
-      "storyId": "1"
-    },
-    {
-      "id": "952f",
+      "id": "d8a0",
       "userId": "2",
       "storyId": "1"
     },
     {
-      "id": "fe1f",
-      "userId": "1",
+      "id": "aceb",
+      "userId": "9355",
       "storyId": "1"
     }
   ],
@@ -349,10 +576,10 @@
       "reporterUserId": "2",
       "reason": "1",
       "details": "test",
-      "status": "review",
+      "status": "resolved",
       "createdAt": "2025-07-17T14:03:47.926Z",
-      "resolvedBy": null,
-      "resolvedAt": null
+      "resolvedBy": "2",
+      "resolvedAt": "2025-07-18T03:35:05.334Z"
     },
     {
       "id": "2cfa",
@@ -362,10 +589,10 @@
       "reporterUserId": "2",
       "reason": "Ngôn từ xúc phạm",
       "details": "test",
-      "status": "review",
+      "status": "resolved",
       "createdAt": "2025-07-17T14:42:01.059Z",
-      "resolvedBy": null,
-      "resolvedAt": null
+      "resolvedBy": "2",
+      "resolvedAt": "2025-07-18T03:35:05.335Z"
     }
   ],
   "membershipPlans": [
@@ -424,11 +651,10 @@
       "storyId": "1",
       "chapterOrder": [
         1,
-        2,
-        3
+        2
       ],
-      "lastRead": "2025-07-17T01:39:48.379Z",
-      "progress": 3
+      "lastRead": "2025-07-15T18:20:50.704Z",
+      "progress": 6
     },
     {
       "id": "2",
@@ -441,16 +667,25 @@
       "progress": 1
     },
     {
-      "id": "6bd5",
+      "id": "b420",
+      "userId": "2",
+      "storyId": "2",
+      "chapterOrder": [
+        1
+      ],
+      "lastRead": "2025-07-16T13:24:27.830Z",
+      "progress": 1
+    },
+    {
+      "id": "c709",
       "userId": "2",
       "storyId": "1",
       "chapterOrder": [
         3,
-        2,
         1
       ],
-      "lastRead": "2025-07-17T01:39:26.601Z",
-      "progress": 3
+      "lastRead": "2025-07-17T00:41:37.221Z",
+      "progress": 2
     }
   ],
   "notifications": [
