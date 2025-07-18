@@ -67,6 +67,7 @@ function Header() {
     e.preventDefault();
 
     localStorage.removeItem("userAccount");
+    localStorage.removeItem("userId");
     alert("Đăng xuất thành công!");
     navigate("/");
   };
