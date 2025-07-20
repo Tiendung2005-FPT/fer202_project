@@ -13,7 +13,9 @@
       "bio": "Người đam mê truyện tiên hiệp",
       "fullname": "Nguyễn Văn Vip",
       "phone": "0901234567",
-      "address": "123 Đường Sách, Quận 1, TP.HCM"
+      "address": "123 Đường Sách, Quận 1, TP.HCM",
+      "status": "active",
+      "reasonBan": null
     },
     {
       "id": "3",
@@ -28,7 +30,9 @@
       "bio": "Quản trị viên hệ thống",
       "fullname": "Lê Quản Trị",
       "phone": "0987654321",
-      "address": "789 Đường Quản Trị, Quận 10, TP.HCM"
+      "address": "789 Đường Quản Trị, Quận 10, TP.HCM",
+      "status": "active",
+      "reasonBan": null
     }
   ],
   "stories": [

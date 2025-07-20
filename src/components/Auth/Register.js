@@ -66,6 +66,8 @@ export default function Register() {
                     bio: null,
                     phone: null,
                     address: null,
+                    status: "active",
+                    reasonBan: null
                 }
 
                 axios.post('http://localhost:9999/users', newUser)

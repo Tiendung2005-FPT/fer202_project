@@ -32,7 +32,7 @@ function Header() {
   }, []);
 
   const handleProfileClick = () => {
-    let userId = localStorage.getItem("userId");
+    let userId = acc?.id
     if (userId) {
       userId = userId.replace(/"/g, "");
       navigate(`/userDetail/${userId}`);
@@ -67,7 +67,6 @@ function Header() {
     e.preventDefault();
 
     localStorage.removeItem("userAccount");
-    localStorage.removeItem("userId");
     alert("Đăng xuất thành công!");
     navigate("/");
   };
