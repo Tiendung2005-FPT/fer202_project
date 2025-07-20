@@ -32,7 +32,7 @@ function Header() {
   }, []);
 
   const handleProfileClick = () => {
-    let userId = localStorage.getItem("userId");
+    let userId = acc?.id
     if (userId) {
       userId = userId.replace(/"/g, "");
       navigate(`/userDetail/${userId}`);

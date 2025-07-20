@@ -20,11 +20,17 @@ import ReportsList from './components/Admin/ReportsList.js';
 import AdminLayout from './components/Admin/AdminLayout.js';
 import Dashboard from './components/Admin/Dashboard.js';
 import UserManager from './components/Admin/UserManager.js';
+import UserReportDetail from './components/Admin/UserReportDetail.js';
+import ViewAcc from './components/Admin/ViewAcc.js';
 
 function App() {
+
+  const adminPage = window.location.pathname.startsWith('/admin');
+
   return (
     <BrowserRouter>
-      <Header />
+      {!adminPage && <Header />}
+
       <Routes>
         <Route path="/" element={<Canvas />} />
         <Route path="/write-chapter/:sId" element={<ChapterWriter />} />
@@ -39,13 +45,14 @@ function App() {
         <Route path="/membership-purchase" element={<MembershipPurchase />} />
         <Route path="/report-user/:uId" element={<ReportUser />} />
         <Route path="/reports-list" element={<ReportsList />} />
+        <Route path="/user-report-detail/:uId" element={<UserReportDetail />} />
 
-        <Route path="/admin" element={<AdminLayout></AdminLayout>}>
-
-          <Route path="dashboard" element={<Dashboard></Dashboard>} />
-          <Route path="users" element={<UserManager></UserManager>} />
-
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="users" element={<UserManager />} />
+          <Route path="users/view/:accId" element={<ViewAcc />} />
         </Route>
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

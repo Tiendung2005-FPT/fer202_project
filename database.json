@@ -1,10 +1,10 @@
 {
   "users": [
     {
-      "id": "2",
+      "id": "1",
       "username": "nguoivip",
       "email": "vip@example.com",
-      "password": "$2b$10$ndPb4EJyXstnx99H7J5oXOD7W2VPZkI8BO/XTNdgKNIeFzHQT4s7y",
+      "password": "$2b$10$gZbUt4db0i2/U85LgOdsjuvWlJAv735zoRFQSm0amjPagz9YBRbs6",
       "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
       "role": "user",
       "vipExpiry": "2025-12-31T23:59:59Z",
@@ -13,7 +13,9 @@
       "bio": "Người đam mê truyện tiên hiệp",
       "fullname": "Nguyễn Văn Vip",
       "phone": "0901234567",
-      "address": "123 Đường Sách, Quận 1, TP.HCM"
+      "address": "123 Đường Sách, Quận 1, TP.HCM",
+      "status": "active",
+      "reasonBan": null
     },
     {
       "id": "3",
@@ -28,7 +30,9 @@
       "bio": "Quản trị viên hệ thống",
       "fullname": "Lê Quản Trị",
       "phone": "0987654321",
-      "address": "789 Đường Quản Trị, Quận 10, TP.HCM"
+      "address": "789 Đường Quản Trị, Quận 10, TP.HCM",
+      "status": "active",
+      "reasonBan": null
     }
   ],
   "stories": [
@@ -219,6 +223,13 @@
   ],
   "bookmarks": [
     {
+      "id": "1",
+      "userId": "1",
+      "storyId": "1",
+      "lastReadChapterId": "102",
+      "createdAt": "2023-04-01T14:20:00Z"
+    },
+    {
       "id": "2",
       "userId": "1",
       "storyId": "2",
@@ -231,18 +242,13 @@
       "storyId": "2"
     },
     {
-      "id": "aceb",
-      "userId": "9355",
-      "storyId": "1"
-    },
-    {
-      "id": "952f",
+      "id": "d8a0",
       "userId": "2",
       "storyId": "1"
     },
     {
-      "id": "fe1f",
-      "userId": "1",
+      "id": "aceb",
+      "userId": "9355",
       "storyId": "1"
     }
   ],
@@ -316,7 +322,7 @@
     {
       "id": "2",
       "reportType": "user",
-      "reportedUserId": "2",
+      "reportedUserId": "c7af",
       "reportedStoryId": null,
       "reporterUserId": "1",
       "reason": "Ngôn từ xúc phạm trong bình luận",
@@ -329,28 +335,28 @@
     {
       "id": "ea10",
       "reportType": "user",
-      "reportedUserId": "1",
+      "reportedUserId": "c7af",
       "reportedStoryId": null,
-      "reporterUserId": "2",
+      "reporterUserId": "1",
       "reason": "1",
       "details": "test",
-      "status": "review",
+      "status": "resolved",
       "createdAt": "2025-07-17T14:03:47.926Z",
-      "resolvedBy": null,
-      "resolvedAt": null
+      "resolvedBy": "2",
+      "resolvedAt": "2025-07-18T03:35:05.334Z"
     },
     {
       "id": "2cfa",
       "reportType": "user",
-      "reportedUserId": "1",
+      "reportedUserId": "c7af",
       "reportedStoryId": null,
-      "reporterUserId": "2",
+      "reporterUserId": "1",
       "reason": "Ngôn từ xúc phạm",
       "details": "test",
-      "status": "review",
+      "status": "resolved",
       "createdAt": "2025-07-17T14:42:01.059Z",
-      "resolvedBy": null,
-      "resolvedAt": null
+      "resolvedBy": "2",
+      "resolvedAt": "2025-07-18T03:35:05.335Z"
     }
   ],
   "membershipPlans": [
@@ -409,11 +415,10 @@
       "storyId": "1",
       "chapterOrder": [
         1,
-        2,
-        3
+        2
       ],
-      "lastRead": "2025-07-17T01:39:48.379Z",
-      "progress": 3
+      "lastRead": "2025-07-15T18:20:50.704Z",
+      "progress": 6
     },
     {
       "id": "2",
@@ -426,16 +431,25 @@
       "progress": 1
     },
     {
-      "id": "6bd5",
+      "id": "b420",
+      "userId": "2",
+      "storyId": "2",
+      "chapterOrder": [
+        1
+      ],
+      "lastRead": "2025-07-16T13:24:27.830Z",
+      "progress": 1
+    },
+    {
+      "id": "c709",
       "userId": "2",
       "storyId": "1",
       "chapterOrder": [
         3,
-        2,
         1
       ],
-      "lastRead": "2025-07-17T01:39:26.601Z",
-      "progress": 3
+      "lastRead": "2025-07-17T00:41:37.221Z",
+      "progress": 2
     }
   ],
   "notifications": [
