@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import bcrypt from 'bcryptjs'
+import './Auth.css'
 
 export default function Register() {
     const [email, setEmail] = useState('')
@@ -65,6 +66,8 @@ export default function Register() {
                     bio: null,
                     phone: null,
                     address: null,
+                    status: "active",
+                    reasonBan: null
                 }
 
                 axios.post('http://localhost:9999/users', newUser)
@@ -87,32 +90,48 @@ export default function Register() {
     }
 
     return (
-        <Container>
-            <Row>
-                <h3 className="text-center mt-2">Tạo tài khoản</h3>
-                <Col>
-                    <Form onSubmit={handleRegister}>
-                        <Form.Group>
-                            <Form.Label>Email *</Form.Label>
-                            <Form.Control type="email" placeholder="Nhập email..." onChange={e => setEmail(e.target.value)} required></Form.Control>
-                        </Form.Group>
+        <Container className="mt-5">
+            <Row className="justify-content-center">
+                <Col md={6} className="px-4">
+                    <div className="auth-container">
+                        <div className="text-center mb-4">
+                            <h2 className="auth-title">Đăng Ký Tài Khoản</h2>
+                            <p className="auth-subtitle">Tham gia cộng đồng đọc truyện ngay hôm nay</p>
+                        </div>
 
-                        <Form.Group>
-                            <Form.Label>Mật khẩu *</Form.Label>
-                            <Form.Control type="password" placeholder="Nhập mật khẩu..." onChange={e => setPassword(e.target.value)} required></Form.Control>
-                        </Form.Group>
+                        <Form onSubmit={handleRegister}>
+                            <Form.Group className="mb-3">
+                                <Form.Label className="form-lable">
+                                    <i className="bi bi-envelope me-2"></i>Email *
+                                </Form.Label>
+                                <Form.Control className="auth-input" type="email" placeholder="Nhập email..." onChange={e => setEmail(e.target.value)} required></Form.Control>
+                            </Form.Group>
 
-                        <Form.Group>
-                            <Form.Label>Xác nhận mật khẩu *</Form.Label>
-                            <Form.Control type="password" placeholder="Nhập lại mật khẩu..." onChange={e => setCpassword(e.target.value)} required></Form.Control>
-                        </Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Label className="form-label">
+                                    <i className="bi bi-lock me-2"></i>Mật khẩu *
+                                </Form.Label>
+                                <Form.Control className="auth-input" type="password" placeholder="Nhập mật khẩu..." onChange={e => setPassword(e.target.value)} required></Form.Control>
+                            </Form.Group>
 
-                        <Button className="mt-2" type="submit">
-                            Tạo tài khoản
-                        </Button>
-                    </Form>
+                            <Form.Group className="mb-3">
+                                <Form.Label className="form-label">
+                                    <i className="bi bi-lock me-2"></i>Xác nhận mật khẩu *
+                                </Form.Label>
+                                <Form.Control className="auth-input" type="password" placeholder="Nhập lại mật khẩu..." onChange={e => setCpassword(e.target.value)} required></Form.Control>
+                            </Form.Group>
 
-                    Đã có tài khoản? <Link to={`/login`}>Đăng nhập</Link>
+                            <Button className="auth-button w-100" type="submit">
+                                <i className="bi bi-person-plus me-2"></i>Tạo tài khoản
+                            </Button>
+                        </Form>
+
+                        <div className="text-center mt-4 login-link">
+                            Đã có tài khoản? <Link to={`/login`} className="login-link-text">Đăng nhập</Link>
+                        </div>
+
+                    </div>
+
                 </Col>
             </Row>
         </Container>

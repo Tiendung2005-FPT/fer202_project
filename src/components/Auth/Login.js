@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import bcrypt from "bcryptjs";
+import './Auth.css'
 
 export default function Login() {
     const navigate = useNavigate()
@@ -14,52 +16,70 @@ export default function Login() {
         axios.get('http://localhost:9999/users')
             .then(result => {
                 const user = result.data
-                const acc = user.find(a => a.email === email && a.password === password)
+                const acc = user.find(a => a.email === email)
 
-                if (acc) {
-                    localStorage.setItem("userAccount", JSON.stringify(acc))
-                    localStorage.setItem("userId", JSON.stringify(acc.id))
-                    navigate('/')
-                } else {
-                    alert('Tài khoản Email hoặc Mật khẩu không tồn tại')
+                if (!acc) {
+                    alert('Tài khoản Email không tồn tại')
+                    return
                 }
+
+                const checkPass = bcrypt.compareSync(password, acc.password)
+
+                if (!checkPass) {
+                    alert('Mật khẩu sai')
+                    return
+                }
+                localStorage.setItem("userAccount", JSON.stringify(acc))
+                navigate('/')
             })
             .catch(err => console.error(err))
     }
 
     return (
-        <Container>
-            <Row>
-                <h3 className="text-center mt-2">Đăng nhập</h3>
-                <Col>
-                    <Form onSubmit={handleLogin}>
-                        <Form.Group>
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="Nhập email..." value={email} onChange={e => setEmail(e.target.value)} required></Form.Control>
-                        </Form.Group>
+        <Container className="mt-5">
+            <Row className="justify-content-center">
+                <Col md={6} className="px-4">
+                    <div className="auth-container">
+                        <div className="text-center mb-4">
+                            <h2 className="auth-title">Đăng Nhập Tài Khoản</h2>
+                            <p className="auth-subtitle">Tiếp tục khám phá kho truyện không giới hạn</p>
+                        </div>
 
-                        <Form.Group>
-                            <Form.Label>Mật khẩu</Form.Label>
-                            <Form.Control type="password" placeholder="Nhập mật khẩu..." value={password} onChange={e => setPassword(e.target.value)} required></Form.Control>
-                        </Form.Group>
+                        <Form onSubmit={handleLogin}>
+                            <Form.Group className="mb-3">
+                                <Form.Label className="form-lable">
+                                    <i className="bi bi-envelope me-2"></i>Email *
+                                </Form.Label>
+                                <Form.Control className="auth-input" type="email" placeholder="Nhập email..." value={email} onChange={e => setEmail(e.target.value)} required></Form.Control>
+                            </Form.Group>
 
+                            <Form.Group className="mb-3">
+                                <Form.Label className="form-label">
+                                    <i className="bi bi-lock me-2"></i>Mật khẩu *
+                                </Form.Label>
+                                <Form.Control className="auth-input" type="password" placeholder="Nhập mật khẩu..." value={password} onChange={e => setPassword(e.target.value)} required></Form.Control>
+                            </Form.Group>
 
-                        <Row>
-                            <Col>
-                                Bạn chưa có tài khoản? <Link to={`/register`}>Tạo tài khoản</Link>
-                            </Col>
+                            <Row>
+                                <Col>
+                                    <div className="text-center login-link">
+                                        Bạn chưa có tài khoản? <Link to={`/register`} className="login-link-text">Tạo tài khoản</Link>
+                                    </div>
+                                </Col>
 
-                            <Col>
-                                <Link to={`/forgot-password`}>Quên mật khẩu?</Link>
-                            </Col>
+                                <Col>
+                                    <div className="text-center login-link">
+                                        <Link to={`/forgot-password`} className="login-link-text">Quên mật khẩu?</Link>
+                                    </div>
+                                </Col>
 
-                        </Row>
+                            </Row>
 
-                        <Button className="mt-2" type="submit">
-                            Đăng nhập
-                        </Button>
-                    </Form>
-
+                            <Button className="auth-button w-100 mt-2" type="submit">
+                                <i className="bi bi-person-plus me-2"></i>Đăng nhập
+                            </Button>
+                        </Form>
+                    </div>
                 </Col>
             </Row>
         </Container>

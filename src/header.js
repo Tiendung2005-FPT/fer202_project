@@ -32,7 +32,7 @@ function Header() {
   }, []);
 
   const handleProfileClick = () => {
-    let userId = localStorage.getItem("userId");
+    let userId = acc?.id
     if (userId) {
       userId = userId.replace(/"/g, "");
       navigate(`/userDetail/${userId}`);
@@ -41,6 +41,14 @@ function Header() {
       alert("User ID not found in localStorage");
     }
   };
+
+  const handleAdminClick = () => {
+    navigate("/admin/dashboard");
+  };
+
+  const handleMembershipPageClick = () => {
+    navigate("/membership-purchase")
+  }
 
   const handleToFilterPage = () => {
     navigate("/filterStories");
@@ -61,9 +69,8 @@ function Header() {
 
   const handleLogout = (e) => {
     e.preventDefault();
+
     localStorage.removeItem("userAccount");
-    localStorage.removeItem("userId");
-    
     alert("Đăng xuất thành công!");
     navigate("/");
   };
@@ -170,17 +177,33 @@ function Header() {
               <Dropdown.Menu>
                 {acc ? (
                   <>
-                    <Dropdown.Item onClick={handleProfileClick}>
-                      Cá Nhân
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={handleLogout}>
-                      Đăng xuất
-                    </Dropdown.Item>
+                    {acc.role === 'admin' ? (
+                      <>
+                        <Dropdown.Item onClick={handleAdminClick}>
+                          Quản lí Admin
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={handleProfileClick}>
+                          Cá Nhân
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={handleLogout}>
+                          Đăng xuất
+                        </Dropdown.Item>
+                      </>
+                    ) : (
+                      <>
+                        <Dropdown.Item onClick={handleProfileClick}>
+                          Cá Nhân
+                        </Dropdown.Item>
+                        <Dropdown.Item onClick={handleLogout}>
+                          Đăng xuất
+                        </Dropdown.Item>
+                      </>
+                    )}
                   </>
                 ) : (
                   <>
-                    <Dropdown.Item onClick={()=>navigate("/login")}>Đăng nhập</Dropdown.Item>
-                    <Dropdown.Item onClick={()=>navigate("/register")}>Đăng ký</Dropdown.Item>
+                    <Dropdown.Item onClick={() => navigate("/login")}>Đăng nhập</Dropdown.Item>
+                    <Dropdown.Item onClick={() => navigate("/register")}>Đăng ký</Dropdown.Item>
                   </>
                 )}
               </Dropdown.Menu>
@@ -219,6 +242,11 @@ function Header() {
           <Nav.Item>
             <Nav.Link title="THỂ LOẠI" onClick={handleToFilterPage}>
               THỂ LOẠI
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link title="THỂ LOẠI" onClick={handleMembershipPageClick}>
+              GÓI THÀNH VIÊN
             </Nav.Link>
           </Nav.Item>
         </Nav>
