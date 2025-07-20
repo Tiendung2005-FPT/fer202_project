@@ -46,6 +46,10 @@ function Header() {
     navigate("/admin/dashboard");
   };
 
+  const handleMembershipPageClick = () => {
+    navigate("/membership-purchase")
+  }
+
   const handleToFilterPage = () => {
     navigate("/filterStories");
   };
@@ -238,6 +242,11 @@ function Header() {
           <Nav.Item>
             <Nav.Link title="THỂ LOẠI" onClick={handleToFilterPage}>
               THỂ LOẠI
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link title="THỂ LOẠI" onClick={handleMembershipPageClick}>
+              GÓI THÀNH VIÊN
             </Nav.Link>
           </Nav.Item>
         </Nav>
