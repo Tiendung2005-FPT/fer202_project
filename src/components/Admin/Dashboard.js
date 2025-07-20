@@ -24,13 +24,41 @@ export default function Dashboard() {
             })
             .catch(err => console.error(err))
 
-        axios.get('http://localhost:9999/users?status=active&_sort=createdAt&_order=desc&_limit=5')
+        axios.get('http://localhost:9999/users?_sort=createdAt&_order=desc&_limit=5')
             .then(result => setAcc(result.data))
             .catch(err => console.error(err))
     }, [])
 
-    const handleBanUser = () => {
+    const handleBanUser = (id, status) => {
 
+        const isUnban = status === 'inactive'
+        const confirm = window.confirm("Bạn có chắc chắn muốn " + (status === 'active' ? 'mở khóa' : "khóa") + " tài khoản này?")
+        if (!confirm) {
+            return
+        }
+
+        let reasonBan = ''
+        if (!isUnban) {
+            reasonBan = window.prompt("Nhập lí do khóa tài khoản: ")
+            if (!reasonBan || reasonBan.trim() === "") {
+                alert("Bạn cần nhập lí do khóa!")
+                return
+            }
+
+        }
+
+        const newStatus = {
+            status: isUnban ? 'active' : 'inactive',
+            reasonBan: reasonBan
+        }
+
+        axios.patch(`http://localhost:9999/users/${id}`, newStatus)
+            .then(result => {
+                alert("Cập nhật trạng thái thành công!")
+                return axios.get('http://localhost:9999/users');
+            })
+            .then(result => setAcc(result.data))
+            .catch(err => console.error(err))
     }
 
     return (
@@ -92,21 +120,23 @@ export default function Dashboard() {
                             <tbody>
                                 {acc?.map(a =>
                                     <tr>
-                                        <td>{a.email}</td>
-                                        <td>{a.role}</td>
+                                        <td>{a.fullname} <br></br>{a.email}</td>
+                                        <td>{a.role === 'admin' ? 'Admin' : 'Khách'}</td>
                                         <td>{new Date(a.createdAt).toLocaleTimeString()} {new Date(a.createdAt).toLocaleDateString()}</td>
                                         <td>{a.status === 'active' ? "Hoạt động" : "Không hoạt động"}</td>
                                         <td>
-                                            <Link to={`/admin/users/view/${a.id}`} className="action-link">
+                                            <Link to={`/userDetail/${a.id}`} className="action-link">
                                                 <i className="bi bi-eye"></i> Xem
                                             </Link>
-                                            <button
-                                                className={`action-link ban-button ${a.status === 'inactive' ? 'unban-button' : ''}`}
-                                                onClick={() => handleBanUser(a.id, a.status)}
-                                            >
-                                                <i className={`bi ${a.status === 'inactive' ? 'bi-unlock' : 'bi-ban'}`}></i>
-                                                {a.status === 'inactive' ? 'Mở khóa' : 'Khóa'}
-                                            </button>
+                                            {
+                                                a.role === 'user' ? (<button
+                                                    className={`action-link ban-button ${a.status === 'inactive' ? 'unban-button' : ''}`}
+                                                    onClick={() => handleBanUser(a.id, a.status)}
+                                                >
+                                                    <i className={`bi ${a.status === 'inactive' ? 'bi-unlock' : 'bi-ban'}`}></i>
+                                                    {a.status === 'inactive' ? 'Mở khóa' : 'Khóa'}
+                                                </button>) : ''
+                                            }
                                         </td>
                                     </tr>
                                 )}

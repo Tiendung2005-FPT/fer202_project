@@ -9,6 +9,10 @@ const UserDetail = () => {
   const [editing, setEditing] = useState(false);
   const [editData, setEditData] = useState({});
 
+  const acc = JSON.parse(localStorage.getItem("userAccount"));
+  const idAdmin = acc.id
+
+
   useEffect(() => {
     const fetchUserDetail = async () => {
       try {
@@ -162,7 +166,8 @@ const UserDetail = () => {
                   </tbody>
                 </Table>
               )}
-              {!editing && (
+
+              {!editing && idAdmin === id &&(
                 <Button
                   variant="info"
                   className="mt-3"
@@ -171,6 +176,7 @@ const UserDetail = () => {
                   Edit
                 </Button>
               )}
+
             </Card.Body>
           </Card>
         </Col>

@@ -14,14 +14,14 @@
       "fullname": "Nguyễn Văn Vip",
       "phone": "0901234567",
       "address": "123 Đường Sách, Quận 1, TP.HCM",
-      "status": "active",
-      "reasonBan": null
+      "status": "inactive",
+      "reasonBan": "a"
     },
     {
       "id": "3",
       "username": "admin_system",
       "email": "admin@example.com",
-      "password": "$2b$10$tZonkEq0Y7jz2.sCdxKB0ehAsw90ZjkUSEWdaatga.g5XpHTVJIYm",
+      "password": "$2b$10$Vwi2WuX1DTHCsfUmpFWD7uSeUBsXgLxPKOKqNmMGNp6Kg8VqBfIXi",
       "avatar": "/avatars/admin.jpg",
       "role": "admin",
       "vipExpiry": "2025-12-31T23:59:59Z",
