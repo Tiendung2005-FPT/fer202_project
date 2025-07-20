@@ -21,7 +21,6 @@ import AdminLayout from './components/Admin/AdminLayout.js';
 import Dashboard from './components/Admin/Dashboard.js';
 import UserManager from './components/Admin/UserManager.js';
 import UserReportDetail from './components/Admin/UserReportDetail.js';
-import ViewAcc from './components/Admin/ViewAcc.js';
 
 function App() {
 
@@ -50,7 +49,6 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="users" element={<UserManager />} />
-          <Route path="users/view/:accId" element={<ViewAcc />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />
