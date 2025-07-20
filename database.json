@@ -13,7 +13,9 @@
       "bio": "Người đam mê truyện tiên hiệp",
       "fullname": "Nguyễn Văn Vip",
       "phone": "0901234567",
-      "address": "123 Đường Sách, Quận 1, TP.HCM"
+      "address": "123 Đường Sách, Quận 1, TP.HCM",
+      "status": "active",
+      "reasonBan": null
     },
     {
       "id": "3",
@@ -28,7 +30,9 @@
       "bio": "Quản trị viên hệ thống",
       "fullname": "Lê Quản Trị",
       "phone": "0987654321",
-      "address": "789 Đường Quản Trị, Quận 10, TP.HCM"
+      "address": "789 Đường Quản Trị, Quận 10, TP.HCM",
+      "status": "active",
+      "reasonBan": null
     }
   ],
   "stories": [
@@ -45,9 +49,8 @@
         3
       ],
       "status": "ongoing",
-      "totalViews": 125472,
+      "totalViews": 125474,
       "totalChapters": 150,
-      "rating": 4.8,
       "createdAt": "2023-03-10T14:20:00Z",
       "updatedAt": "2025-07-10T09:15:00Z",
       "draftChapters": 3
@@ -66,7 +69,6 @@
       "status": "completed",
       "totalViews": 89456,
       "totalChapters": 200,
-      "rating": 4.5,
       "createdAt": "2024-01-05T11:30:00Z",
       "updatedAt": "2025-06-28T16:45:00Z",
       "draftChapters": 0
@@ -81,7 +83,7 @@
       "order": 1,
       "createdAt": "2025-07-15T14:27:16.258Z",
       "updatedAt": "2025-07-15T14:27:16.258Z",
-      "views": 19,
+      "views": 20,
       "isDraft": false
     },
     {
@@ -114,7 +116,7 @@
       "order": 4,
       "createdAt": "2025-07-16T00:57:29.936Z",
       "updatedAt": "2025-07-16T00:57:29.936Z",
-      "views": 8,
+      "views": 9,
       "isDraft": false
     },
     {
@@ -226,11 +228,6 @@
       "createdAt": "2024-02-15T11:30:00Z"
     },
     {
-      "id": "658f",
-      "userId": "2",
-      "storyId": "2"
-    },
-    {
       "id": "aceb",
       "userId": "9355",
       "storyId": "1"
@@ -241,7 +238,7 @@
       "storyId": "1"
     },
     {
-      "id": "6aad",
+      "id": "a815",
       "userId": "2",
       "storyId": "1"
     }

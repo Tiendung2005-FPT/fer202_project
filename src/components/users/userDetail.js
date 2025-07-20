@@ -9,6 +9,10 @@ const UserDetail = () => {
   const [editing, setEditing] = useState(false);
   const [editData, setEditData] = useState({});
 
+
+  const currentUser = JSON.parse(localStorage.getItem("userAccount"));
+  const isOwnProfile = currentUser?.id && currentUser.id.replace(/"/g, "") === id;
+
   useEffect(() => {
     const fetchUserDetail = async () => {
       try {
@@ -162,7 +166,7 @@ const UserDetail = () => {
                   </tbody>
                 </Table>
               )}
-              {!editing && (
+              {!editing && isOwnProfile && (
                 <Button
                   variant="info"
                   className="mt-3"

@@ -32,7 +32,7 @@ function Header() {
   }, []);
 
   const handleProfileClick = () => {
-    let userId = localStorage.getItem("userId");
+    let userId = acc?.id
     if (userId) {
       userId = userId.replace(/"/g, "");
       navigate(`/userDetail/${userId}`);
@@ -45,6 +45,10 @@ function Header() {
   const handleAdminClick = () => {
     navigate("/admin/dashboard");
   };
+
+  const handleMembershipPageClick = () => {
+    navigate("/membership-purchase")
+  }
 
   const handleToFilterPage = () => {
     navigate("/filterStories");
@@ -67,7 +71,6 @@ function Header() {
     e.preventDefault();
 
     localStorage.removeItem("userAccount");
-    localStorage.removeItem("userId");
     alert("Đăng xuất thành công!");
     navigate("/");
   };
@@ -239,6 +242,11 @@ function Header() {
           <Nav.Item>
             <Nav.Link title="THỂ LOẠI" onClick={handleToFilterPage}>
               THỂ LOẠI
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link title="THỂ LOẠI" onClick={handleMembershipPageClick}>
+              GÓI THÀNH VIÊN
             </Nav.Link>
           </Nav.Item>
         </Nav>
