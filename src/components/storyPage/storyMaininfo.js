@@ -4,6 +4,7 @@ import "./storyMaininfo.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {  useNavigate } from "react-router-dom";
+import RatingStars from "./Rate";
 
 export default function StoryMainInfo({ story, author, userId, chapters }) {
     const [bookmarks, setBookmarks] = useState([]);
@@ -14,17 +15,16 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!story?.id || !userId) return;
+    if (!story?.id) return;
 
-        axios
-            .get(`http://localhost:9999/bookmarks?storyId=${story.id}`)
-            .then((res) => setBookmarks(res.data))
-            .catch(() => alert("Failed to fetch bookmarks"));
+    axios
+        .get(`http://localhost:9999/bookmarks?storyId=${story.id}`)
+        .then((res) => setBookmarks(res.data))
+        .catch(() => alert("Failed to fetch bookmarks"));
 
+    if (userId) {
         axios
-            .get(
-                `http://localhost:9999/readingHistory?storyId=${story.id}&userId=${userId}`
-            )
+            .get(`http://localhost:9999/readingHistory?storyId=${story.id}&userId=${userId}`)
             .then((res) => {
                 const result = res.data;
                 if (Array.isArray(result) && result.length > 0) {
@@ -42,25 +42,28 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                 console.error("Failed to fetch reading history");
                 setHistoryReading([]);
             });
+    }
 
-        axios
-            .get("http://localhost:9999/tags")
-            .then((res) => setAllTags(res.data))
-            .catch(() => alert("Failed to fetch tags"));
-        axios.get(`http://localhost:9999/chapters/?storyId=${story.id}&isDraft=true`)
-            .then(result => {
-                if (result.data && result.data.length > 0) {
-                    setDraft(result.data[0]);
-                } else {
-                    setDraft(null);
-                }
-            })
-            .catch(() => {
-                console.error("Failed to fetch draft chapter");
+    axios
+        .get("http://localhost:9999/tags")
+        .then((res) => setAllTags(res.data))
+        .catch(() => alert("Failed to fetch tags"));
+
+    axios
+        .get(`http://localhost:9999/chapters/?storyId=${story.id}&isDraft=true`)
+        .then((result) => {
+            if (result.data && result.data.length > 0) {
+                setDraft(result.data[0]);
+            } else {
                 setDraft(null);
-            });
+            }
+        })
+        .catch(() => {
+            console.error("Failed to fetch draft chapter");
+            setDraft(null);
+        });
+}, [story?.id, userId]); 
 
-    }, [story?.id, userId]);
 
     useEffect(() => {
         if (userId && bookmarks.length > 0) {
@@ -70,6 +73,10 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
     }, [bookmarks, userId]);
 
     const handleBookmark = () => {
+        if(!userId) {
+            alert ("Bạn phải đăng nhập để theo dõi!")
+            return ;
+        }
         const found = bookmarks.find(
             (b) =>
                 String(b.userId) === String(userId) &&
@@ -127,10 +134,6 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                     alt="Cover"
                     className="img-fluid rounded"
                     style={{ maxHeight: "400px", objectFit: "cover" }}
-                    onError={(e) => {
-                        e.target.src = "/book-icon.png";
-                        e.target.onerror = null; 
-                    }}
                 />
             </Col>
 
@@ -140,19 +143,23 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                 <div className="story-info mb-3">
                     <div className="story-info-item">
                         <i className="bi bi-person"></i>
-                        <span>Tác giả: {author?.username || "Đang tải..."}</span>
+                        <span><strong>Tác giả:</strong> {author?.username || "Đang tải..."}</span>
                     </div>
                     <div className="story-info-item">
                         <i className="bi bi-check-circle"></i>
-                        <span>Trạng thái: {story.status}</span>
+                        <span><strong>Trạng thái:</strong> {story.status}</span>
                     </div>
                     <div className="story-info-item">
                         <i className="bi bi-eye"></i>
-                        <span>Lượt Đọc: {story.totalViews}</span>
+                        <span><strong>Lượt Đọc:</strong> {story.totalViews}</span>
                     </div>
                     <div className="story-info-item">
                         <i className="bi bi-heart"></i>
-                        <span>Theo dõi: {bookmarks.length}</span>
+                        <span><strong>Theo dõi:</strong> {bookmarks.length}</span>
+                    </div>
+                    <div className="story-info-item">
+                        <i className="bi bi-star"></i>
+                        <span><strong>Đánh giá trung bình:</strong> 3.7 /5 </span>
                     </div>
                 </div>
 
@@ -167,15 +174,7 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                     })}
                 </div>
 
-                <div className="mb-3">
-                    {[...Array(5)].map((_, index) => (
-                        <i
-                            key={index}
-                            className="bi bi-star-fill text-warning me-1"
-                            style={{ cursor: "pointer", fontSize: "2rem" }}
-                        ></i>
-                    ))}
-                </div>
+               <RatingStars customRate={4} />
 
                 <div className="d-flex gap-2 flex-wrap mb-3">
                     <Button

@@ -6,59 +6,97 @@ import StoryBreakcumb from "./breakcumb";
 import StoryMainInfo from "./storyMaininfo";
 import StoryDescription from "./storyDescription";
 import ChapterList from "./chapterList";
+import RatingStars from "./Rate"
 
 export default function StoryPage() {
-    const { id } = useParams();
-    const [story, setStory] = useState();
-    const [author, setAuthor] = useState();
-    const [chapters, setChapters] = useState([]);
-    const [showFullDesc, setShowFullDesc] = useState(false);
+  const { id } = useParams(); 
+  const [story, setStory] = useState([]);
+  const [author, setAuthor] = useState([]);
+  const [chapters, setChapters] = useState([]);
+  const [showFullDesc, setShowFullDesc] = useState(false);
 
-    const userId = JSON.parse(localStorage.getItem("userId"));
-    useEffect(() => {
-        axios
-            .get(`http://localhost:9999/stories?id=${id}`)
-            .then((res) => setStory(res.data[0]))
-            .catch((err) => console.error("Lỗi load stories:", err));
-    }, [id]);
+  const rawUser = localStorage.getItem("userAccount");
+  const user = rawUser ? JSON.parse(rawUser) : null;
 
-    useEffect(() => {
-        if (story?.authorId) {
-            axios
-                .get(`http://localhost:9999/users?id=${story.authorId}`)
-                .then((res) => setAuthor(res.data[0]))
-                .catch((err) => console.error("Lỗi load author:", err));
+  useEffect(() => {
+    if (!id) return;
+    axios
+      .get(`http://localhost:9999/stories?id=${id}`)
+      .then((res) => {
+        if (res.data.length > 0) {
+          setStory(res.data[0]);
+        } else {
+          alert("Không tìm thấy story với id: " + id);
         }
-        if (story?.id) {
-            axios
-                .get(`http://localhost:9999/chapters?storyId=${story.id}`)
-                .then((res) => setChapters(res.data))
-                .catch((err) => console.error("Lỗi load chapter:", err));
+      })
+      .catch((err) => alert("Lỗi load story: " + err));
+  }, [id]);
+
+  useEffect(() => {
+    if (!story?.authorId) return;
+    axios
+      .get(`http://localhost:9999/users?id=${String(story.authorId)}`)
+      .then((res) => {
+        if (res.data.length > 0) {
+          setAuthor(res.data[0]);
+        } else {
+          console.warn("Không tìm thấy author với id:", story.authorId);
         }
-    }, [story]);
+      })
+      .catch((err) => console.error("Lỗi load author:", err));
+  }, [story?.authorId]);
 
-    const toggleDesc = () => setShowFullDesc(!showFullDesc);
+  useEffect(() => {
+    if (!story?.id || !author?.id) return;
+    axios
+      .get(`http://localhost:9999/chapters?storyId=${story.id}`)
+      .then((res) => {
+        const data = res.data;
+        const storyAuthorId = String(author.id);
+        const currentUserId = String(user?.id); 
 
-    return (
-        <Container fluid className="py-4">
-            <Row>
-                <Col md={2}></Col>
-                <Col md={8}>
-                    {story && (
-                        <Card className="p-4">
-                            <StoryBreakcumb title={story.title} id={story.id} />
-                            <StoryMainInfo story={story} author={author} userId={userId} chapters={chapters} />
-                            <StoryDescription
-                                description={story.description}
-                                showFullDesc={showFullDesc}
-                                onToggle={toggleDesc}
-                            />
-                            <ChapterList chapters={chapters} storyID={story.id} author={author} userId={userId} />
-                        </Card>
-                    )}
-                </Col>
-                <Col md={2}></Col>
-            </Row>
-        </Container>
-    );
+        if (storyAuthorId === currentUserId) {
+          setChapters(data);
+        } else {
+          const filtered = data.filter((chap) => chap.isDraft === false);
+          setChapters(filtered);
+        }
+      })
+      .catch((err) => console.error("Lỗi load chapter:", err));
+  }, [story?.id, author?.id, user?.id]);
+
+  const toggleDesc = () => setShowFullDesc(!showFullDesc);
+
+  return (
+    <Container fluid className="py-4">
+      <Row>
+        <Col md={2}></Col>
+        <Col md={8}>
+          {story && (
+            <Card className="p-4">
+              <StoryBreakcumb title={story.title} id={story.id} />
+              <StoryMainInfo
+                story={story}
+                author={author}
+                userId={user?.id}
+                chapters={chapters}
+              />
+              <StoryDescription
+                description={story.description}
+                showFullDesc={showFullDesc}
+                onToggle={toggleDesc}
+              />
+              <ChapterList
+                chapters={chapters}
+                storyID={story.id}
+                author={author}
+                userId={user?.id}
+              />
+            </Card>
+          )}
+        </Col>
+        <Col md={2}></Col>
+      </Row>
+    </Container>
+  );
 }

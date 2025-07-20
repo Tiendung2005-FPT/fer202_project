@@ -1,23 +1,20 @@
 import { Row, Col } from 'react-bootstrap';
 import DOMPurify from 'dompurify';
-import { useEffect, useState } from "react";
-export default function Content({ chapter, storyTilte , fontsize}) {
-  
+import { Link } from 'react-router-dom';
 
+export default function Content({ chapter, story , size}) {
 
   return (
-    <Row className="my-4">
+    <Row className={`my-4 fontSize-${size}`} >
       <Col md={{ span: 10, offset: 1 }} xs={12}>
-        <h3 className="text-center mb-3">{storyTilte}</h3>
+        <Link to={`/storyPage/${story.id}`} className={"story_name"}><h3 className="text-center mb-3">{story.title || "Title chưa có"}</h3></Link>
         <h5 className="text-center mb-4">
           {chapter?.title || "Chương chưa có"}
         </h5>
 
         <div
-          className= {`chapter-content-${fontsize} ql-editor`}
           style={{
             whiteSpace: 'pre-wrap',
-            fontSize: '1.15rem',
             lineHeight: '2em',
             textAlign: 'justify'
           }}
