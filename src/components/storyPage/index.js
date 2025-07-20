@@ -6,6 +6,7 @@ import StoryBreakcumb from "./breakcumb";
 import StoryMainInfo from "./storyMaininfo";
 import StoryDescription from "./storyDescription";
 import ChapterList from "./chapterList";
+import RatingStars from "./Rate"
 
 export default function StoryPage() {
   const { id } = useParams(); 
@@ -14,7 +15,8 @@ export default function StoryPage() {
   const [chapters, setChapters] = useState([]);
   const [showFullDesc, setShowFullDesc] = useState(false);
 
-  const userId = JSON.parse(localStorage.getItem("userId") || null);
+  const rawUser = localStorage.getItem("userAccount");
+  const user = rawUser ? JSON.parse(rawUser) : null;
 
   useEffect(() => {
     if (!id) return;
@@ -24,10 +26,10 @@ export default function StoryPage() {
         if (res.data.length > 0) {
           setStory(res.data[0]);
         } else {
-          alert("Không tìm thấy story với id:", id);
+          alert("Không tìm thấy story với id: " + id);
         }
       })
-      .catch((err) => alert("Lỗi load story:", err));
+      .catch((err) => alert("Lỗi load story: " + err));
   }, [id]);
 
   useEffect(() => {
@@ -37,8 +39,6 @@ export default function StoryPage() {
       .then((res) => {
         if (res.data.length > 0) {
           setAuthor(res.data[0]);
-          console.log(res.data[0]);
-          
         } else {
           console.warn("Không tìm thấy author với id:", story.authorId);
         }
@@ -52,13 +52,9 @@ export default function StoryPage() {
       .get(`http://localhost:9999/chapters?storyId=${story.id}`)
       .then((res) => {
         const data = res.data;
-
         const storyAuthorId = String(author.id);
-        const currentUserId = String(userId);
+        const currentUserId = String(user?.id); 
 
-
-         console.log( storyAuthorId  + "và "  +  currentUserId);
-         
         if (storyAuthorId === currentUserId) {
           setChapters(data);
         } else {
@@ -67,32 +63,40 @@ export default function StoryPage() {
         }
       })
       .catch((err) => console.error("Lỗi load chapter:", err));
-  }, [story?.id, author?.id, userId]);
+  }, [story?.id, author?.id, user?.id]);
 
+  const toggleDesc = () => setShowFullDesc(!showFullDesc);
 
-
-    const toggleDesc = () => setShowFullDesc(!showFullDesc);
-
-    return (
-        <Container fluid className="py-4">
-            <Row>
-                <Col md={2}></Col>
-                <Col md={8}>
-                    {story && (
-                        <Card className="p-4">
-                            <StoryBreakcumb title={story.title} id={story.id} />
-                            <StoryMainInfo story={story} author={author} userId={userId} chapters={chapters} />
-                            <StoryDescription
-                                description={story.description}
-                                showFullDesc={showFullDesc}
-                                onToggle={toggleDesc}
-                            />
-                            <ChapterList chapters={chapters} storyID={story.id} author={author} userId={userId} />
-                        </Card>
-                    )}
-                </Col>
-                <Col md={2}></Col>
-            </Row>
-        </Container>
-    );
+  return (
+    <Container fluid className="py-4">
+      <Row>
+        <Col md={2}></Col>
+        <Col md={8}>
+          {story && (
+            <Card className="p-4">
+              <StoryBreakcumb title={story.title} id={story.id} />
+              <StoryMainInfo
+                story={story}
+                author={author}
+                userId={user?.id}
+                chapters={chapters}
+              />
+              <StoryDescription
+                description={story.description}
+                showFullDesc={showFullDesc}
+                onToggle={toggleDesc}
+              />
+              <ChapterList
+                chapters={chapters}
+                storyID={story.id}
+                author={author}
+                userId={user?.id}
+              />
+            </Card>
+          )}
+        </Col>
+        <Col md={2}></Col>
+      </Row>
+    </Container>
+  );
 }
