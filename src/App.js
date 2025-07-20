@@ -21,6 +21,7 @@ import AdminLayout from './components/Admin/AdminLayout.js';
 import Dashboard from './components/Admin/Dashboard.js';
 import UserManager from './components/Admin/UserManager.js';
 import UserReportDetail from './components/Admin/UserReportDetail.js';
+import ReportStory from './components/Report/ReportStory.js';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="/report-user/:uId" element={<ReportUser />} />
         <Route path="/reports-list" element={<ReportsList />} />
         <Route path="/user-report-detail/:uId" element={<UserReportDetail />} />
+        <Route path="/report-story/:storyId" element={<ReportStory/>}/>
 
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="dashboard" element={<Dashboard />} />

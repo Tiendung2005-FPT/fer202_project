@@ -246,6 +246,11 @@
       "id": "aceb",
       "userId": "9355",
       "storyId": "1"
+    },
+    {
+      "id": "9d14",
+      "userId": "null",
+      "storyId": "1"
     }
   ],
   "follows": [
@@ -446,6 +451,26 @@
       ],
       "lastRead": "2025-07-17T00:41:37.221Z",
       "progress": 2
+    },
+    {
+      "id": "5016",
+      "userId": null,
+      "storyId": "1",
+      "chapterOrder": [
+        1
+      ],
+      "lastRead": "2025-07-20T06:46:59.897Z",
+      "progress": 1
+    },
+    {
+      "id": "17fe",
+      "userId": null,
+      "storyId": "2",
+      "chapterOrder": [
+        1
+      ],
+      "lastRead": "2025-07-20T06:47:15.212Z",
+      "progress": 1
     }
   ],
   "notifications": [

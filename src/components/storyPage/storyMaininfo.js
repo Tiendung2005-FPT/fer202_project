@@ -1,16 +1,16 @@
 
-import { Col, Row, Button,Form } from "react-bootstrap";
+import { Col, Row, Button, Form } from "react-bootstrap";
 import "./storyMaininfo.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function StoryMainInfo({ story, author, userId, chapters }) {
     const [bookmarks, setBookmarks] = useState([]);
     const [isFollowed, setIsFollowed] = useState(false);
     const [historyReading, setHistoryReading] = useState([]);
     const [alltags, setAllTags] = useState([]);
-    const [draft, setDraft] = useState(null); 
+    const [draft, setDraft] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -129,7 +129,7 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                     style={{ maxHeight: "400px", objectFit: "cover" }}
                     onError={(e) => {
                         e.target.src = "/book-icon.png";
-                        e.target.onerror = null; 
+                        e.target.onerror = null;
                     }}
                 />
             </Col>
@@ -221,6 +221,22 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                             )}
                         </>
                     )}
+                    {/* 
+                     Button to report the story,
+                    if the userid is not author.id, then have a button to report the story,
+                    if the userid is admin or author, then have a button to see all the report of the story */}
+
+                    {
+                        // userId == null ? null :
+                            <Button
+                                className="story-button report-button"
+                                variant="danger"
+                                onClick={() => navigate(`/report-story/${story.id}`)}
+                            >
+                                <i className="bi bi-flag"></i> {author?.id !== userId ? "Báo cáo" : "Xem báo cáo"}
+                            </Button>
+                    }
+
                 </div>
             </Col>
         </Row>
