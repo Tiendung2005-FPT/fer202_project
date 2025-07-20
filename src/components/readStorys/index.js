@@ -20,13 +20,10 @@ export default function ReadStory() {
     const [fontText, setFontText] = useState("time-new-romance");
     const [size, setSize] = useState(20);
 
-    const [comments, setComments] = useState([]);
+    
     const [user, setUser] = useState({});
 
-    useEffect(() => {
-        const storedUser = localStorage.getItem("userAccount");
-        if (storedUser) setUser(JSON.parse(storedUser));
-    }, []);
+      
 
     useEffect(() => {
         if (!storyId || !chapterId) return;
@@ -54,15 +51,17 @@ export default function ReadStory() {
                 alert("Không thể lấy dữ liệu chương truyện");
                 setLoading(false);
             });
+            const rawUser = localStorage.getItem("userAccount");
+            if(rawUser) {
+                setUser(rawUser)
+            }
+            else {
+                setUser(undefined)
+            }
+  
     }, [storyId, chapterId]);
 
-    useEffect(() => {
-        if (!storyId || !chapter?.id) return;
-        axios.get(`http://localhost:9999/comments?storyId=${storyId}&chapterId=${chapter.id}`)
-            .then(res => setComments(res.data))
-            .catch(() => console.error("Lỗi lấy comments"));
-    }, [storyId, chapter?.id]);
-
+    
     useEffect(() => {
         if (!storyId || !chapter?.id) return;
 
@@ -130,12 +129,12 @@ export default function ReadStory() {
             </div>
             <Container>
                 <CommentSection
-                commentsData={comments}
-                userId={user?.id}
+                
+                user={user}
+                storyId={storyId}
+                chapterId={chapter?.id}
                 />
             </Container>
-
-            
 
             <Nav
                 storyId={storyId}

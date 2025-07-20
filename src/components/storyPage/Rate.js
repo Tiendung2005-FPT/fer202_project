@@ -17,6 +17,10 @@ export default function RatingStars({ customRate, setRating, userId, storyId }) 
   };
 
   const handleClick = async (rate) => {
+    if(!userId) {
+        alert("Bạn phải đăng nhập mới thực hiện được chức năng này")
+        return;
+    }
     if (loading) {
       console.log("Đang xử lý, bỏ qua click...");
       return;
@@ -28,14 +32,14 @@ export default function RatingStars({ customRate, setRating, userId, storyId }) 
         storyId: String(storyId),
         score: rate,
         createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
       };
 
-      if (customRate < 0) {
-       
+      if (customRate < 0 ) {
         await axios.post("http://localhost:9999/ratings", newRating);
+         alert("Cảm ơn đã đánh giá truyện , chúc bạn đọc truyện vui vẻ")
         
       } else {
-        
         const res = await axios.get(
           `http://localhost:9999/ratings?userId=${userId}&storyId=${storyId}`
         );
@@ -48,7 +52,7 @@ export default function RatingStars({ customRate, setRating, userId, storyId }) 
             updatedAt: new Date().toISOString(),
           };
           await axios.patch(`http://localhost:9999/ratings/${rating.id}`, patchData);
-         
+          alert("Đánh giá của bạn đã được cập nhật!")
         } else {
           console.warn("Không tìm thấy đánh giá cũ để cập nhật.");
         }
