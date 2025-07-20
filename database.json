@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "2",
+      "id": "1",
       "username": "nguoivip",
       "email": "vip@example.com",
       "password": "$2b$10$Zu7nUS18WMa3a1o8Ln1xg.JU2brvbxgnnBprTyexysxsaEHI/8VNK",
@@ -18,7 +18,7 @@
       "reasonBan": null
     },
     {
-      "id": "3",
+      "id": "2",
       "username": "admin_system",
       "email": "admin@example.com",
       "password": "$2b$10$tZonkEq0Y7jz2.sCdxKB0ehAsw90ZjkUSEWdaatga.g5XpHTVJIYm",
@@ -49,7 +49,7 @@
         3
       ],
       "status": "ongoing",
-      "totalViews": 125474,
+      "totalViews": 125475,
       "totalChapters": 150,
       "createdAt": "2023-03-10T14:20:00Z",
       "updatedAt": "2025-07-10T09:15:00Z",
@@ -83,7 +83,7 @@
       "order": 1,
       "createdAt": "2025-07-15T14:27:16.258Z",
       "updatedAt": "2025-07-15T14:27:16.258Z",
-      "views": 20,
+      "views": 21,
       "isDraft": false
     },
     {
@@ -233,13 +233,13 @@
       "storyId": "1"
     },
     {
-      "id": "1015",
-      "userId": "1",
+      "id": "2e2a",
+      "userId": "2",
       "storyId": "1"
     },
     {
-      "id": "a815",
-      "userId": "2",
+      "id": "f457",
+      "userId": "1",
       "storyId": "1"
     }
   ],
@@ -264,12 +264,13 @@
       "id": "1",
       "userId": "1",
       "storyId": "1",
-      "score": 5,
-      "createdAt": "2023-04-20T14:00:00Z"
+      "score": 3,
+      "createdAt": "2023-04-20T14:00:00Z",
+      "updatedAt": "2025-07-20T13:12:14.081Z"
     },
     {
       "id": "2",
-      "userId": "3",
+      "userId": "2",
       "storyId": "2",
       "score": 4,
       "createdAt": "2024-02-01T10:30:00Z"
