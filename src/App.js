@@ -4,8 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import 'react-quill-new/dist/quill.snow.css';
 
 import Header from './header';
-import UserDetail from './users/userDetail';
-import FilterStories from './stories/filterStories';
+import UserDetail from './components/users/userDetail.js';
+import FilterStories from './components/stories/filterStories.js';
 import StoryPage from "./components/storyPage/index";
 import ReadStory from "./components/readStorys/index";
 import Login from "./components/Auth/Login";
