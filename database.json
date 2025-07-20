@@ -49,7 +49,7 @@
         3
       ],
       "status": "ongoing",
-      "totalViews": 125528,
+      "totalViews": 125530,
       "totalChapters": 150,
       "createdAt": "2023-03-10T14:20:00Z",
       "updatedAt": "2025-07-10T09:15:00Z",
@@ -83,7 +83,7 @@
       "order": 1,
       "createdAt": "2025-07-15T14:27:16.258Z",
       "updatedAt": "2025-07-15T14:27:16.258Z",
-      "views": 62,
+      "views": 64,
       "isDraft": false
     },
     {
@@ -133,21 +133,6 @@
   ],
   "comments": [
     {
-      "id": "1",
-      "storyId": "1",
-      "chapterId": "5319",
-      "userId": "1",
-      "username": "nguoivip",
-      "avatar": "/logo192.png",
-      "content": "Chương mở đầu rất hấp dẫn, mong tác giả ra chương mới sớm!",
-      "createdAt": "2023-03-12T15:30:00Z",
-      "likes": [
-        null,
-        null,
-        "9355"
-      ]
-    },
-    {
       "id": "2",
       "storyId": "1",
       "chapterId": "2",
@@ -167,71 +152,36 @@
       "content": "cdc",
       "createdAt": "2025-07-20T18:59:20.556Z",
       "likes": [
-        null
+        null,
+        "1"
       ]
     },
     {
-      "id": "1753038264745",
+      "id": "1753039617016",
       "storyId": "1",
       "chapterId": "5319",
       "userId": "1",
       "username": "nguoivip",
       "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
-      "content": "ủa alo",
-      "createdAt": "2025-07-20T19:04:24.745Z",
+      "content": "vvsv",
+      "createdAt": "2025-07-20T19:26:57.016Z",
       "likes": [
         "1"
       ]
     },
     {
-      "id": "1753038402857",
+      "id": "1753039871042",
       "storyId": "1",
       "chapterId": "5319",
       "userId": "1",
       "username": "nguoivip",
       "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
-      "content": "kkk",
-      "createdAt": "2025-07-20T19:06:42.857Z",
+      "content": "sdfsdff",
+      "createdAt": "2025-07-20T19:31:11.042Z",
       "likes": [
         "1"
-      ]
-    },
-    {
-      "id": "1753038500306",
-      "storyId": "1",
-      "chapterId": "5319",
-      "userId": "1",
-      "username": "nguoivip",
-      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
-      "content": "cdvxv",
-      "createdAt": "2025-07-20T19:08:20.306Z",
-      "likes": [
-        "1"
-      ]
-    },
-    {
-      "id": "1753038505376",
-      "storyId": "1",
-      "chapterId": "5319",
-      "userId": "1",
-      "username": "nguoivip",
-      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
-      "content": "vsdvdsv",
-      "createdAt": "2025-07-20T19:08:25.376Z",
-      "likes": [
-        "1"
-      ]
-    },
-    {
-      "id": "1753038928630",
-      "storyId": "1",
-      "chapterId": "5319",
-      "userId": "1",
-      "username": "nguoivip",
-      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
-      "content": "sdfsd",
-      "createdAt": "2025-07-20T19:15:28.630Z",
-      "likes": []
+      ],
+      "replies": []
     }
   ],
   "categories": [

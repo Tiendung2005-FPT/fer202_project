@@ -6,11 +6,9 @@ export default function CommentSection({ chapterId, storyId }) {
     const [commentInput, setCommentInput] = useState("");
     const [comments, setComments] = useState([]);
     const user = JSON.parse(localStorage.getItem("userAccount"));
+
     useEffect(() => {
         if (!storyId || !chapterId) return;
-
-        console.log("✅ user:", user);
-        console.log("✅ storyId:", storyId, "| chapterId:", chapterId);
 
         axios
             .get(`http://localhost:9999/comments?storyId=${storyId}&chapterId=${chapterId}&_sort=createdAt&_order=desc`)
@@ -23,16 +21,13 @@ export default function CommentSection({ chapterId, storyId }) {
             alert("Bạn cần đăng nhập để thích bình luận.");
             return;
         }
-        console.log("id ngupwif dùng :" + user.id);
-        
+
         const updatedComments = comments.map((cmt) => {
             if (cmt.id !== commentId) return cmt;
-
             const hasLiked = Array.isArray(cmt.likes) && cmt.likes.includes(user.id);
             const newLikes = hasLiked
                 ? cmt.likes.filter((id) => id !== user.id)
                 : [...(cmt.likes || []), user.id];
-
             return { ...cmt, likes: newLikes };
         });
 
@@ -40,10 +35,9 @@ export default function CommentSection({ chapterId, storyId }) {
         setComments(updatedComments);
 
         try {
-            const res = await axios.patch(`http://localhost:9999/comments/${commentId}`, {
+            await axios.patch(`http://localhost:9999/comments/${commentId}`, {
                 likes: updatedComment.likes,
             });
-            console.log(`✅ Đã cập nhật like cho comment ${commentId}:`, res.data.likes);
         } catch (err) {
             console.error("❌ Lỗi khi cập nhật like:", err);
         }
@@ -58,7 +52,7 @@ export default function CommentSection({ chapterId, storyId }) {
         if (commentInput.trim() === "") return;
 
         const newComment = {
-            id: Date.now().toString(), 
+            id: Date.now().toString(),
             storyId,
             chapterId,
             userId: user.id,
@@ -75,6 +69,17 @@ export default function CommentSection({ chapterId, storyId }) {
             setCommentInput("");
         } catch (err) {
             console.error("❌ Lỗi gửi bình luận:", err);
+        }
+    };
+
+    const handleDeleteComment = async (commentId) => {
+        if (!window.confirm("Bạn chắc chắn muốn xóa bình luận này?")) return;
+
+        try {
+            await axios.delete(`http://localhost:9999/comments/${commentId}`);
+            setComments(comments.filter((c) => c.id !== commentId));
+        } catch (err) {
+            console.error("❌ Lỗi khi xóa bình luận:", err);
         }
     };
 
@@ -109,15 +114,26 @@ export default function CommentSection({ chapterId, storyId }) {
                                     <small className="text-muted">
                                         {new Date(cmt.createdAt).toLocaleString()}
                                     </small>
-                                    <div>
+                                    <div className="mt-1">
                                         <Button
                                             variant="link"
                                             size="sm"
-                                            onClick={() => handleLike(cmt.id)} 
-                                            style={{textDecoration:'none'}}
+                                            onClick={() => handleLike(cmt.id)}
+                                            style={{ textDecoration: 'none' }}
                                         >
                                             👍 {cmt.likes?.length || 0}
                                         </Button>
+                                        {user?.id === cmt.userId && (
+                                            <Button
+                                                variant="link"
+                                                size="sm"
+                                                className="text-danger"
+                                                onClick={() => handleDeleteComment(cmt.id)}
+                                                style={{ textDecoration: 'none' }}
+                                            >
+                                                🗑️ Xóa
+                                            </Button>
+                                        )}
                                     </div>
 
                                     {cmt.replies?.length > 0 && (
