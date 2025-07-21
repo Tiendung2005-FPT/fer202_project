@@ -24,16 +24,20 @@ import UserReportDetail from './components/Admin/UserReportDetail.js';
 import ReportStory from './components/Report/ReportStory.js';
 import TagsManager from './components/Admin/TagsManager.js';
 import AddTag from './components/Admin/AddTag.js';
+import Homepage from './components/Homepage.js';
+import AddStory from './components/Admin/AddStory.js';
+import HideStory from './components/Admin/HideStory.js';
 
 function App() {
   const location = useLocation()
   const adminPage = location.pathname.startsWith('/admin');
+  const adminId = localStorage.getItem("adminId");
 
   return (
     <>
       {!adminPage && <Header />}
       <Routes>
-        <Route path="/" element={<Canvas />} />
+        <Route path="/" element={<Homepage />} />
         <Route path="/write-chapter/:sId" element={<ChapterWriter />} />
         <Route path="/edit-chapter/:sId/:cId" element={<ChapterEdit />} />
         <Route path="/userDetail/:id" element={<UserDetail />} />
@@ -55,6 +59,8 @@ function App() {
           <Route path="users" element={<UserManager />} />
           <Route path="tags" element={<TagsManager />} />
           <Route path="add-tag" element={<AddTag />} />
+          <Route path="add-story" element={<AddStory adminId={adminId} />} />
+          <Route path="hide-story" element={<HideStory isAdmin={true} />} />F
         </Route>
 
 
