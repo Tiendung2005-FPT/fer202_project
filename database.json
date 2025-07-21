@@ -4,7 +4,7 @@
       "id": "1",
       "username": "nguoivip",
       "email": "vip@example.com",
-      "password": "$2b$10$JY7HHxPkg3y676wEbbTw/eNlPN.grxeF/5BbGvFB4lOFbCo3kgcxS",
+      "password": "$2b$10$4mRlnrfvx5WbGs5.D8z90.i/jnozhQ5z8Gqe8qJzTTPdWFgLYtyWi",
       "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
       "role": "user",
       "vipExpiry": "2025-12-31T23:59:59Z",
@@ -15,13 +15,13 @@
       "phone": "0901234567",
       "address": "123 Đường Sách, Quận 1, TP.HCM",
       "status": "active",
-      "reasonBan": null
+      "reasonBan": "a"
     },
     {
       "id": "2",
       "username": "admin_system",
       "email": "admin@example.com",
-      "password": "$2b$10$zqcjXlErTbvdZDsobzR2tO6zhzHAQEcAkkhZrOTjhFObqZk.Csmb6",
+      "password": "$2b$10$ba0EXIZKPj2IqDXTpRl.H.Fe2skCtwnNr5.Bj4e8HHUWQ6r8aiiuq",
       "avatar": "/avatars/admin.jpg",
       "role": "admin",
       "vipExpiry": "2025-12-31T23:59:59Z",
@@ -31,6 +31,23 @@
       "fullname": "Lê Quản Trị",
       "phone": "0987654321",
       "address": "789 Đường Quản Trị, Quận 10, TP.HCM",
+      "status": "active",
+      "reasonBan": null
+    },
+    {
+      "id": "b6c0",
+      "username": "nghia",
+      "fullname": "Pham khac nghia",
+      "email": "nghiakhac2005@gmail.com",
+      "password": "$2b$10$ZU7KYcaa/AqgEecRshk0LuwURfL5DqnjfaRiN0koVZswcdvz90luC",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+      "role": "user",
+      "vipExpiry": "2025-12-31T23:59:59Z",
+      "createdAt": "2025-07-20T23:15:34.399Z",
+      "lastLogin": null,
+      "bio": "thang nghia ",
+      "phone": "0969077991",
+      "address": "123 Đường Sách, Quận 1, TP.HN",
       "status": "active",
       "reasonBan": null
     }
@@ -48,8 +65,8 @@
         2,
         3
       ],
-      "status": "completed",
-      "totalViews": 125475,
+      "status": "ongoing",
+      "totalViews": 125528,
       "totalChapters": 150,
       "createdAt": "2023-03-10T14:20:00Z",
       "updatedAt": "2025-07-10T09:15:00Z",
@@ -118,7 +135,7 @@
       "order": 1,
       "createdAt": "2025-07-15T14:27:16.258Z",
       "updatedAt": "2025-07-15T14:27:16.258Z",
-      "views": 21,
+      "views": 62,
       "isDraft": false
     },
     {
@@ -129,7 +146,7 @@
       "order": 2,
       "createdAt": "2025-07-15T14:24:06.935Z",
       "updatedAt": "2025-07-15T14:24:06.935Z",
-      "views": 13,
+      "views": 24,
       "isDraft": false
     },
     {
@@ -151,7 +168,7 @@
       "order": 4,
       "createdAt": "2025-07-16T00:57:29.936Z",
       "updatedAt": "2025-07-16T00:57:29.936Z",
-      "views": 9,
+      "views": 10,
       "isDraft": false
     },
     {
@@ -170,31 +187,16 @@
     {
       "id": "1",
       "storyId": "1",
-      "chapterId": "1",
+      "chapterId": "5319",
       "userId": "1",
       "username": "nguoivip",
-      "avatar": "/avatars/1.jpg",
+      "avatar": "/logo192.png",
       "content": "Chương mở đầu rất hấp dẫn, mong tác giả ra chương mới sớm!",
       "createdAt": "2023-03-12T15:30:00Z",
       "likes": [
-        2,
-        3,
-        4,
-        5
-      ],
-      "replies": [
-        {
-          "id": "1",
-          "userId": "2",
-          "username": "tacgia_no1",
-          "avatar": "/avatars/2.jpg",
-          "content": "Cảm ơn bạn đã ủng hộ, chương mới sẽ ra vào tuần sau!",
-          "createdAt": "2023-03-12T16:00:00Z",
-          "likes": [
-            1,
-            3
-          ]
-        }
+        null,
+        null,
+        "9355"
       ]
     },
     {
@@ -207,11 +209,81 @@
       "content": "Chất lượng truyện VIP xứng đáng với đồng tiền bỏ ra!",
       "createdAt": "2024-01-15T11:45:00Z",
       "likes": [
-        1,
-        2,
-        5
-      ],
-      "replies": []
+        null
+      ]
+    },
+    {
+      "id": "1753037960556",
+      "storyId": "1",
+      "chapterId": "5319",
+      "content": "cdc",
+      "createdAt": "2025-07-20T18:59:20.556Z",
+      "likes": [
+        null
+      ]
+    },
+    {
+      "id": "1753038264745",
+      "storyId": "1",
+      "chapterId": "5319",
+      "userId": "1",
+      "username": "nguoivip",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+      "content": "ủa alo",
+      "createdAt": "2025-07-20T19:04:24.745Z",
+      "likes": [
+        "1"
+      ]
+    },
+    {
+      "id": "1753038402857",
+      "storyId": "1",
+      "chapterId": "5319",
+      "userId": "1",
+      "username": "nguoivip",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+      "content": "kkk",
+      "createdAt": "2025-07-20T19:06:42.857Z",
+      "likes": [
+        "1"
+      ]
+    },
+    {
+      "id": "1753038500306",
+      "storyId": "1",
+      "chapterId": "5319",
+      "userId": "1",
+      "username": "nguoivip",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+      "content": "cdvxv",
+      "createdAt": "2025-07-20T19:08:20.306Z",
+      "likes": [
+        "1"
+      ]
+    },
+    {
+      "id": "1753038505376",
+      "storyId": "1",
+      "chapterId": "5319",
+      "userId": "1",
+      "username": "nguoivip",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+      "content": "vsdvdsv",
+      "createdAt": "2025-07-20T19:08:25.376Z",
+      "likes": [
+        "1"
+      ]
+    },
+    {
+      "id": "1753038928630",
+      "storyId": "1",
+      "chapterId": "5319",
+      "userId": "1",
+      "username": "nguoivip",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+      "content": "sdfsd",
+      "createdAt": "2025-07-20T19:15:28.630Z",
+      "likes": []
     }
   ],
   "categories": [
@@ -252,6 +324,12 @@
       "name": "nữ cường",
       "slug": "nu-cuong",
       "storyCount": 215
+    },
+    {
+      "id": "8c2f",
+      "name": "tự nhiên",
+      "slug": "tu-nhien",
+      "storyCount": 0
     }
   ],
   "bookmarks": [
@@ -296,19 +374,19 @@
   ],
   "ratings": [
     {
-      "id": "1",
+      "id": "8c7c",
+      "userId": "2",
+      "storyId": "1",
+      "score": 5,
+      "createdAt": "2025-07-20T16:27:16.530Z"
+    },
+    {
+      "id": "2eba",
       "userId": "1",
       "storyId": "1",
       "score": 3,
-      "createdAt": "2023-04-20T14:00:00Z",
-      "updatedAt": "2025-07-21T03:30:33.945Z"
-    },
-    {
-      "id": "2",
-      "userId": "2",
-      "storyId": "2",
-      "score": 4,
-      "createdAt": "2024-02-01T10:30:00Z"
+      "createdAt": "2025-07-20T16:29:16.787Z",
+      "updatedAt": "2025-07-20T16:32:02.646Z"
     }
   ],
   "authorFeedbacks": [
@@ -384,6 +462,84 @@
       "createdAt": "2025-07-17T14:42:01.059Z",
       "resolvedBy": "2",
       "resolvedAt": "2025-07-18T03:35:05.335Z"
+    },
+    {
+      "id": "bae0",
+      "reportType": "story",
+      "reportedUserId": null,
+      "reportedStoryId": "1",
+      "reporterUserId": "b6c0",
+      "reason": "truyện hay quá",
+      "details": "10Đ",
+      "status": "resolved",
+      "createdAt": "2025-07-20T23:34:21.585Z",
+      "resolvedBy": "b6c0",
+      "resolvedAt": "2025-07-21T01:45:10.704Z"
+    },
+    {
+      "id": "d1ba",
+      "reportType": "story",
+      "reportedUserId": null,
+      "reportedStoryId": "1",
+      "reporterUserId": "b6c0",
+      "reason": "meom",
+      "details": "meo",
+      "status": "resolved",
+      "createdAt": "2025-07-20T23:46:12.864Z",
+      "resolvedBy": "b6c0",
+      "resolvedAt": "2025-07-21T01:43:33.992Z"
+    },
+    {
+      "id": "099b",
+      "reportType": "story",
+      "reportedUserId": null,
+      "reportedStoryId": "1",
+      "reporterUserId": "b6c0",
+      "reason": "hehe",
+      "details": "heheheheeheheh",
+      "status": "resolved",
+      "createdAt": "2025-07-20T23:50:11.775Z",
+      "resolvedBy": "b6c0",
+      "resolvedAt": "2025-07-21T01:43:35.889Z"
+    },
+    {
+      "id": "b0d9",
+      "reportType": "story",
+      "reportedUserId": null,
+      "reportedStoryId": "1",
+      "reporterUserId": "b6c0",
+      "reason": "heheheheeeee",
+      "details": "hahahahahaaa",
+      "status": "resolved",
+      "createdAt": "2025-07-21T00:43:54.651Z",
+      "resolvedBy": "b6c0",
+      "resolvedAt": "2025-07-21T01:43:35.897Z"
+    },
+    {
+      "id": "387d",
+      "reportType": "story",
+      "reportedUserId": null,
+      "reportedStoryId": "1",
+      "reporterUserId": "b6c0",
+      "reason": "meomeo",
+      "details": "meoooo",
+      "status": "resolved",
+      "createdAt": "2025-07-21T01:48:45.759Z",
+      "resolvedBy": "b6c0",
+      "resolvedAt": "2025-07-21T01:56:36.294Z"
+    },
+    {
+      "id": "8eea",
+      "reportType": "story",
+      "reportedUserId": null,
+      "reportedStoryId": "1",
+      "reporterUserId": "b6c0",
+      "reason": "eheheheheh",
+      "details": "hêhehe",
+      "status": "resolved",
+      "createdAt": "2025-07-21T01:56:14.822Z",
+      "resolvedBy": "b6c0",
+      "resolvedAt": "2025-07-21T01:56:39.623Z"
     }
   ],
   "membershipPlans": [

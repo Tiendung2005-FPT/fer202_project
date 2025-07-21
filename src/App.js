@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'react-quill-new/dist/quill.snow.css';
 
@@ -22,23 +22,23 @@ import AdminLayout from './components/Admin/AdminLayout.js';
 import Dashboard from './components/Admin/Dashboard.js';
 import UserManager from './components/Admin/UserManager.js';
 import UserReportDetail from './components/Admin/UserReportDetail.js';
-import ViewAcc from './components/Admin/ViewAcc.js';
 import ReportStory from './components/Report/ReportStory.js';
+import TagsManager from './components/Admin/TagsManager.js';
+import AddTag from './components/Admin/AddTag.js';
+import Homepage from './components/Homepage.js';
 import AddStory from './components/Admin/AddStory.js';
 import HideStory from './components/Admin/HideStory.js';
-
-
+import ViewAcc from './components/Admin/ViewAcc.js';
 function App() {
-
-  const adminPage = window.location.pathname.startsWith('/admin');
+  const location = useLocation()
+  const adminPage = location.pathname.startsWith('/admin');
   const adminId = localStorage.getItem("adminId");
-  return (
-    <BrowserRouter>
-      {!adminPage && <Header />}
 
+  return (
+    <>
+      {!adminPage && <Header />}
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/home-page" element={<Homepage />} />
         <Route path="/write-chapter/:sId" element={<ChapterWriter />} />
         <Route path="/edit-chapter/:sId/:cId" element={<ChapterEdit />} />
         <Route path="/userDetail/:id" element={<UserDetail />} />
@@ -52,19 +52,21 @@ function App() {
         <Route path="/report-user/:uId" element={<ReportUser />} />
         <Route path="/reports-list" element={<ReportsList />} />
         <Route path="/user-report-detail/:uId" element={<UserReportDetail />} />
-        <Route path="/report-story/:storyId" element={<ReportStory/>}/>
+        <Route path="/report-story/:storyId" element={<ReportStory />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
 
-        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="/admin" element={<AdminLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="users" element={<UserManager />} />
-          <Route path="users/view/:accId" element={<ViewAcc />} />
+          <Route path="tags" element={<TagsManager />} />
+          <Route path="add-tag" element={<AddTag />} />
           <Route path="add-story" element={<AddStory adminId={adminId} />} />
-          <Route path="hide-story" element={<HideStory isAdmin={true} />} />
+          <Route path="hide-story" element={<HideStory isAdmin={true} />} />F
         </Route>
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 
