@@ -21,7 +21,7 @@
       "id": "2",
       "username": "admin_system",
       "email": "admin@example.com",
-      "password": "$2b$10$qNTpqmnjgSIXMn3chtwnKucYw1WjZdV49maOfJAwPFodGnXDD6EnS",
+      "password": "$2b$10$ba0EXIZKPj2IqDXTpRl.H.Fe2skCtwnNr5.Bj4e8HHUWQ6r8aiiuq",
       "avatar": "/avatars/admin.jpg",
       "role": "admin",
       "vipExpiry": "2025-12-31T23:59:59Z",
