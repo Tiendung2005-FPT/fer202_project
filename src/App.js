@@ -1,0 +1,71 @@
+import React from 'react';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
+import 'react-quill-new/dist/quill.snow.css';
+
+import Header from './header';
+import UserDetail from './components/users/userDetail.js';
+import FilterStories from './components/stories/filterStories.js';
+import StoryPage from "./components/storyPage/index";
+import ReadStory from "./components/readStorys/index";
+import Homepage from "./components/Homepage.js";
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
+import ForgotPassword from "./components/Auth/ForgotPassword";
+import ChapterWriter from "./components/ChapterWrite/ChapterWriter.js";
+import ChapterEdit from "./components/ChapterWrite/ChapterEdit.js";
+import Canvas from "./components/ChapterWrite/Canvas.js";
+import MembershipPurchase from './components/Membership/MembershipPurchase.js';
+import ReportUser from './components/Report/ReportUser.js';
+import ReportsList from './components/Admin/ReportsList.js';
+import AdminLayout from './components/Admin/AdminLayout.js';
+import Dashboard from './components/Admin/Dashboard.js';
+import UserManager from './components/Admin/UserManager.js';
+import UserReportDetail from './components/Admin/UserReportDetail.js';
+import ViewAcc from './components/Admin/ViewAcc.js';
+import ReportStory from './components/Report/ReportStory.js';
+import AddStory from './components/Admin/AddStory.js';
+import HideStory from './components/Admin/HideStory.js';
+
+
+function App() {
+
+  const adminPage = window.location.pathname.startsWith('/admin');
+  const adminId = localStorage.getItem("adminId");
+  return (
+    <BrowserRouter>
+      {!adminPage && <Header />}
+
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/home-page" element={<Homepage />} />
+        <Route path="/write-chapter/:sId" element={<ChapterWriter />} />
+        <Route path="/edit-chapter/:sId/:cId" element={<ChapterEdit />} />
+        <Route path="/userDetail/:id" element={<UserDetail />} />
+        <Route path="/filterStories" element={<FilterStories />} />
+        <Route path="/storypage/:id" element={<StoryPage />} />
+        <Route path="/readStory/:storyId/:chapterId" element={<ReadStory />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/membership-purchase" element={<MembershipPurchase />} />
+        <Route path="/report-user/:uId" element={<ReportUser />} />
+        <Route path="/reports-list" element={<ReportsList />} />
+        <Route path="/user-report-detail/:uId" element={<UserReportDetail />} />
+        <Route path="/report-story/:storyId" element={<ReportStory/>}/>
+
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="users" element={<UserManager />} />
+          <Route path="users/view/:accId" element={<ViewAcc />} />
+          <Route path="add-story" element={<AddStory adminId={adminId} />} />
+          <Route path="hide-story" element={<HideStory isAdmin={true} />} />
+        </Route>
+
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;

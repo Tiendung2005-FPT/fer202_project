@@ -1,0 +1,523 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "nguoivip",
+      "email": "vip@example.com",
+      "password": "$2b$10$JY7HHxPkg3y676wEbbTw/eNlPN.grxeF/5BbGvFB4lOFbCo3kgcxS",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+      "role": "user",
+      "vipExpiry": "2025-12-31T23:59:59Z",
+      "createdAt": "2023-01-15T08:00:00Z",
+      "lastLogin": "2025-07-10T14:30:00Z",
+      "bio": "Người đam mê truyện tiên hiệp",
+      "fullname": "Nguyễn Văn Vip",
+      "phone": "0901234567",
+      "address": "123 Đường Sách, Quận 1, TP.HCM",
+      "status": "active",
+      "reasonBan": null
+    },
+    {
+      "id": "2",
+      "username": "admin_system",
+      "email": "admin@example.com",
+      "password": "$2b$10$zqcjXlErTbvdZDsobzR2tO6zhzHAQEcAkkhZrOTjhFObqZk.Csmb6",
+      "avatar": "/avatars/admin.jpg",
+      "role": "admin",
+      "vipExpiry": "2025-12-31T23:59:59Z",
+      "createdAt": "2022-01-01T00:00:00Z",
+      "lastLogin": "2025-07-11T08:00:00Z",
+      "bio": "Quản trị viên hệ thống",
+      "fullname": "Lê Quản Trị",
+      "phone": "0987654321",
+      "address": "789 Đường Quản Trị, Quận 10, TP.HCM",
+      "status": "active",
+      "reasonBan": null
+    }
+  ],
+  "stories": [
+    {
+      "id": "1",
+      "title": "Đạo Giới Độc Tôn",
+      "authorId": "2",
+      "coverImage": "/covers/anh_truyen1.jpg",
+      "description": "Một thiếu niên vô tình bước vào con đường tu tiên, từng bước trở thành chí tôn đạo giới...",
+      "category": "Tiên Hiệp",
+      "tags": [
+        1,
+        2,
+        3
+      ],
+      "status": "completed",
+      "totalViews": 125475,
+      "totalChapters": 150,
+      "createdAt": "2023-03-10T14:20:00Z",
+      "updatedAt": "2025-07-10T09:15:00Z",
+      "draftChapters": 3
+    },
+    {
+      "id": "2",
+      "title": "Ma Đế Vô Song",
+      "authorId": "2",
+      "coverImage": "/covers/2.jpg",
+      "description": "Từ một tên vô danh tiểu tốt trở thành Ma Đế chấn động thiên hạ...",
+      "category": "Huyền Huyễn",
+      "tags": [
+        1,
+        3
+      ],
+      "status": "completed",
+      "totalViews": 89456,
+      "totalChapters": 200,
+      "createdAt": "2024-01-05T11:30:00Z",
+      "updatedAt": "2025-06-28T16:45:00Z",
+      "draftChapters": 0
+    },
+    {
+      "id": "ebd6",
+      "title": "Doraemon",
+      "coverImage": "data:image/jpeg;base64,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",
+      "description": "Mèo Máy ",
+      "category": "Tiên Hiệp",
+      "tags": [
+        1,
+        2
+      ],
+      "authorId": null,
+      "status": "completed",
+      "createdAt": "2025-07-20T20:02:37.375Z",
+      "updatedAt": "2025-07-20T20:02:37.375Z",
+      "totalViews": 0,
+      "totalChapters": 0,
+      "draftChapters": 0
+    },
+    {
+      "id": "4248",
+      "title": "Công Nữ Ahio",
+      "coverImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ86DVF9B1nCiol9PTIVZmpHMKzXPfjojtm4Q&s",
+      "description": "Công nữ Ahio",
+      "category": "Huyền Huyễn",
+      "tags": [
+        3
+      ],
+      "authorId": "2",
+      "status": "ongoing",
+      "createdAt": "2025-07-20T20:11:43.322Z",
+      "updatedAt": "2025-07-20T20:11:43.322Z",
+      "totalViews": 0,
+      "totalChapters": 0,
+      "draftChapters": 0
+    }
+  ],
+  "chapters": [
+    {
+      "id": "5319",
+      "storyId": "1",
+      "title": "Chương thứ nhất:: Thiết huyết thiếu niên",
+      "content": "<p>Thiên Phong Quốc, Nam Linh Quốc Giao Giới, Nam Linh Quốc Cửu Tuyền ngoài thành.</p><p><br></p><p>Mấy chục vạn người mặc áo giáp màu đen quân sĩ tại Cửu Tuyền ngoài thành vận sức chờ phát động, đằng đằng sát khí.</p><p><br></p><p>Cửu Tuyền chỗ cửa thành, ước chừng hai mươi vạn người khoác ngân giáp quân sĩ cưỡi chiến mã, tay cầm tuyết trắng trường đao trận địa sẵn sàng đón quân địch.</p><p><br></p><p>Vì quân tướng lĩnh là một dáng người khôi ngô, khuôn mặt cương nghị nam tử trung niên, tay hắn nắm dài hơn một trượng màu đen chiến thương, vượt dưới cưỡi một thớt toàn thân Thanh Lân ngoại hình giống như ngựa yêu thú, Thanh Lân Độc Giác Mã, mắt sáng như đuốc, nhìn qua đối diện mấy chục vạn đại quân.</p><p><br></p><p>Hắn gọi Mục Thiên, là cái này Cửu Tuyền thành thủ trên thành tướng, cũng là một Nguyên Đan Cảnh võ đạo cường giả.</p><p><br></p><p>Thiên Vũ Đại Lục, cổ võ vi tôn, vạn nước san sát bách tộc tranh phong, địa vực rộng lớn mà không bờ bến.</p><p><br></p><p>Người lấy công pháp thu nạp thiên địa linh khí, tu luyện tự thân nguyên khí, nguyên lực, căn cứ thể nội năng lượng mạnh yếu, Thái Cổ đến hiện tại võ đạo đám tiền bối cho cổ võ từ yếu đến mạnh lại phân chia cảnh giới.</p><p><br></p><p>Thông Mạch Cảnh, Tử Phủ Cảnh, Ngưng Cương Cảnh, Nguyên Đan Cảnh về phần cảnh giới càng cao hơn, cái này Cửu Tuyền trong thành liền không có, mỗi cảnh lại phân Cửu Trọng Thiên.</p><p><br></p><p>Tại Mục Thiên một bên, lại còn có một bộ dáng non nớt thiếu niên, hắn mày kiếm mắt sáng, mắt trái giữa lông mày có một đầu mặt sẹo, hai gò má góc cạnh rõ ràng ngày thường tuấn lãng, niên kỷ mặc dù tuổi trẻ, nhìn qua bất quá mười lăm mười sáu tuổi, bất quá trên thân lại là có một cỗ quân nhân thiết huyết chi khí.</p><p><br></p><p>Kia áo giáp màu bạc mặc lên người, càng lộ ra oai hùng bất phàm.</p><p><br></p><p>Mục Phong, Mục Thiên chi tử, Nam Linh Quốc nổi danh thiên tài, Mục gia thiên kiêu, thuở nhỏ đi theo phụ thân trong quân đội chinh chiến, mặc dù mới mười lăm tuổi, bất quá đã là một khai phách Tử Phủ, có được nguyên khí thiên tài, cảnh giới càng là đạt đến Tử Phủ Tam trọng tiểu thiên vị tu vi.</p><p><br></p><p>Mục Phong nắm chặt trong tay quân thức chiến đao, nương theo tại phụ thân tả hữu, ánh mắt để lộ ra đồng niên người không có kiên định, đối mặt mấy chục vạn đại quân tâm không sợ hãi.</p><p><br></p><p>Cửu Tuyền trên thành, một người mặc màu đen giao Long Vương bào nam tử trung niên lạnh lùng nhìn qua phía dưới, nhìn về phía Mục Thiên bóng lưng lúc, nhiều một tia âm lãnh ý cười.</p><p><br></p><p>\"Mục Thiên, ai bảo ngươi đứng sai trận doanh, hôm nay, trách không được bản vương tâm ngoan \"</p><p><br></p><p>Nam tử trung niên tự lẩm bẩm.</p><p><br></p><p>\"Ô ~ \"</p><p><br></p><p>Đối diện bảy tám chục vạn trong đại quân vang lên công kích kèn lệnh.</p><p><br></p><p>\"Giết!\"</p><p><br></p><p>Quân địch tướng lĩnh gầm lên giận dữ, lập tức mấy chục vạn đại quân lao nhanh mà đến, khí thế hùng hổ, một tiếng này chữ Sát vang vọng thiên vũ.</p><p><br></p><p>\"Phong nhi, sợ sao?\"</p><p><br></p><p>Mục Thiên nhìn qua mấy chục vạn tới lao nhanh đại quân, hỏi hướng về phía con trai mình Mục Phong.</p><p><br></p><p>\"Cha, ta không sợ, ta Mục gia nam nhi, bảo vệ quốc gia, thà rằng tiến lên trước một bước ch.ết, tuyệt không lui lại nửa bước sinh \"</p><p><br></p><p>Mục Phong ngữ khí âm vang hữu lực nói.</p><p><br></p><p>\"Ha ha, không hổ là ta Mục Thiên giống, các huynh đệ, các ngươi đâu, sợ sao?\"</p><p><br></p><p>Mục Thiên lại đối phía sau mình hai mươi vạn quân nhân quát hỏi.</p><p><br></p><p>\"Mục gia quân, không người sợ ch.ết \"</p><p><br></p><p>Hai mươi vạn tướng sĩ cầm súng gầm thét, thẳng thắn cương nghị.</p><p><br></p><p>\"Tốt! Phạm nhà ta nước người, tội đáng tru, giết!\"</p><p><br></p><p>Mục Thiên ra lệnh một tiếng, nâng thương gầm thét.</p><p><br></p><p>\"Giết ~ \"</p><p><br></p><p>Mục Phong kêu giết, hai mươi vạn Mục gia quân kêu giết, lập tức hai mươi vạn cưỡi chiến mã thẳng hướng đối diện mấy chục vạn người, cứ việc nhân số bên trên kém cách quá lớn, coi như bởi vì một nguyên nhân, cũng đủ để cho bọn hắn quên mất e ngại, nhiệt huyết chém giết.</p><p><br></p><p>Sinh vì quân nhân, bảo vệ quốc gia!</p><p><br></p><p>Ầm ầm ~!</p><p><br></p><p>Lập tức hai chi dòng lũ sắt thép đụng vào nhau, đao kiếm giao tiếp tiếng vang triệt Vân Tiêu, tiếng la giết chấn thiên vang lên.</p><p><br></p><p>Mục Thiên cầm trong tay chiến thương, thể nội kim sắc Vũ Nguyên lực như là lao nhanh giang hà, rót vào trường thương, đâm ra một thương, lập tức mấy chục đạo kim sắc thương mang bắn giết hướng về phía đối diện nhân mã.</p><p><br></p><p>Phốc phốc! Phốc phốc! Phốc phốc!</p><p><br></p><p>Lập tức liền có vài chục tên quân địch bị thương mang đâm vào thấu thể mà ch.ết, ch.ết tại một chiêu này phía dưới.</p><p><br></p><p>Lực lượng một người nhưng đồ diệt ngàn người, một chiêu chi uy có thể trảm trăm quân, đây chính là Nguyên Đan Cảnh võ đạo cường giả.</p><p><br></p><p>\"Giết!\"</p><p><br></p><p>Mục Phong cầm trong tay chiến đao lưng chiến thương, chân đạp chiến mã, nhảy qua xa hơn mười thước khoảng cách, một đao đánh xuống, lập tức một đạo dài ba mét màu đỏ đao khí chém về phía một Thiên Phong Quốc quân địch.</p><p><br></p><p>\"A!\"</p><p><br></p><p>Tên này quân địch một tiếng rú thảm bị một đao chém thành hai nửa.</p><p><br></p><p>Mục Phong rơi xuống, chân đạp quân địch chiến mã, lại một đao đánh xuống một tên khác quân địch tướng sĩ đầu lâu.</p><p><br></p><p>Bước chân đạp mạnh quân địch lưng ngựa, đến nhảy về chiến mã của mình trên lưng, cái này trong quân giết người chiến kỹ, Mục Phong đã vận dụng đến phi thường thành thạo.</p><p><br></p><p>Mục Phong cũng thông minh, không rời đi cha mình hai mươi trượng bên ngoài, tại trong đại quân lớn chặt đại sát.</p><p><br></p><p>\"Vương gia, muốn thả tiễn hiệp trợ Mục tướng quân sao?\"</p><p><br></p><p>Cao mấy chục mét Cửu Tuyền trên tường thành, một thủ trong thành đem hỏi hướng về phía nam tử trung niên, Nam Linh Quốc Thân Vương Nam Hào.</p><p><br></p><p>\"Không cần, loạn tiễn không có mắt, cũng đừng ngộ thương đến chúng ta Mục tướng quân \"</p><p><br></p><p>Nam Hào cười lạnh nói, cái này trung tướng nhướng mày, cũng không nhiều lời cái gì.</p><p><br></p><p>Mục gia quân cùng quân địch nhân số chênh lệch gấp ba bốn lần nhiều, cứ việc Mục gia quân dũng mãnh thiện chiến, bất quá cũng đánh không lại người ta về số lượng ưu thế.</p><p><br></p><p>Đại Nhật dần dần ngã về tây, đại chiến hồi lâu sau, Mục gia quân tổn hại binh hơn phân nửa, diệt địch có hai mươi vạn nhiều, máu tươi nhuộm đỏ cát vàng.</p><p><br></p><p>Mà Cửu Tuyền trong thành, vậy mà không có phái quân trợ giúp Mục gia quân.</p><p><br></p><p>\"Vương gia, tiếp tục như vậy cũng không phải là cách pháp, Mục tướng quân Mục gia quân mặc dù anh dũng, nhưng nhân số bên trên quá bị thua thiệt, thuộc hạ cầu vương gia để cho ta mang trợ giúp Mục gia quân \"</p><p><br></p><p>Một trung tướng tại Cửu Tuyền trên tường thành xuyên thấu màu đen giao Long Vương bào nam tử trung niên Nam Hào cung kính nói.</p><p><br></p><p>\"Không thể phái quân trợ giúp, người đều phái đi ra, ai đến thủ thành?\"</p><p><br></p><p>Nam Hào vậy mà trực tiếp cự tuyệt.</p><p><br></p><p>Cái này trung tướng sắc mặt khó coi, cắn răng, nhìn phía phía dưới dục huyết phấn chiến Mục gia quân, trong lòng rất cảm giác khó chịu.</p><p><br></p><p>Quân địch hậu phương, một cưỡi đầu mọc sừng rồng Long Mã tướng quân nhìn qua phía trước chiến đấu, không khỏi thở dài: \"Cái này Mục Thiên, quả nhiên là một viên hổ tướng, đáng tiếc sinh ở Nam Linh Quốc, truyền lệnh xuống, toàn lực tiến công, trảm địch một người, thưởng bách kim!\"</p><p><br></p><p>\"Là tướng quân!\"</p><p><br></p><p>Một bên lính liên lạc quá khứ hạ lệnh.</p><p><br></p><p>\"Tướng quân, dạng này giết tiếp không phải biện pháp, quân địch nhân số quá nhiều, chúng ta vẫn là trước tiên lui tại thành, mượn có lợi địa thế ngăn cản quân địch , chờ viện quân đến tại cùng đối phương nhất quyết sinh tử không muộn \"</p><p><br></p><p>Một áo giáp nhuốm máu nam tử khôi ngô, Mục Thiên phụ tá đắc lực mục thu tới nói.</p><p><br></p><p>Mục Thiên nhìn một cái tổn thất hơn phân nửa Mục gia quân, cùng mình một mặt mỏi mệt nhi tử, nhẹ gật đầu, quát to: \"Lui giữ trong thành \"</p><p><br></p><p>Sau đó Mục gia quân bắt đầu vừa đánh vừa triệt thoái phía sau, một mực rút lui đến Cửu Tuyền dưới thành.</p><p><br></p><p>\"Đại quân lui về thủ thành, nhanh mở cửa thành \"</p><p><br></p><p>Một Mục gia trong quân tướng lĩnh quát.</p><p><br></p><p>\"Tướng quân, chúng ta lập tức mở cửa thành \"</p><p><br></p><p>Đầu tường trung tướng hét lớn đáp lại, liền muốn đi mở cửa thành, nhưng lúc này một thanh lợi kiếm trực tiếp chặt xuống hắn đầu lâu.</p><p><br></p><p>Nam Hào một kiếm chém giết cái này trung tướng, đối dưới thành Mục gia quân cười lạnh nói: \"Không thể rút lui!\"</p><p><br></p><p>\"Vương gia, ngài có ý tứ gì?\"</p><p><br></p><p>Mục Thiên gặp một màn này con ngươi nhíu lại, lửa giận nổi lên.</p><p><br></p><p>\"Mục tướng quân, các ngươi vừa rút lui, quân địch tất nhiên thừa cơ công thành, Mục tướng quân, mời kiên trì một hồi, quân ta trợ giúp cũng nhanh đến \"</p><p><br></p><p>Nam Hào nhìn qua dưới thành cười lạnh nói.</p><p><br></p><p>\"Ta nhổ vào, mẹ nó, Nam Hào, ngươi cái hèn hạ tiểu tử, ta nhìn ngươi chính là muốn hại ch.ết chúng ta Mục gia quân, nhanh mở cửa thành \"</p>",
+      "order": 1,
+      "createdAt": "2025-07-15T14:27:16.258Z",
+      "updatedAt": "2025-07-15T14:27:16.258Z",
+      "views": 21,
+      "isDraft": false
+    },
+    {
+      "id": "eb9a",
+      "storyId": "1",
+      "title": "Chương 2 : Gian trá tiểu nhân",
+      "content": "<p>Có Mục gia quân tướng sĩ phẫn nộ quát, bọn hắn cũng không nhận cái gì vương gia, bọn hắn phục chỉ có một người, Mục Thiên.</p><p><br></p><p>Nam Hào không để ý tới Mục gia quân phẫn mắng, đối Mục Thiên cười lạnh nói: \"Mục tướng quân, hiện tại cũng không thể mở cửa thành, hiện tại như mở, quân địch tất nhiên theo đuôi giết vào trong thành, đến lúc đó Cửu Tuyền thành hơn trăm vạn con dân tất nhiên bị tàn sát, mời tướng quân nhiều kiên trì một hồi, viện quân không lâu liền đến \"</p><p><br></p><p>Phía dưới Mục gia quân nghe vậy lửa giận nổi lên, thậm chí có người đỡ cung nhắm ngay Nam Hào, thế nhưng lại bị Mục Thiên một thanh ngăn cản.</p><p><br></p><p>\"Tướng quân ~ Nam Hào tên tiểu nhân này chính là muốn hại chết chúng ta Mục gia quân muốn hại chết tướng quân a \"</p><p><br></p><p>\"Đúng vậy a tướng quân, xông vào thành a \"</p><p><br></p><p>Mục Thiên nhìn qua Nam Hào, đối một bên Mục Phong lạnh giọng nói ra: \"Phong nhi, nhớ kỹ người này \"</p><p><br></p><p>Mục Phong trong mắt cũng nhiều một sợi hàn mang, nhẹ gật đầu.</p><p><br></p><p>Sau đó Mục Thiên rút lui ngựa trở lại, phẫn nộ quát: \"Mục gia quân, công kích!\"</p><p><br></p><p>Mục Thiên nói xong nâng thương một ngựa đi đầu giết ra ngoài, hơn mười vạn Mục gia quân hai mặt nhìn nhau, sau đó cũng cắn răng gầm lên giận dữ càng lấy Mục Thiên giết tới, mà Mục Phong, nương theo Mục Thiên tả hữu tại trong loạn quân trắng trợn giết chóc.</p><p><br></p><p>Máu tươi, nhuộm đỏ thiếu niên áo giáp, nhuộm đỏ thiếu niên kia non nớt bên trong lộ ra một tia thiết huyết khí tức khuôn mặt.</p><p><br></p><p>Hắn trước bộ ngực kia một khối huyết hồng sắc hình trái tim ngọc bội, cũng tắm rửa tại thiếu niên lồng ngực máu tươi bên trong phát ra sâu kín huyết quang.</p><p><br></p><p>Mười vạn người, ngạnh kháng đối phương mấy chục vạn người, kết quả không cần nói cũng biết, Mục gia quân bị vây quanh tại trong loạn quân, người càng giết càng ít.</p><p><br></p><p>Thời gian dần trôi qua, Mục gia quân chết được sau cùng hơn một ngàn danh tướng sĩ.</p><p><br></p><p>Mục Thiên một cánh tay cầm súng, mà hắn một cánh tay khác đã bị chém đứt, máu me đầm đìa, hắn vượt dưới Thanh Lân Độc Giác Mã trong chiến đấu đã sớm chết đi.</p><p><br></p><p>Mục Phong áo giáp vỡ vụn, trên lồng ngực nhiều một đầu sâu có thể đụng xương vết thương khổng lồ, vết thương nhỏ vô số, cho dù bản thân bị trọng thương, bất quá hai cha con ánh mắt y nguyên sắc bén, giống nhau như đúc sắc bén, không mang theo chút nào e ngại.</p><p><br></p><p>Kia hơn một ngàn tên còn sót lại Mục gia quân đồng dạng đều là vết thương chồng chất, mình đầy thương tích, thế nhưng là, không có người nào lộ ra sợ hãi cái chết mềm yếu chi sắc.Quân địch đối diện, một người mặc hắc khải rạn máu đỏ chiến bào nam tử khôi ngô cưỡi tại một đầu mãnh hổ yêu thú trên lưng, nhìn qua chiến đấu đến giờ khắc này Mục gia quân, cũng nhiều một tia kính nể.</p><p><br></p><p>\"Mục Thiên, đầu hàng đi, đã nam linh vứt bỏ ngươi, sao không đến ta thiên phong, ta cam đoan, ngươi dạng này cường giả người trung nghĩa, đến ta thiên phong sẽ cho ngươi tốt hơn đãi ngộ \"</p><p><br></p><p>Nam tử trung niên mở miệng chiêu hàng, cùng là quân nhân, hắn kính nể Mục Thiên dạng này thiết huyết quân nhân.</p><p><br></p><p>\"Đầu hàng?\"</p><p><br></p><p>Mục Thiên nghe vậy cười, nhuốm máu trên khuôn mặt lộ ra một vòng mỉa mai ý cười.</p><p><br></p><p>\"Ta Mục gia thế hệ vì quân, liền không có đầu hàng hạng người, chúng ta quân nhân, bảo vệ quốc gia, chúng ta võ tu, sống lưng bất khuất, thà rằng tiến lên trước một bước chết, quyết không lui lại nửa bước sinh, các huynh đệ, các ngươi khuyên hàng sao?\"</p><p><br></p><p>Mục Thiên đối sau lưng hơn một ngàn tàn quân rống to.</p><p><br></p><p>\"Thà rằng tiến lên trước một bước chết, quyết không lui lại nửa bước sinh, chúng ta thề chết cũng đi theo tướng quân \"</p><p><br></p><p>Chúng Mục gia quân giận dữ hét lên, đã giết đỏ cả mắt.</p><p><br></p><p>Mục Thiên nghe vậy mắt hổ bên trong không khỏi nhiều một tia nước mắt, hắn nhìn phía Mục Phong, đầu lâu va chạm Mục Phong đầu lâu, thấp giọng, tràn ngập tự trách đạo</p><p><br></p><p>\"Phong nhi, thật xin lỗi, ngươi thuở nhỏ theo cha thân tòng quân nhiều năm, vi phụ đối ngươi chỉ có nghiêm khắc, nhưng không có cho ngươi một tia nhà khác phụ thân yêu thương, hôm nay càng đem ngươi đưa vào tử cục này, phụ thân, phụ thân không phải người cha tốt \"</p><p><br></p><p>Đổ máu không đổ lệ Mục Thiên nói tới chỗ này cũng không khỏi đến nước mắt chảy ròng, ai nói thiết huyết nam tử vô lệ, chỉ là chưa tới tình thâm lúc.</p><p><br></p><p>Mục Phong cười, tái nhợt trong tươi cười không có một tia hối hận cùng oán hận, nói: \"Phụ thân, tại Phong nhi trong lòng ngài chính là trên đời này vĩ đại nhất phụ thân, từ nhỏ Phong nhi liền lấy phụ thân làm vinh, muốn làm phụ thân đồng dạng thiết huyết nam nhân, võ giả, ngài đối Phong nhi nghiêm khắc, không cũng là vì ta được không?\"</p><p><br></p><p>\"Ha ha, có này nhi tử, ta Mục Thiên còn cầu mong gì \"</p><p><br></p><p>Mục Thiên nghe vậy cười to, tiếng cười không nói ra được bi thương, sau đó hắn lại nhìn phía hơn ngàn danh tướng sĩ, vung lên chiến bào, đối đầu ngàn tướng sĩ quỳ một gối xuống xuống dưới.</p><p><br></p><p>Rầm rầm!</p><p><br></p><p>Hơn ngàn tướng sĩ thấy thế cũng quỳ xuống.</p><p><br></p><p>\"Các vị huynh đệ, ta Mục Thiên có lỗi với các ngươi, để các ngươi theo giúp ta bị gian nhân làm hại, là ta Mục Thiên vô năng, đem các vị huynh đệ đưa vào tử cục \"</p><p><br></p><p>\"Tướng quân ~ \"</p><p><br></p><p>\"Chúng ta trở thành Mục gia quân hôm đó, liền thề bồi tướng sĩ bảo vệ quốc gia, thề chết cũng đi theo tướng quân, cho dù da ngựa bọc thây, chúng ta dứt khoát \"</p><p><br></p><p>\"Cho dù da ngựa bọc thây, chúng ta dứt khoát \"</p><p><br></p><p>Hơn ngàn tướng sĩ lệ nóng doanh tròng, cùng kêu lên rống to.</p><p><br></p><p>\"Ha ha, tốt, tốt huynh đệ, các ngươi đều là tốt nhất quân nhân cùng võ giả, ta Mục Thiên đời này có thể cùng các ngươi làm bạn làm vinh, nếu có đời sau, chúng ta còn làm huynh đệ! Sinh tử dứt khoát \"</p><p><br></p><p>Mục Thiên nói xong đứng lên đến, sau đó hắn nhấc lên thương, ngược lại hét lớn: \"Mục gia quân!\"</p><p><br></p><p>\"Tại!\"</p><p><br></p><p>\"Công kích!\"</p><p><br></p><p>Mục Thiên nói xong nâng thương thẳng hướng đối diện mấy chục vạn đại quân, hơn ngàn tướng sĩ gầm thét xách đao thương thẳng hướng mấy chục vạn đại quân.</p><p><br></p><p>Này một ngàn nhiều người, như là thiêu thân lao đầu vào lửa, dứt khoát, cũng bất khuất.</p><p><br></p><p>Nơi xa trên tường thành, Cửu Tuyền thành thủ thành tướng sĩ nhìn qua một màn này cũng đều chảy xuống nhiệt lệ, từng cái nắm chặt trong tay chiến thương.</p><p><br></p><p>Mà Nam Hào, thì cười lạnh nhìn qua đây hết thảy.</p><p><br></p><p>\"Mục Thiên a Mục Thiên, hôm nay chi cục chỉ đổ thừa chính ngươi, ngươi chết, nhưng chớ trách bản vương a...\"</p><p><br></p><p>Cuối cùng, Mục gia quân toàn quân bị diệt tại Cửu Tuyền ngoài thành, Mục Thiên bị kia chiêu hàng địch tướng tự mình một kiếm đâm vào lồng ngực.</p><p><br></p><p>\"Mục Thiên, ta kính nể người không nhiều, ngươi là trong đó một cái \"</p><p><br></p><p>Cái này địch tướng tự lẩm bẩm, sau đó rút kiếm ra, Mục Thiên ngã xuống trong ngực của hắn.</p><p><br></p><p>Mà lúc này, Cửu Tuyền thành hậu phương một cái sơn cốc bên trong, một mực chờ đợi đã lâu đại quân mới nhận được mệnh lệnh tiến về phía trước trợ giúp.</p><p><br></p><p>Viện quân kỳ thật sớm lấy đến, chỉ là nghe Nam Hào mệnh lệnh, vẫn giấu kín tại hậu phương, thẳng đến Mục gia quân toàn quân bị diệt mới xuất hiện.</p><p><br></p><p>Chi này viện quân cùng thủ thành quân xông vào chiến trường về sau, quân địch mới thối lui, liền ngay cả Mục Thiên thi thể cũng bị kia địch tướng mang đi.</p><p><br></p><p>Tại một đống trong thi thể, thiếu niên thân thể nằm ở một bên, trái tim của hắn bộ vị, bị một con mũi tên xuyên thấu đâm nát, thân thể đã bắt đầu không có nhiệt độ.</p><p><br></p><p>Mà lúc này, hắn trước bộ ngực kia một khối huyết hồng sắc hình trái tim ngọc bội, vậy mà biến thành một đạo huyết hồng sắc quang mang tràn vào hắn vị trí trái tim, kia vỡ vụn trái tim vậy mà bắt đầu khép lại.</p><p><br></p><p>Khép lại trái tim tản ra huyết hồng sắc u quang, sau đó bắt đầu chậm rãi nhảy lên, một cỗ bá đạo năng lượng xông vào thiếu niên toàn thân chín đầu nguyên mạch bên trong trắng trợn phá hư, cái này một cỗ năng lượng bá đạo đến cực điểm, đỏ đến giống máu... .</p><p><br></p><p>\"Mau nhìn, nơi này còn có người còn sống \"</p><p><br></p><p>\"Cái này, đây không phải Mục tướng quân nhi tử Mục Phong sao?\"</p><p><br></p><p>\"Là Mục Phong, nhanh, mau đưa Mục Phong giấu đi, để vương gia biết tất nhiên sẽ không bỏ qua Mục Phong, Mục tướng quân một thế trung nghĩa, là ta bội phục nhất người, cũng không thể để Mục tướng quân bị hại chết mà không sau \"</p><p><br></p><p>Mấy tên có lương tâm tướng sĩ len lén đem Mục Phong khiêng đi, sau đó đưa vào Nam Linh Quốc, Nam Linh Quốc đều mục phủ bên trong...</p>",
+      "order": 2,
+      "createdAt": "2025-07-15T14:24:06.935Z",
+      "updatedAt": "2025-07-15T14:24:06.935Z",
+      "views": 13,
+      "isDraft": false
+    },
+    {
+      "id": "c40a",
+      "storyId": "1",
+      "title": "Chương 3: Mục Phong nguy cơ",
+      "content": "<p>Bắc Võ đại lục, vạn nước san sát, bách tộc tranh phong, địa vực rộng rộng vô biên.</p><p><br></p><p>Nam Linh Quốc, quốc đô, một tòa nhân khẩu quá ngàn vạn cự thành, tam giáo cửu lưu, ngư long hỗn tạp.</p><p><br></p><p>Mà Mục gia, thế hệ vì quân, võ đạo gia tộc, tại Nam Linh Quốc trong quân không nhỏ địa vị, tại quốc đô bên trong cũng coi là thượng lưu cấp độ gia tộc, bất quá cũng không đỉnh tiêm.</p><p><br></p><p>Trong thiên hạ hẳn là vương thần, đất ở xung quanh đều là vương thổ, cái này quốc đô bên trong, lớn nhất cự đầu thực lực tự nhiên là kia cao cao tại thượng hoàng quyền.</p><p><br></p><p>Mục Phủ bên trong, nào đó tinh xảo viện lạc trong phòng khách, ánh nắng xuyên thấu qua cửa sổ, hóa thành một đạo pha tạp xuyên suốt tại thiếu niên cương nghị tuấn lang trên khuôn mặt.</p><p><br></p><p>Hắn ngủ say như hài nhi, hô hấp đều đều, trần trụi nửa người trên lồng ngực còn băng bó lấy màu trắng thuốc vải.</p><p><br></p><p>Dây kia đầu rõ ràng cơ bắp rút đao sẹo, vết kiếm giăng khắp nơi, cái này mười lăm mười sáu tuổi thiếu niên, đến cùng trải qua nhiều ít đại chiến, một đầu huyết sắc Kỳ Lân hình xăm qua vai mà văn.</p><p><br></p><p>Một vị tóc hoa râm đại phu bắt mạch về sau, đứng dậy, đối một bên một vị nam tử trung niên nói: \"Mục gia, Tam công tử thương thế đã không có trở ngại, điều trị chút tuế nguyệt thuận tiện, chỉ là. . .\"</p><p><br></p><p>Trung niên nam tử này sư miệng hổ mũi, người mặc màu đen cẩm bào, trên thân cũng có cỗ thiết huyết chi khí, khí tức hùng hậu, không giận mà uy.</p><p><br></p><p>Mục Thần, Mục gia đương đại gia chủ, cũng là Mục Phong Đại bá.</p><p><br></p><p>\"Chỉ là cái gì? Lưu Dược Sư, ngài cứ nói đừng ngại \"</p><p><br></p><p>Mục Thần gặp Lưu Dược Sư ấp a ấp úng, không khỏi nhíu mày hỏi.</p><p><br></p><p>\"Chỉ là Phong thiếu gia nguyên mạch toàn bộ vỡ vụn, không cách nào khép lại, chỉ sợ, kiếp này võ đồ là vô vọng!\"</p><p><br></p><p>\"Cái gì, sao lại thế!\"</p><p><br></p><p>\"Phong nhi. . .\"</p><p><br></p><p>Trong phòng khách người nhà họ Mục nghe vậy đều là quá sợ hãi.</p><p><br></p><p>\"Phong. . .\"</p><p><br></p><p>Một vị người mặc màu trắng váy áo, lông mày thanh tú, hai con ngươi sáng tỏ có thần tựa như thu thuỷ, da như mỡ đông xinh đẹp thiếu nữ trong đôi mắt đẹp nước mắt càng là nhỏ xuống xuống dưới, một đôi ngọc thủ vuốt ve thiếu niên kiên nghị hình dáng, tất cả đều là đau lòng.Vân Thanh Uyển, Mục Phong thanh mai trúc mã vị hôn thê, cùng là võ đạo quan lại gia tộc Vân gia đại tiểu thư.</p><p><br></p><p>\"Lưu Dược Sư, ngươi nói bậy, ta Phong ca, ta Phong ca làm sao lại nguyên mạch vỡ vụn, cái gì võ đồ vô vọng, ta nhìn ngươi chính là nói bậy, hắn, hắn nhưng là gia tộc đệ nhất thiên tài a \"</p><p><br></p><p>Một niên kỷ cùng Mục Phong không chênh lệch nhiều, tính cách nóng nảy, một đầu cương châm tóc ngắn áo bào đen khôi ngô thiếu niên Mục Cuồng một phát bắt được Lưu Dược Sư ống tay áo, đầy ngập lửa giận.</p><p><br></p><p>Không thể tu luyện, tại võ đạo trong gia tộc, cũng liền ý vị người không có bất luận cái gì tiền đồ, cùng phế vật không khác.</p><p><br></p><p>\"Mục Cuồng, lui ra, không được vô lễ!\"</p><p><br></p><p>Mục Thần nhất thanh thanh hát, Mục Cuồng nghe vậy nắm chặt nắm đấm lui ra, nhìn qua nằm thiếu niên, cắn chặt môi.</p><p><br></p><p>\"Phong ca. . .\"</p><p><br></p><p>\"Kia Lưu Dược Sư, ngài nhìn có hay không biện pháp có thể chữa trị? Ta Mục gia nguyện ý không tiếc bất cứ giá nào \"</p><p><br></p><p>Mục Thần thanh âm, cũng có một chút phát run.</p><p><br></p><p>\"Có, trừ phi có lục giai linh đan, hoặc là dược sư cường giả hao phí đại lượng công lực trường kỳ an dưỡng, nguyên mạch còn có tự lành khả năng, thế nhưng là ngài biết đến, lục giai linh đan toàn bộ Nam Linh Quốc chỉ sợ cũng khó khăn tìm \"</p><p><br></p><p>Lưu Dược Sư thở dài nói.</p><p><br></p><p>Những người khác nghe vậy đều lộ ra vẻ tuyệt vọng, lục giai linh đan, toàn bộ Nam Linh Quốc chỉ sợ đều tìm không ra hai viên đi.</p><p><br></p><p>\"Tốt, ta đã biết, ngài lui ra đi \"</p><p><br></p><p>Mục Thần phảng phất già mấy tuổi, phất phất tay, người dược sư này lui xuống, hắn sau đó lại đuổi những người khác rời đi, chỉ có hắn cùng Vân Thanh Uyển còn lưu tại trong phòng.</p><p><br></p><p>\"Thanh Uyển, mệt mỏi liền trở về nghỉ ngơi đi \"</p><p><br></p><p>\"Không, mục thúc, ta phải bồi Phong, ngài đi nghỉ ngơi \"</p><p><br></p><p>Vân Thanh Uyển lắc đầu, Mục Thần nghe vậy cũng thở dài rời đi.</p><p><br></p><p>Thiếu nữ dùng khăn mặt lau sạch nhè nhẹ lấy thiếu niên gương mặt, thân thể, khóe miệng ngậm lên sáng rỡ ý cười.</p><p><br></p><p>\"Phong, ta biết, ngươi nhất định sẽ tỉnh lại, ngươi đã nói, tương lai ngươi cần phải vì ta chinh phục một cái thiên hạ đâu, không có khó khăn có thể đánh đến ngươi, Phong, vô luận phát sinh cái gì, Uyển nhi bồi tiếp ngươi. . .\"</p><p><br></p><p>Nàng nhẹ nhàng tựa ở thiếu niên trên lồng ngực, mà thiếu niên đóng chặt trong con ngươi, lại là nhỏ xuống một giọt óng ánh. . .</p><p><br></p><p>Rất nhanh, Mục Phong nguyên mạch vỡ vụn tin tức truyền khắp mục phủ, đưa tới không ít oanh động.</p><p><br></p><p>\"Cái gì, Phong thiếu gia nguyên mạch vỡ vụn, trở thành phế nhân, đây, đây là thật sao?\"</p><p><br></p><p>\"Thật, ta thế nhưng là nghe Phong thiếu gia người hầu nói, thiên chân vạn xác.\"</p><p><br></p><p>\"Ai, đáng tiếc a, một thiên tài, cứ như vậy vẫn lạc, ta Mục gia hai mươi vạn Mục gia quân chiến tử, nhị gia cũng chết tại chiến trường, bây giờ Phong thiếu gia còn sống trở về, lại là rơi vào kết cục như thế, lão thiên bất công a \"</p><p><br></p><p>\"Đúng vậy a, Phong thiếu gia phế mạch, nhị gia chiến tử, ta mục phủ suy sụp kỳ tới a. . .\"</p><p><br></p><p>Một đám hạ nhân chuyện phiếm nghị luận.</p><p><br></p><p>Mục Phong, Mục gia đệ nhất thiên tài, năm tuổi tu luyện, mười hai tuổi liền đả thông chín đầu nguyên mạch, mười bốn tuổi khai phách ra Tử Phủ trở thành chân chính tiên thiên võ giả, Mục gia đương thời đệ nhất thiên tài, toàn bộ quốc đô cũng là nổi danh thiên tài, còn bị quốc đô thứ nhất Hoàng gia võ học viện đích thân chọn muốn tuyển nhận học sinh.</p><p><br></p><p>Bây giờ nguyên mạch vỡ vụn, trở thành một giới phế nhân, không biết nhiều ít tiếng thở dài vang lên.</p><p><br></p><p>Rất nhanh, tin tức này cũng truyền đến quốc đô bên trong các đại gia tộc tai mắt bên trong, cũng đưa tới chấn động không nhỏ.</p><p><br></p><p>----------------------------</p><p><br></p><p>Đầy sao hội tụ, trăng khuyết như câu, ban đêm Nam Linh Quốc đều đèn đuốc rã rời hoa đăng sáng chói.</p><p><br></p><p>Phủ đệ như rừng, viện nhiều đất rộng, quốc đô bên trong nổi danh nhất lưu gia tộc, Thượng Quan gia tộc, lúc này là một mảnh đèn đuốc sáng trưng.</p><p><br></p><p>Thượng Quan gia, Nam Linh Quốc quan lại gia tộc, trong triều cũng là có nhất định phân lượng đại gia tộc, so Mục gia địa vị hơi cao.</p><p><br></p><p>Gian nào đó trong phòng khách, một vị tuổi tác tại mười bảy mười tám tuổi thiếu niên đang cùng thị nữ của mình đi kia chuyện trăng hoa, hai cỗ nhục thể triền miên, xuân quang vô hạn.</p><p><br></p><p>Thùng thùng. . . !</p><p><br></p><p>Mà lúc này bên ngoài gian phòng, truyền đến một tràng tiếng gõ cửa.</p><p><br></p><p>\"Mẹ nó ai vậy!\"</p><p><br></p><p>Trong phòng truyền đến thiếu niên nổi giận thanh âm.</p><p><br></p><p>\"Thiếu gia, là ta, tiểu nhân có việc gấp đến báo!\"</p><p><br></p><p>\"Cái gì việc gấp, đều mẹ nó chờ đó cho ta!\"</p><p><br></p><p>Chuyện tốt bị quấy rầy, thiếu niên là một bồn lửa giận, hắn đứng dậy, mặc xong áo bào, dùng chăn mền che khuất thị nữ kia xuân quang ngoại tiết thân thể.</p><p><br></p><p>Thiếu niên này khuôn mặt tuấn lang, mày kiếm mũi cao, trong mắt đều là lỗ mãng cùng tà khí.</p><p><br></p><p>Thượng Quan Thiên Chí, Thượng Quan gia tộc bên trong, gia chủ chi tử, bát phẩm Nguyên Cốt, cũng là võ đạo thiên phú bất phàm hạng người.</p><p><br></p><p>Mà võ đạo tu luyện, Nguyên Cốt, chính là một người căn cốt, Nguyên Cốt càng cao, đối thiên địa linh khí cảm ứng càng mạnh, từ thấp nhất nhất phẩm, đến tối cao cửu phẩm, về phần còn không có siêu việt Nguyên Cốt thiên phú tạm thời không đề cập tới.</p><p><br></p><p>Thượng Quan Thiên Chí mở cửa phòng ra, ngoài cửa là một cái áo xám nam bộc.</p><p><br></p><p>\"Ngươi tốt nhất cho ta cái lý do thích hợp, không phải, bản thiếu gia không phải chặt ngươi kia cái chân thứ ba \"</p><p><br></p><p>Thượng Quan Thiên Chí sắc mặt khó coi nói, hiển nhiên trong lòng của hắn còn có đoàn lửa.</p><p><br></p><p>Người hầu kia rùng mình một cái, vội vàng nói: \"Thiếu gia, đại hỉ sự, theo tin tức đáng tin, Mục gia Mục Phong, nguyên mạch vỡ vụn, trở thành một giới phế nhân, từ đây vô vọng võ đồ \"</p><p><br></p><p>Thượng Quan Thiên Chí trên mặt hiển hiện một vòng vui mừng, kích động bắt lấy người làm này cổ áo, nói: \"Ngươi nói cái gì, Mục Phong tiểu tử kia nguyên mạch nát?\"</p><p><br></p><p>\"Không sai, hiện tại Mục gia đều truyền ra, chỉ sợ không lâu, toàn bộ quốc đô chỉ sợ đều sẽ biết \"</p><p><br></p><p>\"Ha ha, tốt, quá tốt rồi, Mục Phong, lúc này ta nhìn ngươi còn có cái gì tư cách giành với ta Thanh Uyển, ta lập tức tìm ta cha đi Vân gia cầu hôn, ha ha ha, trời trợ giúp ta Thượng Quan Thiên Chí a \"</p><p><br></p><p>Thượng Quan Thiên Chí khoái ý tiếng cười to quanh quẩn tại trong phòng khách, cả kinh ngoài viện không ít người hầu trông lại.</p>",
+      "order": 3,
+      "createdAt": "2025-07-16T10:43:43.302Z",
+      "updatedAt": "2025-07-17T01:49:28.247Z",
+      "views": 3,
+      "isDraft": false
+    },
+    {
+      "id": "6e24",
+      "storyId": "1",
+      "title": "Chương 4 : Phong khởi vân sinh",
+      "content": "<p>Nhìn thấy khuôn mặt tươi cười giống như ngớ ngẩn của Mặc Dương, Mục Vân thực sự im lặng không biết nói gì, giải thích cho những tiểu tử này thật sự quá khó.Mà đổi thành một bên, Diệu Tiên Ngữ cũng cười khổ lắc đầu.Lúc đầu, nàng tưởng là Mục Vân sẽ nói biện pháp tốt gì, không ngờ...!yêu đan của Phong Lang?Yêu đan của yêu thú nhất giai Phong Lang, bản chất cũng không thuần, mà bản thân cũng không có linh tính gì, luyện chế đan dược tam phẩm Tụ Linh Đan căn bản không thể tổng hợp dược tính của ba loại đan dược Bách Vị Linh Chi!Xem ra, mình mấy ngày nay thật đúng là bị gia gia quấy rầy phiền, loạn chạy chữa tật bệnh, thế mà lại nghĩ có thể tìm được đáp án từ trên người đạo sư Mục Vân mang danh phế vật này.</p><p><br></p><p>Thực sự là có chút buồn cười.- Ồ? Vậy theo vị đạo sư này nói, chỉ dựa vào yêu đan của Phong Lang là sẽ đền bù Phá Phong Thanh Lang không thể làm được, đến đề cao dược lực và xác suất thành công của Tụ Linh Đan?- Dĩ nhiên không phải!Gần như là vô ý thức, Mục Vân mở miệng đáp lại nói.</p><p><br></p><p><br></p><p>Chỉ nói xong câu nói này, cửa phòng học bị mở ra, hai thân ảnh từ ngoài phòng học đi vào.Người cầm đầu mặc một chiếc áo bào xám, tóc hoa râm, giữ lại một vòng sợi râu, nhìn bộ dáng thì khoảng bảy tám chục tuổi, nhưng lại tinh thần phấn chấn.</p><p><br></p><p>Mà sau lưng người này lại là một vị nam tử trung niên, hơi cuối người, một mặt khiêm tốn bộ dáng nhìn lão giả phía trước, không dám thở mạnh.- Viện trưởng!Nhìn thấy nam tử trung niên sau lưng có vẻ hơi khẩn trương, Mục Vân ngẩn người.Không ngờ viện trưởng lại đến thị sát lớp học, mà lão gia hỏa trước mắt hắn là ai?Nhưng người có thể làm cho viện trưởng của Bắc Vân học viện khẩn trương, dùng ký ức của Mục Vân, hình như toàn bộ Bắc Vân thành cũng không thể nào xuất hiện.- Ồ? Vậy nên như thế nào?Nghe được Mục Vân trả lời như đinh đóng cột, hôi bào lão giả hứng thú, cười ha hả nói:- Mọi người đều biết, Phong Lang chỉ là yêu thú nhất giai, đẳng cấp quá thấp, yêu đan không thuần, dùng để luyện chế đan dược thì quá nhiều tạp chất.</p><p><br></p><p>Mà dùng yêu đan của Phong Lang, hình như cũng không thể nào trung hoà dược tính của ba vị dược tài Bách Vị Linh Chi, Thiết San Hô, Cùng Căn Thảo!- Đúng là không thể, thế nhưng lại thêm một vị dược tài là được rồi!- Dược liệu gì?- Tử Ngọc Quả!Tử Ngọc Quả?Nghe được Mục Vân trả lời, toàn bộ học sinh trong phòng học lại sững sờ.</p><p><br></p><p><br></p><p>Bọn hắn sững sờ, cũng không phải bởi vì Tử Ngọc Quả trân quý, mà là Tử Ngọc Quả này thực sự quá bình thường, quá bình thường, quả thực so với yêu đan của Phong Lang, càng không đáng tiền, bởi vì gần như toàn bộ sơn mạch của Nam Vân Đế Quốc, khắp nơi có thể thấy được.</p><p><br></p><p>Có thể nói, Tử Ngọc Quả chính là vật liệu nát đường phố, thậm chí trong phiên chợ cũng không ai bán.</p><p><br></p><p>Bởi vì căn bản không đáng mua bán, vật liệu tiện tay có thể lấy được thì ai sẽ để ý!Tử Ngọc Quả...Chỉ là, nghe được Mục Vân trả lời, hôi bào lão giả kia lại nhíu mày, yên lặng lại.- Tử Ngọc Quả, tuy không có linh tính nhưng lại có một loại công hiệu, có thể tụ tán ngưng cỗ, yêu đan của Phong Lang có linh tính thấp, có thể tụ tập lại, cũng đúng là có thể đề cao linh tính yêu đan của Phong Lang, ngược lại có thể thay thế yêu đan của Phá Phong Thanh Lang, chỉ là...- Không chỉ điểm này!Mục Vân nhìn biểu lộ suy nghĩ của hôi bào lão giả, lại lần nữa nói:- Tử Ngọc Quả còn có một loại công hiệu, có thể ngưng huyết, chẳng những có thể ngưng huyết, còn có thể tại ngưng huyết đồng thời đề thăng hiệu quả của mình.</p><p><br></p><p><br></p><p>Mà điểm quan trọng nhất, Tử Ngọc Quả có thể đồng thời hấp thu linh tính của ba loại dược liệu Bách Vị Linh Chi, biến hoá để cho bản thân sử dụng, sau đó lại tuần hoàn ra, phản hồi cho ba loại dược liệu!Theo Mục Vân một tiếp một câu nói, ánh mắt của hôi bào lão giả dần dần phát sáng lên...Không sai!Tử Ngọc Quả đúng là có công hiệu này, thế nhưng ai cũng sẽ không ngờ, sẽ dùng yêu đan của linh thú đẳng cấp thấp như Phong Lang để thay thế yêu đan của Phá Phong Thanh Lang.Đây cũng càng sẽ không nghĩ đến, thay thế như vậy rồi sử dụng Tử Ngọc Quả để đền bù vấn đề Phong Lang không đủ linh tính.Thực sự là bởi vì, Phong Lang yêu đan và Tử Ngọc Quả, thực sự là quá bình thường, bình thường đến mức tất cả mọi người không dám nghĩ, dùng hai thứ này đến luyện chế đan dược tam phẩm.Mà Tử Ngọc Quả còn có thể với tư cách là trạm trung chuyển, chuyển tiếp, điểm này, càng sẽ không có ai nghĩ đến.Cao!Suy nghĩ kỹ một chút lời Mục Vân nói, Mạc Vấn đột nhiên cảm giác, ý nghĩ này rất mới lạ, rất có ý tưởng, mà thật đúng là hình như có khả năng thực hiện rất lớn!Cho dù là một đời Dược Thánh năm đó cũng nghĩ đến biện pháp, tư tưởng của người trẻ tuổi này rất kì lạ!- Lão hủ Mạc Vấn, xin hỏi tục danh của tiểu huynh đệ?Nghĩ tới đây, Mạc Vấn sửa sang lại vạt áo, cung kính nói.- Mục Vân!Mục Vân tùy ý đáp.Chỉ là, Mạc Vấn đơn giản tự giới thiệu như vậy, Mục Vân không để ở trong lòng, nhưng lại làm Lục Khiếu Thiên đứng sau lưng kinh hải chảy mồ hôi lạnh ướt sũng cả người.Mà ba bốn mươi học sinh trong lớp càng trợn mắt hốc mồm, không ngừng vuốt mắt, vò đầu, nhìn chằm chằm lão giả trước mắt..</p><p><br></p>",
+      "order": 4,
+      "createdAt": "2025-07-16T00:57:29.936Z",
+      "updatedAt": "2025-07-16T00:57:29.936Z",
+      "views": 9,
+      "isDraft": false
+    },
+    {
+      "id": "d680",
+      "storyId": "2",
+      "title": "Chương 1: Khởi đầu",
+      "content": "<p class=\"ql-indent-1\"><strong class=\"ql-size-huge\" style=\"color: rgb(230, 0, 0);\"><em><s><u>Bắt đầu câu truyện.</u></s></em></strong></p><p><strong class=\"ql-size-huge\" style=\"color: rgb(230, 0, 0);\"><em><s><u>a</u></s></em></strong></p>",
+      "order": 1,
+      "createdAt": "2025-07-16T13:24:09.513Z",
+      "updatedAt": "2025-07-16T13:53:49.479Z",
+      "views": 0,
+      "isDraft": false
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "storyId": "1",
+      "chapterId": "1",
+      "userId": "1",
+      "username": "nguoivip",
+      "avatar": "/avatars/1.jpg",
+      "content": "Chương mở đầu rất hấp dẫn, mong tác giả ra chương mới sớm!",
+      "createdAt": "2023-03-12T15:30:00Z",
+      "likes": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "replies": [
+        {
+          "id": "1",
+          "userId": "2",
+          "username": "tacgia_no1",
+          "avatar": "/avatars/2.jpg",
+          "content": "Cảm ơn bạn đã ủng hộ, chương mới sẽ ra vào tuần sau!",
+          "createdAt": "2023-03-12T16:00:00Z",
+          "likes": [
+            1,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "storyId": "1",
+      "chapterId": "2",
+      "userId": "3",
+      "username": "docgia_truyenma",
+      "avatar": "/avatars/default.jpg",
+      "content": "Chất lượng truyện VIP xứng đáng với đồng tiền bỏ ra!",
+      "createdAt": "2024-01-15T11:45:00Z",
+      "likes": [
+        1,
+        2,
+        5
+      ],
+      "replies": []
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Tiên Hiệp",
+      "slug": "tien-hiep",
+      "storyCount": 245
+    },
+    {
+      "id": "2",
+      "name": "Kiếm Hiệp",
+      "slug": "kiem-hiep",
+      "storyCount": 178
+    },
+    {
+      "id": "3",
+      "name": "Huyền Huyễn",
+      "slug": "huyen-huyen",
+      "storyCount": 312
+    }
+  ],
+  "tags": [
+    {
+      "id": "1",
+      "name": "xuyên không",
+      "slug": "xuyen-khong",
+      "storyCount": 189
+    },
+    {
+      "id": "2",
+      "name": "trọng sinh",
+      "slug": "trong-sinh",
+      "storyCount": 156
+    },
+    {
+      "id": "3",
+      "name": "nữ cường",
+      "slug": "nu-cuong",
+      "storyCount": 215
+    }
+  ],
+  "bookmarks": [
+    {
+      "id": "2",
+      "userId": "1",
+      "storyId": "2",
+      "lastReadChapterId": "201",
+      "createdAt": "2024-02-15T11:30:00Z"
+    },
+    {
+      "id": "aceb",
+      "userId": "9355",
+      "storyId": "1"
+    },
+    {
+      "id": "2e2a",
+      "userId": "2",
+      "storyId": "1"
+    },
+    {
+      "id": "f457",
+      "userId": "1",
+      "storyId": "1"
+    }
+  ],
+  "follows": [
+    {
+      "id": "1",
+      "followerId": "1",
+      "followingId": "2",
+      "type": "author",
+      "createdAt": "2023-05-10T09:15:00Z"
+    },
+    {
+      "id": "2",
+      "followerId": "1",
+      "storyId": "1",
+      "type": "story",
+      "createdAt": "2023-04-05T16:30:00Z"
+    }
+  ],
+  "ratings": [
+    {
+      "id": "1",
+      "userId": "1",
+      "storyId": "1",
+      "score": 3,
+      "createdAt": "2023-04-20T14:00:00Z",
+      "updatedAt": "2025-07-21T03:30:33.945Z"
+    },
+    {
+      "id": "2",
+      "userId": "2",
+      "storyId": "2",
+      "score": 4,
+      "createdAt": "2024-02-01T10:30:00Z"
+    }
+  ],
+  "authorFeedbacks": [
+    {
+      "id": "1",
+      "userId": "1",
+      "authorId": "2",
+      "storyId": "1",
+      "content": "Truyện rất hay nhưng xin tác giả tăng tốc ra chương!",
+      "createdAt": "2023-06-15T11:20:00Z",
+      "status": "read"
+    }
+  ],
+  "systemFeedbacks": [
+    {
+      "id": "1",
+      "userId": "1",
+      "type": "feature_request",
+      "content": "Nên thêm tính năng đọc offline cho app mobile",
+      "createdAt": "2025-07-05T15:40:00Z",
+      "status": "pending"
+    }
+  ],
+  "reports": [
+    {
+      "id": "1",
+      "reportType": "story",
+      "reportedUserId": null,
+      "reportedStoryId": "2",
+      "reporterUserId": "1",
+      "reason": "Nội dung nhạy cảm không phù hợp",
+      "details": "Chương 5 có cảnh bạo lực quá mức",
+      "status": "resolved",
+      "createdAt": "2024-03-10T14:25:00Z",
+      "resolvedBy": 3,
+      "resolvedAt": "2024-03-12T10:15:00Z"
+    },
+    {
+      "id": "2",
+      "reportType": "user",
+      "reportedUserId": "c7af",
+      "reportedStoryId": null,
+      "reporterUserId": "1",
+      "reason": "Ngôn từ xúc phạm trong bình luận",
+      "details": "Người dùng này đã chửi tục trong phần bình luận truyện ABC",
+      "status": "review",
+      "createdAt": "2024-03-15T11:42:00Z",
+      "resolvedBy": null,
+      "resolvedAt": null
+    },
+    {
+      "id": "ea10",
+      "reportType": "user",
+      "reportedUserId": "c7af",
+      "reportedStoryId": null,
+      "reporterUserId": "1",
+      "reason": "1",
+      "details": "test",
+      "status": "resolved",
+      "createdAt": "2025-07-17T14:03:47.926Z",
+      "resolvedBy": "2",
+      "resolvedAt": "2025-07-18T03:35:05.334Z"
+    },
+    {
+      "id": "2cfa",
+      "reportType": "user",
+      "reportedUserId": "c7af",
+      "reportedStoryId": null,
+      "reporterUserId": "1",
+      "reason": "Ngôn từ xúc phạm",
+      "details": "test",
+      "status": "resolved",
+      "createdAt": "2025-07-17T14:42:01.059Z",
+      "resolvedBy": "2",
+      "resolvedAt": "2025-07-18T03:35:05.335Z"
+    }
+  ],
+  "membershipPlans": [
+    {
+      "id": "1",
+      "name": "1 Tháng",
+      "price": 20000,
+      "durationDays": 30
+    },
+    {
+      "id": "2",
+      "name": "3 Tháng",
+      "price": 50000,
+      "durationDays": 90
+    },
+    {
+      "id": "3",
+      "name": "1 Năm",
+      "price": 180000,
+      "durationDays": 365
+    }
+  ],
+  "userMemberships": [
+    {
+      "id": "1",
+      "userId": "1",
+      "planId": "2",
+      "startDate": "2025-01-01T00:00:00Z",
+      "endDate": "2025-12-31T23:59:59Z",
+      "paymentMethod": "momo",
+      "transactionId": "TX123456789"
+    }
+  ],
+  "aiAssistants": [
+    {
+      "id": "1",
+      "userId": "1",
+      "type": "character_creation",
+      "prompt": "Tạo nhân vật nữ chính mạnh mẽ, lạnh lùng",
+      "result": "Lăng Thanh Tuyết - nữ chưởng môn phái Băng Tâm...",
+      "createdAt": "2025-07-08T14:30:00Z"
+    },
+    {
+      "id": "2",
+      "userId": "2",
+      "type": "story_continuation",
+      "prompt": "Tiếp tục đoạn sau khi nhân vật chính bị phản bội",
+      "result": "Lôi Trần nắm chặt tay, ánh mắt lạnh băng...",
+      "createdAt": "2025-07-10T09:45:00Z"
+    }
+  ],
+  "readingHistory": [
+    {
+      "id": "1",
+      "userId": "1",
+      "storyId": "1",
+      "chapterOrder": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "lastRead": "2025-07-16T00:57:36.700Z",
+      "progress": 8
+    },
+    {
+      "id": "2",
+      "userId": "1",
+      "storyId": "2",
+      "chapterOrder": [
+        1
+      ],
+      "lastRead": "2025-07-09T20:30:00Z",
+      "progress": 1
+    },
+    {
+      "id": "ff20",
+      "userId": "2",
+      "storyId": "1",
+      "chapterOrder": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "lastRead": "2025-07-20T06:13:28.165Z",
+      "progress": 4
+    }
+  ],
+  "notifications": [
+    {
+      "id": "1",
+      "userId": "1",
+      "type": "new_chapter",
+      "content": "Truyện 'Đạo Giới Độc Tôn' vừa ra chương mới: Chương 151 - Đại chiến chư thiên",
+      "storyId": "1",
+      "chapterId": "151",
+      "createdAt": "2025-07-10T09:00:00Z",
+      "isRead": false
+    },
+    {
+      "id": "2",
+      "userId": "1",
+      "type": "author_reply",
+      "content": "tacgia_no1 đã trả lời bình luận của bạn",
+      "commentId": "1001",
+      "createdAt": "2025-07-09T16:30:00Z",
+      "isRead": true
+    }
+  ],
+  "userStats": [
+    {
+      "userId": "1",
+      "storiesPosted": 0,
+      "chaptersPosted": 0,
+      "commentsPosted": 12,
+      "storiesRead": 24,
+      "chaptersRead": 345,
+      "followers": 15,
+      "following": 8,
+      "lastUpdated": "2025-07-10T18:00:00Z",
+      "id": "0c4e"
+    },
+    {
+      "userId": "2",
+      "storiesPosted": 5,
+      "chaptersPosted": 350,
+      "commentsPosted": 45,
+      "storiesRead": 78,
+      "chaptersRead": 1200,
+      "followers": 1245,
+      "following": 23,
+      "lastUpdated": "2025-07-10T12:30:00Z",
+      "id": "8a8c"
+    }
+  ]
+}
