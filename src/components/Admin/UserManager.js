@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+import { Col, Row } from "react-bootstrap";
+
+export default function UserManager() {
+    return (
+        <Row>
+            <Col>
+                User UserManager
+            </Col>
+=======
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Col, Form, Row, Table } from "react-bootstrap";
@@ -150,6 +160,7 @@ export default function UserManager() {
 
                 </Col>
             </Row>
+>>>>>>> origin/main
         </Row>
     )
 }

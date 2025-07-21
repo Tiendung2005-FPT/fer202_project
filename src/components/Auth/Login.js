@@ -36,7 +36,7 @@ export default function Login() {
                     return
                 }
                 localStorage.setItem("userAccount", JSON.stringify(acc))
-                navigate('/')
+                navigate('/home-page')
             })
             .catch(err => console.error(err))
     }

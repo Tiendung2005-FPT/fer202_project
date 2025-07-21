@@ -8,6 +8,7 @@ import UserDetail from './components/users/userDetail.js';
 import FilterStories from './components/stories/filterStories.js';
 import StoryPage from "./components/storyPage/index";
 import ReadStory from "./components/readStorys/index";
+import Homepage from "./components/Homepage.js";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import ForgotPassword from "./components/Auth/ForgotPassword";
@@ -27,7 +28,7 @@ import AddTag from './components/Admin/AddTag.js';
 import Homepage from './components/Homepage.js';
 import AddStory from './components/Admin/AddStory.js';
 import HideStory from './components/Admin/HideStory.js';
-
+import ViewAcc from './components/Admin/ViewAcc.js';
 function App() {
   const location = useLocation()
   const adminPage = location.pathname.startsWith('/admin');
@@ -54,7 +55,7 @@ function App() {
         <Route path="/report-story/:storyId" element={<ReportStory />} />
         <Route path="*" element={<Navigate to="/" replace />} />
 
-        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="/admin" element={<AdminLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="users" element={<UserManager />} />
           <Route path="tags" element={<TagsManager />} />

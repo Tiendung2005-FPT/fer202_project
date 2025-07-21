@@ -175,7 +175,10 @@ const UserDetail = () => {
                   Edit
                 </Button>
               )}
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/main
             </Card.Body>
           </Card>
         </Col>

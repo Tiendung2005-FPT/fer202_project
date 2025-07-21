@@ -193,6 +193,8 @@
 .unban-button:hover {
   background-color: #f0fdf4;
   color: #16a34a;
+<<<<<<< HEAD
+=======
 }
 
 .filters-container {
@@ -231,4 +233,5 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+>>>>>>> origin/main
 }
