@@ -32,20 +32,21 @@ export default function Sidebar() {
                         <i className="bi bi-people"></i>
                         <span>Tất cả tài khoản</span>
                     </Nav.Link>
+                    <p>QUẢN LÝ THỂ LOẠI</p>
+                    <Nav.Link as={Link} to="/admin/tags">
+                        <i className="bi bi-tags"></i>
+                        <span>Tất cả thể loại</span>
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/admin/add-tag">
+                        <i className="bi bi-plus-circle"></i>
+                        <span>Thêm thể loại</span>
+                    </Nav.Link>
                     <p>PHẢN HỒI NGƯỜI DÙNG</p>
                     <Nav.Link as={Link} to="/admin/reports">
                         <i className="bi bi-flag"></i>
                         <span>Báo cáo</span>
                     </Nav.Link>
                     <p>THAO TÁC</p>
-                    <Nav.Link as={Link} to="/admin/reports">
-                        <i className="bi bi-person-plus"></i>
-                        <span>Tạo tài khoản mới</span>
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/admin/reports">
-                        <i className="bi bi-key"></i>
-                        <span>Đổi mật khẩu</span>
-                    </Nav.Link>
                     <Nav.Link onClick={handelLogout} className="logout">
                         <i className="bi bi-box-arrow-right"></i>
                         <span>Đăng xuất</span></Nav.Link>

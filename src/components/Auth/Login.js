@@ -17,6 +17,12 @@ export default function Login() {
             .then(result => {
                 const user = result.data
                 const acc = user.find(a => a.email === email)
+                const accInactive = user.find(a => a.status === 'inactive')
+
+                if (accInactive) {
+                    alert('Tài khoản không hoạt động')
+                    return
+                }
 
                 if (!acc) {
                     alert('Tài khoản Email không tồn tại')

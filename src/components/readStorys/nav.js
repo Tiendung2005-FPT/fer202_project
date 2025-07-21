@@ -11,11 +11,9 @@ import {
 } from 'react-bootstrap-icons';
 import { useState } from "react";
 
-export default function Nav({ storyId, currentChapterId, chapters, theme, setTheme }) {
+export default function Nav({ storyId, currentChapterId, chapters, theme, setTheme ,fontText , setFontText ,size ,setSize}) {
   const navigate = useNavigate();
   const [isShowPopUp, setIsShowPopUp] = useState(false);
-  const [font, setFont] = useState("Lora");
-  const [fontSize, setFontSize] = useState(20);
 
   const validChapters = chapters
     .filter(ch => !ch.isDraft && ch.order != null)
@@ -37,14 +35,12 @@ export default function Nav({ storyId, currentChapterId, chapters, theme, setThe
 
 
   return (
-    <div className="custom-nav-bar">
+    <div className="custom-nav-bar" md ={6}>
       <Button variant="link" onClick={() => navigate('/')} className="button-custom-home">
         <HouseFill /> Trang Chủ
       </Button>
 
-      <Button variant="link" onClick={() => setIsShowPopUp(true)} className="button-custom-setting">
-        <GearFill /> Tùy chỉnh
-      </Button>
+      
 
       {isShowPopUp && (
         <div className="popup-setting">
@@ -70,19 +66,24 @@ export default function Nav({ storyId, currentChapterId, chapters, theme, setThe
 
           <div className="setting-row">
             <label>Font:</label>
-            <select value={font} onChange={(e) => setFont(e.target.value)}>
-              <option value="Lora">Lora</option>
-              <option value="Roboto">Roboto</option>
-              <option value="Arial">Arial</option>
+            <select value={fontText} onChange={(e) => setFontText(e.target.value)}>
+              <option value="time-new-romance">Times New Roman</option>
+              <option value="arial">Arial</option>
+              <option value="georgia">Georgia</option>
+              <option value="verdana">Verdana</option>
+              <option value="courier-new">Courier New</option>
+              <option value="tahoma">Tahoma</option>
+              <option value="comic-sans">Comic Sans</option>
+              <option value="roboto">Roboto</option>
             </select>
           </div>
 
           <div className="setting-row">
             <label>Size:</label>
             <div className="size-controls">
-              <button onClick={() => setFontSize((prev) => Math.max(10, prev - 1))}>−</button>
-              <span>{fontSize}</span>
-              <button onClick={() => setFontSize((prev) => Math.min(35, prev + 1))}>＋</button>
+              <button onClick={() => setSize((prev) => Math.max(10, prev - 1))}>−</button>
+              <span>{size}</span>
+              <button onClick={() => setSize((prev) => Math.min(35, prev + 1))}>＋</button>
             </div>
           </div>
         </div>
@@ -115,25 +116,24 @@ export default function Nav({ storyId, currentChapterId, chapters, theme, setThe
             ))}
           </Dropdown.Menu>
         </Dropdown>
-        
-          <Button
-            variant="light"
-            size="sm"
-            onClick={() => goToOrder(currentOrder + 1)}
-            disabled={currentOrder >= maxOrder}
-          >
-            Chương sau <ArrowRight />
-          </Button>
-        
-      </div>
 
+        <Button
+          variant="light"
+          size="sm"
+          onClick={() => goToOrder(currentOrder + 1)}
+          disabled={currentOrder >= maxOrder}
+        >
+          Chương sau <ArrowRight />
+        </Button>
+
+      </div>
+      <Button variant="link" onClick={() => setIsShowPopUp(true)} className="button-custom-setting">
+        <GearFill /> Tùy chỉnh
+      </Button>
       <Button variant="link" className="btn-custom-sendError">
         <ExclamationDiamondFill /> Báo Lỗi
       </Button>
 
-      <Button variant="link" className="btn-custom-bookmarks">
-        <BookmarkFill /> Theo Dõi
-      </Button>
     </div>
   );
 }
