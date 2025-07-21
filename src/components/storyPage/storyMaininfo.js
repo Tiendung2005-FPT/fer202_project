@@ -250,7 +250,7 @@ export default function StoryMainInfo({ story, author, userId, chapters }) {
                                 variant="danger"
                                 onClick={() => navigate(`/report-story/${story.id}`)}
                             >
-                                <i className="bi bi-flag"></i> {author?.id !== userId ? "Báo cáo" : "Xem báo cáo"}
+                                <i className="bi bi-flag"></i> {author?.id !== userId? "Báo cáo" : "Xem báo cáo"}
                             </Button>
                     }
 
