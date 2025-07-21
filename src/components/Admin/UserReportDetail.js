@@ -36,7 +36,9 @@ export default function UserReportDetail() {
                 axios.patch(`http://localhost:9999/reports/${report.id}`, {
                     status: "resolved",
                     resolvedBy: user.id,
-                    resolvedAt: new Date()
+                    resolvedAt: new Date(),
+                    status: "inactive",
+                    reasonBan: reason
                 })
             );
 
