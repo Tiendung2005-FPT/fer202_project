@@ -33,6 +33,23 @@
       "address": "789 Đường Quản Trị, Quận 10, TP.HCM",
       "status": "active",
       "reasonBan": null
+    },
+    {
+      "id": "b6c0",
+      "username": "nghia",
+      "fullname": "Pham khac nghia",
+      "email": "nghiakhac2005@gmail.com",
+      "password": "$2b$10$ZU7KYcaa/AqgEecRshk0LuwURfL5DqnjfaRiN0koVZswcdvz90luC",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/362/362003.png",
+      "role": "user",
+      "vipExpiry": "2025-12-31T23:59:59Z",
+      "createdAt": "2025-07-20T23:15:34.399Z",
+      "lastLogin": null,
+      "bio": "thang nghia ",
+      "phone": "0969077991",
+      "address": "123 Đường Sách, Quận 1, TP.HN",
+      "status": "active",
+      "reasonBan": null
     }
   ],
   "stories": [
@@ -404,6 +421,84 @@
       "createdAt": "2025-07-17T14:42:01.059Z",
       "resolvedBy": "2",
       "resolvedAt": "2025-07-18T03:35:05.335Z"
+    },
+    {
+      "id": "bae0",
+      "reportType": "story",
+      "reportedUserId": null,
+      "reportedStoryId": "1",
+      "reporterUserId": "b6c0",
+      "reason": "truyện hay quá",
+      "details": "10Đ",
+      "status": "resolved",
+      "createdAt": "2025-07-20T23:34:21.585Z",
+      "resolvedBy": "b6c0",
+      "resolvedAt": "2025-07-21T01:45:10.704Z"
+    },
+    {
+      "id": "d1ba",
+      "reportType": "story",
+      "reportedUserId": null,
+      "reportedStoryId": "1",
+      "reporterUserId": "b6c0",
+      "reason": "meom",
+      "details": "meo",
+      "status": "resolved",
+      "createdAt": "2025-07-20T23:46:12.864Z",
+      "resolvedBy": "b6c0",
+      "resolvedAt": "2025-07-21T01:43:33.992Z"
+    },
+    {
+      "id": "099b",
+      "reportType": "story",
+      "reportedUserId": null,
+      "reportedStoryId": "1",
+      "reporterUserId": "b6c0",
+      "reason": "hehe",
+      "details": "heheheheeheheh",
+      "status": "resolved",
+      "createdAt": "2025-07-20T23:50:11.775Z",
+      "resolvedBy": "b6c0",
+      "resolvedAt": "2025-07-21T01:43:35.889Z"
+    },
+    {
+      "id": "b0d9",
+      "reportType": "story",
+      "reportedUserId": null,
+      "reportedStoryId": "1",
+      "reporterUserId": "b6c0",
+      "reason": "heheheheeeee",
+      "details": "hahahahahaaa",
+      "status": "resolved",
+      "createdAt": "2025-07-21T00:43:54.651Z",
+      "resolvedBy": "b6c0",
+      "resolvedAt": "2025-07-21T01:43:35.897Z"
+    },
+    {
+      "id": "387d",
+      "reportType": "story",
+      "reportedUserId": null,
+      "reportedStoryId": "1",
+      "reporterUserId": "b6c0",
+      "reason": "meomeo",
+      "details": "meoooo",
+      "status": "resolved",
+      "createdAt": "2025-07-21T01:48:45.759Z",
+      "resolvedBy": "b6c0",
+      "resolvedAt": "2025-07-21T01:56:36.294Z"
+    },
+    {
+      "id": "8eea",
+      "reportType": "story",
+      "reportedUserId": null,
+      "reportedStoryId": "1",
+      "reporterUserId": "b6c0",
+      "reason": "eheheheheh",
+      "details": "hêhehe",
+      "status": "resolved",
+      "createdAt": "2025-07-21T01:56:14.822Z",
+      "resolvedBy": "b6c0",
+      "resolvedAt": "2025-07-21T01:56:39.623Z"
     }
   ],
   "membershipPlans": [

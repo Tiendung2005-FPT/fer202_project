@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import StoryDescription from "../storyPage/storyDescription";
@@ -13,18 +13,18 @@ export default function ReportStory() {
     const [reportList, setReportList] = useState([]);
     const navigate = useNavigate();
     const [showForm, setShowForm] = useState(false);
+    const [reportSubmittedFlag, setReportSubmittedFlag] = useState(0); // Dùng counter để đảm bảo luôn kích hoạt
 
     const [showFullDesc, setShowFullDesc] = useState(false);
     const toggleDesc = () => setShowFullDesc(!showFullDesc);
 
     // kiểm tra đăng nhập trước khi báo cáo
     useEffect(() => {
-        setUser(JSON.parse(localStorage.getItem("user")));
-        if (user == null) {
+        const storedUser = JSON.parse(localStorage.getItem("userAccount"));
+        setUser(storedUser); // Cập nhật state user (sẽ có hiệu lực ở lần render tiếp theo)
+        if (storedUser === null) { // HOẶC !storedUser
             alert("You need to login to report a story");
-            // Chuyển hướng đến trang truyện trước đó
-            // navigate(`/storypage/${storyId}`);
-            return;
+            navigate(`/login`);
         }
     }, ([]));
 
@@ -39,36 +39,65 @@ export default function ReportStory() {
             })
     }, ([storyId]));
 
-    // kiểm tra xem story đã được lấy thành công hay chưa
-    // nếu có thì log ra console để kiểm tra
+    // --- EFFECT 3: Fetch Report List (chạy khi story VÀ user thay đổi) ---
     useEffect(() => {
-        if (story) { // Chỉ log khi story có giá trị (không phải null ban đầu)
-            console.log("Story fetched and updated in state:", story);
-            setReportList(story.reports || []); // Giả sử story có thuộc tính reports chứa danh sách báo cáo
-            // navigate(`/`);
+        if (story && user?.id) {
+            const reportedStoryId = story.id;
+            const reporterUserId = user.id;
+            let apiUrl = "";
+            if (user.role === "admin") {
+                apiUrl = `http://localhost:9999/reports?reportedStoryId=${reportedStoryId}&&reportType=story`;
+            } else {
+                apiUrl = `http://localhost:9999/reports?reportedStoryId=${reportedStoryId}&reporterUserId=${reporterUserId}`;
+            }
+            axios.get(apiUrl)
+                .then(response => {
+                    setReportList(response.data);
+                    console.log("Report List fetched:", response.data);
+                })
+                .catch(err => {
+                    console.error("Error fetching report list:", err);
+                    alert("Failed to load report list."); // Có thể giữ alert hoặc bỏ đi
+                });
+        } else if (story && !user) {
+            // Có story nhưng chưa có user (có thể user chưa đăng nhập)
+            setReportList([]); // Đảm bảo danh sách báo cáo trống nếu không có người dùng
         }
-    }, [story]); // Dependency array: chạy lại mỗi khi biến 'story' thay đổi
+    }, [story, user, reportSubmittedFlag]);
 
     const sendReport = () => {
+        if (user === null) {
+            alert("Bạn cần đăng nhập để gửi báo cáo.");
+            navigate('/login');
+            return; // Dừng hàm nếu user là null
+        }
         if (!report || !reportDetails) {
             alert("Please fill in all fields");
             return;
+        } else {
+            const newReport = {
+                reportType: "story",
+                reportedUserId: null,
+                reportedStoryId: storyId,
+                reporterUserId: user.id,
+                reason: report,
+                details: reportDetails,
+                status: "Chờ xử lý",
+                createdAt: new Date().toISOString(),
+                resolvedBy: null,
+                resolvedAt: null
+            };
+            axios.post("http://localhost:9999/reports", newReport)
+                .then(result => {
+                    if (result.data) {
+                        alert("Đã gửi báo cáo thành công.");
+                        setReportSubmittedFlag(prev => prev + 1); // Tăng counter để kích hoạt useEffect
+                    }
+                    else {
+                        alert("Có vẫn đề xảy ra trong quá trình gửi báo cáo. Xin vui lòng thử lại.")
+                    }
+                })
         }
-
-        const newReport = {
-            reportType: "story",
-            reportedUserId: null,
-            reportedStoryId: storyId,
-            reporterUserId: user.id,
-            reason: report,
-            details: reportDetails,
-            status: "pending",
-            createdAt: new Date().toISOString(),
-            resolvedBy: null,
-            resolvedAt: null
-        };
-
-        
     };
 
     const renderForm = () => {
@@ -121,6 +150,39 @@ export default function ReportStory() {
         )
     }
 
+    const reportSolve = (reportId) => {
+        if (user?.role !== "admin") {
+            alert("Bạn không có quyền giải quyết báo cáo này.");
+            return;
+        }
+
+        const reportToSolve = reportList.find(r => r.id === reportId);
+        if (!reportToSolve) {
+            alert("Báo cáo không tồn tại.");
+            return;
+        }
+
+        const updatedReport = {
+            ...reportToSolve,
+            status: "resolved",
+            resolvedBy: user.id,
+            resolvedAt: new Date().toISOString()
+        };
+
+        axios.put(`http://localhost:9999/reports/${reportId}`, updatedReport)
+            .then(response => {
+                if (response.data) {
+                    alert("Báo cáo đã được giải quyết thành công.");
+                    setReportSubmittedFlag(prev => prev + 1); // Tăng counter để kích hoạt useEffect
+                } else {
+                    alert("Có vấn đề xảy ra trong quá trình giải quyết báo cáo. Xin vui lòng thử lại.");
+                }
+            })
+            .catch(err => {
+                console.error("Error resolving report:", err);
+                alert("Failed to resolve report.");
+            });
+    }
 
     return (
         <Container fluid className="py-4">
@@ -146,12 +208,78 @@ export default function ReportStory() {
                             />
                         </Col>
                     </Row>
-                    {showForm ? (
-                        renderForm()
-                    ) : <Button onClick={() => setShowForm(true)}>Thêm báo cáo </Button>
-                    }
 
-                    <h4>Danh sách báo cáo bạn đã gửi</h4>
+                    {user?.role === "user" ?
+                        showForm ? (
+                            renderForm()
+                        ) : <Button onClick={() => setShowForm(true)}>Thêm báo cáo </Button>
+                        : <></>}
+
+                    {user?.role === "user" ? (
+                        <>
+                            <h4>Danh sách báo cáo bạn đã gửi</h4>
+                            <Table>
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Lý do</th>
+                                        <th>Chi tiết</th>
+                                        <th>Trạng thái</th>
+                                        <th>Ngày gửi</th>
+                                        <th>Ngày được xử lý</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {reportList.map((report, index) => (
+                                        <tr key={index}>
+                                            <td>{index + 1}</td>
+                                            <td>{report.reason}</td>
+                                            <td>{report.details}</td>
+                                            <td>{report.status}</td>
+                                            <td>{new Date(report.createdAt).toLocaleDateString()}</td>
+                                            <td>{report.resolvedAt == null ? "Chưa có dữ liệu" : new Date(report.resolvedAt).toLocaleDateString()}</td>
+
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </Table>
+                        </>
+                    ) : user?.role === "admin" ? (
+                        <>
+                            <h4>Danh sách các báo cáo</h4>
+                            <Table>
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Lý do</th>
+                                        <th>Chi tiết</th>
+                                        <th>Trạng thái</th>
+                                        <th>Ngày gửi</th>
+                                        <th>Hành Động</th>
+                                        <th>Được giải quyết vào lúc</th>
+                                        <th>Giải quyết bởi user id:</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {reportList.map((report, index) => (
+                                        <tr key={index}>
+                                            <td>{index + 1}</td>
+                                            <td>{report.reason}</td>
+                                            <td>{report.details}</td>
+                                            <td>{report.status}</td>
+                                            <td>{new Date(report.createdAt).toLocaleDateString()}</td>
+                                            <Button disabled={report.status === "resolved"} onClick={() => reportSolve(report.id)}> Giải quyết báo cáo</Button>
+                                            <td>{report.resolvedAt == null ? "Chưa có dữ liệu" : new Date(report.resolvedAt).toLocaleDateString()}</td>
+                                            <td>{report.resolvedBy == null ? "Chưa có dữ liệu" : report.resolvedBy}</td>
+
+
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </Table>
+                        </>
+                    ) : <></>}
+
 
                     {/* To Do: hiển thị danh sách các báo cáo đã gửi (giảm dần theo thời gian) */}
                 </Col>
