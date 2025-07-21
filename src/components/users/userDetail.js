@@ -9,9 +9,9 @@ const UserDetail = () => {
   const [editing, setEditing] = useState(false);
   const [editData, setEditData] = useState({});
 
-  const acc = JSON.parse(localStorage.getItem("userAccount"));
-  const idAdmin = acc.id
 
+  const currentUser = JSON.parse(localStorage.getItem("userAccount"));
+  const isOwnProfile = currentUser?.id && currentUser.id.replace(/"/g, "") === id;
 
   useEffect(() => {
     const fetchUserDetail = async () => {
@@ -166,8 +166,7 @@ const UserDetail = () => {
                   </tbody>
                 </Table>
               )}
-
-              {!editing && idAdmin === id &&(
+              {!editing && isOwnProfile && (
                 <Button
                   variant="info"
                   className="mt-3"
