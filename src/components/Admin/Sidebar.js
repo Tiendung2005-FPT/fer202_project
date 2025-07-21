@@ -47,6 +47,14 @@ export default function Sidebar() {
                         <span>Báo cáo</span>
                     </Nav.Link>
                     <p>THAO TÁC</p>
+                    <Nav.Link as={Link} to="/admin/add-story">
+                        <i className="bi bi-plus-circle"></i>
+                        <span>Thêm truyện</span>
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/admin/hide-story">
+                        <i className="bi bi-eye-slash"></i>
+                        <span>Ẩn truyện</span>
+                    </Nav.Link>
                     <Nav.Link onClick={handelLogout} className="logout">
                         <i className="bi bi-box-arrow-right"></i>
                         <span>Đăng xuất</span></Nav.Link>
