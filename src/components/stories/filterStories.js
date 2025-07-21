@@ -125,12 +125,12 @@ const FilterStories = () => {
                         <div className="text-muted mb-2">{story.description}</div>
                         <div><b>Thể loại:</b> {story.tags && story.tags.length > 0
                           ? story.tags.map(tagId => {
-                              const tag = tags.find(t => t.id === tagId);
+                              const tag = tags.find(t => String(t.id) === String(tagId));
                               return tag ? tag.name : '';
                             }).filter(Boolean).join(', ')
                           : 'Không có'}</div>
                         <div className="mb-1">
-                          <span className="me-3"><b>Rating:</b> {story.rating ?? 'N/A'}</span>
+                          <span className="me-3"><b>Chương:</b> {story.totalChapters ?? 'N/A'}</span>
                           <span><b>Tác giả:</b> {authors.find(a => a.id === story.authorId)?.username}</span>
                         </div>
                       </div>
